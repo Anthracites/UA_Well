@@ -7,4 +7,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Инициализация
     }
+    
+
+        func copyButtonProperties(targetButton: UIButton) {
+            targetButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            targetButton.titleLabel?.font = MenuButton.titleLabel?.font
+            targetButton.translatesAutoresizingMaskIntoConstraints = MenuButton.translatesAutoresizingMaskIntoConstraints
+            targetButton.layer.position = MenuButton.layer.position
+            // Копирование других свойств, если необходимо
+        }
+
 }

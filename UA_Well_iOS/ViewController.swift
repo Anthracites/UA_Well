@@ -20,6 +20,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         _collectionView.dataSource = self
         _collectionView.delegate = self
         funkGetJSONs()
+        _collectionView.reloadData()
+        _collectionView.contentMode = .center
     }
     
     
@@ -48,19 +50,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         } catch {
             print("Error getting files: \(error)")
         }
-        _collectionView.reloadData()
+
 
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        _collectionView.backgroundColor = .cyan
+       // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         // Настройка ячейки
         cell.backgroundColor = .red
         let jsonFile = jsonFiles[indexPath.item]
-        //cell.titleLabel.text = jsonFile.lastPathComponent
+        cell.MenuButton.backgroundColor = .gray
+        cell.copyButtonProperties(targetButton: cell.MenuButton)
         cell.MenuButton.setTitle(jsonFile.lastPathComponent, for: .normal)
-        cell.MenuButton.backgroundColor = .black
-        // Дополнительная настройка
+        cell.contentMode = .center
+        cell.MenuButton.contentMode = .center
+                
         print("Cell added!")
         return cell
     }
