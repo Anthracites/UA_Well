@@ -16,12 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jfi-Mp-ofc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="app_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jfi-Mp-ofc">
                                 <rect key="frame" x="100.66666666666669" y="155" width="192" height="192"/>
-                            </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="db0-5C-ax2">
-                                <rect key="frame" x="38" y="421" width="331" height="362"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="db0-5C-ax2">
+                                <rect key="frame" x="38" y="421" width="331" height="362"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BQR-Y4-hm8">
                                     <size key="itemSize" width="325" height="122"/>
@@ -30,16 +31,16 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionViewCell" id="gfr-87-0bt">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionViewCell" id="yTm-75-ptM" propertyAccessControl="none">
                                         <rect key="frame" x="3" y="0.0" width="325" height="122"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AN2-ee-GGM">
-                                                    <rect key="frame" x="15" y="34" width="300" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" id="wH5-B4-4Cm">
+                                                    <rect key="frame" x="12" y="34" width="300" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
                                                     <inset key="titleEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -53,42 +54,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-HK-ehw">
+                            <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-HK-ehw">
                                 <rect key="frame" x="325" y="102" width="35" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ReG-HK-ehw" secondAttribute="height" multiplier="5:4" id="79c-Sn-8FR"/>
-                                    <constraint firstAttribute="width" secondItem="ReG-HK-ehw" secondAttribute="height" multiplier="35:13" id="AeU-96-CGh"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="Hfh-l4-BOG"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="R58-1b-lTS"/>
-                                    <constraint firstAttribute="width" constant="35" id="UhL-Fu-GU4"/>
-                                    <constraint firstAttribute="height" constant="28" id="XXq-ak-UQC"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="28" id="h7b-QX-JMq"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="n5i-W1-wGs"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="8" id="qwY-KP-m4Z"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="burger_button.png"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Jfi-Mp-ofc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="0ps-CI-DzE"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ReG-HK-ehw" secondAttribute="bottom" constant="704" id="5wW-Ze-PaH"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="309" id="AWe-uh-Vfw"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="43" id="Co8-QT-8sj"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="309" id="Dr4-15-uTt"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="43" id="HyZ-iW-uz4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ReG-HK-ehw" secondAttribute="trailing" constant="17" id="LCd-r6-v5F"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="309" id="Rn9-dy-lcH"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ReG-HK-ehw" secondAttribute="bottom" constant="682" id="UnL-Pq-qXU"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="ReG-HK-ehw" secondAttribute="bottom" constant="708" id="VSL-xS-VZH"/>
-                            <constraint firstItem="Jfi-Mp-ofc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="96" id="Vei-7t-OHG"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="43" id="W4y-jy-1z0"/>
-                            <constraint firstItem="ReG-HK-ehw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="309" id="YfL-uT-uR8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ReG-HK-ehw" secondAttribute="trailing" constant="17" id="gW0-Au-fFj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ReG-HK-ehw" secondAttribute="trailing" constant="17" id="urV-uN-C45"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="MenuRightButton" destination="ReG-HK-ehw" id="2jw-ni-Ycv"/>
@@ -108,7 +82,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

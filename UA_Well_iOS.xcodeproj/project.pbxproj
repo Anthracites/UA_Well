@@ -38,6 +38,7 @@
 		D07A48262C99BC4600DEE2C7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D07A48252C99BC4600DEE2C7 /* Base */; };
 		D082C25D2CF6272800BC2AAA /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D082C25C2CF6272800BC2AAA /* CustomCollectionViewCell.xib */; };
 		D082C25F2CF627F600BC2AAA /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D082C25E2CF627F600BC2AAA /* CustomCollectionViewCell.swift */; };
+		D0D057BC2CFA07CC00CDF83F /* CommonButtonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */; };
 		D0E9A00B2CF35849002DABB9 /* CostomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E9A0092CF35849002DABB9 /* CostomTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		D07A48272C99BC4600DEE2C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D082C25C2CF6272800BC2AAA /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		D082C25E2CF627F600BC2AAA /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommonButtonBG.png; sourceTree = "<group>"; };
 		D0E9A0092CF35849002DABB9 /* CostomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CostomTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				D01248A32C99CE6D00FBB550 /* burger_button.png */,
 				D01248A42C99CE6D00FBB550 /* common_button.png */,
 				D01248A52C99CE6D00FBB550 /* comon_button.svg */,
+				D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */,
 				D01248A62C99CE6D00FBB550 /* cross_button.png */,
 				D01248A72C99CE6D00FBB550 /* down_arrow.png */,
 				D01248A82C99CE6D00FBB550 /* left_right.png */,
@@ -254,6 +257,7 @@
 				D04571DF2CA361750000B8D1 /* ru.json in Resources */,
 				D07A48262C99BC4600DEE2C7 /* Base in Resources */,
 				D01248B92C99CE6D00FBB550 /* Andrey.png in Resources */,
+				D0D057BC2CFA07CC00CDF83F /* CommonButtonBG.png in Resources */,
 				D01248C12C99CE6D00FBB550 /* logo.png in Resources */,
 				D07A48212C99BC4400DEE2C7 /* Base in Resources */,
 				D01248BC2C99CE6D00FBB550 /* common_button.png in Resources */,

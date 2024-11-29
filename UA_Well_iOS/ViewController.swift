@@ -11,6 +11,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBOutlet var MenuRightButton: UIButton!
     var jsonFiles: [URL] = []
+    var commoButtonBG = UIImage(named: "CommonButtonBG")
     
     @IBOutlet weak var _collectionView: UICollectionView!
     
@@ -50,22 +51,40 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         } catch {
             print("Error getting files: \(error)")
         }
-
-
+        
+        
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       // _collectionView.backgroundColor = .cyan
+    @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         // Настройка ячейки
-        cell.backgroundColor = .red
+        //cell.backgroundColor = .red
         let jsonFile = jsonFiles[indexPath.item]
-        cell.MenuButton.backgroundColor = .gray
+        //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: cell.MenuButton)
         cell.MenuButton.setTitle(jsonFile.lastPathComponent, for: .normal)
         cell.contentMode = .center
         cell.MenuButton.contentMode = .center
-                
+        cell.MenuButton.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+        cell.MenuButton.setBackgroundImage(commoButtonBG, for: .highlighted)
+        
+        
+        //view.addSubview(cell.MenuButton)
+        
         print("Cell added!")
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
+        }
         return cell
     }
+    
+    @objc func OnClickMenuButton(_currentButton: UIButton)
+    {
+        if let _label = _currentButton.titleLabel?.text
+        {
+            print(String(_label))
+        }
+    }
 }
+
