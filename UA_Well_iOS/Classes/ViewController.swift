@@ -85,9 +85,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         {
             print(String(_label))
         }
-        let storyboard = UIStoryboard(name: "QuickHelpSymptomsMenu", bundle: nil)
+        let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
                // Инициализируем ViewController
-               let secondVC = storyboard.instantiateViewController(withIdentifier: "QuickHelpSymptomsMenu") as! QuickHelpSymptomsMenu
+        let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
                // Переход к новому ViewController
                self.present(secondVC, animated: true, completion: nil)
 

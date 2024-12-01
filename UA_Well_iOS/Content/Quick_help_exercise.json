@@ -1,0 +1,182 @@
+[
+    {
+        "help_exercise_array":
+        [
+            2,
+            11,
+            12,
+            6,
+            9,
+            14
+        ],
+        "symptom_ID": 1,
+        "symptom_name": "apathy_empty"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9,
+            13
+        ],
+        "symptom_ID": 10,
+        "symptom_name": "intense_unbearable_emotions"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            11,
+            12,
+            3,
+            4,
+            6,
+            14
+        ],
+        "symptom_ID": 11,
+        "symptom_name": "weakness_helplessness"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            11,
+            3,
+            4,
+            1,
+            9
+        ],
+        "symptom_ID": 12,
+        "symptom_name": "shock_stupor_freeze"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            3,
+            7,
+            8,
+            9,
+            13
+        ],
+        "symptom_ID": 13,
+        "symptom_name": "emotional_thoughts"
+    },
+    {
+        "help_exercise_array":
+        [
+            10,
+            11,
+            12,
+            3,
+            5,
+            7,
+            8,
+            1,
+            9,
+            14
+        ],
+        "symptom_ID": 2,
+        "symptom_name": "anxiety_agitation"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            3,
+            5,
+            1,
+            9
+        ],
+        "symptom_ID": 3,
+        "symptom_name": "derealization_depersonalization"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            12,
+            3,
+            5,
+            7
+        ],
+        "symptom_ID": 4,
+        "symptom_name": "difficulty_breathing"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            11,
+            12,
+            3,
+            4,
+            7,
+            8
+        ],
+        "symptom_ID": 5,
+        "symptom_name": "tension_relaxation_impossibility"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            3,
+            5,
+            8
+        ],
+        "symptom_ID": 6,
+        "symptom_name": "unpleasant_physical_reactions"
+    },
+    {
+        "help_exercise_array":
+        [
+            10,
+            3,
+            4,
+            7,
+            8,
+            1,
+            9
+        ],
+        "symptom_ID": 7,
+        "symptom_name": "panic"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            3,
+            8,
+            1,
+            9
+        ],
+        "symptom_ID": 8,
+        "symptom_name": "immersion_painful_experience_flashback_traumatic_funnel"
+    },
+    {
+        "help_exercise_array":
+        [
+            2,
+            10,
+            3,
+            1,
+            14
+        ],
+        "symptom_ID": 9,
+        "symptom_name": "bewilderment_inability_concentrate"
+    }
+]
