@@ -72,6 +72,11 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         if let _label = _currentButton.titleLabel?.text
         {
             print(String(_label))
+            let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
+            // Переход к новому ViewController
+            self.present(secondVC, animated: true, completion: nil)
         }
     }
 }
