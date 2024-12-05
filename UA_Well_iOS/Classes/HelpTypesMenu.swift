@@ -5,6 +5,8 @@ import UIKit
 class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var _backButton: UIButton!
+    var _previousScreenName = "Main"
     var helpTypes: [HelpType] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     
@@ -17,6 +19,8 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         GetTypesJsons()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,14 +71,24 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     
     @objc func OnClickMenuButton(_currentButton: UIButton)
     {
-            if let _label = _currentButton.titleLabel?.text
-            {
-                print(String(_label))
-                let storyboard = UIStoryboard(name: _label, bundle: nil)
-                // Инициализируем ViewController
-                let secondVC = storyboard.instantiateViewController(withIdentifier: _label)
-                // Переход к новому ViewController
-                self.present(secondVC, animated: true, completion: nil)
-            }
+        if let _label = _currentButton.titleLabel?.text
+        {
+            print(String(_label))
+            let storyboard = UIStoryboard(name: _label, bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: _label)
+            // Переход к новому ViewController
+            self.present(secondVC, animated: true, completion: nil)
+        }
     }
+    
+    @objc func BackToPreviousScreen()
+    {
+        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
+        // Инициализируем ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
+        // Переход к новому ViewController
+        self.present(secondVC, animated: true, completion: nil)
+    }
+    
 }

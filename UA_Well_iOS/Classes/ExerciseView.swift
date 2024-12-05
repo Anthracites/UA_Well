@@ -7,6 +7,10 @@ class ExerciseView: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var  _scrollView: UIScrollView!
       let contentView = UIView()
     @IBOutlet weak var _textView: UITextView!
+    @IBOutlet weak var _backButton: UIButton!
+    var _previousScreenName = "SymptomTitle"
+    
+    
       let buttonStackView = UIStackView()
       let button1 = UIButton(type: .system)
       let button2 = UIButton(type: .system)
@@ -19,6 +23,7 @@ class ExerciseView: UIViewController, UIScrollViewDelegate {
           setupTextView()
           setupButtons()
           setupLayout()
+          _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
       }
 
       func setupScrollView() {
@@ -80,6 +85,13 @@ class ExerciseView: UIViewController, UIScrollViewDelegate {
               buttonStackView.heightAnchor.constraint(equalToConstant: 50)
           ])
       }
-
-  
+    
+    @objc func BackToPreviousScreen()
+    {
+        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
+        // Инициализируем ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
+        // Переход к новому ViewController
+        self.present(secondVC, animated: true, completion: nil)
+    }
 }

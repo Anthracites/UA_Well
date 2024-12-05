@@ -5,6 +5,8 @@ import UIKit
 class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var _backButton: UIButton!
+    var _previousScreenName = "HelpTypesMenu"
     var quickHelpExercises: [Exercise] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
 
@@ -19,6 +21,8 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         GetExersiceJsons()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -79,4 +83,13 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             self.present(secondVC, animated: true, completion: nil)
         }
     }
+        
+        @objc func BackToPreviousScreen()
+        {
+            let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
+            // Переход к новому ViewController
+            self.present(secondVC, animated: true, completion: nil)
+        }
 }
