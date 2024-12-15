@@ -5,10 +5,10 @@
     },
     {
         "help_type_id": 2,
-        "help_type_name": "long_time_work"
+        "help_type_name": "LongTimeWork"
     },
     {
         "help_type_id": 3,
-        "help_type_name": "prevention_screen"
+        "help_type_name": "PreventionScreen"
     }
 ]

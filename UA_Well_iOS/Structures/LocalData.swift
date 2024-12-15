@@ -9,6 +9,8 @@ import Foundation
 
 struct LocalData
 {
+    var currentLanguage:String;
+    
     struct Common_button
     {
         var Start: String;

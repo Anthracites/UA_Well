@@ -9,8 +9,8 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     var _previousScreenName = "HelpTypesMenu"
     var quickHelpExercises: [Exercise] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
-
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         _collectionView.reloadData()
         _collectionView.contentMode = .center
         _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -51,7 +51,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
-       // cell.backgroundColor = .red
+        // cell.backgroundColor = .red
         let Quick_help_exercise = quickHelpExercises[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon)
@@ -59,6 +59,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+      //  _burgerButton.addTarget(self, action: #selector(BurgerButoonOnClick), for: .touchUpInside)
         
         
         //view.addSubview(cell.MenuButton)
@@ -83,13 +84,13 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             self.present(secondVC, animated: true, completion: nil)
         }
     }
-        
-        @objc func BackToPreviousScreen()
-        {
-            let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
-            // Инициализируем ViewController
-            let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
-            // Переход к новому ViewController
-            self.present(secondVC, animated: true, completion: nil)
-        }
+    
+    @objc func BackToPreviousScreen()
+    {
+        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
+        // Инициализируем ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
+        // Переход к новому ViewController
+        self.present(secondVC, animated: true, completion: nil)
+    }
 }

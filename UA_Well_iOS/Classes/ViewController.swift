@@ -29,7 +29,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return jsonFiles.count
     }
-    
+    func didDismiss() {
+        print("Main closed!!!")
+    }
     
     @objc func funkGetJSONs() {
         let fileManager = FileManager.default
@@ -86,11 +88,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             print(String(_label))
         }
         let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
-               // Инициализируем ViewController
+        // Инициализируем ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
-               // Переход к новому ViewController
-               self.present(secondVC, animated: true, completion: nil)
-
+        // Переход к новому ViewController
+        //self.presentingViewController?.presentingViewController?.dismiss( animated: true, completion: nil)
+        self.present(secondVC, animated: true, completion: nil)
     }
-}
+    }
 
