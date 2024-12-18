@@ -38,7 +38,6 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="0Ls-Le-rDB"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="QLc-xs-ZVt"/>
@@ -48,46 +47,74 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH3-L1-diz">
                                 <rect key="frame" x="0.0" y="135" width="361" height="1233"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-36-392">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="1502"/>
+                                    <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="4U0-36-392">
+                                        <rect key="frame" x="8" y="0.0" width="384" height="1233"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYK-OP-ujf">
-                                                <rect key="frame" x="10" y="1438" width="374" height="34"/>
-                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                            </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="8gs-3t-tRy">
-                                                <rect key="frame" x="10" y="30" width="374" height="744"/>
+                                                <rect key="frame" x="10" y="30" width="361" height="688"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="374" id="V1M-A0-6Xa"/>
-                                                </constraints>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. The end!!!</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" directionalLockEnabled="YES" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LoR-Ux-N2S">
+                                                <rect key="frame" x="10" y="1008" width="353" height="195"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="195" id="nGM-Dz-bxP"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ick-eU-ntl">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionViewCell" id="Xai-co-Rs8" propertyAccessControl="none">
+                                                        <rect key="frame" x="14" y="0.0" width="325" height="122"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="122"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" id="sxq-j9-gJ5">
+                                                                    <rect key="frame" x="12" y="34" width="300" height="60"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
+                                                                    <inset key="titleEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                    <state key="normal" title="English" backgroundImage="common_button.png">
+                                                                        <color key="titleColor" systemColor="systemIndigoColor"/>
+                                                                    </state>
+                                                                </button>
+                                                            </subviews>
+                                                        </view>
+                                                        <size key="customSize" width="325" height="122"/>
+                                                    </collectionViewCell>
+                                                </cells>
+                                            </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBrownColor"/>
                                         <constraints>
-                                            <constraint firstItem="8gs-3t-tRy" firstAttribute="leading" secondItem="4U0-36-392" secondAttribute="leading" constant="10" id="1Og-n1-A9j"/>
-                                            <constraint firstAttribute="trailing" secondItem="cYK-OP-ujf" secondAttribute="trailing" constant="10" id="CGd-zM-VSY"/>
+                                            <constraint firstItem="8gs-3t-tRy" firstAttribute="leading" secondItem="4U0-36-392" secondAttribute="leading" constant="10" id="5iG-d2-GMi"/>
+                                            <constraint firstAttribute="bottom" secondItem="LoR-Ux-N2S" secondAttribute="bottom" constant="30" id="6g8-sh-Vad"/>
+                                            <constraint firstAttribute="trailing" secondItem="LoR-Ux-N2S" secondAttribute="trailing" constant="21" id="7by-7a-ILK"/>
                                             <constraint firstItem="8gs-3t-tRy" firstAttribute="top" secondItem="4U0-36-392" secondAttribute="top" constant="30" id="Jge-QE-zgI"/>
-                                            <constraint firstAttribute="trailing" secondItem="8gs-3t-tRy" secondAttribute="trailing" constant="10" id="LNZ-yI-BLq"/>
-                                            <constraint firstItem="cYK-OP-ujf" firstAttribute="leading" secondItem="4U0-36-392" secondAttribute="leading" constant="10" id="RnI-Z2-ojT"/>
-                                            <constraint firstItem="cYK-OP-ujf" firstAttribute="top" secondItem="8gs-3t-tRy" secondAttribute="bottom" constant="664" id="pYf-PR-9PS"/>
-                                            <constraint firstAttribute="height" constant="1502" id="rCy-g6-g89"/>
-                                            <constraint firstAttribute="bottom" secondItem="cYK-OP-ujf" secondAttribute="bottom" constant="30" id="tjg-Y5-s8K"/>
+                                            <constraint firstItem="8gs-3t-tRy" firstAttribute="leading" secondItem="LoR-Ux-N2S" secondAttribute="leading" id="MJc-C1-Wyy"/>
+                                            <constraint firstAttribute="trailing" secondItem="8gs-3t-tRy" secondAttribute="trailing" constant="13" id="W9a-c3-EwJ"/>
+                                            <constraint firstAttribute="width" constant="384" id="YTm-e8-bmp"/>
+                                            <constraint firstItem="LoR-Ux-N2S" firstAttribute="top" secondItem="8gs-3t-tRy" secondAttribute="bottom" constant="290" id="p29-XC-Rjc"/>
+                                            <constraint firstAttribute="height" constant="1233" id="rCy-g6-g89"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="4U0-36-392" secondAttribute="bottom" constant="-2" id="4vu-gN-fnZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="4U0-36-392" secondAttribute="trailing" id="A2M-Hz-9JY"/>
+                                    <constraint firstAttribute="bottom" secondItem="4U0-36-392" secondAttribute="bottom" id="4vu-gN-fnZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="4U0-36-392" secondAttribute="trailing" constant="-31" id="A2M-Hz-9JY"/>
                                     <constraint firstItem="4U0-36-392" firstAttribute="top" secondItem="Pan-4P-SfP" secondAttribute="top" id="KVo-8Z-tnO"/>
-                                    <constraint firstItem="4U0-36-392" firstAttribute="leading" secondItem="KH3-L1-diz" secondAttribute="leading" id="tZ2-ol-r6h"/>
+                                    <constraint firstItem="4U0-36-392" firstAttribute="leading" secondItem="KH3-L1-diz" secondAttribute="leading" constant="8" id="tZ2-ol-r6h"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Pan-4P-SfP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="oUS-DJ-3Mb"/>
@@ -108,6 +135,9 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="361" height="1368"/>
+                    <connections>
+                        <outlet property="_collectionView" destination="LoR-Ux-N2S" id="CUc-s9-uoX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,6 +146,7 @@
     </scenes>
     <resources>
         <image name="burger_button.png" width="30" height="17"/>
+        <image name="common_button.png" width="300" height="60"/>
         <image name="left_right.png" width="24" height="24"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -131,9 +162,6 @@
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

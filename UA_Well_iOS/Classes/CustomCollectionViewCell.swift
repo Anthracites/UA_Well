@@ -10,7 +10,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func copyButtonProperties(targetButton: UIButton) {
+    func copyButtonProperties(targetButton: UIButton, isFilledButton: Bool) {
         targetButton.translatesAutoresizingMaskIntoConstraints = false
         targetButton.titleLabel?.font = MenuButton.titleLabel?.font
         targetButton.translatesAutoresizingMaskIntoConstraints = MenuButton.translatesAutoresizingMaskIntoConstraints

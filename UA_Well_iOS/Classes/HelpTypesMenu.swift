@@ -52,7 +52,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         //cell.backgroundColor = .red
         let HelpType = helpTypes[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
-        cell.copyButtonProperties(targetButton: newButoon)
+        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
         newButoon.setTitle(HelpType.help_type_name, for: .normal)
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)

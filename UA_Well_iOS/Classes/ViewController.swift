@@ -64,7 +64,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         //cell.backgroundColor = .red
         let jsonFile = jsonFiles[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
-        cell.copyButtonProperties(targetButton: newButoon)
+        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(jsonFile.lastPathComponent, for: .normal)
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)

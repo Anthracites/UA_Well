@@ -54,7 +54,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         // cell.backgroundColor = .red
         let Quick_help_exercise = quickHelpExercises[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
-        cell.copyButtonProperties(targetButton: newButoon)
+        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(Quick_help_exercise.symptom_name, for: .normal)
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
