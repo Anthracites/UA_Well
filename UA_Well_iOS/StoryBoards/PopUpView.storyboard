@@ -15,18 +15,78 @@
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="PopUp" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8wQ-A7-ddq">
+                                <rect key="frame" x="330" y="59" width="47" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="cross_button.png"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CzO-xp-tlD">
+                                <rect key="frame" x="16" y="105" width="361" height="316"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="316" id="iuG-pr-lcm"/>
+                                </constraints>
+                                <color key="separatorColor" systemColor="systemIndigoColor"/>
+                                <color key="sectionIndexColor" systemColor="systemIndigoColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemIndigoColor"/>
+                                <color key="sectionIndexTrackingBackgroundColor" systemColor="systemIndigoColor"/>
+                                <prototypes>
+                                    <tableViewCell autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6dB-4F-BDa" customClass="CustomTableViewCell" customModule="UA_Well_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6dB-4F-BDa" id="sIE-4n-0Nm">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="LanguageSelection" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="wordWrap" id="uaR-KT-96S">
+                                                    <rect key="frame" x="0.0" y="2" width="361" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="LanguageSelection" label="LanguageSelection"/>
+                                                    <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="LanguageSelection" subtitle="" titleAlignment="center">
+                                                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
+                                                        <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstItem="CzO-xp-tlD" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="FJz-nj-l7p"/>
+                            <constraint firstItem="CzO-xp-tlD" firstAttribute="trailing" secondItem="8wQ-A7-ddq" secondAttribute="trailing" id="HSW-fz-2DZ"/>
+                            <constraint firstItem="CzO-xp-tlD" firstAttribute="top" secondItem="8wQ-A7-ddq" secondAttribute="bottom" constant="8" symbolic="YES" id="on0-7Y-ZSQ"/>
+                            <constraint firstItem="CzO-xp-tlD" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailingMargin" id="tcS-RC-wNG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="CzO-xp-tlD" secondAttribute="bottom" constant="397" id="zXv-gm-nrb"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="8wQ-A7-ddq" id="hTF-Ss-SZU"/>
+                        <outlet property="tableView" destination="CzO-xp-tlD" id="Equ-wn-g6T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="-28"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-28.169014084507044"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cross_button.png" width="23" height="24"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

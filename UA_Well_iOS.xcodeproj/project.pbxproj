@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 74;
+	objectVersion = 75;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,6 +69,11 @@
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		D0CCBBAC2CFF3B72007D5B0C /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			assetTagsByRelativePath = {
+				PopUpView.storyboard = (
+					LanguageSelection,
+				);
+			};
 			membershipExceptions = (
 				/Localized/LaunchScreen.storyboard,
 			);
@@ -229,6 +234,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					LanguageSelection,
+				);
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
