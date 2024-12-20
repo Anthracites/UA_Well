@@ -32,6 +32,7 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         let label = popUpButtonLabels[indexPath.item]
         newButoon.setTitle(label, for:.normal)
         cell.contentView.contentMode = .center
+        cell.copyButtonProperties(targetButton: newButoon)
         print("Cell added!")
         return cell
     }

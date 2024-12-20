@@ -20,11 +20,10 @@
                         <rect key="frame" x="0.0" y="2" width="361" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <accessibility key="accessibilityConfiguration" identifier="LanguageSelection" label="LanguageSelection"/>
-                        <color key="tintColor" systemColor="tertiarySystemBackgroundColor"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="LanguageSelection" subtitle="" titleAlignment="center">
-                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                            <color key="baseForegroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="51"/>
                         </buttonConfiguration>
                     </button>
                 </subviews>
@@ -37,14 +36,11 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
