@@ -18,6 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="854"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
+                        <rect key="frame" x="16" y="363" width="352" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="OyK-UV-pRY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" systemColor="systemIndigoColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vK8-5P-D64">
                         <rect key="frame" x="20" y="397" width="348" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -29,18 +38,23 @@
                                 <command title="Item 2" id="Gkh-uQ-T1y"/>
                             </children>
                         </menu>
-                        <state key="normal" title="Minimum" backgroundImage="common_button.png">
+                        <state key="normal" title="Minimum" backgroundImage="common_drop_down.png">
                             <color key="titleColor" systemColor="systemIndigoColor"/>
                         </state>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="leading" secondItem="Um2-Q8-gQE" secondAttribute="leadingMargin" id="H63-1P-jr6"/>
+                    <constraint firstItem="vK8-5P-D64" firstAttribute="top" secondItem="nZT-oq-9UH" secondAttribute="bottom" constant="-1" id="d4G-D0-Do3"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="trailing" secondItem="vK8-5P-D64" secondAttribute="trailing" id="ubd-Kx-See"/>
+                </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="395" height="854"/>
             <point key="canvasLocation" x="-854.19847328244271" y="-1306.3380281690143"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="common_button.png" width="300" height="60"/>
+        <image name="common_drop_down.png" width="300" height="60"/>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

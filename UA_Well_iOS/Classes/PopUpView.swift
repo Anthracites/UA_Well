@@ -6,7 +6,7 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    var popUpButtonLabels: [String] = ["language_selection", "type_of_help", "about_us_and_contact_us", "about_the_application"]
+    var popUpButtonLabels: [String] = ["Main", "HelpTypesMenu", "AboutUsAndContactUs", "AboutTheApplication"]
 
 
     override func viewDidLoad()
@@ -33,6 +33,7 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         newButoon.setTitle(label, for:.normal)
         cell.contentView.contentMode = .center
         cell.copyButtonProperties(targetButton: newButoon)
+        newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         print("Cell added!")
         return cell
     }
@@ -41,6 +42,19 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
     @objc func BackToPreviousScreen()
     {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func OnClickMenuButton(_currentButton: UIButton)
+    {
+        if let _label = _currentButton.titleLabel?.text
+        {
+            print(String(_label))
+            let storyboard = UIStoryboard(name: _label, bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: _label)
+            // Переход к новому ViewController
+            self.present(secondVC, animated: true, completion: nil)
+        }
     }
 
 }

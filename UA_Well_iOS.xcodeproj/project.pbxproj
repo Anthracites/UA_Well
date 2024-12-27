@@ -29,6 +29,7 @@
 		D01248CA2C99CE6E00FBB550 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = D01248B42C99CE6D00FBB550 /* en.json */; };
 		D01248CC2C99CE6E00FBB550 /* uk.json in Resources */ = {isa = PBXBuildFile; fileRef = D01248B62C99CE6D00FBB550 /* uk.json */; };
 		D04571DF2CA361750000B8D1 /* ru.json in Resources */ = {isa = PBXBuildFile; fileRef = D04571DE2CA361750000B8D1 /* ru.json */; };
+		D0580A7C2D1F19D400BC7F60 /* common_drop_down.png in Resources */ = {isa = PBXBuildFile; fileRef = D0580A7B2D1F19D400BC7F60 /* common_drop_down.png */; };
 		D067834D2C99CA6B002854B1 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D067834C2C99CA6B002854B1 /* Inter-Medium.otf */; };
 		D07A48232C99BC4600DEE2C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D07A48222C99BC4600DEE2C7 /* Assets.xcassets */; };
 		D0863B5C2CFCA15A005D70A2 /* HelpTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */; };
@@ -58,6 +59,7 @@
 		D01248B42C99CE6D00FBB550 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 		D01248B62C99CE6D00FBB550 /* uk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uk.json; sourceTree = "<group>"; };
 		D04571DE2CA361750000B8D1 /* ru.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ru.json; sourceTree = "<group>"; };
+		D0580A7B2D1F19D400BC7F60 /* common_drop_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = common_drop_down.png; sourceTree = "<group>"; };
 		D067834C2C99CA6B002854B1 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
 		D07A48162C99BC4400DEE2C7 /* UA_Well_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UA_Well_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07A48222C99BC4600DEE2C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				D01248A32C99CE6D00FBB550 /* burger_button.png */,
 				D01248A42C99CE6D00FBB550 /* common_button.png */,
 				D01248A52C99CE6D00FBB550 /* comon_button.svg */,
+				D0580A7B2D1F19D400BC7F60 /* common_drop_down.png */,
 				D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */,
 				D01248A62C99CE6D00FBB550 /* cross_button.png */,
 				D01248A72C99CE6D00FBB550 /* down_arrow.png */,
@@ -277,6 +280,7 @@
 				D00467522CFB41AB006AC04E /* Quick_help_exercise.json in Resources */,
 				D01248C62C99CE6D00FBB550 /* youtube.png in Resources */,
 				D0863B5C2CFCA15A005D70A2 /* HelpTypes.json in Resources */,
+				D0580A7C2D1F19D400BC7F60 /* common_drop_down.png in Resources */,
 				D04571DF2CA361750000B8D1 /* ru.json in Resources */,
 				D01248B92C99CE6D00FBB550 /* Andrey.png in Resources */,
 				D0D057BC2CFA07CC00CDF83F /* CommonButtonBG.png in Resources */,
