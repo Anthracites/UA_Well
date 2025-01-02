@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="He8-qA-Dva" customClass="CustomCollectionViewCell" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="He8-qA-Dva" customClass="CustomDropDown" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
             <rect key="frame" x="0.0" y="0.0" width="395" height="854"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Um2-Q8-gQE">
@@ -27,7 +27,7 @@
                         <color key="textColor" systemColor="systemIndigoColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vK8-5P-D64">
+                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="CustomDropDown" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vK8-5P-D64">
                         <rect key="frame" x="20" y="397" width="348" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
@@ -50,6 +50,10 @@
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="395" height="854"/>
+            <connections>
+                <outlet property="ddLabel" destination="nZT-oq-9UH" id="iNS-3D-aOC"/>
+                <outlet property="dropDown" destination="vK8-5P-D64" id="Yzq-pk-7DX"/>
+            </connections>
             <point key="canvasLocation" x="-854.19847328244271" y="-1306.3380281690143"/>
         </collectionViewCell>
     </objects>

@@ -25,21 +25,19 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomDropDown", for: indexPath)
-        //let newButoon: UIButton = cell.MenuButton
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomDropDown", for: indexPath) as! CustomDropDown
+        let newButoon: UIButton = cell.dropDown
         // Настройка ячейки
         // cell.backgroundColor = .red
-        let Quick_help_exercise = dropDownLabels[indexPath.item]
-        //cell.MenuButton.backgroundColor = .gray
-        //cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        //newButoon.setTitle(dropDownLabels.symptom_name, for: .normal)
+        let _label = dropDownLabels[indexPath.item]
+        cell.dropDown.backgroundColor = .gray
+        cell.copyDDProperties(targetButton: newButoon)
+        newButoon.setTitle(_label, for: .normal)
         cell.contentMode = .center
         //newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         //newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
-      //  _burgerButton.addTarget(self, action: #selector(BurgerButoonOnClick), for: .touchUpInside)
         
-        
-        //view.addSubview(cell.MenuButton)
+        view.addSubview(cell.dropDown)
         
         print("Cell added!")
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {

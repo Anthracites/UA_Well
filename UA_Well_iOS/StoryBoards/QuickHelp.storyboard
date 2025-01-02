@@ -86,6 +86,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="_backButton" destination="faR-xZ-zj4" id="t3x-Oo-xYa"/>
                         <outlet property="_collectionView" destination="Aw5-xT-aqI" id="DOT-dj-sm7"/>
                     </connections>
                 </viewController>
