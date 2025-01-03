@@ -15,7 +15,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         _collectionView.delegate = self
         _collectionView.reloadData()
         _collectionView.contentMode = .center
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,22 +27,23 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomDropDown", for: indexPath) as! CustomDropDown
         let newButoon: UIButton = cell.dropDown
         // Настройка ячейки
-        // cell.backgroundColor = .red
+        //cell.backgroundColor = .red
         let _label = dropDownLabels[indexPath.item]
-        cell.dropDown.backgroundColor = .gray
+        //cell.dropDown.backgroundColor = .gray
         cell.copyDDProperties(targetButton: newButoon)
         newButoon.setTitle(_label, for: .normal)
         cell.contentMode = .center
+        //newButoon.center = CGPoint(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.midY) // Центрируем кнопку внутри ячейки
         //newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         //newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
         
-        view.addSubview(cell.dropDown)
+        //view.addSubview(cell.dropDown)
         
-        print("Cell added!")
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
-        }
+        print("Prevention scereen: Cell added!")
+//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            layout.scrollDirection = .vertical
+//            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
+//        }
         return cell
     }
     

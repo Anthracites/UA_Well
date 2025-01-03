@@ -11,50 +11,55 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="He8-qA-Dva" customClass="CustomDropDown" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
-            <rect key="frame" x="0.0" y="0.0" width="395" height="854"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="He8-qA-Dva" customClass="CustomDropDown" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
+            <rect key="frame" x="0.0" y="0.0" width="395" height="143"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Um2-Q8-gQE">
-                <rect key="frame" x="0.0" y="0.0" width="395" height="854"/>
-                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-Q8-gQE">
+                <rect key="frame" x="0.0" y="0.0" width="395" height="143"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
-                        <rect key="frame" x="16" y="363" width="352" height="35"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="35" id="OyK-UV-pRY"/>
-                        </constraints>
+                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
+                        <rect key="frame" x="21" y="0.0" width="300" height="51"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemIndigoColor"/>
                         <nil key="highlightedColor"/>
+                        <size key="shadowOffset" width="0.0" height="3"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="CustomDropDown" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vK8-5P-D64">
-                        <rect key="frame" x="20" y="397" width="348" height="60"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                        <inset key="titleEdgeInsets" minX="25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="5yu-8I-GH7">
+                        <rect key="frame" x="47" y="59" width="300" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="30"/>
+                        <inset key="titleEdgeInsets" minX="25" minY="25" maxX="50" maxY="25"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <menu key="menu" id="fqx-Mn-RrZ">
                             <children>
                                 <command title="Item 1" id="BIt-kf-HJQ"/>
                                 <command title="Item 2" id="Gkh-uQ-T1y"/>
                             </children>
                         </menu>
-                        <state key="normal" title="Minimum" backgroundImage="common_drop_down.png">
+                        <state key="normal" title="123" backgroundImage="common_drop_down.png">
                             <color key="titleColor" systemColor="systemIndigoColor"/>
                         </state>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="leading" secondItem="Um2-Q8-gQE" secondAttribute="leadingMargin" id="H63-1P-jr6"/>
-                    <constraint firstItem="vK8-5P-D64" firstAttribute="top" secondItem="nZT-oq-9UH" secondAttribute="bottom" constant="-1" id="d4G-D0-Do3"/>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="trailing" secondItem="vK8-5P-D64" secondAttribute="trailing" id="ubd-Kx-See"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="top" secondItem="Um2-Q8-gQE" secondAttribute="top" id="W3h-te-vYL"/>
+                    <constraint firstAttribute="trailing" secondItem="nZT-oq-9UH" secondAttribute="trailing" constant="74" id="YrF-nO-XGI"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="leading" secondItem="Um2-Q8-gQE" secondAttribute="leading" constant="21" id="elZ-5P-UtJ"/>
+                    <constraint firstItem="5yu-8I-GH7" firstAttribute="top" secondItem="nZT-oq-9UH" secondAttribute="bottom" constant="8" id="xWI-zH-cAf"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="395" height="854"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="5Kb-oi-sfh"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="84e-7J-6JP"/>
+                <constraint firstAttribute="trailing" secondItem="Um2-Q8-gQE" secondAttribute="trailing" id="I37-Jx-P2G"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="aWV-Qu-KmM"/>
+            </constraints>
+            <size key="customSize" width="395" height="143"/>
             <connections>
                 <outlet property="ddLabel" destination="nZT-oq-9UH" id="iNS-3D-aOC"/>
-                <outlet property="dropDown" destination="vK8-5P-D64" id="Yzq-pk-7DX"/>
+                <outlet property="dropDown" destination="5yu-8I-GH7" id="4kr-q4-JXC"/>
             </connections>
-            <point key="canvasLocation" x="-854.19847328244271" y="-1306.3380281690143"/>
+            <point key="canvasLocation" x="-927.48091603053433" y="-1382.0422535211269"/>
         </collectionViewCell>
     </objects>
     <resources>

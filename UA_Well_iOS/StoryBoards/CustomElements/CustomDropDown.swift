@@ -5,10 +5,9 @@ class CustomDropDown: UICollectionViewCell {
     @IBOutlet weak var ddLabel: UILabel!
     @IBOutlet weak var dropDown: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Инициализация
-    }
+        override func awakeFromNib() {
+            super.awakeFromNib()
+        }
         
         func copyDDProperties(targetButton: UIButton) {
             targetButton.translatesAutoresizingMaskIntoConstraints = false
