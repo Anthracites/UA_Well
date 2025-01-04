@@ -6,6 +6,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @IBOutlet weak var _collectionView: UICollectionView!
     var dropDownLabels: [String] = ["Intensity", "Duration"]
+    var dropDownItems: [String] = ["Minimum", "Medium", "Maximum"]
     
     
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         cell.copyDDProperties(targetButton: newButoon)
         newButoon.setTitle(_label, for: .normal)
         cell.contentMode = .center
+        cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: dropDownItems)
         //newButoon.center = CGPoint(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.midY) // Центрируем кнопку внутри ячейки
         //newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         //newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
@@ -47,5 +49,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         return cell
     }
     
+
 }
 

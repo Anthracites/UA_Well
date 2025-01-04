@@ -5,6 +5,7 @@ class CustomDropDown: UICollectionViewCell {
     @IBOutlet weak var ddLabel: UILabel!
     @IBOutlet weak var dropDown: UIButton!
     
+    
         override func awakeFromNib() {
             super.awakeFromNib()
         }
@@ -24,4 +25,15 @@ class CustomDropDown: UICollectionViewCell {
                 targetButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
         }
+    
+    func SetupPullDownMenu(DropDown: UIButton, DropDownItems: [String]) {
+        let menu = UIMenu(title: "", children: DropDownItems.map { option in
+            UIAction(title: option, handler: { _ in
+                print("Выбранный элемент: \(option)")
+            })
+        })
+        DropDown.menu = menu
+        DropDown.showsMenuAsPrimaryAction = true
+        copyDDProperties(targetButton: DropDown)
+    }
 }

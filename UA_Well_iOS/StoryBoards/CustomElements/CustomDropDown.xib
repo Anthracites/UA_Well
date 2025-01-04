@@ -18,13 +18,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="395" height="143"/>
                 <subviews>
                     <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
-                        <rect key="frame" x="21" y="0.0" width="300" height="51"/>
+                        <rect key="frame" x="21.000000000000004" y="0.0" width="41.333333333333343" height="51"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemIndigoColor"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="3"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="5yu-8I-GH7">
+                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="5yu-8I-GH7">
                         <rect key="frame" x="47" y="59" width="300" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="30"/>
@@ -32,8 +32,8 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <menu key="menu" id="fqx-Mn-RrZ">
                             <children>
-                                <command title="Item 1" id="BIt-kf-HJQ"/>
-                                <command title="Item 2" id="Gkh-uQ-T1y"/>
+                                <command title="1111111" mirroring="NO" id="BIt-kf-HJQ"/>
+                                <command title="222222" mirroring="NO" id="Gkh-uQ-T1y"/>
                             </children>
                         </menu>
                         <state key="normal" title="123" backgroundImage="common_drop_down.png">
@@ -49,10 +49,9 @@
                 </constraints>
             </collectionViewCellContentView>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="5Kb-oi-sfh"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="84e-7J-6JP"/>
-                <constraint firstAttribute="trailing" secondItem="Um2-Q8-gQE" secondAttribute="trailing" id="I37-Jx-P2G"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="aWV-Qu-KmM"/>
+                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="Cvd-YI-YNa"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="L8a-GZ-hRJ"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="xoq-eC-UCu"/>
             </constraints>
             <size key="customSize" width="395" height="143"/>
             <connections>
