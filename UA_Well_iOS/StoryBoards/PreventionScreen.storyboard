@@ -36,11 +36,10 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="bottom" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-kM-bhY">
-                                <rect key="frame" x="16" y="417" width="361" height="401"/>
+                                <rect key="frame" x="16" y="417" width="361" height="268"/>
                                 <subviews>
-                                    <collectionView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlr-2W-JYd">
-                                        <rect key="frame" x="6" y="1" width="354" height="378"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <collectionView autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlr-2W-JYd">
+                                        <rect key="frame" x="5" y="1" width="354" height="254"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T2L-tm-c21">
                                             <size key="itemSize" width="356" height="119"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -96,6 +95,12 @@
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tlr-2W-JYd" secondAttribute="bottom" constant="13" id="KqU-9c-mOn"/>
+                                    <constraint firstItem="tlr-2W-JYd" firstAttribute="leading" secondItem="R5f-kM-bhY" secondAttribute="leading" constant="5" id="LaE-f2-Qcv"/>
+                                    <constraint firstAttribute="trailing" secondItem="tlr-2W-JYd" secondAttribute="trailing" constant="2" id="UOa-y6-lLb"/>
+                                    <constraint firstItem="tlr-2W-JYd" firstAttribute="top" secondItem="R5f-kM-bhY" secondAttribute="top" constant="1" id="g8T-H5-Aqw"/>
+                                </constraints>
                             </view>
                             <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="7tm-k6-IAQ" userLabel="Header">
                                 <rect key="frame" x="16" y="59" width="361" height="68"/>
@@ -120,12 +125,19 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Start" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" id="4ke-Nh-gac">
+                                <rect key="frame" x="116" y="748" width="158" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Start"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="OK" backgroundImage="CommonButtonBG.png"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7tm-k6-IAQ" secondAttribute="bottom" constant="725" id="02x-dX-DxQ"/>
-                            <constraint firstItem="R5f-kM-bhY" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="4nK-8w-Bv7"/>
                             <constraint firstItem="glt-sV-i8Z" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="5k9-jp-ffH"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="glt-sV-i8Z" secondAttribute="bottom" constant="400" id="D0n-48-pMc"/>
                             <constraint firstItem="glt-sV-i8Z" firstAttribute="leading" secondItem="7tm-k6-IAQ" secondAttribute="leading" id="D0s-aU-XCB"/>
@@ -139,6 +151,7 @@
                             <constraint firstItem="R5f-kM-bhY" firstAttribute="top" secondItem="glt-sV-i8Z" secondAttribute="bottom" constant="-1" id="lWE-Kz-zB1"/>
                             <constraint firstItem="R5f-kM-bhY" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailingMargin" id="o7s-Vp-GM0"/>
                             <constraint firstItem="7tm-k6-IAQ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="sjx-qU-wJT"/>
+                            <constraint firstItem="4ke-Nh-gac" firstAttribute="top" secondItem="R5f-kM-bhY" secondAttribute="bottom" constant="63" id="xYK-iO-rTu"/>
                         </constraints>
                     </view>
                     <connections>
@@ -151,6 +164,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CommonButtonBG.png" width="300" height="60"/>
         <image name="burger_button.png" width="30" height="17"/>
         <image name="common_drop_down.png" width="300" height="60"/>
         <image name="left_right.png" width="24" height="24"/>

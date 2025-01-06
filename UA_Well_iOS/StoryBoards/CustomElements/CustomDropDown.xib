@@ -49,9 +49,9 @@
                 </constraints>
             </collectionViewCellContentView>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="Cvd-YI-YNa"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="L8a-GZ-hRJ"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="xoq-eC-UCu"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="Awr-V5-8a6"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="a2n-KP-arf"/>
+                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="dXX-K8-CU7"/>
             </constraints>
             <size key="customSize" width="395" height="143"/>
             <connections>
