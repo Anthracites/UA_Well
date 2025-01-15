@@ -10,6 +10,8 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var translationDownloader: TranslationDownloader = TranslationDownloader()
+
 
 
     // MARK: UISceneSession Lifecycle
@@ -30,10 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            let splashVC = LaunchScreen()
            window?.rootViewController = splashVC
            window?.makeKeyAndVisible()
+        translationDownloader.GetStrings()
            return true
        }
-
-
-
 }
 

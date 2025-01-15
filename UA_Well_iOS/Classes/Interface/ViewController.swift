@@ -20,7 +20,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        funkGetJSONs()
+     //   funkGetJSONs()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
     }
@@ -33,29 +33,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print("Main closed!!!")
     }
     
-    @objc func funkGetJSONs() {
-        let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let translationsURL = documentsURL.appendingPathComponent("Content/translations")
-        
-        print("Translations directory path: \(translationsURL.path)")
-        
-        do {
-            let fileURLs = try fileManager.contentsOfDirectory(at: translationsURL, includingPropertiesForKeys: nil)
-            jsonFiles = fileURLs.filter { $0.pathExtension == "json" }
-            print("Found \(jsonFiles.count) JSON files")
-            var i = Int()
-            for file in jsonFiles {
-                print(file.lastPathComponent)
-                i+=1;
-                print(String(i))
-            }
-        } catch {
-            print("Error getting files: \(error)")
-        }
-        
-        
-    }
+//    @objc func funkGetJSONs() {
+//        let fileManager = FileManager.default
+//        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+//        let translationsURL = documentsURL.appendingPathComponent("Content/translations")
+//        
+//        print("Translations directory path: \(translationsURL.path)")
+//        
+//        do {
+//            let fileURLs = try fileManager.contentsOfDirectory(at: translationsURL, includingPropertiesForKeys: nil)
+//            jsonFiles = fileURLs.filter { $0.pathExtension == "json" }
+//            print("Found \(jsonFiles.count) JSON files")
+//            var i = Int()
+//            for file in jsonFiles {
+//                print(file.lastPathComponent)
+//                i+=1;
+//                print(String(i))
+//            }
+//        } catch {
+//            print("Error getting files: \(error)")
+//        }
+//        
+//        
+//    }
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell

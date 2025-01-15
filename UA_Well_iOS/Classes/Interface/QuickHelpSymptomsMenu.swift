@@ -1,74 +1,65 @@
-//
-//  ViewController.swift
-//  UA_Well_iOS
-//
-//  Created by Наталья Гусарова on 17.09.2024.
-//
-import UIKit
 import Foundation
+import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    @IBOutlet var MenuRightButton: UIButton!
-    var jsonFiles: [URL] = []
-    var commoButtonBG = UIImage(named: "CommonButtonBG")
+
+class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var _backButton: UIButton!
+    var _previousScreenName = "HelpTypesMenu"
+    var quickHelpExercises: [Exercise] = []
+    var commoButtonBG = UIImage(named: "CommonButtonBG")
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GetExersiceJsons()
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        funkGetJSONs()
+        GetExersiceJsons()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return jsonFiles.count
-    }
-    func didDismiss() {
-        print("Main closed!!!")
+        return quickHelpExercises.count
     }
     
-    @objc func funkGetJSONs() {
-        let fileManager = FileManager.default
-        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let translationsURL = documentsURL.appendingPathComponent("Content/translations")
-        
-        print("Translations directory path: \(translationsURL.path)")
-        
-        do {
-            let fileURLs = try fileManager.contentsOfDirectory(at: translationsURL, includingPropertiesForKeys: nil)
-            jsonFiles = fileURLs.filter { $0.pathExtension == "json" }
-            print("Found \(jsonFiles.count) JSON files")
-            var i = Int()
-            for file in jsonFiles {
-                print(file.lastPathComponent)
-                i+=1;
-                print(String(i))
+    @objc func GetExersiceJsons()
+    {
+        if
+            let url = Bundle.main.url(forResource: "Quick_help_exercise", withExtension: "json")
+        {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let exerciseData = try decoder.decode([Exercise].self, from: data)
+                print(exerciseData)
+                quickHelpExercises = exerciseData
+            } catch {
+                print("Ошибка при загрузке данных: \(error)")
             }
-        } catch {
-            print("Error getting files: \(error)")
         }
-        
-        
     }
+    
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
-        //cell.backgroundColor = .red
-        let jsonFile = jsonFiles[indexPath.item]
+        // cell.backgroundColor = .red
+        let Quick_help_exercise = quickHelpExercises[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(jsonFile.lastPathComponent, for: .normal)
+        newButoon.setTitle(Quick_help_exercise.symptom_name, for: .normal)
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+      //  _burgerButton.addTarget(self, action: #selector(BurgerButoonOnClick), for: .touchUpInside)
         
         
         //view.addSubview(cell.MenuButton)
@@ -86,13 +77,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if let _label = _currentButton.titleLabel?.text
         {
             print(String(_label))
+            let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
+            // Переход к новому ViewController
+            self.present(secondVC, animated: true, completion: nil)
         }
-        let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
+    }
+    
+    @objc func BackToPreviousScreen()
+    {
+        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
         // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
+        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
         // Переход к новому ViewController
-        //self.presentingViewController?.presentingViewController?.dismiss( animated: true, completion: nil)
         self.present(secondVC, animated: true, completion: nil)
     }
-    }
-
+}

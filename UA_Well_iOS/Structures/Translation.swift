@@ -1,13 +1,5 @@
-//
-//  LocalData.swift
-//  UA_Well_iOS
-//
-//  Created by Наталья Гусарова on 24.09.2024.
-//
-
-import Foundation
-
-struct Translation
+// Structures
+struct Translation: Codable
 {
     var currentLanguage:String;
     
@@ -20,12 +12,30 @@ struct Translation
         var contact_specialist: String;
         var alarm: String;
         var ok: String;
+        
+        enum CodingKeys:String, CodingKey
+        {
+            case Start
+            case Next
+            case start_over
+            case it_helped
+            case contact_specialist
+            case alarm
+            case ok
+        }
+        
     }
     
     struct Language_selection_screen
     {
         var return_page_title: String;
         var title: String;
+        
+        enum CodingKeys:String, CodingKey
+        {
+            case return_page_title
+            case title
+        }
     }
     
     struct Therapy_options_screen
@@ -35,12 +45,27 @@ struct Translation
         var prevention: String;
         var return_page_title: String;
         var title: String;
+        
+        enum CodingKeys:String, CodingKey
+        {
+            case quick_help
+            case long_term_work
+            case prevention
+            case return_page_title
+            case title
+        }
     }
     
     struct About_app_screen
     {
         var title: String;
         var description: String;
+        
+        enum CodingKeys:String, CodingKey
+        {
+            case title
+            case description
+        }
     }
     
     struct Contacts_screen
@@ -58,25 +83,61 @@ struct Translation
             var description:String;
             var email:String;
             var youtube:String;
-        }
-        
-        struct   LongTermWork
-        {
-            var TherapyType:String;
-            var TherapyTypeID:Int32;
-            var TherapyDescriptio:String;
             
-            struct TherapyDay
+            enum CodingKeys:String, CodingKey
             {
-                var Day_number: Int32;
-                var DayLabel: String;
-                var Instruction: String;
+                case name
+                case surname
+                case languages
+                case description
+                case email
+                case youtube
             }
         }
         
-        struct Prevention
+        enum CodingKeys:String, CodingKey
         {
-             
+            case title
+            case description
+            case language_title
+            case contacts_title
+        }
+        
+    }
+    
+    struct   LongTermWork
+    {
+        var TherapyType:String;
+        var TherapyTypeID:Int32;
+        var TherapyDescriptio:String;
+        
+        struct TherapyDay
+        {
+            var Day_number: Int32;
+            var DayLabel: String;
+            var Instruction: String;
+            
+            enum CodingKeys:String, CodingKey
+            {
+                case Day_number
+                case DayLabel
+                case Instruction
+            }
+        }
+        enum CodingKeys:String, CodingKey
+        {
+            case TherapyType
+            case TherapyTypeID
+            case TherapyDescriptio
         }
     }
+    // Deserialization
+    
+    enum CodingKeys:String, CodingKey
+    {
+        
+        case currentLanguage
+        
+    }
 }
+
