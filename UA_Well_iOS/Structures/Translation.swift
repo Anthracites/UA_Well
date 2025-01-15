@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocalData
+struct Translation
 {
     var currentLanguage:String;
     
