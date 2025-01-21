@@ -1,0 +1,17 @@
+[
+    {
+        "currentLanguage": "English"
+    },
+    {
+        "Common_buttons":
+        {
+            "Start": "Start",
+            "Next": "Next",
+            "Start_over": "Start over",
+            "It_helped": "It helped",
+            "Contact_specialist": "Contact a specialist",
+            "Alarm": "Alarm",
+            "ok": "OK"
+        }
+    }
+]

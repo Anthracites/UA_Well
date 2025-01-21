@@ -1,0 +1,17 @@
+[
+    {
+        "currentLanguage": "Русский"
+    },
+    {
+        "Common_buttons":
+        {
+            "Start": "Начать",
+            "Next": "Дальше",
+            "Start_over": "Начать сначала",
+            "It_helped": "Это помогло",
+            "Contact_specialist": "Связаться со специалистом",
+            "Alarm": "Будильник",
+            "Ok": "ОК"
+        }
+    }
+]

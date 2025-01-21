@@ -1,31 +1,34 @@
-// Structures
-struct Translation: Codable
-{
-    var currentLanguage:String;
+import Foundation
+
+public struct Translation: Codable {
+    let currentLanguage: String
+    let commonButtons: CommonButtons?
     
-    struct Common_button
-    {
-        var Start: String;
-        var Next:String;
-        var start_over: String;
-        var it_helped: String;
-        var contact_specialist: String;
-        var alarm: String;
-        var ok: String;
-        
-        enum CodingKeys:String, CodingKey
-        {
-            case Start
-            case Next
-            case start_over
-            case it_helped
-            case contact_specialist
-            case alarm
-            case ok
-        }
-        
+    enum CodingKeys: String, CodingKey {
+        case currentLanguage = "currentLanguage"
+        case commonButtons = "Common_buttons"
     }
     
+    struct CommonButtons: Codable {
+        let Start: String
+        let Next: String
+        let Start_over: String
+        let It_helped: String
+        let Contact_specialist: String
+        let Alarm: String
+        let Ok: String
+        
+        enum CodingKeys: String, CodingKey {
+            case Start = "Start"
+            case Next = "Next"
+            case Start_over = "Start_over"
+            case It_helped = "It_helped"
+            case Contact_specialist = "Contact_specialist"
+            case Alarm = "Alarm"
+            case Ok = "Ok"
+        }
+    }
+    /*
     struct Language_selection_screen
     {
         var return_page_title: String;
@@ -132,12 +135,8 @@ struct Translation: Codable
         }
     }
     // Deserialization
-    
-    enum CodingKeys:String, CodingKey
-    {
-        
-        case currentLanguage
-        
-    }
+     */
+
+
 }
 

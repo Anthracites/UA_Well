@@ -1,0 +1,17 @@
+[
+    {
+        "currentLanguage": "Українська"
+    },
+    {
+        "Common_buttons":
+        {
+            "Start": "Почати",
+            "Next": "Далі",
+            "Start_over": "почати спочатку",
+            "It_helped": "Це допомогло",
+            "contact_specialist": "Зв’язатися зі спеціалістом",
+            "alarm": "Будильник",
+            "ok": "ОК"
+        }
+    }
+]

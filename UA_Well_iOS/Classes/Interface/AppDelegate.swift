@@ -10,7 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var translationDownloader: TranslationDownloader = TranslationDownloader()
 
 
 
@@ -32,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            let splashVC = LaunchScreen()
            window?.rootViewController = splashVC
            window?.makeKeyAndVisible()
-        translationDownloader.GetStrings()
+        TranslationDownloader.shared.initializeTranslations()
            return true
        }
 }

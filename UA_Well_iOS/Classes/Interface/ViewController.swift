@@ -12,6 +12,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet var MenuRightButton: UIButton!
     var jsonFiles: [URL] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
+    var translations: [Translation] = []
     
     @IBOutlet weak var _collectionView: UICollectionView!
     
@@ -27,7 +28,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return jsonFiles.count
+        translations = TranslationDownloader.shared.Translations // Доступ к массиву translations
+               // Используем массив translations
+               print(translations)
+
+        return translations.count
     }
     func didDismiss() {
         print("Main closed!!!")
@@ -62,10 +67,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
         //cell.backgroundColor = .red
-        let jsonFile = jsonFiles[indexPath.item]
+        //let jsonFile = jsonFiles[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(jsonFile.lastPathComponent, for: .normal)
+        newButoon.setTitle(translations[indexPath.item].currentLanguage, for: .normal)
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
