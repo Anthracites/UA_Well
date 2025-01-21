@@ -47,11 +47,13 @@ class TranslationDownloader {
                     print("Ошибка при загрузке данных из файла \(fileURL.lastPathComponent): \(error)")
                 }
             }
-            
             print("Translations loaded successfully! Loaded from: " + fileURLs[0].absoluteString)
-        } catch {
+        }
+        catch
+        {
             print("Ошибка при получении списка файлов: \(error)")
         }
+
     }
     
     private struct TemporaryTranslation: Codable {

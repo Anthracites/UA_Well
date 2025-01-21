@@ -73,9 +73,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         newButoon.setTitle(translations[indexPath.item].currentLanguage, for: .normal)
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
-        
-        
+        newButoon.tag = indexPath.item
+
         //view.addSubview(cell.MenuButton)
         
         print("Cell added!")
@@ -86,18 +87,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return cell
     }
     
-    @objc func OnClickMenuButton(_currentButton: UIButton)
+    @objc func OnClickMenuButton(_currentButton: UIButton, _buttonIndex: Int)
     {
-        if let _label = _currentButton.titleLabel?.text
-        {
-            print(String(_label))
-        }
-        let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
-        // Переход к новому ViewController
-        //self.presentingViewController?.presentingViewController?.dismiss( animated: true, completion: nil)
-        self.present(secondVC, animated: true, completion: nil)
-    }
+            let a = _currentButton.tag
+            TranslationDownloader.shared.CurrentTranslation = translations[a]
+            let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
+            self.present(secondVC, animated: true, completion: nil)    }
     }
 
