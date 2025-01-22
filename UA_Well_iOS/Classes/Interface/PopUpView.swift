@@ -18,6 +18,7 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.delegate = self
         tableView.reloadData()
         tableView.contentMode = .center
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,15 +26,22 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
-        
+    func Translate(currentButton: UIButton)
+    {
+        let _currentLanguage = TranslationDownloader.shared.CurrentTranslation
+        let _buttonName = currentButton.layer.name
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let newButoon: UIButton = cell.MenuButton
         let label = popUpButtonLabels[indexPath.item]
-        newButoon.setTitle(label, for:.normal)
+        newButoon.setTitle("ppppp", for: .normal)
         cell.contentView.contentMode = .center
         cell.copyButtonProperties(targetButton: newButoon)
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+        newButoon.accessibilityHint = label
+        Translate(currentButton: newButoon)
         print("Cell added!")
         return cell
     }
@@ -44,9 +52,9 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func OnClickMenuButton(_currentButton: UIButton)
+    @objc func OnClickMenuButton(currentButton: UIButton)
     {
-        if let _label = _currentButton.titleLabel?.text
+        if let _label = currentButton.accessibilityHint
         {
             print(String(_label))
             let storyboard = UIStoryboard(name: _label, bundle: nil)
