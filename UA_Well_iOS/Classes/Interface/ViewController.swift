@@ -24,6 +24,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
      //   funkGetJSONs()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+
     }
     
     

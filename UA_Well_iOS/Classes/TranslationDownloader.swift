@@ -29,6 +29,7 @@ class TranslationDownloader {
                     
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
+                    var helpTypes:[HelpType]? = []
                     
                     for tempTranslation in tempTranslations {
                         if let language = tempTranslation.currentLanguage {
@@ -37,10 +38,13 @@ class TranslationDownloader {
                         if let buttons = tempTranslation.commonButtons {
                             commonButtons = buttons
                         }
+                        if let types = tempTranslation.HelpTypes{
+                            helpTypes = types
+                        }
                     }
                     
-                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons {
-                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons)
+                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes {
+                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes)
                         Translations.append(translation)
                     }
                 } catch {
@@ -48,6 +52,9 @@ class TranslationDownloader {
                 }
             }
             print("Translations loaded successfully! Loaded from: " + fileURLs[0].absoluteString)
+            //let u = CurrentTranslation?.HelpTypes.count
+            //print("Help types count: " + String(u))
+
         }
         catch
         {
@@ -59,10 +66,12 @@ class TranslationDownloader {
     private struct TemporaryTranslation: Codable {
         let currentLanguage: String?
         let commonButtons: Translation.CommonButtons?
+        let HelpTypes: [HelpType]?
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "Common_buttons"
+            case HelpTypes
         }
     }
 }

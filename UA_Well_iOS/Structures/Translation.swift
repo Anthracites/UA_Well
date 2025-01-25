@@ -3,11 +3,7 @@ import Foundation
 public struct Translation: Codable {
     let currentLanguage: String
     let commonButtons: CommonButtons?
-    
-    enum CodingKeys: String, CodingKey {
-        case currentLanguage = "currentLanguage"
-        case commonButtons = "Common_buttons"
-    }
+
     
     struct CommonButtons: Codable {
         let Start: String
@@ -28,6 +24,16 @@ public struct Translation: Codable {
             case Ok = "Ok"
         }
     }
+    
+    let HelpTypes: [HelpType]
+    
+    enum CodingKeys: String, CodingKey {
+        case currentLanguage = "currentLanguage"
+        case commonButtons = "Common_buttons"
+        case HelpTypes = "HelpTypes"
+    }
+
+
     /*
     struct Language_selection_screen
     {

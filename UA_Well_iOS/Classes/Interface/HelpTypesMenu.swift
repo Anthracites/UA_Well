@@ -13,10 +13,10 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GetTypesJsons()
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        GetTypesJsons()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
         _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
@@ -50,10 +50,12 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
         //cell.backgroundColor = .red
-        let HelpType = helpTypes[indexPath.item]
+        //let _currentHelpType = helpTypes[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(HelpType.help_type_name, for: .normal)
+        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name, for: .normal)
+        newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
+        newButoon.titleLabel?.minimumScaleFactor = 0.5
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
