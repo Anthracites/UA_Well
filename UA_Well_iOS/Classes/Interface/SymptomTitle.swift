@@ -10,11 +10,15 @@ class SymptomTitle:  UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        StartButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
-        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-
+        SetUpButton()
     }
 
+    @objc func SetUpButton()
+    {
+        StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)
+        StartButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
+        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+    }
     
     @objc func OnClickStartButton(_currentButton: UIButton)
     {

@@ -36,7 +36,7 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let newButoon: UIButton = cell.MenuButton
         let label = popUpButtonLabels[indexPath.item]
-        newButoon.setTitle("ppppp", for: .normal)
+        newButoon.setTitle(label, for: .normal)
         cell.contentView.contentMode = .center
         cell.copyButtonProperties(targetButton: newButoon)
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
