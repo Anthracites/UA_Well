@@ -49,11 +49,9 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
-        //cell.backgroundColor = .red
-        //let _currentHelpType = helpTypes[indexPath.item]
-        //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name, for: .normal)
+        newButoon.tag = indexPath.item
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.titleLabel?.minimumScaleFactor = 0.5
         cell.contentMode = .center
@@ -73,7 +71,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     
     @objc func OnClickMenuButton(_currentButton: UIButton)
     {
-        if let _label = _currentButton.titleLabel?.text
+        if let _label = helpTypes[_currentButton.tag].help_type_name as Optional
         {
             print(String(_label))
             let storyboard = UIStoryboard(name: _label, bundle: nil)
