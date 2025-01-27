@@ -92,6 +92,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     {
             let a = _currentButton.tag
             TranslationDownloader.shared.CurrentTranslation = translations[a]
+        QuickHelpManager.shared.Exercises = TranslationDownloader.shared.CurrentTranslation.Exercises
             let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu

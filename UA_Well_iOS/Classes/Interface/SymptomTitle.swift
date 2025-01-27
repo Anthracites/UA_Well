@@ -7,12 +7,22 @@ class SymptomTitle:  UIViewController{
     @IBOutlet var StartButton: UIButton!
     @IBOutlet weak var _backButton: UIButton!
     var _previousScreenName = "QuickHelp"
+    @IBOutlet var SymptomLabel: UILabel!
+    @IBOutlet var SymptomDescrioption: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUpButton()
+        GetTextes()
     }
-
+    
+    @objc func GetTextes()
+    {
+        SymptomLabel.text = QuickHelpManager.shared.CurrentSyptom.symptom_name
+        SymptomDescrioption.text = QuickHelpManager.shared.CurrentSyptom.symptom_description
+    }
+    
     @objc func SetUpButton()
     {
         StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)

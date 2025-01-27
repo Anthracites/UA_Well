@@ -57,7 +57,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.Exercises[indexPath.item].symptom_name, for: .normal)
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.titleLabel?.minimumScaleFactor = 0.1
-        newButoon.tag = indexPath.item
+        newButoon.tag = Int(Int32(TranslationDownloader.shared.CurrentTranslation.Exercises[indexPath.item].symptom_ID))
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
@@ -82,6 +82,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
+            QuickHelpManager.shared.CurrentSyptom = QuickHelpManager.shared.Exercises[_currentButton.tag]
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
         }

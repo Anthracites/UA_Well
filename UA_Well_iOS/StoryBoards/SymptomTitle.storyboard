@@ -41,7 +41,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="center" fixedFrame="YES" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
-                                <rect key="frame" x="16" y="135" width="361" height="683"/>
+                                <rect key="frame" x="16" y="135" width="360" height="683"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65w-tX-BBy">
@@ -77,6 +77,8 @@
                     </view>
                     <connections>
                         <outlet property="StartButton" destination="nMw-Z5-WCj" id="sd1-u7-Qs7"/>
+                        <outlet property="SymptomDescrioption" destination="HrE-Cw-qPF" id="WE0-da-NPl"/>
+                        <outlet property="SymptomLabel" destination="65w-tX-BBy" id="rss-BA-zEz"/>
                         <outlet property="_backButton" destination="faR-xZ-zj4" id="Na9-Vj-41c"/>
                     </connections>
                 </viewController>

@@ -57,8 +57,6 @@ class TranslationDownloader {
                 }
             }
             print("Translations loaded successfully! Loaded from: " + fileURLs[0].absoluteString)
-            //let u = CurrentTranslation?.HelpTypes.count
-            //print("Help types count: " + String(u))
 
         }
         catch
