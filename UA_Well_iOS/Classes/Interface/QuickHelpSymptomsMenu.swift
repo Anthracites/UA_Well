@@ -52,10 +52,12 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
         // cell.backgroundColor = .red
-        let Quick_help_exercise = quickHelpExercises[indexPath.item]
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(Quick_help_exercise.symptom_name, for: .normal)
+        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.Exercises[indexPath.item].symptom_name, for: .normal)
+        newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
+        newButoon.titleLabel?.minimumScaleFactor = 0.1
+        newButoon.tag = indexPath.item
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
@@ -74,7 +76,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     
     @objc func OnClickMenuButton(_currentButton: UIButton)
     {
-        if let _label = _currentButton.titleLabel?.text
+        if let _label = quickHelpExercises[_currentButton.tag].symptom_name as Optional
         {
             print(String(_label))
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)

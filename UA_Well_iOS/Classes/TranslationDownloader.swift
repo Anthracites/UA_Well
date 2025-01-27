@@ -30,6 +30,7 @@ class TranslationDownloader {
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
                     var helpTypes:[HelpType]? = []
+                    var exercises: [Exercise]? = []
                     
                     for tempTranslation in tempTranslations {
                         if let language = tempTranslation.currentLanguage {
@@ -41,10 +42,14 @@ class TranslationDownloader {
                         if let types = tempTranslation.HelpTypes{
                             helpTypes = types
                         }
+                        if let symptomExercises = tempTranslation.Exercises
+                        {
+                            exercises = symptomExercises
+                        }
                     }
                     
-                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes {
-                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes)
+                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes , let exercises = exercises{
+                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes, Exercises: exercises)
                         Translations.append(translation)
                     }
                 } catch {
@@ -63,15 +68,18 @@ class TranslationDownloader {
 
     }
     
+    
     private struct TemporaryTranslation: Codable {
         let currentLanguage: String?
         let commonButtons: Translation.CommonButtons?
         let HelpTypes: [HelpType]?
+        let Exercises: [Exercise]?
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "Common_buttons"
             case HelpTypes
+            case Exercises
         }
     }
 }
