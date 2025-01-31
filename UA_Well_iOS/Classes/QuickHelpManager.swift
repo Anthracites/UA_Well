@@ -5,8 +5,10 @@ class QuickHelpManager {
     
     static let shared = QuickHelpManager() // Singleton
     
-    var Exercises: [Exercise] = []
-    var CurrentSyptom: Exercise!
+    var Symtoms: [Symptom] = []
+    var CurrentSyptom: Symptom!
+    var CurrentExersicesArray: [Int]!
+    var CurrentExercise: Int!
     
     private init() {} // Закрытый инициализатор
     

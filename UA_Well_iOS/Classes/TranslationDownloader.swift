@@ -30,7 +30,7 @@ class TranslationDownloader {
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
                     var helpTypes:[HelpType]? = []
-                    var exercises: [Exercise]? = []
+                    var Symptoms: [Symptom]? = []
                     
                     for tempTranslation in tempTranslations {
                         if let language = tempTranslation.currentLanguage {
@@ -42,14 +42,15 @@ class TranslationDownloader {
                         if let types = tempTranslation.HelpTypes{
                             helpTypes = types
                         }
-                        if let symptomExercises = tempTranslation.Exercises
+                        if let symptoms = tempTranslation.Symptoms
                         {
-                            exercises = symptomExercises
+                            Symptoms = symptoms
                         }
                     }
                     
-                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes , let exercises = exercises{
-                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes, Exercises: exercises)
+                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes , let Symptoms = Symptoms
+                    {
+                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes, Symptoms: Symptoms)
                         Translations.append(translation)
                     }
                 } catch {
@@ -71,13 +72,13 @@ class TranslationDownloader {
         let currentLanguage: String?
         let commonButtons: Translation.CommonButtons?
         let HelpTypes: [HelpType]?
-        let Exercises: [Exercise]?
+        let Symptoms: [Symptom]?
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "Common_buttons"
             case HelpTypes
-            case Exercises
+            case Symptoms
         }
     }
 }

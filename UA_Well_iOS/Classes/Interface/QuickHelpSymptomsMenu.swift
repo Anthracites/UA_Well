@@ -7,7 +7,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var _backButton: UIButton!
     var _previousScreenName = "HelpTypesMenu"
-    var quickHelpExercises: [Exercise] = []
+    var quickHelpExercises: [HelpExercises] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     
     
@@ -18,7 +18,6 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        GetExersiceJsons()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
         _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
@@ -37,13 +36,21 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                let exerciseData = try decoder.decode([Exercise].self, from: data)
+                let exerciseData = try decoder.decode([HelpExercises].self, from: data)
                 print(exerciseData)
+                var exerciseDict: [Int: HelpExercises] = [:]
+                for exercise in exerciseData {
+                    exerciseDict[exercise.symptom_ID] = exercise
+                    print(exerciseDict)
+                }
+                
                 quickHelpExercises = exerciseData
+                
             } catch {
                 print("Ошибка при загрузке данных: \(error)")
             }
         }
+        //print("Exercises count: " + String(quickHelpExercises[0].help_exercise_array[0]))
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -54,7 +61,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         // cell.backgroundColor = .red
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.Exercises[indexPath.item].symptom_name, for: .normal)
+        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.Symptoms[indexPath.item].symptom_name, for: .normal)
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.titleLabel?.minimumScaleFactor = 0.1
         newButoon.tag = indexPath.item
@@ -76,13 +83,15 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     
     @objc func OnClickMenuButton(_currentButton: UIButton)
     {
-        if let _label = QuickHelpManager.shared.Exercises[_currentButton.tag].symptom_name as Optional
+        if let _label = QuickHelpManager.shared.Symtoms[_currentButton.tag].symptom_name as Optional
         {
             print(String(_label))
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
-            QuickHelpManager.shared.CurrentSyptom = QuickHelpManager.shared.Exercises[_currentButton.tag]
+            QuickHelpManager.shared.CurrentSyptom = QuickHelpManager.shared.Symtoms[_currentButton.tag]
+            QuickHelpManager.shared.CurrentExersicesArray = quickHelpExercises[_currentButton.tag].help_exercise_array
+            QuickHelpManager.shared.CurrentExercise = 0;
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
         }

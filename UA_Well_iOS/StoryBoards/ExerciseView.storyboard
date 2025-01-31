@@ -80,7 +80,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" id="sxq-j9-gJ5">
-                                                                    <rect key="frame" x="12" y="3" width="300" height="60"/>
+                                                                    <rect key="frame" x="11" y="3" width="300" height="60"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
                                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -137,6 +137,7 @@
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>
                         <outlet property="_collectionView" destination="LoR-Ux-N2S" id="CUc-s9-uoX"/>
+                        <outlet property="exerciseText" destination="8gs-3t-tRy" id="YtE-da-1UX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
