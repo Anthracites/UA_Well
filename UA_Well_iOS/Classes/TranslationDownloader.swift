@@ -30,7 +30,8 @@ class TranslationDownloader {
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
                     var helpTypes:[HelpType]? = []
-                    var Symptoms: [Symptom]? = []
+                    var symptomsDict: [Int: Symptom] = [:]
+                    var exercisesDict: [Int: Exercise] = [:]
                     
                     for tempTranslation in tempTranslations {
                         if let language = tempTranslation.currentLanguage {
@@ -42,24 +43,34 @@ class TranslationDownloader {
                         if let types = tempTranslation.HelpTypes{
                             helpTypes = types
                         }
-                        if let symptoms = tempTranslation.Symptoms
-                        {
-                            Symptoms = symptoms
+                        if let symptoms = tempTranslation.Symptoms {
+                            for symptom in symptoms {
+                                symptomsDict[symptom.symptom_ID] = symptom
+                            }
+                            if let exercises = tempTranslation.Exercises {
+                                for exercise in exercises {
+                                    exercisesDict[exercise.Exercise_ID] = exercise
+                                }
+                            }
                         }
+                        
+                        if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes {
+                            let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes, Symptoms: Array(symptomsDict.values), Exercises: Array(exercisesDict.values))
+                            
+                            Translations.append(translation)
+                        }
+                        
+                        
                     }
-                    
-                    if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes , let Symptoms = Symptoms
-                    {
-                        let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes, Symptoms: Symptoms)
-                        Translations.append(translation)
-                    }
-                } catch {
+                }
+                    catch {
                     print("Ошибка при загрузке данных из файла \(fileURL.lastPathComponent): \(error)")
                 }
             }
-            print("Translations loaded successfully! Loaded from: " + fileURLs[0].absoluteString)
-
+            //print("Translations loaded successfully! Loaded from: " + fileURLs[0].absoluteString)
+            
         }
+        
         catch
         {
             print("Ошибка при получении списка файлов: \(error)")
@@ -73,12 +84,14 @@ class TranslationDownloader {
         let commonButtons: Translation.CommonButtons?
         let HelpTypes: [HelpType]?
         let Symptoms: [Symptom]?
+        let Exercises: [Exercise]?
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "Common_buttons"
             case HelpTypes
             case Symptoms
+            case Exercises
         }
     }
 }

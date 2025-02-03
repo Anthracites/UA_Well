@@ -27,12 +27,14 @@ public struct Translation: Codable {
     
     let HelpTypes: [HelpType]
     let Symptoms : [Symptom]
+    let Exercises: [Exercise]
     
     enum CodingKeys: String, CodingKey {
         case currentLanguage = "currentLanguage"
         case commonButtons = "Common_buttons"
         case HelpTypes = "HelpTypes"
         case Symptoms = "Symptoms"
+        case Exercises = "Exercises"
     }
     
 

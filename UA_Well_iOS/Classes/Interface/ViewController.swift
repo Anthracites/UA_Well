@@ -31,7 +31,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         translations = TranslationDownloader.shared.Translations // Доступ к массиву translations
                // Используем массив translations
-               print(translations)
+               //print(translations)
 
         return translations.count
     }
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 
         //view.addSubview(cell.MenuButton)
         
-        print("Cell added!")
+        //print("Cell added!")
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)

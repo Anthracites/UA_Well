@@ -1,7 +1,7 @@
 
 struct Symptom: Codable
 {
-    let symptom_ID: Int32;
+    let symptom_ID: Int;
     let symptom_name: String;
     let symptom_description: String;
     
