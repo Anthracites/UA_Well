@@ -93,6 +93,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let a = _currentButton.tag
             TranslationDownloader.shared.CurrentTranslation = translations[a]
         QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+        
+//        let _array:[Symptom] = TranslationDownloader.shared.CurrentTranslation.Symptoms
+//        var i:Int = 0
+//        for _ in _array {
+//            print ("Symptom name: ", _array[i].symptom_name, ", Symptom ID: ", _array[i].symptom_ID, " Symptom index: ", i)
+//            i += 1
+//        }
+
             let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu

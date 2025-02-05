@@ -25,7 +25,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return quickHelpExercises.count + 1
+        return quickHelpExercises.count
     }
     
     @objc func GetExersiceJsons()
@@ -57,18 +57,21 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
+        let _number = TranslationDownloader.shared.CurrentTranslation.Symptoms[indexPath.item].symptom_ID
         // Настройка ячейки
         // cell.backgroundColor = .red
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.Symptoms[indexPath.item].symptom_name, for: .normal)
+        let _label = TranslationDownloader.shared.CurrentTranslation.Symptoms[_number].symptom_name
+        newButoon.setTitle(_label, for: .normal)
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.titleLabel?.minimumScaleFactor = 0.1
-        newButoon.tag = TranslationDownloader.shared.CurrentTranslation.Symptoms[indexPath.item].symptom_ID
+        newButoon.tag = _number
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
       //  _burgerButton.addTarget(self, action: #selector(BurgerButoonOnClick), for: .touchUpInside)
+        //print ("Sympton ID: ", newButoon.tag, ", symptom name: ", _label)
         
         
         //view.addSubview(cell.MenuButton)
@@ -78,7 +81,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
-        print("Index: ", indexPath.item)
+        //print("Index: ", indexPath.item)
         return cell
     }
     
@@ -86,16 +89,17 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     {
         if let _label = QuickHelpManager.shared.Symtoms[_currentButton.tag].symptom_name as Optional
         {
-            print(String(_label))
+            //print(String(_label))
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
             QuickHelpManager.shared.CurrentSyptom = QuickHelpManager.shared.Symtoms[_currentButton.tag]
+            quickHelpExercises.sort(by: { $0.symptom_ID < $1.symptom_ID})
             QuickHelpManager.shared.CurrentExersicesArray = quickHelpExercises[_currentButton.tag].help_exercise_array
             QuickHelpManager.shared.CurrentExercise = 0;
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
-            print ("Sympton ID: ", _currentButton.tag)
+            print ("Current symptomID: ", _currentButton.tag, ", current exercise array: ", QuickHelpManager.shared.CurrentExersicesArray as Any)
         }
     }
     

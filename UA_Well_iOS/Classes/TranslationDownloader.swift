@@ -18,13 +18,14 @@ class TranslationDownloader {
         guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         let translationsDirURL = documentsURL.appendingPathComponent("Content/translations")
         
-        do {
+        do
+        {
             let fileURLs = try fileManager.contentsOfDirectory(at: translationsDirURL, includingPropertiesForKeys: nil).filter { $0.pathExtension == "json" }
             for fileURL in fileURLs {
-                do {
+                do
+                {
                     let data = try Data(contentsOf: fileURL)
                     let decoder = JSONDecoder()
-                    
                     let tempTranslations = try decoder.decode([TemporaryTranslation].self, from: data)
                     
                     var currentLanguage: String?
@@ -44,40 +45,49 @@ class TranslationDownloader {
                             helpTypes = types
                         }
                         if let symptoms = tempTranslation.Symptoms {
-                            for symptom in symptoms {
+                            for symptom in symptoms
+                            {
                                 symptomsDict[symptom.symptom_ID] = symptom
-                            }
-                            if let exercises = tempTranslation.Exercises {
-                                for exercise in exercises {
-                                    exercisesDict[exercise.Exercise_ID] = exercise
+                                //print (symptom.symptom_ID, symptom.symptom_name)
                                 }
+                        }
+                        if let exercises = tempTranslation.Exercises {
+                            for exercise in exercises
+                            {
+                                exercisesDict[exercise.Exercise_ID] = exercise
+                            }
+                            
+                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons {
+                                // Создаем массив Symptoms, отсортированный по symptom_ID
+                                var symptomsArray = Array(symptomsDict.values)
+                                symptomsArray.sort { $0.symptom_ID < $1.symptom_ID }
+                                var exercisesArray = Array(exercisesDict.values)
+                                exercisesArray.sort{ $0.Exercise_ID < $1.Exercise_ID }
+                                
+                                let translation = Translation(
+                                    currentLanguage: currentLanguage,
+                                    commonButtons: commonButtons,
+                                    HelpTypes: helpTypes!,
+                                    Symptoms: symptomsArray,
+                                    Exercises: exercisesArray
+                                )
+                                Translations.append(translation)
                             }
                         }
-                        
-                        if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let helpTypes = helpTypes {
-                            let translation = Translation(currentLanguage: currentLanguage, commonButtons: commonButtons, HelpTypes: helpTypes, Symptoms: Array(symptomsDict.values), Exercises: Array(exercisesDict.values))
-                            
-                            Translations.append(translation)
-                        }
-                        
-                        
                     }
                 }
-                    catch {
-                    print("Ошибка при загрузке данных из файла \(fileURL.lastPathComponent): \(error)")
+                catch
+                {
+                    print("Ошибка парсинга")
                 }
             }
-            //print("Translations loaded successfully! Loaded from: " + fileURLs[0].absoluteString)
-            
         }
-        
-        catch
-        {
-            print("Ошибка при получении списка файлов: \(error)")
+                
+                catch {
+                    print("Ошибка при загрузке данных из файла ")
+                }
+            }
         }
-
-    }
-    
     
     private struct TemporaryTranslation: Codable {
         let currentLanguage: String?
@@ -94,4 +104,3 @@ class TranslationDownloader {
             case Exercises
         }
     }
-}

@@ -36,7 +36,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let helpType = try decoder.decode([HelpType].self, from: data)
-                print(helpType)
+                //print(helpType)
                 helpTypes = helpType
             } catch {
                 print("Ошибка при загрузке данных: \(error)")
@@ -61,7 +61,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         
         //view.addSubview(cell.MenuButton)
         
-        print("Cell added!")
+       // print("Cell added!")
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
@@ -73,7 +73,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     {
         if let _label = helpTypes[_currentButton.tag].help_type_name as Optional
         {
-            print(String(_label))
+            //print(String(_label))
             let storyboard = UIStoryboard(name: _label, bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: _label)

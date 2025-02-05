@@ -24,8 +24,11 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     func GetExerices()
     {
+        let i: Int = QuickHelpManager.shared.CurrentExercise // индекс упражнения в текущем массиве
+        let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // индекс текущего упражения в массиве
+        let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
         HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
-        exerciseText.text = String(QuickHelpManager.shared.CurrentExersicesArray[HelpExercisesCount])
+        exerciseText.text = String(o) + " " + _text
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
