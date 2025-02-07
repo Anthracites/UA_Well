@@ -17,7 +17,11 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
+        
+        let widget = BreathingHintWidget(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
+        self.view.addSubview(widget)
     }
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return buttonLabels.count
@@ -28,7 +32,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // индекс текущего упражения в массиве
         let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
         HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
-        exerciseText.text = String(o) + " " + _text
+        exerciseText.text = _text
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
