@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D00467522CFB41AB006AC04E /* Quick_help_exercise.json in Resources */ = {isa = PBXBuildFile; fileRef = D00467512CFB41AB006AC04E /* Quick_help_exercise.json */; };
+		D00B04AB2D613CCD007106DF /* BreathWidget.gif in Resources */ = {isa = PBXBuildFile; fileRef = D00B04AA2D613CCD007106DF /* BreathWidget.gif */; };
 		D01248B82C99CE6D00FBB550 /* alarm.png in Resources */ = {isa = PBXBuildFile; fileRef = D01248A02C99CE6D00FBB550 /* alarm.png */; };
 		D01248B92C99CE6D00FBB550 /* Andrey.png in Resources */ = {isa = PBXBuildFile; fileRef = D01248A12C99CE6D00FBB550 /* Andrey.png */; };
 		D01248BA2C99CE6D00FBB550 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D01248A22C99CE6D00FBB550 /* app_icon.png */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		D00467512CFB41AB006AC04E /* Quick_help_exercise.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Quick_help_exercise.json; sourceTree = "<group>"; };
+		D00B04AA2D613CCD007106DF /* BreathWidget.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BreathWidget.gif; sourceTree = "<group>"; };
 		D01248A02C99CE6D00FBB550 /* alarm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm.png; sourceTree = "<group>"; };
 		D01248A12C99CE6D00FBB550 /* Andrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Andrey.png; sourceTree = "<group>"; };
 		D01248A22C99CE6D00FBB550 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				D01248A72C99CE6D00FBB550 /* down_arrow.png */,
 				D01248A82C99CE6D00FBB550 /* left_right.png */,
 				D01248A92C99CE6D00FBB550 /* logo.png */,
+				D00B04AA2D613CCD007106DF /* BreathWidget.gif */,
 				D01248AA2C99CE6D00FBB550 /* logo.svg */,
 				D01248AB2C99CE6D00FBB550 /* right_arrow.png */,
 				D01248AC2C99CE6D00FBB550 /* start.svg */,
@@ -278,6 +281,7 @@
 				D01248C52C99CE6D00FBB550 /* Yana.jpg in Resources */,
 				D01248C92C99CE6D00FBB550 /* metronome.mp3 in Resources */,
 				D01248C02C99CE6D00FBB550 /* left_right.png in Resources */,
+				D00B04AB2D613CCD007106DF /* BreathWidget.gif in Resources */,
 				D00467522CFB41AB006AC04E /* Quick_help_exercise.json in Resources */,
 				D01248C62C99CE6D00FBB550 /* youtube.png in Resources */,
 				D0863B5C2CFCA15A005D70A2 /* HelpTypes.json in Resources */,

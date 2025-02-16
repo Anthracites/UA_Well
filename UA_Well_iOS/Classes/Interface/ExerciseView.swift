@@ -6,6 +6,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var _collectionView: UICollectionView!
     var buttonLabels: [String] = ["Next", "It helped", "Contact a specialist"]
     @IBOutlet weak var exerciseText: UITextView!
+    @IBOutlet weak var scrollView: UIView!
+    @IBOutlet weak var gif: UIImageView!
+    @IBOutlet weak var breathingHintWidgetButton: UIButton!
     var HelpExercisesCount: Int!
     var nextButton, itHelpedButton, contactSpecialistButton, startOverbutton: UIButton!
     var buttons = [UIButton?]()
@@ -17,15 +20,22 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        
-        let widget = BreathingHintWidget(frame: CGRect(x: 50, y: 50, width: 200, height: 200))
-        self.view.addSubview(widget)
+
+        SetupWidget()
     }
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return buttonLabels.count
     }
+    
+    func SetupWidget()
+    {
+        let _button = breathingHintWidgetButton
+        print("Button name: ", _button?.titleLabel?.text as Any)
+        _button!.addTarget(self, action: #selector(OnHintButtonClick), for: .touchUpInside)
+    }
+    
     func GetExerices()
     {
         let i: Int = QuickHelpManager.shared.CurrentExercise // индекс упражнения в текущем массиве
@@ -121,5 +131,14 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
+    }
+    // Ебучий виджет, который придется копипастить, так как эта блядина, выведенная в отдельный класс, не завелась!!!!!
+    
+    //@objc func OnHintButtonClick(LabelString: String, HintButton: UIButton)
+    @objc func OnHintButtonClick()
+    {
+        //HintButton.titleLabel?.text = LabelString
+        let _image = UIImage.gifImageWithName("BreathWidget")
+        gif.image = _image
     }
 }
