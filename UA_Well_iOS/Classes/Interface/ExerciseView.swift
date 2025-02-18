@@ -20,10 +20,10 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-
+        
         SetupWidget()
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return buttonLabels.count
@@ -60,10 +60,10 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
-        print("Buttons count: " + String(buttons.count))
+        //print("Buttons count: " + String(buttons.count))
         if indexPath.item == buttonLabels.count - 1 {
             SetUpButtons()
-            }
+        }
         return cell
     }
     
@@ -91,7 +91,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         _contactUsButton.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
         _contactUsButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
-
+        
     }
     
     @objc func NextButtonHandler()
@@ -138,7 +138,11 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @objc func OnHintButtonClick()
     {
         //HintButton.titleLabel?.text = LabelString
-        let _image = UIImage.gifImageWithName("BreathWidget")
-        gif.image = _image
+        let reversedGifImage = UIImage.gifImageWithName("BreathWidget", speed: 10)
+        //UIImage.speed
+        gif.image = reversedGifImage
+            
+            //print("Start widget. Frames count: ", reversedGifImage?.size)
+            
+        }
     }
-}
