@@ -13,6 +13,11 @@ public struct Translation: Codable {
         let Contact_specialist: String
         let Alarm: String
         let Ok: String
+        let Languge_selection: String
+        let Type_of_help: String
+        let About_us_and_contact_us: String
+        let About_the_application: String
+        
         
         enum CodingKeys: String, CodingKey {
             case Start = "Start"
@@ -22,6 +27,10 @@ public struct Translation: Codable {
             case Contact_specialist = "Contact_specialist"
             case Alarm = "Alarm"
             case Ok = "Ok"
+            case Languge_selection = "Languge_selection"
+            case Type_of_help = "Type_of_help"
+            case About_us_and_contact_us = "About_us_and_contact_us"
+            case About_the_application = "About_the_application"
         }
     }
     

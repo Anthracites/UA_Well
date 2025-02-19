@@ -24,6 +24,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
      //   funkGetJSONs()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+        SetupDefoultLanguage()
 
     }
     
@@ -39,6 +40,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print("Main closed!!!")
     }
     
+    func SetupDefoultLanguage()
+    {
+        for langauge in TranslationDownloader.shared.Translations
+        {
+            if (langauge.currentLanguage == "Українська")
+            {
+                TranslationDownloader.shared.CurrentTranslation = langauge
+            }
+        }
+    }
 //    @objc func funkGetJSONs() {
 //        let fileManager = FileManager.default
 //        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!

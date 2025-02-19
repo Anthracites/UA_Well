@@ -26,10 +26,25 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         
     }
     
-    func Translate(currentButton: UIButton)
+    func Translate(currentButton: UIButton, title: String)
     {
-        let _currentLanguage = TranslationDownloader.shared.CurrentTranslation
-        let _buttonName = currentButton.layer.name
+        var _buttonLabel: String!
+        
+        switch  title{
+        case "Main":
+            _buttonLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons!.Languge_selection
+            
+        case "HelpTypesMenu":
+            _buttonLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons!.Type_of_help
+        case "AboutUsAndContactUs":
+            _buttonLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons!.About_us_and_contact_us
+        case "AboutTheApplication":
+            _buttonLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons!.About_the_application
+        default:
+            _buttonLabel = "button"
+        }
+        
+        currentButton.setTitle(_buttonLabel, for: .normal)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +56,7 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.copyButtonProperties(targetButton: newButoon)
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.accessibilityHint = label
-        Translate(currentButton: newButoon)
+        Translate(currentButton: newButoon, title: label)
         print("Cell added!")
         return cell
     }

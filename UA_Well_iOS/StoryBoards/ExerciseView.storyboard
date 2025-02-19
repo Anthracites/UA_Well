@@ -62,7 +62,7 @@
                                                 <rect key="frame" x="0.0" y="726" width="363" height="274"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BreathWidget.gif" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="eLE-Qy-i4d">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BreathWidget_r.gif" adjustsImageSizeForAccessibilityContentSizeCategory="YES" id="eLE-Qy-i4d">
                                                         <rect key="frame" x="0.0" y="5" width="355" height="266"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     </imageView>
@@ -167,7 +167,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BreathWidget.gif" width="500" height="500"/>
+        <image name="BreathWidget_r.gif" width="500" height="500"/>
         <image name="burger_button.png" width="30" height="17"/>
         <image name="button:sxq-j9-gJ5:backgroundImage" width="300" height="60">
             <mutableData key="keyedArchiveRepresentation">
@@ -1528,7 +1528,7 @@ ATosAAE6NAABOjcAATo8AAE6RAAAAAAAAAQBAAAAAAAAAFEAAAAAAAAAAAAAAAAAATpHA
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

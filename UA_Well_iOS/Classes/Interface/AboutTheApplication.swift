@@ -1,6 +1,7 @@
 import UIKit
 import Foundation
 
-class AboutTheApplication: UIViewController {
+class AboutTheApplication: UIViewController
+{
 
 }

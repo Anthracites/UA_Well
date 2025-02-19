@@ -138,7 +138,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @objc func OnHintButtonClick()
     {
         //HintButton.titleLabel?.text = LabelString
-        let reversedGifImage = UIImage.gifImageWithName("BreathWidget", speed: 10)
+        let reversedGifImage = UIImage.gifImageWithName("BreathWidget_r", speed: 1)
         //UIImage.speed
         gif.image = reversedGifImage
             
