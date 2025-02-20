@@ -3,7 +3,7 @@ import Foundation
 public struct Translation: Codable {
     let currentLanguage: String
     let commonButtons: CommonButtons?
-
+    let aboutApplication: AboutApplication?
     
     struct CommonButtons: Codable {
         let Start: String
@@ -34,6 +34,19 @@ public struct Translation: Codable {
         }
     }
     
+    
+    struct AboutApplication: Codable {
+        
+            let AboutAppTitle: String
+            let AboutAppDescription: String
+            
+            enum CodingKeys:String, CodingKey
+            {
+                case AboutAppTitle = "AboutAppTitle"
+                case AboutAppDescription = "AboutAppDescription"
+            }
+    }
+    
     let HelpTypes: [HelpType]
     let Symptoms : [Symptom]
     let Exercises: [Exercise]
@@ -44,6 +57,7 @@ public struct Translation: Codable {
         case HelpTypes = "HelpTypes"
         case Symptoms = "Symptoms"
         case Exercises = "Exercises"
+        case aboutApplication = "AboutApplication"
     }
     
 
@@ -75,18 +89,6 @@ public struct Translation: Codable {
             case prevention
             case return_page_title
             case title
-        }
-    }
-    
-    struct About_app_screen
-    {
-        var title: String;
-        var description: String;
-        
-        enum CodingKeys:String, CodingKey
-        {
-            case title
-            case description
         }
     }
     

@@ -30,6 +30,7 @@ class TranslationDownloader {
                     
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
+                    var aboutApp: Translation.AboutApplication?
                     var helpTypes:[HelpType]? = []
                     var symptomsDict: [Int: Symptom] = [:]
                     var exercisesDict: [Int: Exercise] = [:]
@@ -40,6 +41,10 @@ class TranslationDownloader {
                         }
                         if let buttons = tempTranslation.commonButtons {
                             commonButtons = buttons
+                        }
+                        if let aboutApplicationt = tempTranslation.aboutApplication
+                        {
+                            aboutApp = aboutApplicationt
                         }
                         if let types = tempTranslation.HelpTypes{
                             helpTypes = types
@@ -57,7 +62,7 @@ class TranslationDownloader {
                                 exercisesDict[exercise.Exercise_ID] = exercise
                             }
                             
-                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons {
+                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let aboutApp = aboutApp {
                                 // Создаем массив Symptoms, отсортированный по symptom_ID
                                 var symptomsArray = Array(symptomsDict.values)
                                 symptomsArray.sort { $0.symptom_ID < $1.symptom_ID }
@@ -67,6 +72,7 @@ class TranslationDownloader {
                                 let translation = Translation(
                                     currentLanguage: currentLanguage,
                                     commonButtons: commonButtons,
+                                    aboutApplication: aboutApp,
                                     HelpTypes: helpTypes!,
                                     Symptoms: symptomsArray,
                                     Exercises: exercisesArray
@@ -79,7 +85,7 @@ class TranslationDownloader {
                 }
                 catch
                 {
-                    print("Ошибка парсинга")
+                    print("Ошибка парсинга", error)
                 }
             }
         }
@@ -93,6 +99,7 @@ class TranslationDownloader {
     private struct TemporaryTranslation: Codable {
         let currentLanguage: String?
         let commonButtons: Translation.CommonButtons?
+        let aboutApplication: Translation.AboutApplication?
         let HelpTypes: [HelpType]?
         let Symptoms: [Symptom]?
         let Exercises: [Exercise]?
@@ -100,6 +107,7 @@ class TranslationDownloader {
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "Common_buttons"
+            case aboutApplication = "AboutApplication"
             case HelpTypes
             case Symptoms
             case Exercises

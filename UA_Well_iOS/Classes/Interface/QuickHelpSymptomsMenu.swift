@@ -37,11 +37,11 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let exerciseData = try decoder.decode([HelpExercises].self, from: data)
-                print(exerciseData)
+               // print(exerciseData)
                 var exerciseDict: [Int: HelpExercises] = [:]
                 for exercise in exerciseData {
                     exerciseDict[exercise.symptom_ID] = exercise
-                    print(exerciseDict)
+                    //print(exerciseDict)
                 }
                 
                 quickHelpExercises = exerciseData
@@ -99,7 +99,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             QuickHelpManager.shared.CurrentExercise = 0;
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
-            print ("Current symptomID: ", _currentButton.tag, ", current exercise array: ", QuickHelpManager.shared.CurrentExersicesArray as Any)
+            //print ("Current symptomID: ", _currentButton.tag, ", current exercise array: ", QuickHelpManager.shared.CurrentExersicesArray as Any)
         }
     }
     
