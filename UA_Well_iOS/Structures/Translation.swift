@@ -4,6 +4,7 @@ public struct Translation: Codable {
     let currentLanguage: String
     let commonButtons: CommonButtons?
     let aboutApplication: AboutApplication?
+    let aboutUsAndcontactUs: AboutUsAndContactUs?
     
     struct CommonButtons: Codable {
         let Start: String
@@ -17,6 +18,7 @@ public struct Translation: Codable {
         let Type_of_help: String
         let About_us_and_contact_us: String
         let About_the_application: String
+
         
         
         enum CodingKeys: String, CodingKey {
@@ -31,6 +33,7 @@ public struct Translation: Codable {
             case Type_of_help = "Type_of_help"
             case About_us_and_contact_us = "About_us_and_contact_us"
             case About_the_application = "About_the_application"
+
         }
     }
     
@@ -47,6 +50,55 @@ public struct Translation: Codable {
             }
     }
     
+    struct AboutUsAndContactUs: Codable{
+        
+        let Title: String
+        let Description: String
+        let LanguagesLabel: String
+        let ContactsLabel: String
+        let TechDecription: String
+        let SpecialistContacts: [SpecialistContact]
+        
+        struct SpecialistContact : Codable
+        {
+            let SpecialistName: String
+            let SpecialistSurname: String
+            let AvalibleLanguages: String
+            let Description: String
+            let Contacts: [Contact]
+            
+            struct Contact: Codable{
+                let UrlMask: String
+                let UrlContact: String
+                
+                enum CodingKeys:String, CodingKey
+                {
+                    case UrlMask
+                    case UrlContact
+                }
+            }
+            
+            enum CodingKeys: String, CodingKey
+            {
+                case SpecialistName = "SpecialistName"
+                case SpecialistSurname = "SpecialistSurname"
+                case AvalibleLanguages = "AvalibleLanguages"
+                case Contacts = "Contacts"
+                case Description = "Description"
+            }
+        }
+        
+        enum CodingKeys:String, CodingKey
+        {
+            case Title = "Title"
+            case Description = "Description"
+            case LanguagesLabel = "LanguagesLabel"
+            case ContactsLabel = "ContactsLabel"
+            case TechDecription = "TechDecription"
+            case SpecialistContacts = "SpecialistContacts"
+        }
+    }
+    
     let HelpTypes: [HelpType]
     let Symptoms : [Symptom]
     let Exercises: [Exercise]
@@ -58,7 +110,9 @@ public struct Translation: Codable {
         case Symptoms = "Symptoms"
         case Exercises = "Exercises"
         case aboutApplication = "AboutApplication"
+        case aboutUsAndcontactUs = "AboutUsAndContactUs"
     }
+
     
 
     /*

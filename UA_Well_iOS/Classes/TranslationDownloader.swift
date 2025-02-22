@@ -31,6 +31,7 @@ class TranslationDownloader {
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
                     var aboutApp: Translation.AboutApplication?
+                    var aboutUs: Translation.AboutUsAndContactUs?
                     var helpTypes:[HelpType]? = []
                     var symptomsDict: [Int: Symptom] = [:]
                     var exercisesDict: [Int: Exercise] = [:]
@@ -45,6 +46,10 @@ class TranslationDownloader {
                         if let aboutApplicationt = tempTranslation.aboutApplication
                         {
                             aboutApp = aboutApplicationt
+                        }
+                        if let aboutUsAndcontactUs = tempTranslation.aboutUsAndcontactUs
+                        {
+                            aboutUs = aboutUsAndcontactUs
                         }
                         if let types = tempTranslation.HelpTypes{
                             helpTypes = types
@@ -62,7 +67,8 @@ class TranslationDownloader {
                                 exercisesDict[exercise.Exercise_ID] = exercise
                             }
                             
-                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let aboutApp = aboutApp {
+                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let aboutApp = aboutApp,
+                               let aboutUs = aboutUs{
                                 // Создаем массив Symptoms, отсортированный по symptom_ID
                                 var symptomsArray = Array(symptomsDict.values)
                                 symptomsArray.sort { $0.symptom_ID < $1.symptom_ID }
@@ -73,6 +79,7 @@ class TranslationDownloader {
                                     currentLanguage: currentLanguage,
                                     commonButtons: commonButtons,
                                     aboutApplication: aboutApp,
+                                    aboutUsAndcontactUs: aboutUs,
                                     HelpTypes: helpTypes!,
                                     Symptoms: symptomsArray,
                                     Exercises: exercisesArray
@@ -81,7 +88,7 @@ class TranslationDownloader {
                             }
                         }
                     }
-                   // print("Translations directory path: \(fileURLs[0].path)")
+                    print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {
@@ -100,6 +107,7 @@ class TranslationDownloader {
         let currentLanguage: String?
         let commonButtons: Translation.CommonButtons?
         let aboutApplication: Translation.AboutApplication?
+        let aboutUsAndcontactUs: Translation.AboutUsAndContactUs?
         let HelpTypes: [HelpType]?
         let Symptoms: [Symptom]?
         let Exercises: [Exercise]?
@@ -108,6 +116,7 @@ class TranslationDownloader {
             case currentLanguage
             case commonButtons = "Common_buttons"
             case aboutApplication = "AboutApplication"
+            case aboutUsAndcontactUs = "AboutUsAndContactUs"
             case HelpTypes
             case Symptoms
             case Exercises
