@@ -13,7 +13,7 @@
             <objects>
                 <viewController restorationIdentifier="AboutUsAndContactUs" storyboardIdentifier="AboutUsAndContactUs" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AboutUsAndContactUs" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XKG-GO-VbE">
-                        <rect key="frame" x="0.0" y="0.0" width="361" height="1368"/>
+                        <rect key="frame" x="0.0" y="0.0" width="361" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="top" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-DQ-D0l" userLabel="Header">
@@ -46,93 +46,49 @@
                                 </variation>
                             </view>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYO-ue-ZOp">
-                                <rect key="frame" x="-2" y="135" width="361" height="1233"/>
+                                <rect key="frame" x="-2" y="135" width="361" height="965"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V65-rR-voB">
-                                        <rect key="frame" x="8" y="0.0" width="384" height="1233"/>
+                                        <rect key="frame" x="8" y="0.0" width="384" height="965"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" id="xEz-Va-avj" userLabel="AboutUs">
-                                                <rect key="frame" x="16" y="0.0" width="350" height="310"/>
+                                                <rect key="frame" x="16" y="-20" width="350" height="172"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About us and contact us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-db-yzm">
-                                                        <rect key="frame" x="0.0" y="53" width="342" height="20"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About us and contact us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-db-yzm">
+                                                        <rect key="frame" x="0.0" y="8" width="342" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="g0T-jF-wjM"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NLv-sg-eNg">
-                                                        <rect key="frame" x="0.0" y="81" width="350" height="127"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NLv-sg-eNg">
+                                                        <rect key="frame" x="0.0" y="66" width="350" height="106"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <view contentMode="scaleToFill" id="rpw-xm-UuU" userLabel="Yana's info">
-                                                        <rect key="frame" x="0.0" y="216" width="348" height="374"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firsr name Second name" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-Nh-zO9">
-                                                                <rect key="frame" x="155" y="42" width="131" height="40.666666666666657"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="face.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PIj-0W-6Zn">
-                                                                <rect key="frame" x="8" y="0.99999999999997868" width="139" height="127.00000000000003"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QnU-bL-BDA">
-                                                                <rect key="frame" x="8" y="130" width="334" height="41"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" systemColor="systemMintColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages list" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UdO-rG-kgd">
-                                                                <rect key="frame" x="8" y="179" width="334" height="41"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x3w-HV-6qO">
-                                                                <rect key="frame" x="8" y="218" width="334" height="41"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" systemColor="systemMintColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts list" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6GR-Tc-x99">
-                                                                <rect key="frame" x="8" y="258" width="334" height="41"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills Skills Skills Skills Skills Skills Skills Skills end" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jwh-Gd-pfs">
-                                                                <rect key="frame" x="8" y="307" width="334" height="67"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <viewLayoutGuide key="safeArea" id="iIu-6H-SIq"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="oWU-e7-Vdb"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="NLv-sg-eNg" firstAttribute="bottom" secondItem="oWU-e7-Vdb" secondAttribute="bottom" id="2cr-Jx-H3y"/>
+                                                    <constraint firstItem="NLv-sg-eNg" firstAttribute="top" secondItem="8bI-db-yzm" secondAttribute="bottom" constant="8" symbolic="YES" id="Aay-XT-tbr"/>
+                                                    <constraint firstItem="8bI-db-yzm" firstAttribute="leading" secondItem="NLv-sg-eNg" secondAttribute="leading" id="LRR-72-YG6"/>
+                                                    <constraint firstItem="8bI-db-yzm" firstAttribute="leading" secondItem="xEz-Va-avj" secondAttribute="leading" id="Szv-at-cof"/>
+                                                    <constraint firstItem="8bI-db-yzm" firstAttribute="top" secondItem="xEz-Va-avj" secondAttribute="topMargin" id="Upz-KT-uvg"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NLv-sg-eNg" secondAttribute="trailing" id="fag-GF-gFb"/>
+                                                    <constraint firstItem="8bI-db-yzm" firstAttribute="trailing" secondItem="xEz-Va-avj" secondAttribute="trailingMargin" id="yYC-SH-ftL"/>
+                                                </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" id="JAf-8V-EqQ" userLabel="Andrew's info">
-                                                <rect key="frame" x="16" y="592" width="350" height="374"/>
+                                            <view contentMode="scaleToFill" id="JAf-8V-EqQ" userLabel="Andrew's info" customClass="SpecialistInfo" customModule="UA_Well_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="11" y="511" width="350" height="374"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firsr name Second name" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAg-mW-EMA">
@@ -160,13 +116,6 @@
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Wp-Mk-9Kx">
-                                                        <rect key="frame" x="8" y="218" width="334" height="41"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <color key="textColor" systemColor="systemMintColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts list" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Jx-zj-VdK">
                                                         <rect key="frame" x="8" y="258" width="334" height="41"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -184,12 +133,92 @@
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="eFW-GS-8Hf"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <outlet property="contactList" destination="0Jx-zj-VdK" id="ySh-73-ugV"/>
+                                                    <outlet property="contactsLabel" destination="1Wp-Mk-9Kx" id="yME-qF-gAG"/>
+                                                    <outlet property="languageList" destination="FXS-Xs-eb6" id="x3f-Im-Nbs"/>
+                                                    <outlet property="languagesLabel" destination="E7X-ge-avF" id="UDI-8k-7H5"/>
+                                                    <outlet property="sPhoto" destination="mvv-I0-EHY" id="Kdl-Mu-dsz"/>
+                                                    <outlet property="sckills" destination="9am-JO-RAf" id="Esf-jr-FZF"/>
+                                                    <outlet property="specialistName" destination="nAg-mW-EMA" id="8qP-vO-eBm"/>
+                                                </connections>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Start" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" id="TuG-cW-RjX">
-                                                <rect key="frame" x="111" y="992" width="158" height="48"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <view contentMode="scaleToFill" id="rpw-xm-UuU" userLabel="Yana's info" customClass="SpecialistInfo" customModule="UA_Well_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="125" width="346" height="378"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Firsr name Second name" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-Nh-zO9">
+                                                        <rect key="frame" x="155" y="42" width="131" height="40.666666666666657"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="face.dashed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PIj-0W-6Zn">
+                                                        <rect key="frame" x="8" y="0.99999999999997868" width="139" height="127.00000000000003"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QnU-bL-BDA">
+                                                        <rect key="frame" x="8" y="130" width="334" height="41"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" systemColor="systemMintColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Languages list" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UdO-rG-kgd">
+                                                        <rect key="frame" x="8" y="179" width="334" height="41"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x3w-HV-6qO">
+                                                        <rect key="frame" x="8" y="218" width="334" height="41"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" systemColor="systemMintColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts list" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6GR-Tc-x99">
+                                                        <rect key="frame" x="8" y="258" width="334" height="41"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills Skills Skills Skills Skills Skills Skills Skills end" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jwh-Gd-pfs">
+                                                        <rect key="frame" x="8" y="307" width="334" height="67"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1Wp-Mk-9Kx">
+                                                        <rect key="frame" x="0.0" y="179" width="334" height="41"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <color key="textColor" systemColor="systemMintColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="iIu-6H-SIq"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <connections>
+                                                    <outlet property="contactList" destination="6GR-Tc-x99" id="Iee-CC-qYL"/>
+                                                    <outlet property="contactsLabel" destination="x3w-HV-6qO" id="l8V-tm-7xY"/>
+                                                    <outlet property="languageList" destination="UdO-rG-kgd" id="1rM-mW-eEY"/>
+                                                    <outlet property="languagesLabel" destination="QnU-bL-BDA" id="ttT-c0-fQj"/>
+                                                    <outlet property="sPhoto" destination="PIj-0W-6Zn" id="ma4-wI-DBq"/>
+                                                    <outlet property="sckills" destination="Jwh-Gd-pfs" id="mxg-SY-f0i"/>
+                                                    <outlet property="specialistName" destination="bBA-Nh-zO9" id="CGw-cc-eOj"/>
+                                                </connections>
+                                            </view>
+                                            <button opaque="NO" contentMode="center" restorationIdentifier="Start" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="TuG-cW-RjX">
+                                                <rect key="frame" x="85" y="893" width="209" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <accessibility key="accessibilityConfiguration" label="Start"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
+                                                <color key="tintColor" red="0.2017320487" green="0.17942358280000001" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="OK" backgroundImage="CommonButtonBG.png"/>
                                             </button>
@@ -204,19 +233,15 @@
                         <viewLayoutGuide key="safeArea" id="dXq-mg-BOx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <size key="freeformSize" width="361" height="1368"/>
+                    <size key="freeformSize" width="361" height="1100"/>
                     <connections>
-                        <outlet property="contactLabel_1" destination="x3w-HV-6qO" id="aOi-rn-h0Y"/>
-                        <outlet property="contactLabel_2" destination="1Wp-Mk-9Kx" id="f07-Eq-RXi"/>
                         <outlet property="generalView" destination="V65-rR-voB" id="PJe-v5-3xH"/>
-                        <outlet property="languageLabel_1" destination="E7X-ge-avF" id="eje-Ce-rM4"/>
-                        <outlet property="languageLabel_2" destination="QnU-bL-BDA" id="mZY-71-XW8"/>
                         <outlet property="okButton" destination="TuG-cW-RjX" id="0Fo-SS-FEN"/>
                         <outlet property="scrollView" destination="xYO-ue-ZOp" id="mJa-VZ-KRu"/>
                         <outlet property="viewDescription" destination="NLv-sg-eNg" id="E1h-x7-uEN"/>
                         <outlet property="viewTitle" destination="8bI-db-yzm" id="Srb-Sd-Gmc"/>
-                        <outletCollection property="contentViews" destination="rpw-xm-UuU" collectionClass="NSMutableArray" id="Dm8-4X-t7e"/>
-                        <outletCollection property="contentViews" destination="JAf-8V-EqQ" collectionClass="NSMutableArray" id="FN9-u2-wbe"/>
+                        <outletCollection property="contentViews" destination="rpw-xm-UuU" collectionClass="NSMutableArray" id="Yjh-82-sZg"/>
+                        <outletCollection property="contentViews" destination="JAf-8V-EqQ" collectionClass="NSMutableArray" id="LqG-so-lcm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -233,10 +258,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

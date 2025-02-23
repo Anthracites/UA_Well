@@ -4,12 +4,10 @@ import Foundation
 class AboutUsAndContactUs: UIViewController {
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet var contentViews: [UIView]!
+    @IBOutlet var contentViews: [SpecialistInfo]!
     @IBOutlet var generalView: UIView!
     @IBOutlet weak var viewTitle: UILabel!
     @IBOutlet weak var viewDescription: UITextView!
-    @IBOutlet weak var languageLabel_1, languageLabel_2: UILabel!
-    @IBOutlet weak var contactLabel_1, contactLabel_2: UILabel!
     
     override func viewDidLoad()
     {
@@ -17,6 +15,7 @@ class AboutUsAndContactUs: UIViewController {
         okButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         // Установка contentSize для UIScrollView
         TranslateView()
+        AddSpecialistInfo()
         ScrollSetup()
     }
     @objc func TranslateView()
@@ -24,13 +23,26 @@ class AboutUsAndContactUs: UIViewController {
         let _translation = TranslationDownloader.shared.CurrentTranslation
         viewTitle.text = _translation?.aboutUsAndcontactUs?.Title
         viewDescription.text = _translation?.aboutUsAndcontactUs?.Description
-        languageLabel_1.text = _translation?.aboutUsAndcontactUs?.LanguagesLabel
-        languageLabel_2.text = _translation?.aboutUsAndcontactUs?.LanguagesLabel
-        contactLabel_1.text = _translation?.aboutUsAndcontactUs?.ContactsLabel
-        contactLabel_2.text = _translation?.aboutUsAndcontactUs?.ContactsLabel
-        
-        
-        
+    }
+    
+    @objc func AddSpecialistInfo()
+    {
+        if let infoArray = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.SpecialistContacts
+        {
+            var i:Int = 0;
+            let _languagesLabel = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.LanguagesLabel
+            let _contactsLabel = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.ContactsLabel
+            for contact in infoArray
+            {
+                let sView: SpecialistInfo = contentViews[i]
+                sView.specialistName.text = (contact.SpecialistName + " " + contact.SpecialistSurname)
+                sView.languagesLabel.text = _languagesLabel
+                sView.languageList.text = contact.AvalibleLanguages
+                sView.contactsLabel.text = _contactsLabel
+                sView.sckills.text = contact.Description
+                i += 1
+            }
+        }
     }
     
     @objc func ScrollSetup()
