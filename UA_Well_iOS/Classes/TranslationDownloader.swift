@@ -34,7 +34,7 @@ class TranslationDownloader {
                     var aboutUs: Translation.AboutUsAndContactUs?
                     var helpTypes:[HelpType]? = []
                     var symptomsDict: [Int: Symptom] = [:]
-                    var exercisesDict: [Int: Exercise] = [:]
+                    var exercisesDict: [Int: ExerciseTranslation] = [:]
                     
                     for tempTranslation in tempTranslations {
                         if let language = tempTranslation.currentLanguage {
@@ -110,7 +110,7 @@ class TranslationDownloader {
         let aboutUsAndcontactUs: Translation.AboutUsAndContactUs?
         let HelpTypes: [HelpType]?
         let Symptoms: [Symptom]?
-        let Exercises: [Exercise]?
+        let Exercises: [ExerciseTranslation]?
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage

@@ -101,7 +101,7 @@ public struct Translation: Codable {
     
     let HelpTypes: [HelpType]
     let Symptoms : [Symptom]
-    let Exercises: [Exercise]
+    let Exercises: [ExerciseTranslation]
     
     enum CodingKeys: String, CodingKey {
         case currentLanguage = "currentLanguage"
