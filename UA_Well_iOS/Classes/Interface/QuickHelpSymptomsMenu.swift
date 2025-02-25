@@ -63,18 +63,22 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         let _label = TranslationDownloader.shared.CurrentTranslation.Symptoms[_number].symptom_name
-        newButoon.setTitle(_label, for: .normal)
+        newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.titleLabel?.minimumScaleFactor = 0.1
+        newButoon.setTitle(_label, for: .normal)
         newButoon.tag = _number
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
-        newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+        newButoon.widthAnchor.constraint(equalToConstant: 360.0).isActive = true
+        newButoon.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
       //  _burgerButton.addTarget(self, action: #selector(BurgerButoonOnClick), for: .touchUpInside)
         //print ("Sympton ID: ", newButoon.tag, ", symptom name: ", _label)
         
         
         //view.addSubview(cell.MenuButton)
+        print("Button width: ", newButoon.frame.width)
+
         
         //print("Cell added!")
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
