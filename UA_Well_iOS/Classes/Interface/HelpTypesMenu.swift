@@ -50,18 +50,24 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name, for: .normal)
-        newButoon.tag = indexPath.item
+        var _label: String = TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
-        newButoon.titleLabel?.minimumScaleFactor = 0.5
+        newButoon.setTitle(_label, for: .normal)
+        newButoon.tag = indexPath.item
+
+        newButoon.titleLabel?.minimumScaleFactor = 0.1
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+        if indexPath.item > 0
+        {
+            newButoon.isEnabled = false
+        }
         
         
         //view.addSubview(cell.MenuButton)
         
-       // print("Cell added!")
+        print(_label, indexPath.item)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)

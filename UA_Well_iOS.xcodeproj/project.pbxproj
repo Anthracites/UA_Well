@@ -35,7 +35,7 @@
 		D07A48232C99BC4600DEE2C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D07A48222C99BC4600DEE2C7 /* Assets.xcassets */; };
 		D0863B5C2CFCA15A005D70A2 /* HelpTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */; };
 		D0BFB30A2D65616700F6DE22 /* BreathWidget_r.gif in Resources */ = {isa = PBXBuildFile; fileRef = D0BFB3092D65616700F6DE22 /* BreathWidget_r.gif */; };
-		D0BFB3C02D6565A800F6DE22 /* VisualHintExericises.json in Resources */ = {isa = PBXBuildFile; fileRef = D0BFB3BF2D6565A800F6DE22 /* VisualHintExericises.json */; };
+		D0BFB3C02D6565A800F6DE22 /* Exericises.json in Resources */ = {isa = PBXBuildFile; fileRef = D0BFB3BF2D6565A800F6DE22 /* Exericises.json */; };
 		D0D057BC2CFA07CC00CDF83F /* CommonButtonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +70,7 @@
 		D07A48272C99BC4600DEE2C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HelpTypes.json; sourceTree = "<group>"; };
 		D0BFB3092D65616700F6DE22 /* BreathWidget_r.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BreathWidget_r.gif; sourceTree = "<group>"; };
-		D0BFB3BF2D6565A800F6DE22 /* VisualHintExericises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VisualHintExericises.json; sourceTree = "<group>"; };
+		D0BFB3BF2D6565A800F6DE22 /* Exericises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Exericises.json; sourceTree = "<group>"; };
 		D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommonButtonBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,7 +124,7 @@
 				D01248B32C99CE6D00FBB550 /* sounds */,
 				D01248B72C99CE6D00FBB550 /* translations */,
 				D00467512CFB41AB006AC04E /* Quick_help_exercise.json */,
-				D0BFB3BF2D6565A800F6DE22 /* VisualHintExericises.json */,
+				D0BFB3BF2D6565A800F6DE22 /* Exericises.json */,
 				D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */,
 			);
 			path = Content;
@@ -288,7 +288,7 @@
 				D01248C52C99CE6D00FBB550 /* Yana.jpg in Resources */,
 				D01248C92C99CE6D00FBB550 /* metronome.mp3 in Resources */,
 				D01248C02C99CE6D00FBB550 /* left_right.png in Resources */,
-				D0BFB3C02D6565A800F6DE22 /* VisualHintExericises.json in Resources */,
+				D0BFB3C02D6565A800F6DE22 /* Exericises.json in Resources */,
 				D00B04AB2D613CCD007106DF /* BreathWidget.gif in Resources */,
 				D00467522CFB41AB006AC04E /* Quick_help_exercise.json in Resources */,
 				D01248C62C99CE6D00FBB550 /* youtube.png in Resources */,

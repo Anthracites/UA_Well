@@ -41,8 +41,15 @@ class AboutUsAndContactUs: UIViewController {
                 sView.contactsLabel.text = _contactsLabel
                 sView.sckills.text = contact.Description
                 i += 1
+                print("ContactURL: ", contact.Contacts[1].UrlContact)
             }
         }
+    }
+    @objc func ShowSpecialistContact(contactButton: UIButton, contactUrl: String, contactUrlMask: String)
+    {
+       // contactButton = contactUrl
+        //contactButton.setTitle(contactUrlMask, for: .normal)
+     //contactButton.addTarget(LinkButton.OnClickLinkButtonHandler, action: #selector(LinkButton.OnClickLinkButtonHandler), for: .touchUpInside)
     }
     
     @objc func ScrollSetup()

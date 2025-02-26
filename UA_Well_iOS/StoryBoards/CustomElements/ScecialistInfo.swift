@@ -10,5 +10,5 @@ class SpecialistInfo: UIView {
     @IBOutlet weak var contactsLabel: UILabel!
     @IBOutlet weak var contactList: UILabel!
     @IBOutlet weak var sckills: UILabel!
-    
+    @IBOutlet weak var contactsView: UICollectionView!
 }
