@@ -214,9 +214,9 @@
                                                         <color key="textColor" systemColor="systemMintColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-wf-DwA">
-                                                        <rect key="frame" x="8" y="244" width="330" height="55"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="E4d-wf-DwA">
+                                                        <rect key="frame" x="7" y="244" width="330" height="55"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x6l-u8-Zhe">
                                                             <size key="itemSize" width="128" height="62"/>
@@ -226,10 +226,10 @@
                                                         </collectionViewFlowLayout>
                                                         <cells>
                                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bfR-hm-4zr" userLabel="ContactCell" customClass="ContactCell" customModule="UA_Well_iOS" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="-4" width="127" height="62"/>
+                                                                <rect key="frame" x="0.0" y="3" width="128" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NPm-Cm-4uf">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="62"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jF1-t0-y6z">
@@ -241,10 +241,26 @@
                                                                         </button>
                                                                     </subviews>
                                                                 </collectionViewCellContentView>
-                                                                <size key="customSize" width="128" height="62"/>
+                                                                <size key="customSize" width="128" height="50"/>
                                                                 <connections>
                                                                     <outlet property="contactButton" destination="jF1-t0-y6z" id="N8m-wh-Kia"/>
                                                                 </connections>
+                                                            </collectionViewCell>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Fge-1z-gtD">
+                                                                <rect key="frame" x="138" y="0.0" width="128" height="62"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SfK-sS-PMK">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="62"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </collectionViewCellContentView>
+                                                            </collectionViewCell>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ekH-hV-24U">
+                                                                <rect key="frame" x="276" y="0.0" width="128" height="62"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="s3m-fM-Cdz">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="62"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </collectionViewCellContentView>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
