@@ -15,9 +15,9 @@ class ContactCell: UICollectionViewCell
     {
         print(String(linkURL))
 
-        if let _url = URL(string: linkURL)
-        {
-            UIApplication.shared.open(_url, options: [:], completionHandler: nil)
-        }
+//        if let _url = URL(string: linkURL)
+//        {
+//            UIApplication.shared.open(_url, options: [:], completionHandler: nil)
+//        }
     }
 }
