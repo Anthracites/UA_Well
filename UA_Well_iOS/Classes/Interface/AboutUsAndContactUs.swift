@@ -75,9 +75,11 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
                 cell.contactButton.addTarget(ContactCell.OnClickLinkButtonHandler, action: #selector(ContactCell.OnClickLinkButtonHandler), for: .touchUpInside)
                 cell.contentMode = .center
                 cell.backgroundColor = .black
+                cell.contactButton.backgroundColor = .blue
+                
                 if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
                     layout.scrollDirection = .horizontal
-                    layout.itemSize = CGSize(width: collectionView.frame.width, height: 50)
+                    layout.itemSize = CGSize(width: 50, height: 50)
                 }
 
                 //cell.configure(with: contact.UrlContact) // Предполагаем, что UrlContact - это строка

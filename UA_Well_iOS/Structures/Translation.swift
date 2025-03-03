@@ -57,6 +57,8 @@ public struct Translation: Codable {
         let LanguagesLabel: String
         let ContactsLabel: String
         let TechDecription: String
+        let EmailTitle: String
+        let EmailBody: String
         let SpecialistContacts: [SpecialistContact]
         
         struct SpecialistContact : Codable
@@ -95,6 +97,8 @@ public struct Translation: Codable {
             case LanguagesLabel = "LanguagesLabel"
             case ContactsLabel = "ContactsLabel"
             case TechDecription = "TechDecription"
+            case EmailTitle = "EmailTitle"
+            case EmailBody = "EmailBody"
             case SpecialistContacts = "SpecialistContacts"
         }
     }
