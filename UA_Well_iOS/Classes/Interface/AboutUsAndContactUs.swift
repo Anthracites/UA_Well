@@ -71,6 +71,9 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
             if let infoArray = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.SpecialistContacts {
                 let contact = infoArray[index].Contacts[indexPath.item]
                 cell.linkURL = contact.UrlContact
+                cell.mailTitle = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.EmailTitle
+                cell.mailBody = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.EmailBody
+                //cell.cellViewController = self
                 cell.contactButton.setTitle(contact.UrlMask, for: .normal)
                 cell.contactButton.addTarget(ContactCell.OnClickLinkButtonHandler, action: #selector(ContactCell.OnClickLinkButtonHandler), for: .touchUpInside)
                 cell.contentMode = .center
