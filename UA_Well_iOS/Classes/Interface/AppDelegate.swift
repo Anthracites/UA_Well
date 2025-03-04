@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            window?.rootViewController = splashVC
            window?.makeKeyAndVisible()
         TranslationDownloader.shared.initializeTranslations()
+        ExerciseManager.shared.initializeExercises()
            return true
        }
 }

@@ -1,0 +1,223 @@
+[
+    {
+        "Exercise_id": 0,
+        "ExerciseDuration": 0,
+        "Visual_hint": false,
+        "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":1,
+        "ExerciseDuration": 0,
+        "Visual_hint":false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":2,
+        "ExerciseDuration": 0,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":3,
+        "ExerciseDuration": 300,
+        "Visual_hint": true,
+        "Steps":[
+            {
+                "stepNumber":0,
+                "stepAction": 1,
+                "stepDuration": 5
+            },
+            {
+                "stepNumber": 1,
+                "stepAction": 2,
+                "stepDuration" : 5
+            }
+        ]
+    },
+    {
+        "Exercise_id":4,
+        "Visual_hint": true,
+        "ExerciseDuration": 171,
+        "Steps":[
+           
+        ]
+    },
+    {
+        "Exercise_id":5,
+        "Visual_hint": true,
+        "Steps":[ {
+            "stepNumber" : 0,
+            "stepAction" : 1,
+            "stepDuration" : 1
+        },
+        {
+            "stepNumber" : 1,
+            "stepAction" : 2,
+            "stepDuration" : 2
+        },
+        {
+            "stepNumber" : 2,
+            "stepAction" : 1,
+            "stepDuration" : 3
+        },
+        {
+            "stepNumber" : 3,
+            "stepAction" : 2,
+            "stepDuration" : 4
+        },
+        {
+            "stepNumber" : 4,
+            "stepAction" : 1,
+            "stepDuration" : 5
+        },
+        {
+            "stepNumber" : 5,
+            "stepAction" : 2,
+            "stepDuration" : 6
+        },
+        {
+            "stepNumber" : 6,
+            "stepAction" : 1,
+            "stepDuration" : 7
+        },
+        {
+            "stepNumber" : 7,
+            "stepAction" : 2,
+            "stepDuration" : 8
+        },
+        {
+            "stepNumber" : 8,
+            "stepAction" : 1,
+            "stepDuration" : 9
+        },
+        {
+            "stepNumber" : 9,
+            "stepAction" : 2,
+            "stepDuration" : 10
+        },
+        {
+            "stepNumber" : 10,
+            "stepAction" : 1,
+            "stepDuration" : 11
+        },
+        {
+            "stepNumber" : 11,
+            "stepAction" : 2,
+            "stepDuration" : 12
+        },
+        {
+            "stepNumber" : 12,
+            "stepAction" : 1,
+            "stepDuration" : 13
+        },
+        {
+            "stepNumber" : 13,
+            "stepAction" : 2,
+            "stepDuration" : 14
+        },
+        {
+            "stepNumber" : 14,
+            "stepAction" : 1,
+            "stepDuration" : 15
+        },
+        {
+            "stepNumber" : 15,
+            "stepAction" : 2,
+            "stepDuration" : 16
+        },
+        {
+            "stepNumber" : 16,
+            "stepAction" : 1,
+            "stepDuration" : 17
+        },
+        {
+            "stepNumber" : 17,
+            "stepAction" : 2,
+            "stepDuration" : 18
+        }]
+    },
+    {
+        "Exercise_id":6,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":7,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":8,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":9,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":10,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":11,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":12,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    },
+    {
+        "Exercise_id":13,
+        "Visual_hint": false,
+                "Steps":[
+            {
+                
+            }
+        ]
+    }
+]
