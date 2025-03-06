@@ -7,6 +7,7 @@ class TranslationDownloader {
     
     var Translations: [Translation] = []
     var CurrentTranslation: Translation!
+    var DefaultLanguage: Translation!
     
     private init() {} // Закрытый инициализатор
     
@@ -84,6 +85,11 @@ class TranslationDownloader {
                                     Symptoms: symptomsArray,
                                     Exercises: exercisesArray
                                 )
+                                if translation.currentLanguage == "Українська"
+                                {
+                                    DefaultLanguage = translation
+                                }
+                                
                                 Translations.append(translation)
                             }
                         }

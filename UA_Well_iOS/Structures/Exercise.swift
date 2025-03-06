@@ -1,15 +1,16 @@
 struct Exercise: Codable
 {
-    var Exercise_id: Int
-    var description: String
-    var name: String
-    var visualHint: Bool
-    var steps: [step]
+    var Exercise_id: Int?
+    var description: String?
+    var name: String?
+    var visualHint: Bool?
+    var ExerciseDuration: Int?
+    var steps: [step]?
     
     struct step: Codable{
-        var stepNumber: Int
-        var stepAction: String
-        var stepDuration: Float
+        var stepNumber: Int?
+        var stepAction: String?
+        var stepDuration: Float?
         
         enum CodingKeys: String, CodingKey
         {
@@ -24,6 +25,7 @@ struct Exercise: Codable
         case description
         case name
         case visualHint
+        case ExerciseDuration
         case steps
     }
 }

@@ -9,6 +9,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var gif: UIImageView!
     @IBOutlet weak var breathingHintWidgetButton: UIButton!
+    @IBOutlet weak var hintWidget: UIView!
     var HelpExercisesCount: Int!
     var nextButton, itHelpedButton, contactSpecialistButton, startOverbutton: UIButton!
     var buttons = [UIButton?]()
@@ -43,6 +44,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
         HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
         exerciseText.text = _text
+        hintWidget.isHidden = !ExerciseManager.shared.Exercises[i].visualHint!
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

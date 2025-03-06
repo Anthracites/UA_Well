@@ -1,7 +1,7 @@
 import Foundation
 
 public struct Translation: Codable {
-    let currentLanguage: String
+    let currentLanguage: String?
     let commonButtons: CommonButtons?
     let aboutApplication: AboutApplication?
     let aboutUsAndcontactUs: AboutUsAndContactUs?

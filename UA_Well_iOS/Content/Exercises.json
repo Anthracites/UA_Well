@@ -5,7 +5,7 @@
         "Visual_hint": false,
         "Steps":[
             {
-                
+
             }
         ]
     },
@@ -48,6 +48,7 @@
     },
     {
         "Exercise_id":4,
+        "ExerciseDuration": 0,
         "Visual_hint": true,
         "ExerciseDuration": 171,
         "Steps":[
@@ -56,6 +57,7 @@
     },
     {
         "Exercise_id":5,
+        "ExerciseDuration": 0,
         "Visual_hint": true,
         "Steps":[ {
             "stepNumber" : 0,
@@ -150,6 +152,7 @@
     },
     {
         "Exercise_id":6,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -159,6 +162,7 @@
     },
     {
         "Exercise_id":7,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -168,6 +172,7 @@
     },
     {
         "Exercise_id":8,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -177,6 +182,7 @@
     },
     {
         "Exercise_id":9,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -186,6 +192,7 @@
     },
     {
         "Exercise_id":10,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -195,6 +202,7 @@
     },
     {
         "Exercise_id":11,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -204,6 +212,7 @@
     },
     {
         "Exercise_id":12,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {
@@ -213,6 +222,7 @@
     },
     {
         "Exercise_id":13,
+        "ExerciseDuration": 0,
         "Visual_hint": false,
                 "Steps":[
             {

@@ -5,6 +5,8 @@ class ExerciseManager {
     static let shared = ExerciseManager() // Singleton
 
     var Exercises: [Exercise] = []
+   // private var exerciseDict: [Int: TemporaryExercise] = [:]
+    private var exerciseData: [TemporaryExercise] = []
     var CurrentExercise: Exercise!
     
     
@@ -23,23 +25,33 @@ class ExerciseManager {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let exerciseData = try decoder.decode([TemporaryExercise].self, from: data)
-                // print(exerciseData)
+                //print("Exercise data: ", exerciseData)
                 var exerciseDict: [Int: TemporaryExercise] = [:]
+                
                 for exercise in exerciseData {
                     exerciseDict[exercise.Exercise_id!] = exercise
-                    //print(exerciseDict)
+                }
+                Exercises = CreateExercisesArray(tempArray: exerciseData, shareArray: Exercises)
+                for e in Exercises
+                {
+                    print("Exercise data: ", e.Exercise_id!, e.visualHint!)
                 }
                 
-                //quickHelpExercises = exerciseData
                 
             } catch {
                 print("Ошибка при загрузке данных: \(error)")
             }
+
         }
         
     }
+    private func TranslateExercises()
+    {
+        
+    }
     
-    private func CreateExercisesArray(tempArray: [TemporaryExercise?], shareArray: [Exercise?])
+    
+    private func CreateExercisesArray(tempArray: [TemporaryExercise?], shareArray: [Exercise?]) -> [Exercise]
     {
         var tempDict: [Int: TemporaryExercise] = [:]
         var shareArray: [Exercise] = []
@@ -48,47 +60,49 @@ class ExerciseManager {
             tempDict[(_tempExercise?.Exercise_id)!] = _tempExercise
             //print (symptom.symptom_ID, symptom.symptom_name)
             }
+        //print("Temp array: ", tempArray.count)
         
         var i: Int = 0
         
-            for _exercise in tempDict
+            for _exercise in tempArray
             {
-                shareArray[i].Exercise_id = (_exercise.value.Exercise_id)!
-                shareArray[i].visualHint = (_exercise.value.visualHint)!
-//                var _tempStep: = []
-//                var j: Int = 0
-//                for step in _exercise
-//                {
-//                    
-//                }
-//                shareArray[i].steps = (_exercise.value.steps)!
-                i += 1
+                var _e = Exercise()
+                _e.Exercise_id = _exercise?.Exercise_id
+                _e.visualHint = _exercise?.Visual_hint
+                _e.ExerciseDuration = _exercise?.ExerciseDuration                
+                shareArray.append(_e)
+                    i += 1
             }
+        //print("share array: ", shareArray.count)
+        
+        return shareArray
     }
 }
 
 private struct TemporaryExercise: Codable {
     var Exercise_id: Int?
-    var visualHint: Bool?
-    var steps: [step]?
+    var ExerciseDuration: Int?
+    var Visual_hint: Bool?
+    var Steps: [step]?
     
     struct step: Codable{
         var stepNumber: Int?
-        var stepAction: String?
+        var stepAction: Int?
         var stepDuration: Float?
         
         enum CodingKeys: String, CodingKey
         {
-            case stepNumber
-            case stepAction
-            case stepDuration
+            case stepNumber = "stepNumber"
+            case stepAction = "stepAction"
+            case stepDuration = "stepDuration"
         }
     }
         
         enum CodingKeys: String, CodingKey {
             case Exercise_id = "Exercise_id"
-            case visualHint = "visualHint"
-            case steps
+            case ExerciseDuration = "ExerciseDuration"
+            case Visual_hint = "Visual_hint"
+            case Steps = "Steps"
         }
 }
 
