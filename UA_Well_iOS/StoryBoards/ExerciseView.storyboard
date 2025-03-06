@@ -67,7 +67,7 @@
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="85L-QR-jSI">
-                                                        <rect key="frame" x="149.7840199025627" y="123.73426042149651" width="62.000000000025238" height="29.000000000005912"/>
+                                                        <rect key="frame" x="11" y="8" width="341" height="258"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <color key="tintColor" systemColor="systemIndigoColor"/>
                                                         <state key="normal" title="Button"/>
@@ -155,10 +155,10 @@
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>
                         <outlet property="_collectionView" destination="LoR-Ux-N2S" id="wQJ-GZ-0jk"/>
-                        <outlet property="breathingHintWidgetButton" destination="85L-QR-jSI" id="A1h-of-Gl4"/>
+                        <outlet property="breathingHintWidgetButton" destination="85L-QR-jSI" id="n8m-e7-JYt"/>
                         <outlet property="exerciseText" destination="8gs-3t-tRy" id="YR5-w0-mn5"/>
-                        <outlet property="gif" destination="eLE-Qy-i4d" id="XOE-uD-XFH"/>
                         <outlet property="hintWidget" destination="ana-7e-dFj" id="2XM-Q1-6J4"/>
+                        <outlet property="imageHint" destination="eLE-Qy-i4d" id="ELw-Ua-DNe"/>
                         <outlet property="scrollView" destination="KH3-L1-diz" id="Agq-Zc-5wJ"/>
                     </connections>
                 </viewController>

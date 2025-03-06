@@ -5,11 +5,11 @@ struct Exercise: Codable
     var name: String?
     var visualHint: Bool?
     var ExerciseDuration: Int?
-    var steps: [step]?
+    var Steps: [step]?
     
     struct step: Codable{
         var stepNumber: Int?
-        var stepAction: String?
+        var stepAction: Int?
         var stepDuration: Float?
         
         enum CodingKeys: String, CodingKey
@@ -26,7 +26,7 @@ struct Exercise: Codable
         case name
         case visualHint
         case ExerciseDuration
-        case steps
+        case Steps
     }
 }
 

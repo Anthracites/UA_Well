@@ -8,6 +8,7 @@ class ExerciseManager {
    // private var exerciseDict: [Int: TemporaryExercise] = [:]
     private var exerciseData: [TemporaryExercise] = []
     var CurrentExercise: Exercise!
+    var CurrentStep: Int = 0
     
     
     private init() {} // Закрытый инициализатор
@@ -32,10 +33,8 @@ class ExerciseManager {
                     exerciseDict[exercise.Exercise_id!] = exercise
                 }
                 Exercises = CreateExercisesArray(tempArray: exerciseData, shareArray: Exercises)
-                for e in Exercises
-                {
-                    print("Exercise data: ", e.Exercise_id!, e.visualHint!)
-                }
+                
+                //print("Exercise 3 steps: ", Exercises[3].Steps?.count as Any)
                 
                 
             } catch {
@@ -69,11 +68,29 @@ class ExerciseManager {
                 var _e = Exercise()
                 _e.Exercise_id = _exercise?.Exercise_id
                 _e.visualHint = _exercise?.Visual_hint
-                _e.ExerciseDuration = _exercise?.ExerciseDuration                
+                _e.Steps = [Exercise.step()]
+                
+                if let steps = _exercise?.Steps
+                {
+                    var j: Int = 0
+                    
+                    for _s in steps
+                    {
+                        var st = Exercise.step()
+                        
+                        st.stepAction = _s.stepAction
+                        st.stepNumber = _s.stepNumber
+                        st.stepDuration = _s.stepDuration
+                        
+                        _e.Steps?.append(st)
+                        j += 1
+                    }
+                }
+                _e.ExerciseDuration = _exercise?.ExerciseDuration
                 shareArray.append(_e)
                     i += 1
             }
-        //print("share array: ", shareArray.count)
+        //print("Exercise 3 steps: ", shareArray[3].Steps?.count as Any)
         
         return shareArray
     }
