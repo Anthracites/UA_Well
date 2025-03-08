@@ -17,6 +17,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     var buttons = [UIButton?]()
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     
+    private var stepTimer: Timer?
+    private var exerciseTimer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GetExerices()
@@ -157,54 +160,105 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //@objc func OnHintButtonClick(LabelString: String, HintButton: UIButton)
     
+    func StartExercise(exercise: Exercise) {
+//            let _currentExercise = exercise
+//        let currentStep = ExerciseManager.shared.CurrentStep
+            
+            // Запуск таймера для упражнения
+            exerciseTimer = Timer.scheduledTimer(timeInterval: TimeInterval(exercise.ExerciseDuration ?? 0), target: self, selector: #selector(restartExercise), userInfo: nil, repeats: false)
+        
+            startStepTimer()
+        print("Exercise started!!!!", "Exercise duration: ", exerciseTimer)
+        }
+        
+        private func startStepTimer() {
+            
+            let _currentStep = ExerciseManager.shared.CurrentStep
+            guard let _steps = ExerciseManager.shared.CurrentExercise.Steps, _steps.count > _currentStep else { return }
+            
+            let _stepDuration = TimeInterval(_steps[_currentStep].stepDuration ?? 0)
+            stepTimer = Timer.scheduledTimer(timeInterval: _stepDuration, target: self, selector: #selector(nextStep), userInfo: nil, repeats: false)
+        }
+        
+        @objc private func nextStep() {
+            ExerciseManager.shared.CurrentStep += 1
+            
+            if ExerciseManager.shared.CurrentStep >= ExerciseManager.shared.CurrentExercise.Steps!.count {
+                ExerciseManager.shared.CurrentStep = 0 // Сброс шага, если достигнут конец
+            }
+            
+            // Запуск таймера для следующего шага
+            startStepTimer()
+            
+            // Обновление состояния визуальной подсказки
+            updateHintState()
+        }
+        
+        @objc private func restartExercise() {
+            ExerciseManager.shared.CurrentStep = 0
+            startStepTimer()
+            
+            // Перезапуск таймера для упражнения
+            exerciseTimer?.invalidate()
+            exerciseTimer = Timer.scheduledTimer(timeInterval: TimeInterval(ExerciseManager.shared.CurrentExercise.ExerciseDuration ?? 0), target: self, selector: #selector(restartExercise), userInfo: nil, repeats: false)
+        }
+        
+        func stopExercise() {
+            stepTimer?.invalidate()
+            exerciseTimer?.invalidate()
+        }
+        
+        // Метод для обновления состояния визуальной подсказки
+        @objc func updateHintState() {
+            let _buttonLabel: String
+            let i: Int = ExerciseManager.shared.CurrentStep
+            let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].stepAction
+            let _hintImage: UIImage
+            
+            switch _actionIndex {
+            case 0:
+                _hintImage = inhaleGif
+                _buttonLabel = "Вдох"
+            case 1:
+                _hintImage = exhalationGif
+                _buttonLabel = "Выдох"
+            case 2:
+                _hintImage = exhalationGif
+                _buttonLabel = "Пауза"
+            default:
+                _buttonLabel = "Старт"
+                _hintImage = pauseImage
+            }
+
+            imageHint.image = _hintImage
+            breathingHintWidgetButton.setTitle(_buttonLabel, for: .normal)
+        }
     
     @objc func OnHintButtonClick()
     {
         let _buttonLabel: String
         let i: Int = ExerciseManager.shared.CurrentStep
-        let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].stepAction
+        
         let _hintImage: UIImage
         
-        switch  _actionIndex{
-        case 1:
+        switch i {
+        case 0:
             _hintImage = inhaleGif
-            _buttonLabel = "Вдох"
-            
-        case 2:
+            _buttonLabel = "Старт"
+            StartExercise(exercise: ExerciseManager.shared.CurrentExercise)
+            //_actionIndex = 2
+        case 1:
             _hintImage = exhalationGif
-            _buttonLabel = "Выдох"
-        case 3:
-            _hintImage = pauseImage
             _buttonLabel = "Пауза"
-        case 4:
-            _buttonLabel = "Визуальная подсказка"//Добавить в переводы разные характеристики предметов
-            _hintImage = pauseImage
+            //_actionIndex = 1
 
         default:
-            _buttonLabel = "Start"
+            _buttonLabel = "Старт"
             _hintImage = pauseImage
-
+            //_actionIndex = 2
         }
-
+        
         imageHint.image = _hintImage
         breathingHintWidgetButton.setTitle(_buttonLabel, for: .normal)
-        //imageHint.image = reversedGifImage
-    
-        let j: Int = ExerciseManager.shared.CurrentExercise.Steps!.count
-        
-        if ((i+1) == j)
-        {
-            ExerciseManager.shared.CurrentStep = 0
-        }
-        else
-        {
-            ExerciseManager.shared.CurrentStep += 1
-        }
-        
-        
-            
-            print("Start widget. Step count: ", ExerciseManager.shared.CurrentStep)
-        print("Action index: ", i, "Button label: ", _buttonLabel)
-            
-        }
     }
+}
