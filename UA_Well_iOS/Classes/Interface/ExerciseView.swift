@@ -23,7 +23,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         GetExerices()
-        print("exerciseView - 1!!!!")
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
@@ -46,12 +45,14 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func SetupWidget()
     {
+        hintWidget.isHidden = !isHintActive
         if (isHintActive == true)
         {
             let _button = breathingHintWidgetButton
             print("Button name: ", _button?.titleLabel?.text as Any)
             _button!.addTarget(self, action: #selector(OnHintButtonClick), for: .touchUpInside)
         }
+        print ("Hint active: ", String(isHintActive))
     }
     
     func GetExerices()
@@ -61,7 +62,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
         HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
         exerciseText.text = _text
-        isHintActive = ExerciseManager.shared.Exercises[o].visualHint
+        isHintActive = ExerciseManager.shared.Exercises[o].Visual_hint
         ExerciseManager.shared.CurrentExercise = ExerciseManager.shared.Exercises[o]
         if (isHintActive == true)
         {
@@ -158,17 +159,16 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     // Ебучий виджет, который придется копипастить, так как эта блядина, выведенная в отдельный класс, не завелась!!!!!
     
-    //@objc func OnHintButtonClick(LabelString: String, HintButton: UIButton)
     
     func StartExercise(exercise: Exercise) {
-//            let _currentExercise = exercise
-//        let currentStep = ExerciseManager.shared.CurrentStep
+        _ = exercise
+        _ = ExerciseManager.shared.CurrentStep
             
             // Запуск таймера для упражнения
             exerciseTimer = Timer.scheduledTimer(timeInterval: TimeInterval(exercise.ExerciseDuration ?? 0), target: self, selector: #selector(restartExercise), userInfo: nil, repeats: false)
         
             startStepTimer()
-        print("Exercise started!!!!", "Exercise duration: ", exercise.Steps?.count)
+        //print("Exercise started!!!!", "Exercise duration: ", exercise.Steps?.count)
         }
         
         private func startStepTimer() {
@@ -176,7 +176,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             let _currentStep = ExerciseManager.shared.CurrentStep
             guard let _steps = ExerciseManager.shared.CurrentExercise.Steps, _steps.count > _currentStep else { return }
             
-            let _stepDuration = TimeInterval(_steps[_currentStep].stepDuration ?? 0)
+            let _stepDuration = TimeInterval(_steps[_currentStep].duration)
             stepTimer = Timer.scheduledTimer(timeInterval: _stepDuration, target: self, selector: #selector(nextStep), userInfo: nil, repeats: false)
         }
         
@@ -195,6 +195,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
         
         @objc private func restartExercise() {
+            print("Exercise restarted!!!")
             ExerciseManager.shared.CurrentStep = 0
             startStepTimer()
             
@@ -212,8 +213,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         @objc func updateHintState() {
             let _buttonLabel: String
             let i: Int = ExerciseManager.shared.CurrentStep
-            let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].stepAction
+            let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].action
             let _hintImage: UIImage
+            print("Hint swiched! Current action: ", _actionIndex)
             
             switch _actionIndex {
             case 0:
@@ -237,8 +239,10 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func OnHintButtonClick()
     {
+
         let _buttonLabel: String
-        let i: Int = ExerciseManager.shared.CurrentStep
+        let j: Int = ExerciseManager.shared.CurrentStep
+        let i: Int = ExerciseManager.shared.CurrentExercise.Steps![j].action
         
         let _hintImage: UIImage
         

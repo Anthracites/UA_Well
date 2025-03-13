@@ -1,33 +1,44 @@
-struct Exercise: Codable
-{
+import Foundation
+
+ struct Exercise: Codable {
     var Exercise_id: Int?
-    var description: String?
-    var name: String?
-    var visualHint: Bool?
     var ExerciseDuration: Int?
-    var Steps: [step]?
+    var Visual_hint: Bool?
+    var Steps: [Step]?
     
-    struct step: Codable{
-        var stepNumber: Int?
-        var stepAction: Int?
-        var stepDuration: Float?
-        
-        enum CodingKeys: String, CodingKey
-        {
-            case stepNumber
-            case stepAction
-            case stepDuration
-        }
-    }
-    enum CodingKeys:String, CodingKey
-    {
+    var StepsSubsequence: String?
+    var StepsDurations: String?
+    
+    enum CodingKeys: String, CodingKey {
         case Exercise_id
-        case description
-        case name
-        case visualHint
         case ExerciseDuration
+        case Visual_hint
+        case StepsSubsequence
+        case StepsDurations
         case Steps
     }
+    
+    init(Exercise_id: Int?, ExerciseDuration: Int?, Visual_hint: Bool?, StepsSubsequence: String?, StepsDurations: String?) {
+        self.Exercise_id = Exercise_id
+        self.ExerciseDuration = ExerciseDuration
+        self.Visual_hint = Visual_hint
+        self.StepsSubsequence = StepsSubsequence
+        self.StepsDurations = StepsDurations
+        self.Steps = zip(StepsSubsequence?.split(separator: ",").compactMap { Int($0) } ?? [],
+                         StepsDurations?.split(separator: ",").compactMap { Int($0) } ?? []).enumerated().map { index, pair in
+            return Step(num: index, action: pair.0, duration: pair.1)
+        }
+    }
+
+    struct Step: Codable {
+        var num: Int
+        var action: Int
+        var duration: Int
+
+        enum CodingKeys: String, CodingKey {
+            case num
+            case action
+            case duration
+        }
+    }
 }
-
-
