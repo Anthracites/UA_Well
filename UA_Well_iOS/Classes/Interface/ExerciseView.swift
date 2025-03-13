@@ -168,7 +168,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             exerciseTimer = Timer.scheduledTimer(timeInterval: TimeInterval(exercise.ExerciseDuration ?? 0), target: self, selector: #selector(restartExercise), userInfo: nil, repeats: false)
         
             startStepTimer()
-        print("Exercise started!!!!", "Exercise duration: ", exerciseTimer)
+        print("Exercise started!!!!", "Exercise duration: ", exercise.Steps?.count)
         }
         
         private func startStepTimer() {
@@ -225,6 +225,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             case 2:
                 _hintImage = exhalationGif
                 _buttonLabel = "Пауза"
+
             default:
                 _buttonLabel = "Старт"
                 _hintImage = pauseImage
@@ -250,6 +251,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         case 1:
             _hintImage = exhalationGif
             _buttonLabel = "Пауза"
+            //stepTimer?.pause()
             //_actionIndex = 1
 
         default:

@@ -3,231 +3,100 @@
         "Exercise_id": 0,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-        "Steps":[
-            {
-
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":1,
         "ExerciseDuration": 0,
-        "Visual_hint":false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "Visual_hint":true,
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":2,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":3,
         "ExerciseDuration": 300,
         "Visual_hint": true,
-        "Steps":[
-            {
-                "stepNumber":0,
-                "stepAction": 1,
-                "stepDuration": 5
-            },
-            {
-                "stepNumber": 1,
-                "stepAction": 2,
-                "stepDuration" : 5
-            }
-        ]
+        "StepsSubsequence": "0,1",
+        "StepsDurations":"55"
     },
     {
         "Exercise_id":4,
-        "ExerciseDuration": 0,
-        "Visual_hint": true,
         "ExerciseDuration": 171,
-        "Steps":[
-           
-        ]
+        "Visual_hint": true,
+        "StepsSubsequence": "0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1",
+        "StepsDurations": "1,1,1,1,1,1,1,1,4,4,1,1,1,1,1,1,1,1,4,4,1,1,1,1,1,1,1,1,4,4,1,1,1,1,1,1,1,1,4,4,1,1,1,1,1,1,1,1,4,4"
+            
     },
     {
         "Exercise_id":5,
         "ExerciseDuration": 0,
         "Visual_hint": true,
-        "Steps":[ {
-            "stepNumber" : 0,
-            "stepAction" : 1,
-            "stepDuration" : 1
-        },
-        {
-            "stepNumber" : 1,
-            "stepAction" : 2,
-            "stepDuration" : 2
-        },
-        {
-            "stepNumber" : 2,
-            "stepAction" : 1,
-            "stepDuration" : 3
-        },
-        {
-            "stepNumber" : 3,
-            "stepAction" : 2,
-            "stepDuration" : 4
-        },
-        {
-            "stepNumber" : 4,
-            "stepAction" : 1,
-            "stepDuration" : 5
-        },
-        {
-            "stepNumber" : 5,
-            "stepAction" : 2,
-            "stepDuration" : 6
-        },
-        {
-            "stepNumber" : 6,
-            "stepAction" : 1,
-            "stepDuration" : 7
-        },
-        {
-            "stepNumber" : 7,
-            "stepAction" : 2,
-            "stepDuration" : 8
-        },
-        {
-            "stepNumber" : 8,
-            "stepAction" : 1,
-            "stepDuration" : 9
-        },
-        {
-            "stepNumber" : 9,
-            "stepAction" : 2,
-            "stepDuration" : 10
-        },
-        {
-            "stepNumber" : 10,
-            "stepAction" : 1,
-            "stepDuration" : 11
-        },
-        {
-            "stepNumber" : 11,
-            "stepAction" : 2,
-            "stepDuration" : 12
-        },
-        {
-            "stepNumber" : 12,
-            "stepAction" : 1,
-            "stepDuration" : 13
-        },
-        {
-            "stepNumber" : 13,
-            "stepAction" : 2,
-            "stepDuration" : 14
-        },
-        {
-            "stepNumber" : 14,
-            "stepAction" : 1,
-            "stepDuration" : 15
-        },
-        {
-            "stepNumber" : 15,
-            "stepAction" : 2,
-            "stepDuration" : 16
-        },
-        {
-            "stepNumber" : 16,
-            "stepAction" : 1,
-            "stepDuration" : 17
-        },
-        {
-            "stepNumber" : 17,
-            "stepAction" : 2,
-            "stepDuration" : 18
-        }]
+        "StepsSubsequence": "0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1",
+        "StepsDurations": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18"
+
     },
     {
         "Exercise_id":6,
         "ExerciseDuration": 0,
-        "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "Visual_hint": true,
+        "StepsSubsequence": "0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,2,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,2,0,2",
+        "StepsDurations":   "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,30,3,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,60,3,30,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,90,3,45"
     },
     {
         "Exercise_id":7,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":8,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":9,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":10,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":11,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":12,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     },
     {
         "Exercise_id":13,
         "ExerciseDuration": 0,
         "Visual_hint": false,
-                "Steps":[
-            {
-                
-            }
-        ]
+        "StepsSubsequence": "",
+        "StepsDurations":""
     }
 ]
