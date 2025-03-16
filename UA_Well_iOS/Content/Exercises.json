@@ -25,7 +25,7 @@
         "ExerciseDuration": 300,
         "Visual_hint": true,
         "StepsSubsequence": "0,1",
-        "StepsDurations":"55"
+        "StepsDurations":"5,5"
     },
     {
         "Exercise_id":4,
