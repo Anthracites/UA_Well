@@ -157,6 +157,15 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stepTimer?.invalidate()
+        exerciseTimer?.invalidate()
+        ExerciseManager.shared.CurrentStep = 0
+
+    }
+    
     // Ебучий виджет, который придется копипастить, так как эта блядина, выведенная в отдельный класс, не завелась!!!!!
     
     
@@ -179,7 +188,10 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             guard let _steps = ExerciseManager.shared.CurrentExercise.Steps, _steps.count > _currentStep else { return }
             
             let _stepDuration = TimeInterval(_steps[_currentStep].duration)
-            stepTimer = Timer.scheduledTimer(timeInterval: _stepDuration, target: self, selector: #selector(nextStep), userInfo: nil, repeats: false)
+            if (isHintActive == true)
+            {
+                stepTimer = Timer.scheduledTimer(timeInterval: _stepDuration, target: self, selector: #selector(nextStep), userInfo: nil, repeats: false)
+            }
         }
         
         @objc private func nextStep() {
@@ -245,4 +257,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         //updateHintState()
         //ExerciseManager.shared.CurrentStep += 1
     }
+
+    
     }
