@@ -59,10 +59,6 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
-        if indexPath.item > 0
-        {
-            newButoon.isEnabled = false
-        }
         
         
         //view.addSubview(cell.MenuButton)
