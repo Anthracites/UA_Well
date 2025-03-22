@@ -25,7 +25,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
-        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
+        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(popUpButtonLabels[indexPath.item], for: .normal)
         cell.contentMode = .center
         
