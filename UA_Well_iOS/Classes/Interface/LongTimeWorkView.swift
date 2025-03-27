@@ -20,14 +20,24 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         _collectionView.dataSource = self
         _collectionView.delegate = self
         SetUpButton()
+        TranslateView()
     }
+    
+    @objc func TranslateView()
+    {
+        titleText.text = TranslationDownloader.shared.CurrentTranslation.HelpTypes[1].help_type_name
+    }
+    
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(popUpButtonLabels[indexPath.item], for: .normal)
+        newButoon.tag = indexPath.item
         cell.contentMode = .center
+        newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
@@ -52,5 +62,16 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
+    }
+    
+    @objc func OnClickMenuButton(_currentButton: UIButton, _buttonIndex: Int)
+    {
+
+            let storyboard = UIStoryboard(name: "LTWDayDescription", bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: "LTWDayDescription") as! LTWDayDescription
+        secondVC.TherapyDay = _currentButton.tag
+            self.present(secondVC, animated: true, completion: nil)
+        print("Day index: ", _currentButton.tag)
     }
 }

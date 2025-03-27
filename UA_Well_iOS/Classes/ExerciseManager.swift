@@ -8,6 +8,9 @@ class ExerciseManager {
     private var exerciseData: [TemporaryExercise] = []
     var CurrentExercise: Exercise!
     var CurrentStep: Int = 0
+    var CurrentHelpType: String!
+    var HelpTypes: [HelpType] = []
+    var QuickHelpExercises: [HelpExercises] = []
 
     private init() {} // Закрытый инициализатор
 
@@ -24,8 +27,55 @@ class ExerciseManager {
                 print("Ошибка при загрузке данных: \(error)")
             }
         }
-    }
+        guard HelpTypes.isEmpty else { return }
 
+        GetExersices()
+        GetHelpTypes()
+    }
+    
+    
+    private func GetHelpTypes()
+    {
+        if
+            let url = Bundle.main.url(forResource: "HelpTypes", withExtension: "json")
+        {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let helpType = try decoder.decode([HelpType].self, from: data)
+                //print(helpType)
+                HelpTypes = helpType
+            } catch {
+                print("Ошибка при загрузке данных: \(error)")
+            }
+        }
+    }
+    
+    @objc func GetExersices()
+    {
+        if
+            let url = Bundle.main.url(forResource: "Quick_help_exercise", withExtension: "json")
+        {
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let exerciseData = try decoder.decode([HelpExercises].self, from: data)
+               // print(exerciseData)
+                var exerciseDict: [Int: HelpExercises] = [:]
+                for exercise in exerciseData {
+                    exerciseDict[exercise.symptom_ID] = exercise
+                    //print(exerciseDict)
+                }
+                
+                QuickHelpExercises = exerciseData
+                
+            } catch {
+                print("Ошибка при загрузке данных: \(error)")
+            }
+        }
+        //print("Exercises count: " + String(quickHelpExercises[0].help_exercise_array[0]))
+    }
+    
     private func CreateExercisesArray(tempArray: [TemporaryExercise]) -> [Exercise] {
         var shareArray: [Exercise] = []
         for _tempExercise in tempArray {

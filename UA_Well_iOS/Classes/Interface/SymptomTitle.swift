@@ -40,6 +40,7 @@ class SymptomTitle:  UIViewController{
             let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
+            ExerciseManager.shared.CurrentHelpType = "QuickHelp"
         }
     }
     

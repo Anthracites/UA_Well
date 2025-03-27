@@ -14,7 +14,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GetExersiceJsons()
+        quickHelpExercises = ExerciseManager.shared.QuickHelpExercises
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
@@ -27,31 +27,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return quickHelpExercises.count
     }
-    
-    @objc func GetExersiceJsons()
-    {
-        if
-            let url = Bundle.main.url(forResource: "Quick_help_exercise", withExtension: "json")
-        {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let exerciseData = try decoder.decode([HelpExercises].self, from: data)
-               // print(exerciseData)
-                var exerciseDict: [Int: HelpExercises] = [:]
-                for exercise in exerciseData {
-                    exerciseDict[exercise.symptom_ID] = exercise
-                    //print(exerciseDict)
-                }
-                
-                quickHelpExercises = exerciseData
-                
-            } catch {
-                print("Ошибка при загрузке данных: \(error)")
-            }
-        }
-        //print("Exercises count: " + String(quickHelpExercises[0].help_exercise_array[0]))
-    }
+
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan

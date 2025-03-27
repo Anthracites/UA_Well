@@ -94,7 +94,7 @@ class TranslationDownloader {
                             }
                         }
                     }
-                    //print("Translations directory path: \(fileURLs[0].path)")
+                    print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {
@@ -117,6 +117,7 @@ class TranslationDownloader {
         let HelpTypes: [HelpType]?
         let Symptoms: [Symptom]?
         let Exercises: [ExerciseTranslation]?
+        let LongTermWork: Translation.LongTermWork
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
@@ -126,5 +127,6 @@ class TranslationDownloader {
             case HelpTypes
             case Symptoms
             case Exercises
+            case LongTermWork = "LongTermWork"
         }
     }

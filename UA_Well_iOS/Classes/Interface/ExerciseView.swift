@@ -57,11 +57,13 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func GetExerices()
     {
+        let _type = ExerciseManager.shared.CurrentHelpType
         let i: Int = QuickHelpManager.shared.CurrentExercise // индекс упражнения в текущем массиве
         let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // индекс текущего упражения в массиве
-        let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
-        HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
-        exerciseText.text = _text
+            let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
+            HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
+            exerciseText.text = _text
+        
         isHintActive = ExerciseManager.shared.Exercises[o].Visual_hint
         ExerciseManager.shared.CurrentExercise = ExerciseManager.shared.Exercises[o]
         if (isHintActive == true)
@@ -117,6 +119,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _contactUsButton.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
         _contactUsButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
         
+        //print("current symptom:", ExerciseManager.shared.QuickHelpExercises[0].symptom_ID, "current exercise number: ", c)
+
     }
     
     @objc func NextButtonHandler()

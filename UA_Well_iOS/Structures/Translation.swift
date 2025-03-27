@@ -116,7 +116,34 @@ public struct Translation: Codable {
         case aboutApplication = "AboutApplication"
         case aboutUsAndcontactUs = "AboutUsAndContactUs"
     }
-
+    
+    struct LongTermWork: Codable {
+        
+        let Description: String
+        let TherapyDays: [TherapyDay]
+        
+        struct TherapyDay : Codable
+        {
+            let TherapyPartID: Int
+            let TherapyPartName: String
+            let Instruction: String
+            
+                enum CodingKeys:String, CodingKey
+                {
+                    case TherapyPartID = "DayID"
+                    case TherapyPartName = "TherapyPartName"
+                    case Instruction = "Instruction"
+                    
+                }
+        }
+        
+        enum CodingKeys: String, CodingKey {
+            
+            case Description = "Description"
+            case TherapyDays = "TherapyDays"
+            
+        }
+    }
     
 
     /*
