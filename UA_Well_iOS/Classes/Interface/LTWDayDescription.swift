@@ -11,6 +11,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var _collectionView: UICollectionView!
     var TherapyDay: Int?
     var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
+    var currentTranslation: Translation!
     
     
     override func viewDidLoad() {
@@ -20,8 +21,34 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         _collectionView.delegate = self
         SetUpButton()
         ExerciseManager.shared.CurrentHelpType = "LongTimeWork"
+        currentTranslation = TranslationDownloader.shared.CurrentTranslation
+        TranslateView()
     }
     
+    func TranslateButton(_currentButton: UIButton)
+    {
+       // StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)
+        let _label = _currentButton.titleLabel?.text
+        let _translatedLabel: String
+        
+        switch _label {
+        case "ExerciseView":
+            _translatedLabel = currentTranslation.commonButtons!.Start
+        case "AboutUsAndContactUs":
+            _translatedLabel = currentTranslation.commonButtons!.Contact_specialist
+
+        default:
+            _translatedLabel = "Ok"
+        }
+        
+        _currentButton.setTitle(_translatedLabel, for: .normal)
+    }
+    
+    @objc func TranslateView()
+    {
+        titleText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].TherapyPartName
+        descriptionText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].Instruction
+    }
     @objc func SetUpButton()
     {
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
@@ -47,6 +74,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
         newButoon.tag = indexPath.item
         newButoon.setTitle(buttonLabels[indexPath.item], for: .normal)
+        TranslateButton(_currentButton: newButoon)
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         cell.contentMode = .center
         
@@ -65,7 +93,6 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func OnClickMenuButton(_currentButton: UIButton)
     {
-        //QuickHelpManager.shared.CurrentExersicesArray = ExerciseManager.shared.Exercises.
         QuickHelpManager.shared.Symtoms.sort(by: { $0.symptom_ID < $1.symptom_ID})
         ExerciseManager.shared.QuickHelpExercises.sort(by: { $0.symptom_ID < $1.symptom_ID})
         QuickHelpManager.shared.CurrentExersicesArray = ExerciseManager.shared.QuickHelpExercises[0].help_exercise_array

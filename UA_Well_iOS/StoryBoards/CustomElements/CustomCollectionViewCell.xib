@@ -18,8 +18,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="dig-dQ-LdH">
-                        <rect key="frame" x="45" y="397" width="298" height="60"/>
+                        <rect key="frame" x="44" y="397" width="298" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <accessibility key="accessibilityConfiguration" label="444"/>
                         <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="27"/>
                         <inset key="titleEdgeInsets" minX="25" minY="25" maxX="50" maxY="25"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

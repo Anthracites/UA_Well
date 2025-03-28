@@ -26,6 +26,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     @objc func TranslateView()
     {
         titleText.text = TranslationDownloader.shared.CurrentTranslation.HelpTypes[1].help_type_name
+        descriptionText.text = TranslationDownloader.shared.CurrentTranslation.longTermWork?.Description
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -33,7 +34,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        newButoon.setTitle(popUpButtonLabels[indexPath.item], for: .normal)
+        newButoon.setTitle(TranslationDownloader.shared.CurrentTranslation.longTermWork?.TherapyDays[indexPath.item].TherapyPartName, for: .normal)
         newButoon.tag = indexPath.item
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)

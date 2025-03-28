@@ -36,6 +36,7 @@ class TranslationDownloader {
                     var helpTypes:[HelpType]? = []
                     var symptomsDict: [Int: Symptom] = [:]
                     var exercisesDict: [Int: ExerciseTranslation] = [:]
+                    var longTermWork: Translation.LongTermWork?
                     
                     for tempTranslation in tempTranslations {
                         if let language = tempTranslation.currentLanguage {
@@ -52,6 +53,7 @@ class TranslationDownloader {
                         {
                             aboutUs = aboutUsAndcontactUs
                         }
+
                         if let types = tempTranslation.HelpTypes{
                             helpTypes = types
                         }
@@ -62,6 +64,11 @@ class TranslationDownloader {
                                 //print (symptom.symptom_ID, symptom.symptom_name)
                                 }
                         }
+                        if let longWork = tempTranslation.longTermWork
+                        {
+                            longTermWork = longWork
+                        }
+
                         if let exercises = tempTranslation.Exercises {
                             for exercise in exercises
                             {
@@ -69,7 +76,7 @@ class TranslationDownloader {
                             }
                             
                             if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let aboutApp = aboutApp,
-                               let aboutUs = aboutUs{
+                               let aboutUs = aboutUs, let longTermWork = longTermWork{
                                 // Создаем массив Symptoms, отсортированный по symptom_ID
                                 var symptomsArray = Array(symptomsDict.values)
                                 symptomsArray.sort { $0.symptom_ID < $1.symptom_ID }
@@ -81,6 +88,7 @@ class TranslationDownloader {
                                     commonButtons: commonButtons,
                                     aboutApplication: aboutApp,
                                     aboutUsAndcontactUs: aboutUs,
+                                    longTermWork: longTermWork,
                                     HelpTypes: helpTypes!,
                                     Symptoms: symptomsArray,
                                     Exercises: exercisesArray
@@ -117,7 +125,7 @@ class TranslationDownloader {
         let HelpTypes: [HelpType]?
         let Symptoms: [Symptom]?
         let Exercises: [ExerciseTranslation]?
-        let LongTermWork: Translation.LongTermWork
+        let longTermWork: Translation.LongTermWork?
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
@@ -127,6 +135,6 @@ class TranslationDownloader {
             case HelpTypes
             case Symptoms
             case Exercises
-            case LongTermWork = "LongTermWork"
+            case longTermWork = "LongTermWork"
         }
     }

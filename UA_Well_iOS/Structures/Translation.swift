@@ -5,6 +5,7 @@ public struct Translation: Codable {
     let commonButtons: CommonButtons?
     let aboutApplication: AboutApplication?
     let aboutUsAndcontactUs: AboutUsAndContactUs?
+    let longTermWork: LongTermWork?
     
     struct CommonButtons: Codable {
         let Start: String
@@ -115,6 +116,7 @@ public struct Translation: Codable {
         case Exercises = "Exercises"
         case aboutApplication = "AboutApplication"
         case aboutUsAndcontactUs = "AboutUsAndContactUs"
+        case longTermWork = "LongTermWork"
     }
     
     struct LongTermWork: Codable {
