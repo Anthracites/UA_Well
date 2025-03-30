@@ -26,14 +26,21 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        
         SetupWidget()
         GetImages()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return buttonLabels.count
+        let _currentHelpType = ExerciseManager.shared.CurrentHelpType
+        if _currentHelpType == "QuickHelp"
+        {
+            return buttonLabels.count
+        }
+        else
+        {
+            return 1
+        }
     }
     
     func GetImages()
@@ -88,6 +95,12 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
         //print("Buttons count: " + String(buttons.count))
+        if ExerciseManager.shared.CurrentHelpType != "QuickHelp"
+        {
+            newButoon.addTarget(self, action: #selector (ItHelpedButtonHandler), for: .touchUpInside)
+            let _title = TranslationDownloader.shared.CurrentTranslation.commonButtons?.Ok
+            newButoon.setTitle(_title, for: .normal)
+        }
         if indexPath.item == buttonLabels.count - 1 {
             SetUpButtons()
         }
@@ -96,31 +109,30 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func SetUpButtons()
     {
-        let c: Int = QuickHelpManager.shared.CurrentExercise
-        let a: Int = QuickHelpManager.shared.CurrentExersicesArray.count - 1
-        let _nextStartOverButton: UIButton = buttons[0]!
-        let _itHelpedButtton: UIButton = buttons[1]!
-        let _contactUsButton: UIButton = buttons[2]!
-        
-        if (a != c)
-        {
-            _nextStartOverButton.addTarget(self, action: #selector(NextButtonHandler), for: .touchUpInside)
-            _nextStartOverButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Next, for: .normal)
-        }
-        else
-        {
-            _nextStartOverButton.addTarget(self, action: #selector(StartOverButtonHandler), for: .touchUpInside)
-            _nextStartOverButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start_over, for: .normal)
-        }
-        
-        _itHelpedButtton.addTarget(self, action: #selector(ItHelpedButtonHandler), for: .touchUpInside)
-        _itHelpedButtton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.It_helped, for: .normal)
-        
-        _contactUsButton.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
-        _contactUsButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
-        
-        //print("current symptom:", ExerciseManager.shared.QuickHelpExercises[0].symptom_ID, "current exercise number: ", c)
-
+            let c: Int = QuickHelpManager.shared.CurrentExercise
+            let a: Int = QuickHelpManager.shared.CurrentExersicesArray.count - 1
+            let _nextStartOverButton: UIButton = buttons[0]!
+            let _itHelpedButtton: UIButton = buttons[1]!
+            let _contactUsButton: UIButton = buttons[2]!
+            
+            if (a != c)
+            {
+                _nextStartOverButton.addTarget(self, action: #selector(NextButtonHandler), for: .touchUpInside)
+                _nextStartOverButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Next, for: .normal)
+            }
+            else
+            {
+                _nextStartOverButton.addTarget(self, action: #selector(StartOverButtonHandler), for: .touchUpInside)
+                _nextStartOverButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start_over, for: .normal)
+            }
+            
+            _itHelpedButtton.addTarget(self, action: #selector(ItHelpedButtonHandler), for: .touchUpInside)
+            _itHelpedButtton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.It_helped, for: .normal)
+            
+            _contactUsButton.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
+            _contactUsButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
+            
+            //print("current symptom:", ExerciseManager.shared.QuickHelpExercises[0].symptom_ID, "current exercise number: ", c)
     }
     
     @objc func NextButtonHandler()
