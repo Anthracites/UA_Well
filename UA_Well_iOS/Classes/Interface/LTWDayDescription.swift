@@ -9,6 +9,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var alarmTitle: UILabel!
     var TherapyDay: Int?
     var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
     var currentTranslation: Translation!
@@ -48,6 +49,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     {
         titleText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].TherapyPartName
         descriptionText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].Instruction
+        alarmTitle.text = currentTranslation.commonButtons?.Alarm
     }
     @objc func SetUpButton()
     {
