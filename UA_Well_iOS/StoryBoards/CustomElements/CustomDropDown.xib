@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -49,9 +49,9 @@
                 </constraints>
             </collectionViewCellContentView>
             <constraints>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="Awr-V5-8a6"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="a2n-KP-arf"/>
-                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="dXX-K8-CU7"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="Bec-67-bvU"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="EHC-HI-1bb"/>
+                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="mbe-N7-jUU"/>
             </constraints>
             <size key="customSize" width="395" height="143"/>
             <connections>

@@ -4,6 +4,8 @@ import UIKit
 
 class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    var previousScreenName = "HelpTypesMenu"
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var _collectionView: UICollectionView!
     var dropDownLabels: [String] = ["Intensity", "Duration"]
     var dropDownItems: [String] = ["Minimum", "Medium", "Maximum"]
@@ -16,6 +18,9 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         _collectionView.delegate = self
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+        
+        backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,11 +47,20 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         //view.addSubview(cell.dropDown)
         
         print("Prevention scereen: Cell added!")
-//        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            layout.scrollDirection = .vertical
-//            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
-//        }
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
+        }
         return cell
+    }
+    
+    @objc func BackToPreviousScreen()
+    {
+        let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
+        // Инициализируем ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName)
+        // Переход к новому ViewController
+        self.present(secondVC, animated: true, completion: nil)
     }
     
 
