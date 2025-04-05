@@ -7,7 +7,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     var previousScreenName = "HelpTypesMenu"
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var _collectionView: UICollectionView!
-    var dropDownLabels: [String] = ["Intensity", "Duration"]
+    var dropDownLabels: [String] = []
     var dropDownItems: [String] = ["Minimum", "Medium", "Maximum"]
     
     
