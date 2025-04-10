@@ -7,6 +7,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     var previousScreenName = "HelpTypesMenu"
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var startButton:UIButton!
     var dropDownLabels: [String] = ["Intensivity", "Duration"]
     var dropDownItems: [[String]] = [["Minimum", "Medium", "Maximum"], ["Two", "Three", "Four"]]
     
@@ -19,6 +20,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         _collectionView.reloadData()
         _collectionView.contentMode = .center
         
+        startButton.addTarget(self, action: #selector(GoToInstruction), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
 
     }
@@ -54,6 +56,15 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
         return cell
+    }
+    @objc func GoToInstruction()
+    {
+        let _sbName = "PreventionInstruction"
+            let storyboard = UIStoryboard(name: _sbName, bundle: nil)
+            // Инициализируем ViewController
+            let secondVC = storyboard.instantiateViewController(withIdentifier: _sbName)
+            // Переход к новому ViewController
+            self.present(secondVC, animated: true, completion: nil)
     }
     
     @objc func BackToPreviousScreen()
