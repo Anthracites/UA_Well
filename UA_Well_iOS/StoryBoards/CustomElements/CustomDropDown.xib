@@ -12,25 +12,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="He8-qA-Dva" customClass="CustomDropDown" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
-            <rect key="frame" x="0.0" y="0.0" width="395" height="143"/>
+            <rect key="frame" x="0.0" y="0.0" width="395" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-Q8-gQE">
-                <rect key="frame" x="0.0" y="0.0" width="395" height="143"/>
+                <rect key="frame" x="0.0" y="0.0" width="395" height="187"/>
                 <subviews>
-                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
-                        <rect key="frame" x="21.000000000000004" y="0.0" width="41.333333333333343" height="51"/>
+                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
+                        <rect key="frame" x="35" y="0.0" width="312" height="74"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemIndigoColor"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="3"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="5yu-8I-GH7">
-                        <rect key="frame" x="47" y="59" width="300" height="60"/>
+                        <rect key="frame" x="47" y="82" width="300" height="60"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="30"/>
                         <inset key="titleEdgeInsets" minX="25" minY="25" maxX="50" maxY="25"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <menu key="menu" id="fqx-Mn-RrZ">
+                            <menuOptions key="menuOptions" singleSelection="YES"/>
                             <children>
                                 <command title="1111111" mirroring="NO" id="BIt-kf-HJQ"/>
                                 <command title="222222" mirroring="NO" id="Gkh-uQ-T1y"/>
@@ -42,23 +43,23 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="top" secondItem="Um2-Q8-gQE" secondAttribute="top" id="W3h-te-vYL"/>
-                    <constraint firstAttribute="trailing" secondItem="nZT-oq-9UH" secondAttribute="trailing" constant="74" id="YrF-nO-XGI"/>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="leading" secondItem="Um2-Q8-gQE" secondAttribute="leading" constant="21" id="elZ-5P-UtJ"/>
-                    <constraint firstItem="5yu-8I-GH7" firstAttribute="top" secondItem="nZT-oq-9UH" secondAttribute="bottom" constant="8" id="xWI-zH-cAf"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="centerX" secondItem="5yu-8I-GH7" secondAttribute="centerX" constant="-6" id="5RC-iZ-bXd"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="leading" secondItem="Um2-Q8-gQE" secondAttribute="leading" constant="35" id="j2E-a1-nuI"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="centerX" secondItem="Um2-Q8-gQE" secondAttribute="centerX" constant="-6.5" id="l09-es-Mbz"/>
+                    <constraint firstItem="nZT-oq-9UH" firstAttribute="top" secondItem="Um2-Q8-gQE" secondAttribute="top" id="tFm-Xg-aEF"/>
                 </constraints>
             </collectionViewCellContentView>
             <constraints>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="Bec-67-bvU"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="EHC-HI-1bb"/>
-                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="mbe-N7-jUU"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="4k7-mf-XyN"/>
+                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="DBG-et-ZJy"/>
+                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="kN5-sv-OL0"/>
             </constraints>
-            <size key="customSize" width="395" height="143"/>
+            <size key="customSize" width="395" height="187"/>
             <connections>
                 <outlet property="ddLabel" destination="nZT-oq-9UH" id="iNS-3D-aOC"/>
                 <outlet property="dropDown" destination="5yu-8I-GH7" id="4kr-q4-JXC"/>
             </connections>
-            <point key="canvasLocation" x="-927.48091603053433" y="-1382.0422535211269"/>
+            <point key="canvasLocation" x="-927.48091603053433" y="-1397.5352112676057"/>
         </collectionViewCell>
     </objects>
     <resources>

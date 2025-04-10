@@ -2,8 +2,8 @@
 struct PreventionParameter: Codable
 {
     let Parametr_ID: Int;
-    let Parametr_name: String;
-    let Parametr_values: [String];
+    let Parametr_name: String?;
+    let Parametr_values: [Int];
     
     enum CodingKeys:String, CodingKey
     {

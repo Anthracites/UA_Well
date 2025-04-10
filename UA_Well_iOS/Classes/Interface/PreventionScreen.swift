@@ -7,8 +7,8 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     var previousScreenName = "HelpTypesMenu"
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var _collectionView: UICollectionView!
-    var dropDownLabels: [String] = []
-    var dropDownItems: [String] = ["Minimum", "Medium", "Maximum"]
+    var dropDownLabels: [String] = ["Intensivity", "Duration"]
+    var dropDownItems: [[String]] = [["Minimum", "Medium", "Maximum"], ["Two", "Three", "Four"]]
     
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dropDownLabels.count
+        return 2
     }
 
     
@@ -37,12 +37,14 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         let _label = dropDownLabels[indexPath.item]
         //cell.dropDown.backgroundColor = .gray
         cell.copyDDProperties(targetButton: newButoon)
-        newButoon.setTitle(_label, for: .normal)
         cell.contentMode = .center
-        cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: dropDownItems)
+        cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: dropDownItems[indexPath.item])
+        newButoon.setTitle(cell.dropDown.menu?.children[0].title, for: .normal)
+        cell.ddLabel.text = _label
         //newButoon.center = CGPoint(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.midY) // Центрируем кнопку внутри ячейки
         //newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         //newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+        
         
         //view.addSubview(cell.dropDown)
         

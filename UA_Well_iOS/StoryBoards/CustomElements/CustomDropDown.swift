@@ -30,6 +30,8 @@ class CustomDropDown: UICollectionViewCell {
         let menu = UIMenu(title: "", children: DropDownItems.map { option in
             UIAction(title: option, handler: { _ in
                 print("Выбранный элемент: \(option)")
+                DropDown.setTitle(option, for: .normal)
+
             })
         })
         DropDown.menu = menu

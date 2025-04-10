@@ -113,11 +113,6 @@
                                                                 <constraint firstItem="yf0-Fz-eza" firstAttribute="top" secondItem="879-56-nxI" secondAttribute="top" id="m6q-aw-0yU"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
-                                                        <constraints>
-                                                            <constraint firstItem="879-56-nxI" firstAttribute="top" secondItem="7rD-mq-HdS" secondAttribute="top" id="0A8-nL-p7H"/>
-                                                            <constraint firstItem="879-56-nxI" firstAttribute="leading" secondItem="7rD-mq-HdS" secondAttribute="leading" id="Fj8-jx-GZr"/>
-                                                            <constraint firstAttribute="bottom" secondItem="879-56-nxI" secondAttribute="bottom" id="Ugm-C7-iwm"/>
-                                                        </constraints>
                                                         <size key="customSize" width="395" height="143"/>
                                                         <connections>
                                                             <outlet property="ddLabel" destination="yf0-Fz-eza" id="f4V-aV-ofi"/>
