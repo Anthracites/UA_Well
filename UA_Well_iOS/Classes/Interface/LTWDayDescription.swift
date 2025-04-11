@@ -43,6 +43,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         }
         
         _currentButton.setTitle(_translatedLabel, for: .normal)
+        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_day_selection_title, for: .normal)
     }
     
     @objc func TranslateView()

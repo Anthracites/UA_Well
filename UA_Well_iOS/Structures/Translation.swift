@@ -19,9 +19,14 @@ public struct Translation: Codable {
         let Type_of_help: String
         let About_us_and_contact_us: String
         let About_the_application: String
+        
+        let Return_to_language_selecttion_title: String
+        let Return_to_day_selection_title: String
+        let Return_to_parameters_title: String
+        let Return_to_symptoms_title: String
+        let Return_to_help_type_page_title: String
 
-        
-        
+
         enum CodingKeys: String, CodingKey {
             case Start = "Start"
             case Next = "Next"
@@ -34,6 +39,12 @@ public struct Translation: Codable {
             case Type_of_help = "Type_of_help"
             case About_us_and_contact_us = "About_us_and_contact_us"
             case About_the_application = "About_the_application"
+            
+            case Return_to_language_selecttion_title = "Return_to_language_selecttion_title"
+            case Return_to_day_selection_title = "Return_to_day_selection_title"
+            case Return_to_parameters_title = "Return_to_parameters_title"
+            case Return_to_symptoms_title = "Return_to_symptoms_title"
+            case Return_to_help_type_page_title = "Return_to_help_type_page_title"
 
         }
     }

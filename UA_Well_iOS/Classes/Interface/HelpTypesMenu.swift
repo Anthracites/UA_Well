@@ -20,6 +20,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         _collectionView.reloadData()
         _collectionView.contentMode = .center
         _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_language_selecttion_title, for: .normal)
 
     }
     

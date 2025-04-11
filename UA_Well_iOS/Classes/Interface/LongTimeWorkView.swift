@@ -27,6 +27,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     {
         titleText.text = TranslationDownloader.shared.CurrentTranslation.HelpTypes[1].help_type_name
         descriptionText.text = TranslationDownloader.shared.CurrentTranslation.longTermWork?.Description
+        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

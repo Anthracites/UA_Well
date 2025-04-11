@@ -21,6 +21,7 @@ class SymptomTitle:  UIViewController{
     {
         SymptomLabel.text = QuickHelpManager.shared.CurrentSyptom.symptom_name
         SymptomDescrioption.text = QuickHelpManager.shared.CurrentSyptom.symptom_description
+        _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_symptoms_title, for: .normal)
     }
     
     @objc func SetUpButton()

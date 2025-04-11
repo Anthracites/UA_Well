@@ -22,6 +22,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         
         startButton.addTarget(self, action: #selector(GoToInstruction), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
 
     }
     
