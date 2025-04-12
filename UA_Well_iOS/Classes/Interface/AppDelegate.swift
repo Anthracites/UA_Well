@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            window?.makeKeyAndVisible()
         TranslationDownloader.shared.initializeTranslations()
         ExerciseManager.shared.initializeExercises()
+        PreventionManager.shared.initializePreventionManager()
            return true
        }
 }

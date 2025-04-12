@@ -3,6 +3,7 @@ import Foundation
 public struct Translation: Codable {
     let currentLanguage: String?
     let commonButtons: CommonButtons?
+    let prevention: Prevention?
     let aboutApplication: AboutApplication?
     let aboutUsAndcontactUs: AboutUsAndContactUs?
     let longTermWork: LongTermWork?
@@ -25,8 +26,8 @@ public struct Translation: Codable {
         let Return_to_parameters_title: String
         let Return_to_symptoms_title: String
         let Return_to_help_type_page_title: String
-
-
+        
+        
         enum CodingKeys: String, CodingKey {
             case Start = "Start"
             case Next = "Next"
@@ -45,21 +46,62 @@ public struct Translation: Codable {
             case Return_to_parameters_title = "Return_to_parameters_title"
             case Return_to_symptoms_title = "Return_to_symptoms_title"
             case Return_to_help_type_page_title = "Return_to_help_type_page_title"
-
+            
         }
     }
     
-    
-    struct AboutApplication: Codable {
+    struct Prevention:Codable{
+
+        let Title: String
+        let Description: String
+        let Intensivities: [Intensivity]
+        let Durations:[Duration]
         
-            let AboutAppTitle: String
-            let AboutAppDescription: String
+        struct Intensivity : Codable
+        {
+            let ID: Int
+            let Name: String
+            let Instruction: String
             
             enum CodingKeys:String, CodingKey
             {
-                case AboutAppTitle = "AboutAppTitle"
-                case AboutAppDescription = "AboutAppDescription"
+                case ID = "ID"
+                case Name = "Name"
+                case Instruction = "Instruction"
             }
+        }
+        
+        struct Duration : Codable
+        {
+            let ID: Int
+            let Name: String
+            
+            enum CodingKeys:String, CodingKey
+            {
+                case ID = "ID"
+                case Name = "Name"
+            }
+        }
+        
+    enum CodingKeys: String, CodingKey
+    {
+        case Description = "Description"
+        case Title = "Title"
+        case Intensivities = "Intensivities"
+        case Durations = "Durations"
+    }
+}
+    
+    struct AboutApplication: Codable {
+        
+        let AboutAppTitle: String
+        let AboutAppDescription: String
+        
+        enum CodingKeys:String, CodingKey
+        {
+            case AboutAppTitle = "AboutAppTitle"
+            case AboutAppDescription = "AboutAppDescription"
+        }
     }
     
     struct AboutUsAndContactUs: Codable{
@@ -122,6 +164,7 @@ public struct Translation: Codable {
     enum CodingKeys: String, CodingKey {
         case currentLanguage = "currentLanguage"
         case commonButtons = "Common_buttons"
+        case prevention = "Prevention"
         case HelpTypes = "HelpTypes"
         case Symptoms = "Symptoms"
         case Exercises = "Exercises"
@@ -141,13 +184,13 @@ public struct Translation: Codable {
             let TherapyPartName: String
             let Instruction: String
             
-                enum CodingKeys:String, CodingKey
-                {
-                    case TherapyPartID = "DayID"
-                    case TherapyPartName = "TherapyPartName"
-                    case Instruction = "Instruction"
-                    
-                }
+            enum CodingKeys:String, CodingKey
+            {
+                case TherapyPartID = "DayID"
+                case TherapyPartName = "TherapyPartName"
+                case Instruction = "Instruction"
+                
+            }
         }
         
         enum CodingKeys: String, CodingKey {
@@ -158,104 +201,5 @@ public struct Translation: Codable {
         }
     }
     
-
-    /*
-    struct Language_selection_screen
-    {
-        var return_page_title: String;
-        var title: String;
-        
-        enum CodingKeys:String, CodingKey
-        {
-            case return_page_title
-            case title
-        }
-    }
     
-    struct Therapy_options_screen
-    {
-        var quick_help: String;
-        var long_term_work: String;
-        var prevention: String;
-        var return_page_title: String;
-        var title: String;
-        
-        enum CodingKeys:String, CodingKey
-        {
-            case quick_help
-            case long_term_work
-            case prevention
-            case return_page_title
-            case title
-        }
-    }
-    
-    struct Contacts_screen
-    {
-        var title: String;
-        var description: String;
-        var language_title: String;
-        var contacts_title: String;
-        
-        struct Contascts
-        {
-            var name:String;
-            var surname:String;
-            var languages:String;
-            var description:String;
-            var email:String;
-            var youtube:String;
-            
-            enum CodingKeys:String, CodingKey
-            {
-                case name
-                case surname
-                case languages
-                case description
-                case email
-                case youtube
-            }
-        }
-        
-        enum CodingKeys:String, CodingKey
-        {
-            case title
-            case description
-            case language_title
-            case contacts_title
-        }
-        
-    }
-    
-    struct   LongTermWork
-    {
-        var TherapyType:String;
-        var TherapyTypeID:Int32;
-        var TherapyDescriptio:String;
-        
-        struct TherapyDay
-        {
-            var Day_number: Int32;
-            var DayLabel: String;
-            var Instruction: String;
-            
-            enum CodingKeys:String, CodingKey
-            {
-                case Day_number
-                case DayLabel
-                case Instruction
-            }
-        }
-        enum CodingKeys:String, CodingKey
-        {
-            case TherapyType
-            case TherapyTypeID
-            case TherapyDescriptio
-        }
-    }
-    // Deserialization
-     */
-
-
 }
-
