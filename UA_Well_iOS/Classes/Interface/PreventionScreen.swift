@@ -8,6 +8,8 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var startButton:UIButton!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var descriptionText: UITextView!
     var dropDownLabels: [String] = ["Intensivity", "Duration"]
     var dropDownItems: [[String]] = [["Minimum", "Medium", "Maximum"], ["Two", "Three", "Four"]]
     
@@ -22,14 +24,22 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         
         startButton.addTarget(self, action: #selector(GoToInstruction), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
-
+        TranslateView()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
 
+    @objc func TranslateView()
+    {
+        let _translation = TranslationDownloader.shared.CurrentTranslation
+        backButton.setTitle(_translation?.commonButtons?.Return_to_help_type_page_title, for: .normal)
+        startButton.setTitle(_translation?.commonButtons?.Start, for: .normal)
+        titleText.text = _translation?.prevention?.Title
+        descriptionText.text = _translation?.prevention?.Description
+
+    }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan

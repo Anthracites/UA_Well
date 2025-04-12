@@ -174,7 +174,9 @@
                     <connections>
                         <outlet property="_collectionView" destination="7bN-eK-RzM" id="u8k-Ve-tMP"/>
                         <outlet property="backButton" destination="oR5-3I-Xmj" id="FAN-IV-h6U"/>
+                        <outlet property="descriptionText" destination="ENX-ul-jPT" id="VpW-VR-Vw2"/>
                         <outlet property="startButton" destination="BRK-jJ-o3B" id="SuU-U3-y08"/>
+                        <outlet property="titleText" destination="0IG-ax-rJ3" id="Svj-zY-WZZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
