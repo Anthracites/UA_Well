@@ -107,7 +107,7 @@ class TranslationDownloader {
                             }
                         }
                     }
-                    print("Translations directory path: \(fileURLs[0].path)")
+                    //print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {

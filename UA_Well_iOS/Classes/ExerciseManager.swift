@@ -11,6 +11,7 @@ class ExerciseManager {
     var CurrentHelpType: String!
     var HelpTypes: [HelpType] = []
     var QuickHelpExercises: [HelpExercises] = []
+    var PreventionParameters: [PreventionParameter] = []
 
     private init() {} // Закрытый инициализатор
 
@@ -31,8 +32,27 @@ class ExerciseManager {
 
         GetExersices()
         GetHelpTypes()
+        GetPreventionParameters()
     }
     
+    private func GetPreventionParameters()
+    {
+        if
+            let url = Bundle.main.url(forResource: "PreventionConfig", withExtension: "json")
+        {
+
+            do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let _preventionParameter = try decoder.decode([PreventionParameter].self, from: data)
+                //print(helpType)
+                PreventionParameters = _preventionParameter
+
+            } catch {
+                print("Ошибка при загрузке данных: \(error)")
+            }
+        }
+    }
     
     private func GetHelpTypes()
     {

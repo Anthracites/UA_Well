@@ -10,12 +10,12 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var startButton:UIButton!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
-    var dropDownLabels: [String] = ["Intensivity", "Duration"]
-    var dropDownItems: [[String]] = [["Minimum", "Medium", "Maximum"], ["Two", "Three", "Four"]]
+    var PreventionParameters: [PreventionParameter] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PreventionParameters = ExerciseManager.shared.PreventionParameters
         _collectionView.register(UINib(nibName: "CustomDropDown", bundle: nil), forCellWithReuseIdentifier: "CustomDropDown")
         _collectionView.dataSource = self
         _collectionView.delegate = self
@@ -28,7 +28,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return PreventionParameters.count
     }
 
     @objc func TranslateView()
@@ -40,6 +40,16 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         descriptionText.text = _translation?.prevention?.Description
 
     }
+    @objc func GetConfig()
+    {
+        
+    }
+    
+    @objc func TranslateDropDown(DDLabel: String, DDItems: [String], DropDown: CustomDropDown)
+    {
+        DropDown.ddLabel.text = DDLabel
+        
+    }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan
@@ -47,11 +57,12 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         let newButoon: UIButton = cell.dropDown
         // Настройка ячейки
         //cell.backgroundColor = .red
-        let _label = dropDownLabels[indexPath.item]
+        let _label = PreventionParameters[indexPath.item].Parametr_name
         //cell.dropDown.backgroundColor = .gray
         cell.copyDDProperties(targetButton: newButoon)
         cell.contentMode = .center
-        cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: dropDownItems[indexPath.item])
+        let _stringArray = PreventionParameters[indexPath.item].Parametr_values.map(String.init)
+        cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: _stringArray)
         newButoon.setTitle(cell.dropDown.menu?.children[0].title, for: .normal)
         cell.ddLabel.text = _label
         //newButoon.center = CGPoint(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.midY) // Центрируем кнопку внутри ячейки

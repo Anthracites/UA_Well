@@ -36,6 +36,7 @@
 		D0863B5C2CFCA15A005D70A2 /* HelpTypes.json in Resources */ = {isa = PBXBuildFile; fileRef = D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */; };
 		D0BFB30A2D65616700F6DE22 /* BreathWidget_r.gif in Resources */ = {isa = PBXBuildFile; fileRef = D0BFB3092D65616700F6DE22 /* BreathWidget_r.gif */; };
 		D0BFB3C02D6565A800F6DE22 /* Exercises.json in Resources */ = {isa = PBXBuildFile; fileRef = D0BFB3BF2D6565A800F6DE22 /* Exercises.json */; };
+		D0C0E0842DADB89D00396B89 /* PreventionConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = D0C0E0832DADB89D00396B89 /* PreventionConfig.json */; };
 		D0D057BC2CFA07CC00CDF83F /* CommonButtonBG.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HelpTypes.json; sourceTree = "<group>"; };
 		D0BFB3092D65616700F6DE22 /* BreathWidget_r.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = BreathWidget_r.gif; sourceTree = "<group>"; };
 		D0BFB3BF2D6565A800F6DE22 /* Exercises.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Exercises.json; sourceTree = "<group>"; };
+		D0C0E0832DADB89D00396B89 /* PreventionConfig.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PreventionConfig.json; sourceTree = "<group>"; };
 		D0D057BB2CFA07CC00CDF83F /* CommonButtonBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommonButtonBG.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 				D01248B32C99CE6D00FBB550 /* sounds */,
 				D01248B72C99CE6D00FBB550 /* translations */,
 				D00467512CFB41AB006AC04E /* Quick_help_exercise.json */,
+				D0C0E0832DADB89D00396B89 /* PreventionConfig.json */,
 				D0BFB3BF2D6565A800F6DE22 /* Exercises.json */,
 				D0863B5B2CFCA15A005D70A2 /* HelpTypes.json */,
 			);
@@ -281,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0C0E0842DADB89D00396B89 /* PreventionConfig.json in Resources */,
 				D01248C42C99CE6D00FBB550 /* start.svg in Resources */,
 				D07A48232C99BC4600DEE2C7 /* Assets.xcassets in Resources */,
 				D01248CC2C99CE6E00FBB550 /* uk.json in Resources */,

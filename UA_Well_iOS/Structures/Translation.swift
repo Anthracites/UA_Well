@@ -54,6 +54,8 @@ public struct Translation: Codable {
 
         let Title: String
         let Description: String
+        let IntesityLabel: String
+        let DurationLabel: String
         let Intensivities: [Intensivity]
         let Durations:[Duration]
         
@@ -87,6 +89,8 @@ public struct Translation: Codable {
     {
         case Description = "Description"
         case Title = "Title"
+        case IntesityLabel = "IntesityLabel"
+        case DurationLabel = "DurationLabel"
         case Intensivities = "Intensivities"
         case Durations = "Durations"
     }
