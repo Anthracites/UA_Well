@@ -10,12 +10,12 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var startButton:UIButton!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
-    var PreventionParameters: [PreventionParameter] = []
+    var PPLabels: [String] = ["Sensity", "Duration"]
+    var PPValues: [[String]] = [["Min", "Mid", "Max"],["Two", "Three", "Four"]]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PreventionParameters = ExerciseManager.shared.PreventionParameters
         _collectionView.register(UINib(nibName: "CustomDropDown", bundle: nil), forCellWithReuseIdentifier: "CustomDropDown")
         _collectionView.dataSource = self
         _collectionView.delegate = self
@@ -28,7 +28,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PreventionParameters.count
+        return 2
     }
 
     @objc func TranslateView()
@@ -45,10 +45,23 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         
     }
     
-    @objc func TranslateDropDown(DDLabel: String, DDItems: [String], DropDown: CustomDropDown)
+    @objc func TranslateDropDown(DDLabel: String, DropDown: CustomDropDown)
     {
-        DropDown.ddLabel.text = DDLabel
+        let DDValues = [String]()
+        let _translation = TranslationDownloader.shared.CurrentTranslation
+        DropDown.ddLabel.text = _translation?.prevention?.IntesityLabel
         
+        switch DDLabel
+        {
+        case "Sensity":
+            DropDown.ddLabel.text = _translation?.prevention?.IntesityLabel
+
+        case "Duration":
+            DropDown.ddLabel.text = _translation?.prevention?.DurationLabel
+        default:
+            " "
+        }
+
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,14 +70,15 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         let newButoon: UIButton = cell.dropDown
         // Настройка ячейки
         //cell.backgroundColor = .red
-        let _label = PreventionParameters[indexPath.item].Parametr_name
+        let _label = PPLabels[indexPath.item]
         //cell.dropDown.backgroundColor = .gray
         cell.copyDDProperties(targetButton: newButoon)
         cell.contentMode = .center
-        let _stringArray = PreventionParameters[indexPath.item].Parametr_values.map(String.init)
+        let _stringArray = PPValues[indexPath.item]
         cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: _stringArray)
         newButoon.setTitle(cell.dropDown.menu?.children[0].title, for: .normal)
         cell.ddLabel.text = _label
+        TranslateDropDown(DDLabel: cell.ddLabel.text!, DropDown: cell)
         //newButoon.center = CGPoint(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.midY) // Центрируем кнопку внутри ячейки
         //newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         //newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
