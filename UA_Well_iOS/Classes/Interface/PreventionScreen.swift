@@ -47,17 +47,40 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func TranslateDropDown(DDLabel: String, DropDown: CustomDropDown)
     {
-        let DDValues = [String]()
+        //let DDValues = [String]()
         let _translation = TranslationDownloader.shared.CurrentTranslation
         DropDown.ddLabel.text = _translation?.prevention?.IntesityLabel
+        var _labels :[String] = []
         
         switch DDLabel
         {
         case "Sensity":
             DropDown.ddLabel.text = _translation?.prevention?.IntesityLabel
+            if let _translationLabels = _translation?.prevention?.Intensivities
+            {
+                for _intesity in _translationLabels
+                {
+                    _labels.append(_intesity.Name)
+                }
+                DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
+                DropDown.dropDown.setTitle(_translationLabels[0].Name, for: .normal)
+
+            }
 
         case "Duration":
             DropDown.ddLabel.text = _translation?.prevention?.DurationLabel
+            
+            if let _translationLabels = _translation?.prevention?.Durations
+            {
+                for _duration in _translationLabels
+                {
+                    _labels.append(_duration.Name)
+                }
+                DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
+                DropDown.dropDown.setTitle(_translationLabels[0].Name, for: .normal)
+
+            }
+
         default:
             " "
         }
@@ -79,9 +102,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         newButoon.setTitle(cell.dropDown.menu?.children[0].title, for: .normal)
         cell.ddLabel.text = _label
         TranslateDropDown(DDLabel: cell.ddLabel.text!, DropDown: cell)
-        //newButoon.center = CGPoint(x: cell.contentView.bounds.midX, y: cell.contentView.bounds.midY) // Центрируем кнопку внутри ячейки
-        //newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
-        //newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
         
         
         //view.addSubview(cell.dropDown)
