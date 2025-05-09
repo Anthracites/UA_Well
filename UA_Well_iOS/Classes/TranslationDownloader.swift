@@ -101,23 +101,27 @@ class TranslationDownloader {
                                 if translation.currentLanguage == "Українська"
                                 {
                                     DefaultLanguage = translation
+                                    print("Current langauge seleted!!!!")
                                 }
                                 
                                 Translations.append(translation)
                             }
                         }
                     }
-                    //print("Translations directory path: \(fileURLs[0].path)")
+                    print (" Translations success!", Translations[0].currentLanguage as Any)
+                    print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {
                     print("Ошибка парсинга", error)
+                    print("Ошибка подробнее", error.localizedDescription)
+                    print("Translations directory path: \(fileURLs[0].path)")
                 }
             }
         }
                 
                 catch {
-                    print("Ошибка при загрузке данных из файла ")
+                    print("Ошибка при загрузке данных из файла ",translationsDirURL.path)
                 }
             }
         }
@@ -135,13 +139,13 @@ class TranslationDownloader {
         
         enum CodingKeys: String, CodingKey {
             case currentLanguage
-            case commonButtons = "Common_buttons"
-            case prevention = "Prevention"
-            case aboutApplication = "AboutApplication"
-            case aboutUsAndcontactUs = "AboutUsAndContactUs"
+            case commonButtons = "commonButtons"
+            case prevention = "prevention"
+            case aboutApplication = "aboutApplication"
+            case aboutUsAndcontactUs = "aboutUsAndcontactUs"
             case HelpTypes
             case Symptoms
             case Exercises
-            case longTermWork = "LongTermWork"
+            case longTermWork = "longTermWork"
         }
     }

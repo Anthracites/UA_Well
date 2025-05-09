@@ -87,8 +87,8 @@ public struct Translation: Codable {
         
     enum CodingKeys: String, CodingKey
     {
-        case Description = "Description"
         case Title = "Title"
+        case Description = "Description"
         case IntesityLabel = "IntesityLabel"
         case DurationLabel = "DurationLabel"
         case Intensivities = "Intensivities"
@@ -167,14 +167,14 @@ public struct Translation: Codable {
     
     enum CodingKeys: String, CodingKey {
         case currentLanguage = "currentLanguage"
-        case commonButtons = "Common_buttons"
-        case prevention = "Prevention"
+        case commonButtons = "commonButtons"
+        case prevention = "prevention"
         case HelpTypes = "HelpTypes"
         case Symptoms = "Symptoms"
         case Exercises = "Exercises"
         case aboutApplication = "AboutApplication"
         case aboutUsAndcontactUs = "AboutUsAndContactUs"
-        case longTermWork = "LongTermWork"
+        case longTermWork = "longTermWork"
     }
     
     struct LongTermWork: Codable {
