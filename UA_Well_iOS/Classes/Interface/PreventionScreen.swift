@@ -91,6 +91,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomDropDown", for: indexPath) as! CustomDropDown
         let newButoon: UIButton = cell.dropDown
+        //newButoon.tag = indexPath.item
         // Настройка ячейки
         //cell.backgroundColor = .red
         let _label = PPLabels[indexPath.item]
@@ -102,17 +103,22 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         newButoon.setTitle(cell.dropDown.menu?.children[0].title, for: .normal)
         cell.ddLabel.text = _label
         TranslateDropDown(DDLabel: cell.ddLabel.text!, DropDown: cell)
-        
-        
+
         //view.addSubview(cell.dropDown)
         
-        print("Prevention scereen: Cell added!")
+        //print("Prevention scereen: Cell added!")
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
         return cell
     }
+    
+    @objc func GetOptions()
+    {
+        
+    }
+    
     @objc func GoToInstruction()
     {
         let _sbName = "PreventionInstruction"

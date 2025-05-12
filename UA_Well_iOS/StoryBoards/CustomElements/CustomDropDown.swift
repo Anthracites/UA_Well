@@ -27,11 +27,10 @@ class CustomDropDown: UICollectionViewCell {
         }
     
     func SetupPullDownMenu(DropDown: UIButton, DropDownItems: [String]) {
-        let menu = UIMenu(title: "", children: DropDownItems.map { option in
-            UIAction(title: option, handler: { _ in
-                print("Выбранный элемент: \(option)")
+        let menu = UIMenu(title: "", children: DropDownItems.enumerated().map { index, option in
+            UIAction(title: option, identifier: UIAction.Identifier("\(index)"), handler: { action in
+                print("Выбранный элемент: \(option), индекс: \(index)")
                 DropDown.setTitle(option, for: .normal)
-
             })
         })
         DropDown.menu = menu

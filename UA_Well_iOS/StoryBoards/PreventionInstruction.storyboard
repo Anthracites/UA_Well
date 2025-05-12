@@ -39,7 +39,7 @@
                                         <accessibility key="accessibilityConfiguration" label="Return to language selection"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Return to help type" image="left_right.png">
+                                        <state key="normal" title="Return to help options" image="left_right.png">
                                             <color key="titleColor" systemColor="systemIndigoColor"/>
                                         </state>
                                     </button>
@@ -132,7 +132,7 @@
                                                 <accessibility key="accessibilityConfiguration" label="Start"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Start" backgroundImage="CommonButtonBG.png"/>
+                                                <state key="normal" title="Start Instruction" backgroundImage="CommonButtonBG.png"/>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -198,7 +198,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
