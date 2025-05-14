@@ -5,16 +5,25 @@ class PreventionInstruction:  UIViewController {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var startExerciseButton: UIButton!
+    @IBOutlet weak var instructionText: UITextView!
     var previousScreenName = "PreventionScreen"
+    var currentTranslation: Translation!
 
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_parameters_title, for: .normal)
         startExerciseButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
-        
-
+        TranslateView()
+    }
+    
+    @objc func TranslateView()
+    {
+        currentTranslation = TranslationDownloader.shared.CurrentTranslation
+        backButton.setTitle(currentTranslation.commonButtons?.Return_to_parameters_title, for: .normal)
+        let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Name
+        instructionText.text = s
     }
     
     @objc func OnClickStartButton()

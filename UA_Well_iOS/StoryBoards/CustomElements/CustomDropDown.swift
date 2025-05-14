@@ -4,10 +4,12 @@ import UIKit
 class CustomDropDown: UICollectionViewCell {
     @IBOutlet weak var ddLabel: UILabel!
     @IBOutlet weak var dropDown: UIButton!
+    public var CurrentOption: Int!
     
     
         override func awakeFromNib() {
             super.awakeFromNib()
+            CurrentOption = 0
         }
         
         func copyDDProperties(targetButton: UIButton) {
@@ -30,6 +32,7 @@ class CustomDropDown: UICollectionViewCell {
         let menu = UIMenu(title: "", children: DropDownItems.enumerated().map { index, option in
             UIAction(title: option, identifier: UIAction.Identifier("\(index)"), handler: { action in
                 print("Выбранный элемент: \(option), индекс: \(index)")
+                self.CurrentOption = index
                 DropDown.setTitle(option, for: .normal)
             })
         })

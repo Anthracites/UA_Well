@@ -18,7 +18,7 @@
         <!--Prevention Instruction-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="PreventionInstruction" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="PreventionInstruction" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="PreventionInstruction" storyboardIdentifier="PreventionInstruction" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="PreventionInstruction" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m3s-XS-xdl">
                         <rect key="frame" x="0.0" y="0.0" width="361" height="1368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,6 +178,7 @@
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>
                         <outlet property="backButton" destination="YBj-Nr-GQd" id="021-Qz-nOt"/>
+                        <outlet property="instructionText" destination="wCP-iR-Ogc" id="ki9-8k-ZLo"/>
                         <outlet property="startExerciseButton" destination="6T8-bV-UNq" id="3fk-Fp-tlt"/>
                     </connections>
                 </viewController>
@@ -198,7 +199,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

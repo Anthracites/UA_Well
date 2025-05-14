@@ -12,5 +12,7 @@ class PreventionManager {
     
     func initializePreventionManager() {
         guard PreventionDurations.isEmpty else { return }
+        CurrentSensity = 0
+        CurrentDuration = 0
     }
 }

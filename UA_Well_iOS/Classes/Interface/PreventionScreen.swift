@@ -12,6 +12,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var descriptionText: UITextView!
     var PPLabels: [String] = ["Sensity", "Duration"]
     var PPValues: [[String]] = [["Min", "Mid", "Max"],["Two", "Three", "Four"]]
+    var sensityCurrentOptions, durationCurrentOptions: CustomDropDown!
     
     
     override func viewDidLoad() {
@@ -64,6 +65,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
                 }
                 DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
                 DropDown.dropDown.setTitle(_translationLabels[0].Name, for: .normal)
+                sensityCurrentOptions = DropDown
 
             }
 
@@ -78,6 +80,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
                 }
                 DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
                 DropDown.dropDown.setTitle(_translationLabels[0].Name, for: .normal)
+                durationCurrentOptions = DropDown
 
             }
 
@@ -116,21 +119,25 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func GetOptions()
     {
-        
+        let _optionsCells = _collectionView.visibleCells.compactMap { $0 as? CustomDropDown }
+        PreventionManager.shared.CurrentSensity = sensityCurrentOptions.CurrentOption
+        PreventionManager.shared.CurrentDuration = durationCurrentOptions.CurrentOption
+        print("индекс класса pScreen: \(String(describing: _optionsCells[0].CurrentOption))")
     }
     
     @objc func GoToInstruction()
     {
-        let _sbName = "PreventionInstruction"
-            let storyboard = UIStoryboard(name: _sbName, bundle: nil)
-            // Инициализируем ViewController
-            let secondVC = storyboard.instantiateViewController(withIdentifier: _sbName)
-            // Переход к новому ViewController
-            self.present(secondVC, animated: true, completion: nil)
+        GetOptions()
+
+        let storyboard = UIStoryboard(name: "PreventionInstruction", bundle: nil)
+        // Инициализируем ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: "PreventionInstruction") as! PreventionInstruction
+        self.present(secondVC, animated: true, completion: nil)
     }
     
     @objc func BackToPreviousScreen()
     {
+        
         let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
         // Инициализируем ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName)
