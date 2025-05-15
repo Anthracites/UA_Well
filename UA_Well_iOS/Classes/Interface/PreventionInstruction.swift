@@ -1,29 +1,78 @@
 import Foundation
 import UIKit
 
-class PreventionInstruction:  UIViewController {
-    
+class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var startExerciseButton: UIButton!
+    var startExerciseButton: UIButton!
+    @IBOutlet weak var instructionTitle: UILabel!
     @IBOutlet weak var instructionText: UITextView!
+    @IBOutlet weak var _collectionView: UICollectionView!
     var previousScreenName = "PreventionScreen"
     var currentTranslation: Translation!
+    var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
 
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-        startExerciseButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
+        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        _collectionView.dataSource = self
+        _collectionView.delegate = self
+        ExerciseManager.shared.CurrentHelpType = "Prevention"
+        //startExerciseButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
         TranslateView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return buttonLabels.count
+    }
+    
+    @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // _collectionView.backgroundColor = .cyan
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
+        let newButoon: UIButton = cell.MenuButton
+        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
+        newButoon.tag = indexPath.item
+        newButoon.setTitle(buttonLabels[indexPath.item], for: .normal)
+        TranslateButton(_currentButton: newButoon)
+        newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+        cell.contentMode = .center
+        
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
+        }
+        print ("Cell added. Cell index: ", indexPath.item)
+        return cell
     }
     
     @objc func TranslateView()
     {
         currentTranslation = TranslationDownloader.shared.CurrentTranslation
         backButton.setTitle(currentTranslation.commonButtons?.Return_to_parameters_title, for: .normal)
-        let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Name
+        let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Instruction
         instructionText.text = s
+        instructionTitle.text = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Name
+    }
+    
+    func TranslateButton(_currentButton: UIButton)
+    {
+       // StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)
+        let _label = _currentButton.titleLabel?.text
+        let _translatedLabel: String
+        
+        switch _label {
+        case "ExerciseView":
+            _translatedLabel = currentTranslation.commonButtons!.Start
+        case "AboutUsAndContactUs":
+            _translatedLabel = currentTranslation.commonButtons!.Contact_specialist
+
+        default:
+            _translatedLabel = "Ok"
+        }
+        
+        _currentButton.setTitle(_translatedLabel, for: .normal)
     }
     
     @objc func OnClickStartButton()
@@ -37,6 +86,25 @@ class PreventionInstruction:  UIViewController {
         
         
         let _storyBoardName = "ExerciseView"
+        
+        let storyboard = UIStoryboard(name: _storyBoardName, bundle: nil)
+        // Инициализируем ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: _storyBoardName)
+        // Переход к новому ViewController
+        self.present(secondVC, animated: true, completion: nil)
+        
+    }
+    @objc func OnClickMenuButton(_currentButton: UIButton)
+    {
+        QuickHelpManager.shared.Symtoms.sort(by: { $0.symptom_ID < $1.symptom_ID})
+        ExerciseManager.shared.QuickHelpExercises.sort(by: { $0.symptom_ID < $1.symptom_ID})
+        QuickHelpManager.shared.CurrentExersicesArray = ExerciseManager.shared.QuickHelpExercises[0].help_exercise_array
+        QuickHelpManager.shared.CurrentExercise = 1
+        QuickHelpManager.shared.CurrentSyptom  = QuickHelpManager.shared.Symtoms[5]
+        
+        
+        
+        let _storyBoardName = buttonLabels[_currentButton.tag]
         
         let storyboard = UIStoryboard(name: _storyBoardName, bundle: nil)
         // Инициализируем ViewController
