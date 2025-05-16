@@ -13,18 +13,39 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var jsonFiles: [URL] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     var translations: [Translation] = []
+    var isFirsShow: Bool!
     
     @IBOutlet weak var _collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        
+        if (isFirsShow == nil)
+        {
+            DispatchQueue.main.async {
+                let savedLanguage = UserDefaults.standard.string(forKey: "Language")
+                if savedLanguage != nil {
+                    let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
+                    // Инициализируем ViewController
+                    let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
+                    self.present(secondVC, animated: true, completion: nil)
+                    self.isFirsShow = false
+                }
+            }
+        }
+        else
+        {
+            SetupDefoultLanguage()
+        }
+
+       _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
      //   funkGetJSONs()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
-        SetupDefoultLanguage()
+
+
 
     }
     
@@ -37,7 +58,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return translations.count
     }
     func didDismiss() {
-        print("Main closed!!!")
+        self.isFirsShow = false
     }
     
     func SetupDefoultLanguage()
@@ -111,10 +132,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //            print ("Symptom name: ", _array[i].symptom_name, ", Symptom ID: ", _array[i].symptom_ID, " Symptom index: ", i)
 //            i += 1
 //        }
+        UserDefaults.standard.set(_currentButton.titleLabel?.text, forKey: "Language")
 
             let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
             self.present(secondVC, animated: true, completion: nil)    }
     }
+
+
 

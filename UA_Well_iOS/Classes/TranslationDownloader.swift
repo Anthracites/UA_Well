@@ -104,18 +104,25 @@ class TranslationDownloader {
                                     print("Current langauge seleted!!!!")
                                 }
                                 
+                                let savedLanguage = UserDefaults.standard.string(forKey: "Language")
+                                if translation.currentLanguage == savedLanguage
+                                {
+                                    CurrentTranslation = translation
+                                    print("Saved language: ", savedLanguage)
+                                }
+                                
                                 Translations.append(translation)
                             }
                         }
                     }
-                    print (" Translations success!", Translations[0].currentLanguage as Any)
-                    print("Translations directory path: \(fileURLs[0].path)")
+                    //print (" Translations success!", Translations[0].currentLanguage as Any)
+                    //print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {
-                    print("Ошибка парсинга", error)
-                    print("Ошибка подробнее", error.localizedDescription)
-                    print("Translations directory path: \(fileURLs[0].path)")
+                    //print("Ошибка парсинга", error)
+                    //print("Ошибка подробнее", error.localizedDescription)
+                    //print("Translations directory path: \(fileURLs[0].path)")
                 }
             }
         }

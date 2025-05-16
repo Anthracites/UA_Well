@@ -21,7 +21,6 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         _collectionView.contentMode = .center
         _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_language_selecttion_title, for: .normal)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -74,8 +73,9 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     {
         let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
         // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
+        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName) as! ViewController
         // Переход к новому ViewController
+        secondVC.isFirsShow = false
         self.present(secondVC, animated: true, completion: nil)
     }
     
