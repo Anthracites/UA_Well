@@ -8,6 +8,7 @@ class TranslationDownloader {
     var Translations: [Translation] = []
     var CurrentTranslation: Translation!
     var DefaultLanguage: Translation!
+    var IsFirstRun: Bool!
     
     private init() {} // Закрытый инициализатор
     
@@ -105,18 +106,24 @@ class TranslationDownloader {
                                 }
                                 
                                 let savedLanguage = UserDefaults.standard.string(forKey: "Language")
+                                
+                                if savedLanguage != nil
+                                {
+                                    IsFirstRun = false
+                                }
+                                
                                 if translation.currentLanguage == savedLanguage
                                 {
                                     CurrentTranslation = translation
                                     print("Saved language: ", savedLanguage)
                                 }
-                                
+
                                 Translations.append(translation)
                             }
                         }
                     }
                     //print (" Translations success!", Translations[0].currentLanguage as Any)
-                    print("Translations directory path: \(fileURLs[0].path)")
+                    //print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {

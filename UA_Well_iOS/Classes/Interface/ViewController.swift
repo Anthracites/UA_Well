@@ -13,30 +13,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var jsonFiles: [URL] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     var translations: [Translation] = []
-    var isFirsShow: Bool!
+    var isFirstRun: Bool!
     
     @IBOutlet weak var _collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //isFirstRun = TranslationDownloader.shared.IsFirstRun
         
-        if (isFirsShow == nil)
-        {
+
             DispatchQueue.main.async {
                 let savedLanguage = UserDefaults.standard.string(forKey: "Language")
-                if savedLanguage != nil {
+                self.isFirstRun = TranslationDownloader.shared.IsFirstRun
+                if (self.isFirstRun == true) && (savedLanguage != nil)
+                {
+                    print("Is first run: ", String(self.isFirstRun))
                     let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
                     // Инициализируем ViewController
                     let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
                     self.present(secondVC, animated: true, completion: nil)
-                    self.isFirsShow = false
                 }
             }
-        }
-        else
-        {
-            SetupDefoultLanguage()
-        }
 
        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
@@ -44,56 +41,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
      //   funkGetJSONs()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
-
-
-
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         translations = TranslationDownloader.shared.Translations // Доступ к массиву translations
-               // Используем массив translations
-               //print(translations)
-
         return translations.count
     }
-    func didDismiss() {
-        self.isFirsShow = false
-    }
     
-    func SetupDefoultLanguage()
-    {
-        for langauge in TranslationDownloader.shared.Translations
-        {
-            if (langauge.currentLanguage == "Українська")
-            {
-                TranslationDownloader.shared.CurrentTranslation = langauge
-            }
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        TranslationDownloader.shared.IsFirstRun = false
+        print("Storyboard закрывается")
     }
-//    @objc func funkGetJSONs() {
-//        let fileManager = FileManager.default
-//        let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-//        let translationsURL = documentsURL.appendingPathComponent("Content/translations")
-//        
-//        print("Translations directory path: \(translationsURL.path)")
-//        
-//        do {
-//            let fileURLs = try fileManager.contentsOfDirectory(at: translationsURL, includingPropertiesForKeys: nil)
-//            jsonFiles = fileURLs.filter { $0.pathExtension == "json" }
-//            print("Found \(jsonFiles.count) JSON files")
-//            var i = Int()
-//            for file in jsonFiles {
-//                print(file.lastPathComponent)
-//                i+=1;
-//                print(String(i))
-//            }
-//        } catch {
-//            print("Error getting files: \(error)")
-//        }
-//        
-//        
-//    }
+
+
+
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
@@ -125,14 +88,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let a = _currentButton.tag
             TranslationDownloader.shared.CurrentTranslation = translations[a]
         QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
-        
-//        let _array:[Symptom] = TranslationDownloader.shared.CurrentTranslation.Symptoms
-//        var i:Int = 0
-//        for _ in _array {
-//            print ("Symptom name: ", _array[i].symptom_name, ", Symptom ID: ", _array[i].symptom_ID, " Symptom index: ", i)
-//            i += 1
-//        }
+
         UserDefaults.standard.set(_currentButton.titleLabel?.text, forKey: "Language")
+        print("Language selected and saved. Current language: ", _currentButton.titleLabel?.text)
 
             let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
             // Инициализируем ViewController

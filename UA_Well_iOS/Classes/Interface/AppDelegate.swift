@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TranslationDownloader.shared.initializeTranslations()
         ExerciseManager.shared.initializeExercises()
         PreventionManager.shared.initializePreventionManager()
+        TranslationDownloader.shared.IsFirstRun = true
            return true
        }
 }

@@ -75,7 +75,6 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         // Инициализируем ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName) as! ViewController
         // Переход к новому ViewController
-        secondVC.isFirsShow = false
         self.present(secondVC, animated: true, completion: nil)
     }
     
