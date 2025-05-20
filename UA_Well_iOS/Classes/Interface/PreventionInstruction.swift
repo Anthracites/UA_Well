@@ -7,6 +7,11 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var instructionTitle: UILabel!
     @IBOutlet weak var instructionText: UITextView!
     @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var PreventionAlarm:  UISwitch!
+    var PreventionAlarmTime: Data!
+    var PreventionDuration: Int!
+    var PreventionIntensity: Int!
+    var PreventionCurrentDay: Int!
     var previousScreenName = "PreventionScreen"
     var currentTranslation: Translation!
     var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
@@ -20,8 +25,8 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         _collectionView.dataSource = self
         _collectionView.delegate = self
         ExerciseManager.shared.CurrentHelpType = "Prevention"
-        //startExerciseButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
         TranslateView()
+        PreventionCurrentDay = 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -53,7 +58,8 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         backButton.setTitle(currentTranslation.commonButtons?.Return_to_parameters_title, for: .normal)
         let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Instruction
         instructionText.text = s
-        instructionTitle.text = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Name
+        PreventionIntensity = PreventionManager.shared.CurrentSensity
+        instructionTitle.text = currentTranslation.prevention?.Intensivities[PreventionIntensity].Name
     }
     
     func TranslateButton(_currentButton: UIButton)
@@ -111,7 +117,14 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         let secondVC = storyboard.instantiateViewController(withIdentifier: _storyBoardName)
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
-        
+        SaveOptions()
+    }
+    
+    @objc func GetOptions()
+    {
+        PreventionIntensity = PreventionManager.shared.CurrentSensity
+        PreventionDuration = PreventionManager.shared.CurrentDuration
+        PreventionAlarmTime = Data()
     }
     
     @objc func BackToPreviousScreen()
@@ -121,5 +134,15 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName)
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
+    }
+    
+    @objc func SaveOptions()
+    {
+        GetOptions()
+        UserDefaults.standard.set(PreventionAlarm.isOn, forKey: "PreventionAlarm")
+        UserDefaults.standard.set(PreventionAlarmTime, forKey: "PreventionAlarmTime")
+        UserDefaults.standard.set(PreventionDuration, forKey: "PreventionDuration")
+        UserDefaults.standard.set(PreventionIntensity, forKey: "PreventionIntensity")
+        UserDefaults.standard.set(PreventionCurrentDay, forKey: "PreventionCurrentDay") // Для уведомлений
     }
 }

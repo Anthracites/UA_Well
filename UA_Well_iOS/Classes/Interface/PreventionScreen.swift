@@ -144,7 +144,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
-    
 
 }
 

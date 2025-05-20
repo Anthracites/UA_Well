@@ -10,9 +10,13 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var alarmTitle: UILabel!
+    @IBOutlet weak var LTWAlarm:  UISwitch!
     var TherapyDay: Int?
+    var LTWDuration: Int?
+    var LTWAlarmTime: Data?
     var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
     var currentTranslation: Translation!
+    var currentLTWDay: Int!
     
     
     override func viewDidLoad() {
@@ -112,5 +116,14 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
         
+    }
+    @objc func SaveOptions()
+    {
+        LTWDuration = 1
+        LTWAlarmTime = Data()
+        UserDefaults.standard.set(TherapyDay, forKey: "LTWCurrentDay")
+        UserDefaults.standard.set(LTWAlarm.isOn, forKey: "LTWAlarm")
+        UserDefaults.standard.set(LTWDuration, forKey: "LTWDuration")
+        UserDefaults.standard.set(LTWAlarmTime, forKey: "LTWAlarmTime")
     }
 }
