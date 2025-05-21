@@ -182,7 +182,7 @@ public struct Translation: Codable {
     enum CodingKeys: String, CodingKey {
         case currentLanguage = "currentLanguage"
         case commonButtons = "commonButtons"
-        case alarmNotifications = "alarm_notification"
+        case alarmNotifications = "alarmNotifications"
         case prevention = "prevention"
         case HelpTypes = "HelpTypes"
         case Symptoms = "Symptoms"

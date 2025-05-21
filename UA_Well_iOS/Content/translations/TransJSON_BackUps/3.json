@@ -21,7 +21,7 @@
         "Return_to_help_type_page_title": "Return to help type"
     },
     
-    "alarm_notification": {
+    "alarmNotifications": {
       "Title": "Hello!",
       "Body_long_time_work": "It’s time to do the exercise in the \"Long-term work\" section",
       "Body_prevention": "It's time to do the exercise in the \"Prevention\" section"

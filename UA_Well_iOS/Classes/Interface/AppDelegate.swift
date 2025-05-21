@@ -39,8 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ExerciseManager.shared.initializeExercises()
         PreventionManager.shared.initializePreventionManager()
         TranslationDownloader.shared.IsFirstRun = true
-//        NotificationManager.shared.requestAuthorization()
-//        NotificationManager.shared.scheduleNotification(title: "Тест", body: "Это тестовое уведомление", hour: 17, minute: 15)
+        NotificationManager.shared.requestAuthorization()
+        NotificationManager.shared.scheduleNotification(title: "Tran", body: "Это тестовое уведомление", hour: 17, minute: 15)
            return true
        }
 }

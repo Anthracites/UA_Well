@@ -20,20 +20,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
     
-//            DispatchQueue.main.async {
-//                let savedLanguage = UserDefaults.standard.string(forKey: "Language")
-//                self.isFirstRun = TranslationDownloader.shared.IsFirstRun
-//                if (self.isFirstRun == true) && (savedLanguage != nil)
-//                {
-//                QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
-//                    
-//                    print("Is first run: ", String(self.isFirstRun))
-//                    let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
-//                    // Инициализируем ViewController
-//                    let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
-//                    self.present(secondVC, animated: true, completion: nil)
-//                }
-//            }
+            DispatchQueue.main.async {
+                let savedLanguage = UserDefaults.standard.string(forKey: "Language")
+                self.isFirstRun = TranslationDownloader.shared.IsFirstRun
+                if (self.isFirstRun == true) && (savedLanguage != nil)
+                {
+                QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+                    
+                    print("Is first run: ", String(self.isFirstRun))
+                    let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
+                    // Инициализируем ViewController
+                    let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
+                    self.present(secondVC, animated: true, completion: nil)
+                }
+            }
 
        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self

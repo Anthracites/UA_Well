@@ -161,7 +161,7 @@ class TranslationDownloader {
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "commonButtons"
-            case alarmNotifications = "AlarmNotifications"
+            case alarmNotifications = "alarmNotifications"
             case prevention = "prevention"
             case aboutApplication = "aboutApplication"
             case aboutUsAndcontactUs = "aboutUsAndcontactUs"
