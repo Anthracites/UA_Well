@@ -3,6 +3,7 @@ import Foundation
 public struct Translation: Codable {
     let currentLanguage: String?
     let commonButtons: CommonButtons?
+    let alarmNotifications: AlarmNotifications?
     let prevention: Prevention?
     let aboutApplication: AboutApplication?
     let aboutUsAndcontactUs: AboutUsAndContactUs?
@@ -50,6 +51,19 @@ public struct Translation: Codable {
         }
     }
     
+    struct AlarmNotifications : Codable
+    {
+        let Title: String
+        let Body_long_time_work: String
+        let Body_prevention: String
+        
+        enum CodingKeys: String, CodingKey {
+            case Title = "Title"
+            case Body_long_time_work = "Body_long_time_work"
+            case Body_prevention = "Body_prevention"
+            
+        }
+    }
     struct Prevention:Codable{
 
         let Title: String
@@ -168,6 +182,7 @@ public struct Translation: Codable {
     enum CodingKeys: String, CodingKey {
         case currentLanguage = "currentLanguage"
         case commonButtons = "commonButtons"
+        case alarmNotifications = "alarm_notification"
         case prevention = "prevention"
         case HelpTypes = "HelpTypes"
         case Symptoms = "Symptoms"

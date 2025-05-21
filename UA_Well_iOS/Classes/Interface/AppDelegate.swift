@@ -12,6 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+////    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//    NotificationManager.shared.requestAuthorization()
+//    NotificationManager.shared.scheduleNotification(title: "Тест", body: "Это тестовое уведомление", hour: 10, minute: 0)
+//    return true
 
     // MARK: UISceneSession Lifecycle
 
@@ -35,6 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ExerciseManager.shared.initializeExercises()
         PreventionManager.shared.initializePreventionManager()
         TranslationDownloader.shared.IsFirstRun = true
+//        NotificationManager.shared.requestAuthorization()
+//        NotificationManager.shared.scheduleNotification(title: "Тест", body: "Это тестовое уведомление", hour: 17, minute: 15)
            return true
        }
 }

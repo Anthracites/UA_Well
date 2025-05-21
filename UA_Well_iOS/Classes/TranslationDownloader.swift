@@ -23,6 +23,7 @@ class TranslationDownloader {
         do
         {
             let fileURLs = try fileManager.contentsOfDirectory(at: translationsDirURL, includingPropertiesForKeys: nil).filter { $0.pathExtension == "json" }
+            print("Tranlaiting stareted from: ",  (fileURLs[0].path))
             for fileURL in fileURLs {
                 do
                 {
@@ -33,6 +34,7 @@ class TranslationDownloader {
                     var currentLanguage: String?
                     var commonButtons: Translation.CommonButtons?
                     var prevention: Translation.Prevention?
+                    var aNotifications: Translation.AlarmNotifications?
                     var aboutApp: Translation.AboutApplication?
                     var aboutUs: Translation.AboutUsAndContactUs?
                     var helpTypes:[HelpType]? = []
@@ -49,6 +51,9 @@ class TranslationDownloader {
                         }
                         if let pr = tempTranslation.prevention {
                             prevention = pr
+                        }
+                        if let a = tempTranslation.alarmNotifications {
+                            aNotifications = a
                         }
                         if let aboutApplicationt = tempTranslation.aboutApplication
                         {
@@ -80,7 +85,7 @@ class TranslationDownloader {
                                 exercisesDict[exercise.Exercise_ID] = exercise
                             }
                             
-                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let prevention = prevention, let aboutApp = aboutApp,
+                            if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let aNotifications = aNotifications, let prevention = prevention, let aboutApp = aboutApp,
                                let aboutUs = aboutUs, let longTermWork = longTermWork{
                                 // Создаем массив Symptoms, отсортированный по symptom_ID
                                 var symptomsArray = Array(symptomsDict.values)
@@ -91,6 +96,7 @@ class TranslationDownloader {
                                 let translation = Translation(
                                     currentLanguage: currentLanguage,
                                     commonButtons: commonButtons,
+                                    alarmNotifications: aNotifications,
                                     prevention: prevention,
                                     aboutApplication: aboutApp,
                                     aboutUsAndcontactUs: aboutUs,
@@ -143,6 +149,7 @@ class TranslationDownloader {
     private struct TemporaryTranslation: Codable {
         let currentLanguage: String?
         let commonButtons: Translation.CommonButtons?
+        let alarmNotifications: Translation.AlarmNotifications?
         let prevention: Translation.Prevention?
         let aboutApplication: Translation.AboutApplication?
         let aboutUsAndcontactUs: Translation.AboutUsAndContactUs?
@@ -154,6 +161,7 @@ class TranslationDownloader {
         enum CodingKeys: String, CodingKey {
             case currentLanguage
             case commonButtons = "commonButtons"
+            case alarmNotifications = "AlarmNotifications"
             case prevention = "prevention"
             case aboutApplication = "aboutApplication"
             case aboutUsAndcontactUs = "aboutUsAndcontactUs"

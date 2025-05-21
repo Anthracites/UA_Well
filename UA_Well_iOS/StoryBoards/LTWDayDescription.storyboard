@@ -153,8 +153,8 @@
                     </view>
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>
+                        <outlet property="LTWAlarm" destination="R6T-qB-48y" id="dJl-dy-9Ua"/>
                         <outlet property="_collectionView" destination="koP-DA-Zl5" id="13k-Jo-kcM"/>
-                        <outlet property="alarmSwich" destination="R6T-qB-48y" id="PnF-tA-bEc"/>
                         <outlet property="alarmTitle" destination="dX3-qU-bMb" id="VDH-CL-n5i"/>
                         <outlet property="backButton" destination="yJ2-14-ws1" id="Zti-Ri-LNn"/>
                         <outlet property="descriptionText" destination="ong-jS-pN4" id="LYh-4X-EZk"/>
@@ -1529,7 +1529,7 @@ AAAAAAAAAAAAAAAAATpXA
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
