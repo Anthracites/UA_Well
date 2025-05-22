@@ -52,7 +52,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         TranslationDownloader.shared.IsFirstRun = false
-        print("Storyboard закрывается")
+        //print("Storyboard закрывается")
     }
 
 

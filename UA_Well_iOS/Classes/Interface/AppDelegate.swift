@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PreventionManager.shared.initializePreventionManager()
         TranslationDownloader.shared.IsFirstRun = true
         NotificationManager.shared.requestAuthorization()
-        NotificationManager.shared.scheduleNotification(title: "Tran", body: "Это тестовое уведомление", hour: 17, minute: 15)
+        NotificationManager.shared.scheduleNotification()
            return true
        }
 }
