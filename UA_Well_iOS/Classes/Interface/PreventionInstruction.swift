@@ -8,7 +8,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var instructionText: UITextView!
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var PreventionAlarm:  UISwitch!
-    var PreventionAlarmTime: DateComponents!
+    var PreventionAlarmTime: String!
     var PreventionDuration: Int!
     var PreventionIntensity: Int!
     var PreventionCurrentDay: Int!
@@ -127,7 +127,12 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     {
         PreventionIntensity = PreventionManager.shared.CurrentSensity
         PreventionDuration = PreventionManager.shared.CurrentDuration
-        //PreventionAlarmTime = Date()
+        
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+
+        PreventionAlarmTime = formatter.string(from: currentDate)
     }
     
     @objc func BackToPreviousScreen()

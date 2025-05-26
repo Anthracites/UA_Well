@@ -23,7 +23,6 @@ class NotificationManager {
     // Создание уведомления
     func scheduleNotification() {
         GetNotificationParameters()
-        print("Get notification time: \(notificationTime)")
         
         let preventionAlarmIsOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
         if (preventionAlarmIsOn == true) && (notificationTime != nil)
@@ -34,8 +33,8 @@ class NotificationManager {
             content.sound = .default
             
             var dateComponents = DateComponents()
-            dateComponents.hour = notificationTime.hour
-            dateComponents.minute = notificationTime.minute
+            dateComponents.hour = 23
+            dateComponents.minute = 12
 
             
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
@@ -43,20 +42,31 @@ class NotificationManager {
             
             UNUserNotificationCenter.current().add(request) { error in
                 if let error = error {
-                    print("Ошибка: \(error.localizedDescription)")
+                    print("Ошибка при добавлении уведомления: \(error.localizedDescription)")
+                } else {
+                    print("Уведомление запланировано на ",dateComponents)
+                    print("Current time: ", Date())
                 }
             }
+        }
+        else{
+            print("Ошибка:")
         }
     }
     
     @objc func GetNotificationParameters()
     {
-            if let n = UserDefaults.standard.object(forKey: "PreventionAlarmTime") as? DateComponents
+        if let n = UserDefaults.standard.object(forKey: "PreventionAlarmTime") as? String
         {
-                notificationTime = n
-                notificationTitle = TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.Title
-                notificationBody = TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.Body_prevention
+                    let components = n.split(separator: ":")
+                    if let hours = Int(components[0]), let minutes = Int(components[1]) {
+                        notificationTime = DateComponents()
+                        notificationTime.hour = hours
+                        notificationTime.minute = minutes
+                        //print("Часы: \(hours), Минуты: \(minutes)")
+                    }
         }
-        
+        notificationTitle = TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.Title
+        notificationBody = TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.Body_prevention
     }
 }
