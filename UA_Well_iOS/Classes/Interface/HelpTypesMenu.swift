@@ -46,7 +46,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         
         //view.addSubview(cell.MenuButton)
         
-        print(_label, indexPath.item)
+        //print(_label, indexPath.item)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)

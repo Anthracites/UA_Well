@@ -23,7 +23,7 @@ class TranslationDownloader {
         do
         {
             let fileURLs = try fileManager.contentsOfDirectory(at: translationsDirURL, includingPropertiesForKeys: nil).filter { $0.pathExtension == "json" }
-            print("Tranlaiting stareted from: ",  (fileURLs[0].path))
+            //print("Tranlaiting stareted from: ",  (fileURLs[0].path))
             for fileURL in fileURLs {
                 do
                 {
@@ -108,7 +108,7 @@ class TranslationDownloader {
                                 if translation.currentLanguage == "Українська"
                                 {
                                     DefaultLanguage = translation
-                                    print("Current langauge seleted!!!!")
+                                    //print("Current langauge seleted!!!!")
                                 }
                                 
                                 let savedLanguage = UserDefaults.standard.string(forKey: "Language")

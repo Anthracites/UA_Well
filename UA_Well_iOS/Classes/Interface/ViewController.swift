@@ -23,14 +23,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             DispatchQueue.main.async {
                 let savedLanguage = UserDefaults.standard.string(forKey: "Language")
                 self.isFirstRun = TranslationDownloader.shared.IsFirstRun
-                if (self.isFirstRun == true) && (savedLanguage != nil)
+                
+                let _isAppOpenFromNotification = ExerciseManager.shared.IsAppOpenFromNotification
+                        
+                if (_isAppOpenFromNotification == false)
                 {
-                QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
-                    
-                    print("Is first run: ", String(self.isFirstRun))
-                    let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
+                    if (self.isFirstRun == true) && (savedLanguage != nil)
+                    {
+                        QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+                        
+                        //print("Is first run: ", String(self.isFirstRun))
+                        let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
+                        // Инициализируем ViewController
+                        let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
+                        self.present(secondVC, animated: true, completion: nil)
+                    }
+                }
+                
+                else {
+                    let storyboard = UIStoryboard(name: "PreventionInstruction", bundle: nil)
                     // Инициализируем ViewController
-                    let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
+                    let secondVC = storyboard.instantiateViewController(withIdentifier: "PreventionInstruction") as! PreventionInstruction
                     self.present(secondVC, animated: true, completion: nil)
                 }
             }

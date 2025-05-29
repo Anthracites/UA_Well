@@ -12,6 +12,8 @@ class ExerciseManager {
     var HelpTypes: [HelpType] = []
     var QuickHelpExercises: [HelpExercises] = []
     var PreventionParameters: [PreventionParameter] = []
+    var IsAppOpenFromNotification: Bool!
+
 
     private init() {} // Закрытый инициализатор
 

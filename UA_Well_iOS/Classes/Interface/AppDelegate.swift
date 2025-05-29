@@ -8,14 +8,8 @@
 import UIKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
-
-
-////    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//    NotificationManager.shared.requestAuthorization()
-//    NotificationManager.shared.scheduleNotification(title: "Тест", body: "Это тестовое уведомление", hour: 10, minute: 0)
-//    return true
 
     // MARK: UISceneSession Lifecycle
 
@@ -39,9 +33,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ExerciseManager.shared.initializeExercises()
         PreventionManager.shared.initializePreventionManager()
         TranslationDownloader.shared.IsFirstRun = true
+        UNUserNotificationCenter.current().delegate = self
         NotificationManager.shared.requestAuthorization()
-        NotificationManager.shared.scheduleNotification()
-           return true
+        NotificationManager.shared.scheduleNotifications()
+        
+        if launchOptions?[.remoteNotification] == nil
+        {
+            ExerciseManager.shared.IsAppOpenFromNotification = false
+        }
+        else
+        {
+            ExerciseManager.shared.IsAppOpenFromNotification = true
+        }
+        print("Is from notifications: ", ExerciseManager.shared.IsAppOpenFromNotification)
+
+        return true
        }
+
 }
 
