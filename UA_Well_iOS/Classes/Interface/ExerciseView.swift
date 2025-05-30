@@ -1,5 +1,7 @@
 import UIKit
 import Foundation
+import AVFoundation
+
 
 class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
@@ -16,6 +18,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     var nextButton, itHelpedButton, contactSpecialistButton, startOverbutton: UIButton!
     var buttons = [UIButton?]()
     var commoButtonBG = UIImage(named: "CommonButtonBG")
+    var audioPlayer: AVAudioPlayer?
+
     
     private var stepTimer: Timer?
     private var exerciseTimer: Timer?
@@ -239,33 +243,37 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
         
         // Метод для обновления состояния визуальной подсказки
-        @objc func updateHintState() {
-            print("Exercise started!")
+    @objc func updateHintState() {
+        print("Exercise started!")
 
-            let _buttonLabel: String
-            let i: Int = ExerciseManager.shared.CurrentStep
-            let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].action
-            let _hintImage: UIImage
-            
-            switch _actionIndex {
-            case 0:
-                _hintImage = inhaleGif
-                _buttonLabel = "Вдох"
-            case 1:
-                _hintImage = exhalationGif
-                _buttonLabel = "Выдох"
-            case 2:
-                _hintImage = exhalationGif
-                _buttonLabel = "Пауза"
+        let _buttonLabel: String
+        let i: Int = ExerciseManager.shared.CurrentStep
+        let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].action
+        let _hintImage: UIImage
+        let soundFileName = "metronome" // Новый параметр для звука
 
-            default:
-                _buttonLabel = "Старт"
-                _hintImage = pauseImage
-            }
-
-            imageHint.image = _hintImage
-            breathingHintWidgetButton.setTitle(_buttonLabel, for: .normal)
+        switch _actionIndex {
+        case 0:
+            _hintImage = inhaleGif
+            _buttonLabel = "Вдох"
+        case 1:
+            _hintImage = exhalationGif
+            _buttonLabel = "Выдох"
+        case 2:
+            _hintImage = exhalationGif
+            _buttonLabel = "Пауза"
+        default:
+            _buttonLabel = "Старт"
+            _hintImage = pauseImage
         }
+
+        imageHint.image = _hintImage
+        breathingHintWidgetButton.setTitle(_buttonLabel, for: .normal)
+
+        // Воспроизведение звука
+        playSound(named: soundFileName)
+    }
+
     
     @objc func OnHintButtonClick()
     {
@@ -273,6 +281,21 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         //updateHintState()
         //ExerciseManager.shared.CurrentStep += 1
     }
+    
+    func playSound(named soundFileName: String) {
+        guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
+            print("Ошибка: файл звука \(soundFileName) не найден")
+            return
+        }
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch {
+            print("Ошибка воспроизведения звука: \(error.localizedDescription)")
+        }
+    }
+
 
     
     }
