@@ -37,18 +37,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         NotificationManager.shared.requestAuthorization()
         NotificationManager.shared.scheduleNotifications()
         
-        if launchOptions?[.remoteNotification] == nil
-        {
-            ExerciseManager.shared.IsAppOpenFromNotification = false
-        }
-        else
-        {
-            ExerciseManager.shared.IsAppOpenFromNotification = true
-        }
         print("Is from notifications: ", ExerciseManager.shared.IsAppOpenFromNotification)
 
         return true
        }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        ExerciseManager.shared.IsAppOpenFromNotification = true
+
+    }
+
 
 }
 
