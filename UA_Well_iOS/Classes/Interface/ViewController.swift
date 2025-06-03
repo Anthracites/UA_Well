@@ -30,7 +30,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 {
                     if (self.isFirstRun == true) && (savedLanguage != nil)
                     {
-                        QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
                         
                         //print("Is first run: ", String(self.isFirstRun))
                         let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)

@@ -25,6 +25,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         
         startButton.addTarget(self, action: #selector(GoToInstruction), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        ExerciseManager.shared.CurrentHelpType = "Prevention"
         TranslateView()
     }
     

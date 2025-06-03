@@ -152,9 +152,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func ItHelpedButtonHandler()
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
         // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "Main")
+        let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu")
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
