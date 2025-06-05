@@ -13,6 +13,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     var PPLabels: [String] = ["Sensity", "Duration"]
     var PPValues: [[String]] = [["Min", "Mid", "Max"],["Two", "Three", "Four"]]
     var sensityCurrentOptions, durationCurrentOptions: CustomDropDown!
+    var currentSensity,currentDuration: Int!
     
     
     override func viewDidLoad() {
@@ -27,12 +28,13 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         ExerciseManager.shared.CurrentHelpType = "Prevention"
         TranslateView()
+        GetOptions()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
-
+    
     @objc func TranslateView()
     {
         let _translation = TranslationDownloader.shared.CurrentTranslation
@@ -40,11 +42,12 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         startButton.setTitle(_translation?.commonButtons?.Start, for: .normal)
         titleText.text = _translation?.prevention?.Title
         descriptionText.text = _translation?.prevention?.Description
-
-    }
-    @objc func GetConfig()
-    {
         
+    }
+    @objc func GetOptions()
+    {
+        currentSensity = PreventionManager.shared.CurrentSensity
+        currentDuration =  PreventionManager.shared.CurrentDuration
     }
     
     @objc func TranslateDropDown(DDLabel: String, DropDown: CustomDropDown)
@@ -65,11 +68,11 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
                     _labels.append(_intesity.Name)
                 }
                 DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
-                DropDown.dropDown.setTitle(_translationLabels[0].Name, for: .normal)
+                DropDown.dropDown.setTitle(_translationLabels[currentSensity].Name, for: .normal)
                 sensityCurrentOptions = DropDown
-
+                
             }
-
+            
         case "Duration":
             DropDown.ddLabel.text = _translation?.prevention?.DurationLabel
             
@@ -80,15 +83,15 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
                     _labels.append(_duration.Name)
                 }
                 DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
-                DropDown.dropDown.setTitle(_translationLabels[0].Name, for: .normal)
+                DropDown.dropDown.setTitle(_translationLabels[currentDuration].Name, for: .normal)
                 durationCurrentOptions = DropDown
-
+                
             }
-
+            
         default:
             " "
         }
-
+        
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,7 +107,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         cell.contentMode = .center
         let _stringArray = PPValues[indexPath.item]
         cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: _stringArray)
-        newButoon.setTitle(cell.dropDown.menu?.children[0].title, for: .normal)
         cell.ddLabel.text = _label
         TranslateDropDown(DDLabel: cell.ddLabel.text!, DropDown: cell)
 
@@ -118,7 +120,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         return cell
     }
     
-    @objc func GetOptions()
+    @objc func SetOptions()
     {
         let _optionsCells = _collectionView.visibleCells.compactMap { $0 as? CustomDropDown }
         PreventionManager.shared.CurrentSensity = sensityCurrentOptions.CurrentOption
@@ -128,7 +130,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func GoToInstruction()
     {
-        GetOptions()
+        SetOptions()
 
         let storyboard = UIStoryboard(name: "PreventionInstruction", bundle: nil)
         // Инициализируем ViewController

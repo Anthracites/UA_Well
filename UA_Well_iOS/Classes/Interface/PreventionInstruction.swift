@@ -26,7 +26,6 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         _collectionView.delegate = self
         ExerciseManager.shared.CurrentHelpType = "Prevention"
         TranslateView()
-        PreventionCurrentDay = 0
         PreventionAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
         PreventionAlarm.isOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
         SaveOptions()
@@ -108,7 +107,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     @objc func GetOptions()
     {
         PreventionIntensity = PreventionManager.shared.CurrentSensity
-        PreventionDuration = PreventionManager.shared.CurrentDuration
+        PreventionDuration = (PreventionManager.shared.CurrentDuration * 7)
         
         let currentDate = Date()
         let formatter = DateFormatter()
@@ -134,6 +133,6 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         UserDefaults.standard.set(PreventionDuration, forKey: "PreventionDuration")
         UserDefaults.standard.set(PreventionIntensity, forKey: "PreventionIntensity")
         UserDefaults.standard.set(PreventionCurrentDay, forKey: "PreventionCurrentDay") // Для уведомлений
-        print("Options saved for prevention. Time: \(PreventionAlarmTime)")
+        //print("Options saved for prevention. Time: \(PreventionAlarmTime)")
     }
 }
