@@ -282,6 +282,29 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         //ExerciseManager.shared.CurrentStep += 1
     }
     
+    @objc func SwichCurrentDay()
+    {
+        let _currentHelpType = ExerciseManager.shared.CurrentHelpType
+        
+        switch _currentHelpType {
+        case "QuickHelp":
+            ""
+            
+        case "Prevention":
+            var d = UserDefaults.standard.integer(forKey: "PreventionCurrentDay")
+            d += 1
+            UserDefaults.standard.set(d, forKey: "PreventionCurrentDay")
+            
+        case "LongTimeWork":
+            var d = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
+            d += 1
+            UserDefaults.standard.set(d, forKey: "LTWCurrentDay") 
+            
+        default:
+            ""
+        }
+    }
+    
     func playSound(named soundFileName: String) {
         guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
             print("Ошибка: файл звука \(soundFileName) не найден")

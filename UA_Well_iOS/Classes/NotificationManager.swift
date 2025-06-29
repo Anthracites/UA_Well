@@ -9,6 +9,7 @@ class NotificationManager {
     
     // Запрос разрешения на уведомления
     func requestAuthorization() {
+        registerNotificationCategories()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
 //            if granted {
 //                print("Разрешение получено")
@@ -25,6 +26,16 @@ class NotificationManager {
         scheduleNotification(_alarmNotification: PreventionAlarmNotification!)
         scheduleNotification(_alarmNotification: LTWAlarmNotification!)
     }
+    
+    func registerNotificationCategories() {
+        let mute = UNNotificationAction(identifier: "MUTE_10_MIN", title: "Mute 10 min", options: [])
+        let cancel = UNNotificationAction(identifier: "CANCEL_ACTION", title: "Cancel", options: [.destructive])
+
+        let category = UNNotificationCategory(identifier: "ALARM_CATEGORY", actions: [mute, cancel], intentIdentifiers: [], options: [])
+
+        UNUserNotificationCenter.current().setNotificationCategories([category])
+    }
+
     
     // Создание уведомления
     func scheduleNotification(_alarmNotification: AlarmNotification)
@@ -48,9 +59,8 @@ class NotificationManager {
         }
     }
     
-    func GetNotificationParameters(_notificationType: String) -> AlarmNotification
-    {
-        let _currentTranslation =  TranslationDownloader.shared.CurrentTranslation
+    func GetNotificationParameters(_notificationType: String) -> AlarmNotification {
+        let _currentTranslation = TranslationDownloader.shared.CurrentTranslation
         let _notificationTitle = _currentTranslation?.alarmNotifications?.Title
         let _notificationBody: String
         var _notificationTime: String = "0:0"
@@ -59,41 +69,48 @@ class NotificationManager {
         
         switch _notificationType {
         case "PreventionAlarm":
-            _notificationBody = TranslationDownloader.shared.CurrentTranslation.alarmNotifications!.Body_prevention
+            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? ""
             _notificationTime = "PreventionAlarmTime"
             _notificationScreen = "PreventionInstruction"
             _notificationAlarmOn = "PreventionAlarm"
         case "LTWAlarm":
-            _notificationBody = TranslationDownloader.shared.CurrentTranslation.alarmNotifications!.Body_long_time_work
+            _notificationBody = _currentTranslation?.alarmNotifications?.Body_long_time_work ?? ""
             _notificationTime = "LTWAlarmTime"
             _notificationScreen = "LTWDayDescription"
             _notificationAlarmOn = "LTWAlarm"
         default:
-            _notificationBody = TranslationDownloader.shared.CurrentTranslation.alarmNotifications!.Body_prevention
+            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? ""
         }
+        
         let _isAlarmOn = UserDefaults.standard.bool(forKey: _notificationAlarmOn)
         
         let content = UNMutableNotificationContent()
-        content.title = _notificationTitle!
-           content.body = _notificationBody
-          content.sound = .default
-           content.userInfo = ["screenID": _notificationScreen]
-        
+        content.title = _notificationTitle ?? "Уведомление"
+        content.body = _notificationBody
+        content.sound = .default
+        content.userInfo = ["screenID": _notificationScreen]
+        content.categoryIdentifier = "ALARM_CATEGORY" // <- Добавляем кнопку-категорию
+
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-
+        
         let t = UserDefaults.standard.string(forKey: _notificationTime)
         var _alarmTime = DateComponents()
-        if t != nil
-        {
-            let _timeComponents = UserDefaults.standard.string(forKey: _notificationTime)!.split(separator: ":")
+        if let t = t {
+            let _timeComponents = t.split(separator: ":")
             if let hours = Int(_timeComponents[0]), let minutes = Int(_timeComponents[1]) {
                 _alarmTime.hour = hours
                 _alarmTime.minute = minutes
             }
         }
         
-        let _notification = AlarmNotification(IsAlarmOn: _isAlarmOn, AlarmKey: _notificationType, AlarmType: _notificationType, NotificationContent: content, NotificationTime: _alarmTime)
+        let _notification = AlarmNotification(
+            IsAlarmOn: _isAlarmOn,
+            AlarmKey: _notificationType,
+            AlarmType: _notificationType,
+            NotificationContent: content,
+            NotificationTime: _alarmTime
+        )
         
         return _notification
     }
