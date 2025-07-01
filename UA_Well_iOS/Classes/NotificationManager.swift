@@ -28,8 +28,11 @@ class NotificationManager {
     }
     
     func registerNotificationCategories() {
-        let mute = UNNotificationAction(identifier: "MUTE_10_MIN", title: "Mute 10 min", options: [])
-        let cancel = UNNotificationAction(identifier: "CANCEL_ACTION", title: "Cancel", options: [.destructive])
+        let _muteTitle = (TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.MuteButtonTitle)!
+        let _cancelTitle = (TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.CancelButtonTitle)!
+        
+        let mute = UNNotificationAction(identifier: "MUTE_10_MIN", title: _muteTitle, options: [])
+        let cancel = UNNotificationAction(identifier: "CANCEL_ACTION", title:_cancelTitle, options: [.destructive])
 
         let category = UNNotificationCategory(identifier: "ALARM_CATEGORY", actions: [mute, cancel], intentIdentifiers: [], options: [])
 

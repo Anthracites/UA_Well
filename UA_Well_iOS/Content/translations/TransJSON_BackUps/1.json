@@ -23,6 +23,8 @@
     
     "alarmNotifications": {
       "Title": "Привіт!",
+      "MuteButtonTitle": "Відкласти на 10 хв",
+      "CancelButtonTitle": "Скасувати",
       "Body_long_time_work": "Настав час виконати вправу в секції \"Тривала робота\"",
       "Body_prevention": "Настав час виконати вправу в секції \"Профілактика\""
     },

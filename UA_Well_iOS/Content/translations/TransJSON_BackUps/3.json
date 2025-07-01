@@ -23,6 +23,8 @@
     
     "alarmNotifications": {
       "Title": "Hello!",
+      "MuteButtonTitle": "Snooze 10 min",
+      "CancelButtonTitle": "Cancel",
       "Body_long_time_work": "It’s time to do the exercise in the \"Long-term work\" section",
       "Body_prevention": "It's time to do the exercise in the \"Prevention\" section"
     },

@@ -54,11 +54,15 @@ public struct Translation: Codable {
     struct AlarmNotifications : Codable
     {
         let Title: String
+        let MuteButtonTitle: String
+        let CancelButtonTitle: String
         let Body_long_time_work: String
         let Body_prevention: String
         
         enum CodingKeys: String, CodingKey {
             case Title = "Title"
+            case MuteButtonTitle = "MuteButtonTitle"
+            case CancelButtonTitle = "CancelButtonTitle"
             case Body_long_time_work = "Body_long_time_work"
             case Body_prevention = "Body_prevention"
             
