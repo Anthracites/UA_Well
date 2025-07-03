@@ -59,9 +59,9 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     {
         currentTranslation = TranslationDownloader.shared.CurrentTranslation
         backButton.setTitle(currentTranslation.commonButtons?.Return_to_parameters_title, for: .normal)
-        let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentSensity].Instruction
+        let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentIntensity].Instruction
         instructionText.text = s
-        PreventionIntensity = PreventionManager.shared.CurrentSensity
+        PreventionIntensity = PreventionManager.shared.CurrentIntensity
         instructionTitle.text = currentTranslation.prevention?.Intensivities[PreventionIntensity].Name
     }
     
@@ -106,7 +106,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     
     @objc func GetOptions()
     {
-        PreventionIntensity = PreventionManager.shared.CurrentSensity
+        PreventionIntensity = PreventionManager.shared.CurrentIntensity
         PreventionDuration = (PreventionManager.shared.CurrentDuration * 7)
         
         let currentDate = Date()

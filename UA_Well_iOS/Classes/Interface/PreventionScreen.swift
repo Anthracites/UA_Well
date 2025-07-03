@@ -12,8 +12,8 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var descriptionText: UITextView!
     var PPLabels: [String] = ["Sensity", "Duration"]
     var PPValues: [[String]] = [["Min", "Mid", "Max"],["Two", "Three", "Four"]]
-    var sensityCurrentOptions, durationCurrentOptions: CustomDropDown!
-    var currentSensity,currentDuration: Int!
+    var intensityCurrentOptions, durationCurrentOptions: CustomDropDown!
+    var currentIntensity,currentDuration: Int!
     
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     }
     @objc func GetOptions()
     {
-        currentSensity = PreventionManager.shared.CurrentSensity
+        currentIntensity = PreventionManager.shared.CurrentIntensity
         currentDuration =  PreventionManager.shared.CurrentDuration
     }
     
@@ -68,8 +68,8 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
                     _labels.append(_intesity.Name)
                 }
                 DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
-                DropDown.dropDown.setTitle(_translationLabels[currentSensity].Name, for: .normal)
-                sensityCurrentOptions = DropDown
+                DropDown.dropDown.setTitle(_translationLabels[currentIntensity].Name, for: .normal)
+                intensityCurrentOptions = DropDown
                 
             }
             
@@ -123,7 +123,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @objc func SetOptions()
     {
         let _optionsCells = _collectionView.visibleCells.compactMap { $0 as? CustomDropDown }
-        PreventionManager.shared.CurrentSensity = sensityCurrentOptions.CurrentOption
+        PreventionManager.shared.CurrentIntensity = intensityCurrentOptions.CurrentOption
         PreventionManager.shared.CurrentDuration = durationCurrentOptions.CurrentOption
         print("индекс класса pScreen: \(String(describing: _optionsCells[0].CurrentOption))")
     }
