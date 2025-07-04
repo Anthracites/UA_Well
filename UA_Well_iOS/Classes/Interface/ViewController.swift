@@ -40,6 +40,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 }
                 
                 else {
+                    
                     let storyboard = UIStoryboard(name: "PreventionInstruction", bundle: nil)
                     // Инициализируем ViewController
                     let secondVC = storyboard.instantiateViewController(withIdentifier: "PreventionInstruction") as! PreventionInstruction

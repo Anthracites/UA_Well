@@ -13,7 +13,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var LTWAlarm:  UISwitch!
     var TherapyDay: Int?
     var LTWDuration: Int?
-    var LTWAlarmTime: Data?
+    var LTWAlarmTime: String!
     var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
     var currentTranslation: Translation!
     var currentLTWDay: Int!
@@ -28,6 +28,9 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         ExerciseManager.shared.CurrentHelpType = "LongTimeWork"
         currentTranslation = TranslationDownloader.shared.CurrentTranslation
         TranslateView()
+        LTWAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
+        LTWAlarm.isOn = UserDefaults.standard.bool(forKey: "LTWAlarm")
+        SaveOptions()
     }
     
     func TranslateButton(_currentButton: UIButton)
@@ -117,13 +120,27 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         self.present(secondVC, animated: true, completion: nil)
         
     }
+    
+    @objc func GetOptions()
+    {
+        LTWDuration = LTWManager.shared.CurrentDuration
+        TherapyDay = LTWManager.shared.CurrentDay
+
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+
+        LTWAlarmTime = formatter.string(from: currentDate)
+    }
+    
     @objc func SaveOptions()
     {
-        LTWDuration = 1
-        LTWAlarmTime = Data()
+        GetOptions()
+        
         UserDefaults.standard.set(TherapyDay, forKey: "LTWCurrentDay")
         UserDefaults.standard.set(LTWAlarm.isOn, forKey: "LTWAlarm")
         UserDefaults.standard.set(LTWDuration, forKey: "LTWDuration")
         UserDefaults.standard.set(LTWAlarmTime, forKey: "LTWAlarmTime")
+        print ("LTW options saved!!!")
     }
 }

@@ -129,7 +129,7 @@ class TranslationDownloader {
                         }
                     }
                     //print (" Translations success!", Translations[0].currentLanguage as Any)
-                    print("Translations directory path: \(fileURLs[0].path)")
+//                    print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {
