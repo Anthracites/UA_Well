@@ -55,6 +55,11 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func TranslateView()
     {
+        if (TherapyDay == nil)
+        {        
+            GetOptions()
+        }
+        
         titleText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].TherapyPartName
         descriptionText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].Instruction
         alarmTitle.text = currentTranslation.commonButtons?.Alarm
