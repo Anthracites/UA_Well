@@ -23,8 +23,8 @@ class LTWManager {
                     }
                         else
                     {
-                            CurrentDuration = 0
-                            CurrentDay = 0
+                            CurrentDuration = 1
+                            CurrentDay = 1
                     }
                     print("Current duration: ", String(CurrentDuration))
         }

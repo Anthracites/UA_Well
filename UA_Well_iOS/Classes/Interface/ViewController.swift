@@ -26,7 +26,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 
                 let _isAppOpenFromNotification = ExerciseManager.shared.IsAppOpenFromNotification
                         
-                if (_isAppOpenFromNotification == false)
+                if (_isAppOpenFromNotification != true)
                 {
                     if (self.isFirstRun == true) && (savedLanguage != nil)
                     {
@@ -40,11 +40,27 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 }
                 
                 else {
+                    let type = ExerciseManager.shared.NotificationType
+
+                    let storyboardName: String
+
+                       switch type {
+                       case "PreventionAlarm":
+                           storyboardName = "PreventionInstruction"
+                           
+                       case "LTWAlarm":
+                           storyboardName = "LTWDayDescription"
+
+                       default:
+                           storyboardName = "PreventionInstruction"
+                       }
                     
-                    let storyboard = UIStoryboard(name: "PreventionInstruction", bundle: nil)
+                    let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
                     // Инициализируем ViewController
-                    let secondVC = storyboard.instantiateViewController(withIdentifier: "PreventionInstruction") as! PreventionInstruction
+                    let secondVC = storyboard.instantiateViewController(withIdentifier: storyboardName)
                     self.present(secondVC, animated: true, completion: nil)
+                    
+            
                 }
             }
 

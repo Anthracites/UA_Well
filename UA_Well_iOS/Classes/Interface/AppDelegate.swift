@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         TranslationDownloader.shared.initializeTranslations()
         ExerciseManager.shared.initializeExercises()
         PreventionManager.shared.initializePreventionManager()
+        LTWManager.shared.initializeLTWManager()
         TranslationDownloader.shared.IsFirstRun = true
         UNUserNotificationCenter.current().delegate = self
         NotificationManager.shared.requestAuthorization()
@@ -46,6 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         ExerciseManager.shared.IsAppOpenFromNotification = true
         
+        if let type = response.notification.request.content.userInfo["screenID"] as? String {
+            // Сохраняем, чтобы использовать позже
+            UserDefaults.standard.set(type, forKey: "IncomingNotificationType")
+            ExerciseManager.shared.IsAppOpenFromNotification = true
+            ExerciseManager.shared.NotificationType = type
+            print("Notification type: ", type)
+        }
+        
         switch response.actionIdentifier {
         case "MUTE_10_MIN":
             print("🔕 Мутим на 10 минут")
@@ -59,7 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             newContent.body = originalContent.body
             newContent.sound = originalContent.sound
             newContent.categoryIdentifier = originalContent.categoryIdentifier
-            newContent.userInfo = originalContent.userInfo
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 600, repeats: false) // 600 сек = 10 мин
             

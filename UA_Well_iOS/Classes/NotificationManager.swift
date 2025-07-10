@@ -69,20 +69,22 @@ class NotificationManager {
         var _notificationTime: String = "0:0"
         var _notificationScreen: String = "Main"
         var _notificationAlarmOn: String = "False"
+        let _type = UserDefaults.standard.string(forKey: "IncomingNotificationType") ?? " "
+
         
         switch _notificationType {
         case "PreventionAlarm":
-            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? ""
+            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? " " + _type
             _notificationTime = "PreventionAlarmTime"
             _notificationScreen = "PreventionInstruction"
             _notificationAlarmOn = "PreventionAlarm"
         case "LTWAlarm":
-            _notificationBody = _currentTranslation?.alarmNotifications?.Body_long_time_work ?? ""
+            _notificationBody = _currentTranslation?.alarmNotifications?.Body_long_time_work ?? " " + _type
             _notificationTime = "LTWAlarmTime"
             _notificationScreen = "LTWDayDescription"
             _notificationAlarmOn = "LTWAlarm"
         default:
-            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? ""
+            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? " " + _type
         }
         
         let _isAlarmOn = UserDefaults.standard.bool(forKey: _notificationAlarmOn)
@@ -91,7 +93,7 @@ class NotificationManager {
         content.title = _notificationTitle ?? "Уведомление"
         content.body = _notificationBody
         content.sound = .default
-        content.userInfo = ["screenID": _notificationScreen]
+        content.userInfo = ["screenID": _notificationType]
         content.categoryIdentifier = "ALARM_CATEGORY" // <- Добавляем кнопку-категорию
 
         let formatter = DateFormatter()
