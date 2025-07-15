@@ -57,36 +57,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         switch response.actionIdentifier {
         case "MUTE_10_MIN":
-            print("🔕 Мутим на 10 минут")
+            DelayNotification(NotificationContent: response.notification.request.content as! UNMutableNotificationContent, DelayTime: 600)
             
-            // Получаем оригинальное содержимое
-            let originalContent = response.notification.request.content
-            
-            // Создаём новое уведомление с задержкой 10 мин
-            let newContent = UNMutableNotificationContent()
-            newContent.title = originalContent.title
-            newContent.body = originalContent.body
-            newContent.sound = originalContent.sound
-            newContent.categoryIdentifier = originalContent.categoryIdentifier
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 600, repeats: false) // 600 сек = 10 мин
-            
-            let newRequest = UNNotificationRequest(identifier: UUID().uuidString, content: newContent, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(newRequest) { error in
-                if let error = error {
-                    print("Ошибка при переносе уведомления: \(error)")
-                } else {
-                    print("Уведомление перенесено на 10 минут")
-                }
-            }
-            
+        case "CANCEL_ACTION":
+            DelayNotification(NotificationContent: response.notification.request.content as! UNMutableNotificationContent, DelayTime: 86400)
             
         default:
             break
         }
         
         
+    }
+    
+    @objc func DelayNotification(NotificationContent: UNMutableNotificationContent, DelayTime: TimeInterval)
+    {
+        let originalContent = NotificationContent
+        
+        let newContent = UNMutableNotificationContent()
+        newContent.title = originalContent.title
+        newContent.body = originalContent.body
+        newContent.sound = originalContent.sound
+        newContent.categoryIdentifier = originalContent.categoryIdentifier
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: DelayTime, repeats: false)
+        
+        let newRequest = UNNotificationRequest(identifier: UUID().uuidString, content: newContent, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(newRequest) { error in
+            if let error = error {
+                print("Ошибка при переносе уведомления: \(error)")
+            } else {
+                print("Уведомление перенесено на 10 минут")
+            }
+        }
     }
 }
 

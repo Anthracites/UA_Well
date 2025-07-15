@@ -119,6 +119,7 @@ class NotificationManager {
         
         return _notification
     }
+    
 }
  struct AlarmNotification
 {
