@@ -14,25 +14,30 @@ class PreventionManager {
     
     func initializePreventionManager() {
         guard PreventionDurations.isEmpty else { return }
-        GetParameters()
         GetConfig()
+        GetParameters()
     }
     
     @objc func GetParameters()
     {
         if (UserDefaults.standard.integer(forKey: "PreventionDuration") != nil)
             {
-            CurrentDuration = UserDefaults.standard.integer(forKey: "PreventionDuration")
-            CurrentIntensity = UserDefaults.standard.integer(forKey: "PreventionIntensity")
+            let d = UserDefaults.standard.integer(forKey: "PreventionDuration")
+            let i = UserDefaults.standard.integer(forKey: "PreventionIntensity")
+            
+            CurrentDuration = d
+            CurrentIntensity = i
             CurrentDay = UserDefaults.standard.integer(forKey: "PreventionCurrentDay")
         }
             else
         {
                 CurrentDuration = 0
                 CurrentIntensity = 0
-                CurrentDay = 0
+                CurrentDay = 1
+                print("Error of get perevention parameters from UserDefaul!!!")
         }
-        print("Current duration: ", String(CurrentDuration))
+        print("Current duration in PreventionManager: ", String(CurrentDuration))
+        print ("Current prevention day in PreventionManager = ", String(CurrentDay))
     }
     
     @objc func GetConfig()
@@ -44,18 +49,20 @@ class PreventionManager {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let _preventionConfigData = try decoder.decode([PreventionConfig].self, from: data)
-                //PreventionDurations = CreateExercisesArray(tempArray: exerciseData)
+                PreventionConfigs = _preventionConfigData
             } catch {
                 print("Ошибка при загрузке данных: \(error)")
             }
         }
+        PreventionDurations = PreventionConfigs[1].Parametr_values
+        PreventionIntensities = PreventionConfigs[0].Parametr_values
     }
 }
 
 private struct PreventionConfig: Codable {
     var Parametr_ID: Int?
     var Parametr_name: String?
-    var Parametr_values: [Int?]
+    var Parametr_values: [Int]
 
     enum CodingKeys: String, CodingKey {
         case Parametr_ID

@@ -107,7 +107,8 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     @objc func GetOptions()
     {
         PreventionIntensity = PreventionManager.shared.CurrentIntensity
-        PreventionDuration = (PreventionManager.shared.CurrentDuration * 7)
+        PreventionDuration = (PreventionManager.shared.CurrentDuration)
+        PreventionCurrentDay = PreventionManager.shared.CurrentDay
         
         let currentDate = Date()
         let formatter = DateFormatter()

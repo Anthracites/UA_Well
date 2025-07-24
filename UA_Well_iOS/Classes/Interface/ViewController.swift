@@ -47,9 +47,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                        switch type {
                        case "PreventionAlarm":
                            storyboardName = "PreventionInstruction"
+                           var i = UserDefaults.standard.integer(forKey: "PreventionCurrentDay")
+                           i += 1
+                           UserDefaults.standard.set(i, forKey: "PreventionCurrentDay")
+                           PreventionManager.shared.CurrentDay = i
                            
                        case "LTWAlarm":
                            storyboardName = "LTWDayDescription"
+                           var i = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
+                           i += 1
+                           UserDefaults.standard.set(i, forKey: "LTWCurrentDay")
 
                        default:
                            storyboardName = "PreventionInstruction"

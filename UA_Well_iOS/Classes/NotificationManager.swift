@@ -23,7 +23,16 @@ class NotificationManager {
         PreventionAlarmNotification = GetNotificationParameters(_notificationType: "PreventionAlarm")
         LTWAlarmNotification = GetNotificationParameters(_notificationType: "LTWAlarm")
         
-        scheduleNotification(_alarmNotification: PreventionAlarmNotification!)
+        if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration") == true)
+        {
+            scheduleNotification(_alarmNotification: PreventionAlarmNotification!)
+        }
+        else
+        {
+            ResetToDefault()
+        }
+        
+        //if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration") == true)
         scheduleNotification(_alarmNotification: LTWAlarmNotification!)
     }
     
@@ -47,7 +56,7 @@ class NotificationManager {
         if (_isAlarmOn == true) && (_alarmNotification.NotificationTime != nil)
         {
             let trigger = UNCalendarNotificationTrigger(dateMatching: _alarmNotification.NotificationTime, repeats: true)
-            let request = UNNotificationRequest(identifier: "dailyReminder", content: _alarmNotification.NotificationContent, trigger: trigger)
+            let request = UNNotificationRequest(identifier: _alarmNotification.AlarmType, content: _alarmNotification.NotificationContent, trigger: trigger)
             
             UNUserNotificationCenter.current().add(request) { error in
                 if let error = error {
@@ -58,7 +67,7 @@ class NotificationManager {
             }
         }
         else{
-            print("Ошибка:")
+            print("Error shedule notification:")
         }
     }
     
@@ -119,6 +128,29 @@ class NotificationManager {
         
         return _notification
     }
+    
+    func IsTherapyActive(CurrentTherapyDay: String, TherapyDuration: String) ->  Bool
+    {
+        let _isTharepyActive: Bool
+        let _currentTherapyDay = UserDefaults.standard.integer(forKey: CurrentTherapyDay)
+        let _therapyDuration = PreventionManager.shared.PreventionDurations[UserDefaults.standard.integer(forKey: TherapyDuration)]*7
+        
+        print("")
+        
+        _isTharepyActive = _currentTherapyDay <= _therapyDuration
+        
+        return _isTharepyActive
+    }
+    
+    @objc func ResetToDefault()
+    {
+        UserDefaults.standard.set(nil, forKey: "PreventionAlarm")
+        UserDefaults.standard.set(nil, forKey: "PreventionAlarmTime")
+        UserDefaults.standard.set(nil, forKey: "PreventionDuration")
+        UserDefaults.standard.set(nil, forKey: "PreventionIntensity")
+        UserDefaults.standard.set(nil, forKey: "PreventionCurrentDay")
+    }
+    
     
 }
  struct AlarmNotification

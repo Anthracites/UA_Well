@@ -26,6 +26,6 @@ class LTWManager {
                             CurrentDuration = 1
                             CurrentDay = 1
                     }
-                    print("Current duration: ", String(CurrentDuration))
+                    print("Current duration LTW: ", String(CurrentDuration))
         }
     }

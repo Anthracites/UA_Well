@@ -15,7 +15,6 @@ class ExerciseManager {
     var IsAppOpenFromNotification: Bool! = false
     var NotificationType:String?
 
-
     private init() {} // Закрытый инициализатор
 
     func initializeExercises() {
