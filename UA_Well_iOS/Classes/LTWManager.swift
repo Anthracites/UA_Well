@@ -28,4 +28,13 @@ class LTWManager {
                     }
                     print("Current duration LTW: ", String(CurrentDuration))
         }
+    
+    @objc func ResetToDefault()
+    {
+        UserDefaults.standard.set(nil, forKey: "LTWCurrentDay")
+        UserDefaults.standard.set(nil, forKey: "LTWAlarm")
+        UserDefaults.standard.set(nil, forKey: "LTWDuration")
+        UserDefaults.standard.set(nil, forKey: "LTWAlarmTime")
+    }
+    
     }

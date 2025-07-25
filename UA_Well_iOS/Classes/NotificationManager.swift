@@ -23,13 +23,13 @@ class NotificationManager {
         PreventionAlarmNotification = GetNotificationParameters(_notificationType: "PreventionAlarm")
         LTWAlarmNotification = GetNotificationParameters(_notificationType: "LTWAlarm")
         
-        if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration") == true)
+        if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration", TherapyDurations: PreventionManager.shared.PreventionDurations) == true)
         {
             scheduleNotification(_alarmNotification: PreventionAlarmNotification!)
         }
         else
         {
-            ResetToDefault()
+            PreventionManager.shared.ResetToDefault()
         }
         
         //if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration") == true)
@@ -129,26 +129,15 @@ class NotificationManager {
         return _notification
     }
     
-    func IsTherapyActive(CurrentTherapyDay: String, TherapyDuration: String) ->  Bool
+    func IsTherapyActive(CurrentTherapyDay: String, TherapyDuration: String, TherapyDurations: [Int]) ->  Bool
     {
         let _isTharepyActive: Bool
         let _currentTherapyDay = UserDefaults.standard.integer(forKey: CurrentTherapyDay)
-        let _therapyDuration = PreventionManager.shared.PreventionDurations[UserDefaults.standard.integer(forKey: TherapyDuration)]*7
-        
-        print("")
+        let _therapyDuration = TherapyDurations[UserDefaults.standard.integer(forKey: TherapyDuration)]*7
         
         _isTharepyActive = _currentTherapyDay <= _therapyDuration
         
         return _isTharepyActive
-    }
-    
-    @objc func ResetToDefault()
-    {
-        UserDefaults.standard.set(nil, forKey: "PreventionAlarm")
-        UserDefaults.standard.set(nil, forKey: "PreventionAlarmTime")
-        UserDefaults.standard.set(nil, forKey: "PreventionDuration")
-        UserDefaults.standard.set(nil, forKey: "PreventionIntensity")
-        UserDefaults.standard.set(nil, forKey: "PreventionCurrentDay")
     }
     
     

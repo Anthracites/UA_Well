@@ -31,6 +31,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         LTWAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
         LTWAlarm.isOn = UserDefaults.standard.bool(forKey: "LTWAlarm")
         SaveOptions()
+        TherapyDay = LTWManager.shared.CurrentDay
     }
     
     func TranslateButton(_currentButton: UIButton)
@@ -102,7 +103,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
-        print ("Cell added. Cell index: ", indexPath.item)
+        print ("Current therapy day in LTWDayDescriprion: ", TherapyDay)
         return cell
     }
     

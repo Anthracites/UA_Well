@@ -57,6 +57,18 @@ class PreventionManager {
         PreventionDurations = PreventionConfigs[1].Parametr_values
         PreventionIntensities = PreventionConfigs[0].Parametr_values
     }
+    
+    @objc func ResetToDefault()
+    {
+        UserDefaults.standard.set(nil, forKey: "PreventionAlarm")
+        
+        UserDefaults.standard.set(nil, forKey: "PreventionAlarmTime")
+        
+        UserDefaults.standard.set(nil, forKey: "PreventionDuration")
+        
+        UserDefaults.standard.set(nil, forKey: "PreventionIntensity")
+        UserDefaults.standard.set(nil, forKey: "PreventionCurrentDay")
+    }
 }
 
 private struct PreventionConfig: Codable {

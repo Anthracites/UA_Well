@@ -72,7 +72,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
             let storyboard = UIStoryboard(name: "LTWDayDescription", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "LTWDayDescription") as! LTWDayDescription
-        secondVC.TherapyDay = _currentButton.tag
+            LTWManager.shared.CurrentDay = _currentButton.tag
             self.present(secondVC, animated: true, completion: nil)
         print("Day index: ", _currentButton.tag)
     }

@@ -48,8 +48,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                        case "PreventionAlarm":
                            storyboardName = "PreventionInstruction"
                            var i = UserDefaults.standard.integer(forKey: "PreventionCurrentDay")
+                           //var i = 12
+
                            i += 1
-                           UserDefaults.standard.set(i, forKey: "PreventionCurrentDay")
+                           //UserDefaults.standard.set(i, forKey: "PreventionCurrentDay")
                            PreventionManager.shared.CurrentDay = i
                            
                        case "LTWAlarm":
