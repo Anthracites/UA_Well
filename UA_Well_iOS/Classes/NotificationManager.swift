@@ -11,11 +11,6 @@ class NotificationManager {
     func requestAuthorization() {
         registerNotificationCategories()
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-//            if granted {
-//                print("Разрешение получено")
-//            } else {
-//                print("Уведомления отключены")
-//            }
         }
     }
     func scheduleNotifications()
@@ -32,8 +27,15 @@ class NotificationManager {
             PreventionManager.shared.ResetToDefault()
         }
         
-        //if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration") == true)
-        scheduleNotification(_alarmNotification: LTWAlarmNotification!)
+        
+        if (IsTherapyActive(CurrentTherapyDay: "LTWCurrentDay", TherapyDuration: "LTWDuration", TherapyDurations: LTWManager.shared.LTWDurations) == true)
+        {
+            scheduleNotification(_alarmNotification: LTWAlarmNotification!)
+        }
+        else
+        {
+            LTWManager.shared.ResetToDefault()
+        }
     }
     
     func registerNotificationCategories() {
@@ -88,7 +90,7 @@ class NotificationManager {
             _notificationScreen = "PreventionInstruction"
             _notificationAlarmOn = "PreventionAlarm"
         case "LTWAlarm":
-            _notificationBody = _currentTranslation?.alarmNotifications?.Body_long_time_work ?? " " + _type
+            _notificationBody = _currentTranslation?.alarmNotifications!.Body_long_time_work ?? " " + _type
             _notificationTime = "LTWAlarmTime"
             _notificationScreen = "LTWDayDescription"
             _notificationAlarmOn = "LTWAlarm"

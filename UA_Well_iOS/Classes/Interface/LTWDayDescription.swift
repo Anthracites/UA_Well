@@ -60,6 +60,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         {        
             GetOptions()
         }
+
         
         titleText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].TherapyPartName
         descriptionText.text = currentTranslation.longTermWork?.TherapyDays[TherapyDay!].Instruction

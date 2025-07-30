@@ -51,14 +51,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                            //var i = 12
 
                            i += 1
-                           //UserDefaults.standard.set(i, forKey: "PreventionCurrentDay")
                            PreventionManager.shared.CurrentDay = i
                            
                        case "LTWAlarm":
                            storyboardName = "LTWDayDescription"
                            var i = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
                            i += 1
-                           UserDefaults.standard.set(i, forKey: "LTWCurrentDay")
+                           LTWManager.shared.DayCount = i
 
                        default:
                            storyboardName = "PreventionInstruction"

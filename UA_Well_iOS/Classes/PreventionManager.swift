@@ -36,8 +36,8 @@ class PreventionManager {
                 CurrentDay = 1
                 print("Error of get perevention parameters from UserDefaul!!!")
         }
-        print("Current duration in PreventionManager: ", String(CurrentDuration))
-        print ("Current prevention day in PreventionManager = ", String(CurrentDay))
+        //print("Current duration in PreventionManager: ", String(CurrentDuration))
+        //print ("Current prevention day in PreventionManager = ", String(CurrentDay))
     }
     
     @objc func GetConfig()
