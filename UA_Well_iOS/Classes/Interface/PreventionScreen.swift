@@ -9,6 +9,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var startButton:UIButton!
     @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var dayCount: UILabel!
     @IBOutlet weak var descriptionText: UITextView!
     var PPLabels: [String] = ["Sensity", "Duration"]
     var PPValues: [[String]] = [["Min", "Mid", "Max"],["Two", "Three", "Four"]]
@@ -29,6 +30,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         ExerciseManager.shared.CurrentHelpType = "Prevention"
         TranslateView()
         GetOptions()
+        dayCount.text = String(PreventionManager.shared.CurrentDay)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

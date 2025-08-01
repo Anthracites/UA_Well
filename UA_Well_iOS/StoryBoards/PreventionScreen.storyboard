@@ -54,11 +54,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ENX-ul-jPT">
-                                                <rect key="frame" x="10" y="62" width="361" height="628.33333333333337"/>
+                                                <rect key="frame" x="10" y="119.33333333333337" width="353" height="572"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="250" constant="596" id="D1d-qD-j6N"/>
-                                                    <constraint firstAttribute="width" constant="361" id="d1u-7Z-tdO"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="353" id="I5d-Ng-lnY"/>
+                                                    <constraint firstAttribute="width" constant="353" id="RUI-cC-9d7"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="572" id="Zri-L3-8aO"/>
+                                                    <constraint firstAttribute="height" constant="572" id="k0E-UP-w06"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="800" id="wep-hL-FgF"/>
                                                 </constraints>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. The end!!!</string>
                                                 <color key="textColor" systemColor="labelColor"/>
@@ -66,8 +69,11 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7bN-eK-RzM">
-                                                <rect key="frame" x="10" y="758" width="353" height="376"/>
+                                                <rect key="frame" x="10" y="927.66666666666686" width="353" height="206.33333333333337"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="206.33333333333326" id="1gh-e8-bsF"/>
+                                                </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="W0x-s1-quh">
                                                     <size key="itemSize" width="128" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -129,20 +135,24 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Start" backgroundImage="CommonButtonBG.png"/>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333dhmjdryq5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VIb-eI-fu9">
+                                                <rect key="frame" x="37" y="61" width="299" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                <color key="textColor" systemColor="systemIndigoColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="7bN-eK-RzM" firstAttribute="leading" secondItem="ENX-ul-jPT" secondAttribute="leading" id="Jtm-21-tMc"/>
+                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="leading" secondItem="7bN-eK-RzM" secondAttribute="leading" id="AgB-fp-ZIb"/>
                                             <constraint firstItem="0IG-ax-rJ3" firstAttribute="top" secondItem="ofl-uN-Ek7" secondAttribute="top" constant="20.329999999999998" id="KgJ-0E-20t"/>
-                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="top" secondItem="0IG-ax-rJ3" secondAttribute="bottom" constant="8" symbolic="YES" id="LBO-rT-xzO"/>
+                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="leading" secondItem="ofl-uN-Ek7" secondAttribute="leading" constant="10" id="OKz-pf-Z4P"/>
                                             <constraint firstAttribute="height" constant="1233" id="SqQ-Az-gUa"/>
                                             <constraint firstItem="BRK-jJ-o3B" firstAttribute="top" secondItem="7bN-eK-RzM" secondAttribute="bottom" constant="8" symbolic="YES" id="XhX-Nv-7VB"/>
                                             <constraint firstItem="0IG-ax-rJ3" firstAttribute="centerX" secondItem="ofl-uN-Ek7" secondAttribute="centerX" id="aFf-Gg-qez"/>
-                                            <constraint firstAttribute="trailing" secondItem="ENX-ul-jPT" secondAttribute="trailing" constant="13" id="dGt-7f-0yu"/>
-                                            <constraint firstItem="7bN-eK-RzM" firstAttribute="top" secondItem="ENX-ul-jPT" secondAttribute="bottom" constant="67.666666666666629" id="has-Qm-MAa"/>
-                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="top" secondItem="ofl-uN-Ek7" secondAttribute="top" constant="62" id="igc-q6-4kY"/>
                                             <constraint firstAttribute="width" constant="384" id="jmg-oI-Rgk"/>
+                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="top" secondItem="VIb-eI-fu9" secondAttribute="bottom" constant="24.333333333333343" id="mlK-NT-7bY"/>
                                             <constraint firstItem="7bN-eK-RzM" firstAttribute="centerX" secondItem="BRK-jJ-o3B" secondAttribute="centerX" id="we3-0V-gDJ"/>
-                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="leading" secondItem="ofl-uN-Ek7" secondAttribute="leading" constant="10" id="zoF-4F-NEj"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -174,6 +184,7 @@
                     <connections>
                         <outlet property="_collectionView" destination="7bN-eK-RzM" id="u8k-Ve-tMP"/>
                         <outlet property="backButton" destination="oR5-3I-Xmj" id="FAN-IV-h6U"/>
+                        <outlet property="dayCount" destination="VIb-eI-fu9" id="grA-VR-WO6"/>
                         <outlet property="descriptionText" destination="ENX-ul-jPT" id="VpW-VR-Vw2"/>
                         <outlet property="startButton" destination="BRK-jJ-o3B" id="SuU-U3-y08"/>
                         <outlet property="titleText" destination="0IG-ax-rJ3" id="Svj-zY-WZZ"/>
