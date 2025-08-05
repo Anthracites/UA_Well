@@ -108,6 +108,7 @@ class TranslationDownloader {
                                 if translation.currentLanguage == "Українська"
                                 {
                                     DefaultLanguage = translation
+
                                     //print("Current langauge seleted!!!!")
                                 }
                                 
@@ -117,12 +118,17 @@ class TranslationDownloader {
                                 {
                                     IsFirstRun = false
                                 }
+                                else
+                                {
+                                    CurrentTranslation = translation
+                                }
                                 
                                 if translation.currentLanguage == savedLanguage
                                 {
                                     CurrentTranslation = translation
                                     print("Saved language: ", savedLanguage)
                                 }
+  
 
                                 Translations.append(translation)
                             }

@@ -9,7 +9,11 @@ class NotificationManager {
     
     // Запрос разрешения на уведомления
     func requestAuthorization() {
-        registerNotificationCategories()
+        if (TranslationDownloader.shared.IsFirstRun == false)
+        {
+            registerNotificationCategories()
+        }
+        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
         }
     }

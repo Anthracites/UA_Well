@@ -7,6 +7,8 @@ class LTWManager {
     var CurrentDuration: Int!
     var CurrentDay: Int!
     var DayCount: Int!
+    var IsLTWExerciseCompletedToday: Bool!
+
     
     private init() {} // Закрытый инициализатор
     

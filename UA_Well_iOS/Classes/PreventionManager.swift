@@ -9,6 +9,8 @@ class PreventionManager {
     var PreventionIntensities: [Int] = []
     var CurrentIntensity: Int!
     var CurrentDay: Int!
+    var IsPreventionExerciseCompletedToday: Bool!
+
     
     private init() {} // Закрытый инициализатор
     
