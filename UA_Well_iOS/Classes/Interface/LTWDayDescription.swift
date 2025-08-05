@@ -32,6 +32,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         LTWAlarm.isOn = UserDefaults.standard.bool(forKey: "LTWAlarm")
         SaveOptions()
         TherapyDay = LTWManager.shared.CurrentDay
+        TherapyProgressTracker.shared.markTodayAsCompleted(for: .LTW)
     }
     
     func TranslateButton(_currentButton: UIButton)
@@ -144,7 +145,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     {
         GetOptions()
         
-        UserDefaults.standard.set(TherapyDay, forKey: "LTWCurrentDay")
+        UserDefaults.standard.set(LTWManager.shared.DayCount, forKey: "LTWCurrentDay")
         UserDefaults.standard.set(LTWAlarm.isOn, forKey: "LTWAlarm")
         UserDefaults.standard.set(LTWDuration, forKey: "LTWDuration")
         UserDefaults.standard.set(LTWAlarmTime, forKey: "LTWAlarmTime")

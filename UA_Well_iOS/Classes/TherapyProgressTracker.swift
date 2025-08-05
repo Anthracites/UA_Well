@@ -45,7 +45,7 @@ class TherapyProgressTracker {
         switch type
         {
         case TherapyType.LTW:
-            LTWManager.shared.CurrentDay = newCount
+            LTWManager.shared.DayCount = newCount
         case TherapyType.Prevention:
             PreventionManager.shared.CurrentDay = newCount
         }

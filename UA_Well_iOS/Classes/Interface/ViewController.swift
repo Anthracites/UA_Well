@@ -51,9 +51,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                            
                        case "LTWAlarm":
                            storyboardName = "LTWDayDescription"
-                           var i = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
-                           i += 1
-                           LTWManager.shared.DayCount = i
+                           TherapyProgressTracker.shared.markTodayAsCompleted(for: .LTW)
 
                        default:
                            storyboardName = "PreventionInstruction"

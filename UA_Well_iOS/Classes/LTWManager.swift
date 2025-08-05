@@ -3,7 +3,7 @@ import Foundation
 class LTWManager {
     
     static let shared = LTWManager() // Singleton
-    var LTWDurations: [Int] = []
+    var LTWDurations = [2,2,2,2,2]
     var CurrentDuration: Int!
     var CurrentDay: Int!
     var DayCount: Int!
@@ -13,27 +13,25 @@ class LTWManager {
     private init() {} // Закрытый инициализатор
     
     func initializeLTWManager() {
-        guard LTWDurations.isEmpty else { return }
+        guard DayCount == nil else { return }
         GetParameters()
-        
-        print ("Current prevention day in LTWManager = ", String(CurrentDay))
     }
     
     @objc func GetParameters()
     {
-        LTWDurations = [2,2,2]
-        if (UserDefaults.standard.integer(forKey: "LTWDuration") != nil)
+
+        if (UserDefaults.standard.integer(forKey: "LTWCurrentDay") != nil)
         {
                         CurrentDuration = UserDefaults.standard.integer(forKey: "LTWDuration")
             DayCount = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
                     }
                         else
                     {
-                            CurrentDuration = 1
                             DayCount = 0
                     }
         SwitchDayID()
-                    print("Current day count LTW: ", String(CurrentDay))
+        CurrentDuration = 2
+        print("Current day count LTW: ", String(DayCount))
         }
     @objc func SwitchDayID()
     {
@@ -62,6 +60,7 @@ class LTWManager {
         UserDefaults.standard.set(nil, forKey: "LTWAlarm")
         UserDefaults.standard.set(nil, forKey: "LTWDuration")
         UserDefaults.standard.set(nil, forKey: "LTWAlarmTime")
+        print("LTW reseted to defult")
     }
     
     }
