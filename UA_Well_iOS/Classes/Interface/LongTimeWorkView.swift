@@ -11,6 +11,8 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var _collectionView: UICollectionView!
     var popUpButtonLabels: [String] = ["One", "Five", "Ten", "Fifvteen"]
+    @IBOutlet weak var dayCount: UILabel!
+
 
 
     
@@ -21,6 +23,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         _collectionView.delegate = self
         SetUpButton()
         TranslateView()
+        dayCount.text = String(LTWManager.shared.DayCount)
     }
     
     @objc func TranslateView()

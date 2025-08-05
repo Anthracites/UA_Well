@@ -9,7 +9,12 @@ class TherapyProgressTracker {
     static let shared = TherapyProgressTracker()
     
     private func dayKey(for type: TherapyType) -> String {
-        return "CompletedDays_\(type.rawValue)"
+        switch type {
+        case .LTW:
+            return "LTWCurrentDay"
+        case .Prevention:
+            return "PreventionCurrentDay"
+        }
     }
     
     private func lastMarkedKey(for type: TherapyType) -> String {
@@ -29,7 +34,7 @@ class TherapyProgressTracker {
     
     func markTodayAsCompleted(for type: TherapyType) {
         guard !isMarkedToday(for: type) else {
-            print("⚠️ Сегодня уже отмечено для \(type.rawValue)")
+            print("⚠️ Уже отмечено сегодня для \(type.rawValue)")
             return
         }
         
@@ -37,7 +42,15 @@ class TherapyProgressTracker {
         UserDefaults.standard.set(newCount, forKey: dayKey(for: type))
         UserDefaults.standard.set(Date(), forKey: lastMarkedKey(for: type))
         
-        print("✅ День терапии (\(type.rawValue)) засчитан. Всего: \(newCount)")
+        switch type
+        {
+        case TherapyType.LTW:
+            LTWManager.shared.CurrentDay = newCount
+        case TherapyType.Prevention:
+            PreventionManager.shared.CurrentDay = newCount
+        }
+        
+        print("✅ Добавлен день терапии \(type.rawValue): \(newCount)")
     }
 }
 

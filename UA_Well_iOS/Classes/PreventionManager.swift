@@ -35,11 +35,11 @@ class PreventionManager {
         {
                 CurrentDuration = 0
                 CurrentIntensity = 0
-                CurrentDay = 1
+                CurrentDay = 0
                 print("Error of get perevention parameters from UserDefaul!!!")
         }
         //print("Current duration in PreventionManager: ", String(CurrentDuration))
-        //print ("Current prevention day in PreventionManager = ", String(CurrentDay))
+        print ("Current prevention day in PreventionManager = ", String(CurrentDay))
     }
     
     @objc func GetConfig()
@@ -62,7 +62,7 @@ class PreventionManager {
     
     @objc func ResetToDefault()
     {
-        UserDefaults.standard.set(nil, forKey: "PreventionAlarm")
+        UserDefaults.standard.set(false, forKey: "PreventionAlarm")
         
         UserDefaults.standard.set(nil, forKey: "PreventionAlarmTime")
         
@@ -70,6 +70,7 @@ class PreventionManager {
         
         UserDefaults.standard.set(nil, forKey: "PreventionIntensity")
         UserDefaults.standard.set(nil, forKey: "PreventionCurrentDay")
+        print("Prevention reseted to dafault")
     }
 }
 

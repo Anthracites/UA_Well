@@ -85,7 +85,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
                     _labels.append(_duration.Name)
                 }
                 DropDown.SetupPullDownMenu(DropDown: DropDown.dropDown, DropDownItems: _labels)
-                DropDown.dropDown.setTitle(_translationLabels[currentDuration/7].Name, for: .normal)
+                DropDown.dropDown.setTitle(_translationLabels[currentDuration].Name, for: .normal)
                 durationCurrentOptions = DropDown
                 
             }

@@ -47,11 +47,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                        switch type {
                        case "PreventionAlarm":
                            storyboardName = "PreventionInstruction"
-                           var i = UserDefaults.standard.integer(forKey: "PreventionCurrentDay")
-                           //var i = 12
-
-                           i += 1
-                           PreventionManager.shared.CurrentDay = i
+                           TherapyProgressTracker.shared.markTodayAsCompleted(for: .Prevention)
                            
                        case "LTWAlarm":
                            storyboardName = "LTWDayDescription"

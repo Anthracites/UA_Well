@@ -28,7 +28,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         TranslateView()
         PreventionAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
         PreventionAlarm.isOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
-        SaveOptions()
+        TherapyProgressTracker.shared.markTodayAsCompleted(for: .Prevention)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
