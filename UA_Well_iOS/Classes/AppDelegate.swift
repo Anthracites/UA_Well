@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  UA_Well_iOS
-//
-//  Created by Наталья Гусарова on 17.09.2024.
-//
-
 import UIKit
 
 @main
@@ -29,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let splashVC = LaunchScreen()
         window?.rootViewController = splashVC
         window?.makeKeyAndVisible()
+        TranslationFileManager.shared.prepareTranslations()
         TranslationDownloader.shared.initializeTranslations()
         ExerciseManager.shared.initializeExercises()
         PreventionManager.shared.initializePreventionManager()
@@ -37,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         NotificationManager.shared.requestAuthorization()
         NotificationManager.shared.scheduleNotifications()
-        QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+        //QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
         
         print("Is from notifications: ", ExerciseManager.shared.IsAppOpenFromNotification)
         
