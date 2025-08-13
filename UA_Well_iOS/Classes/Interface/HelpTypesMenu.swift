@@ -43,7 +43,6 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
         
-        
         //view.addSubview(cell.MenuButton)
         
         //print(_label, indexPath.item)
