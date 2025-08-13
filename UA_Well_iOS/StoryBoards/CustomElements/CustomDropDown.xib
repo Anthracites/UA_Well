@@ -14,7 +14,7 @@
         <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="He8-qA-Dva" customClass="CustomDropDown" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
             <rect key="frame" x="0.0" y="0.0" width="395" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-Q8-gQE">
+            <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-Q8-gQE">
                 <rect key="frame" x="0.0" y="0.0" width="395" height="187"/>
                 <subviews>
                     <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
@@ -49,11 +49,6 @@
                     <constraint firstItem="nZT-oq-9UH" firstAttribute="top" secondItem="Um2-Q8-gQE" secondAttribute="top" id="tFm-Xg-aEF"/>
                 </constraints>
             </collectionViewCellContentView>
-            <constraints>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="leading" secondItem="He8-qA-Dva" secondAttribute="leading" id="4k7-mf-XyN"/>
-                <constraint firstAttribute="bottom" secondItem="Um2-Q8-gQE" secondAttribute="bottom" id="DBG-et-ZJy"/>
-                <constraint firstItem="Um2-Q8-gQE" firstAttribute="top" secondItem="He8-qA-Dva" secondAttribute="top" id="kN5-sv-OL0"/>
-            </constraints>
             <size key="customSize" width="395" height="187"/>
             <connections>
                 <outlet property="ddLabel" destination="nZT-oq-9UH" id="iNS-3D-aOC"/>

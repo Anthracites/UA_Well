@@ -69,9 +69,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-     //   funkGetJSONs()
         _collectionView.reloadData()
         _collectionView.contentMode = .center
+        //centerCollectionViewContent()
     }
     
     
@@ -111,6 +111,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
+        
+        
         return cell
     }
     
@@ -127,7 +129,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
             self.present(secondVC, animated: true, completion: nil)    }
+    
+    func centerCollectionViewContent() {
+        guard let layout = _collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+
+        let itemHeight = layout.itemSize.height
+        let spacing = layout.minimumLineSpacing
+        let itemCount = translations.count
+
+        let totalContentHeight = CGFloat(itemCount) * itemHeight + CGFloat(itemCount - 1) * spacing
+        let topInset = max((_collectionView.frame.height - totalContentHeight) / 2, 0)
+
+        _collectionView.contentInset.top = topInset
+
+        print("Collection view height: \(_collectionView.frame.height)")
+        print("Total content height: \(totalContentHeight)")
+        print("Calculated top inset: \(topInset)")
     }
+
+
+    
+    }
+
+
 
 
 

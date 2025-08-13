@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,47 +16,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="S70-iE-vYZ">
+                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="S70-iE-vYZ">
                                 <rect key="frame" x="16" y="59" width="361" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-HK-ehw" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
+                                    <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-HK-ehw" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
                                         <rect key="frame" x="312" y="22" width="41" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="41" id="2zD-Nc-WIn"/>
+                                        </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="burger_button.png"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ReG-HK-ehw" firstAttribute="centerY" secondItem="S70-iE-vYZ" secondAttribute="centerY" id="00I-Dl-Fa0"/>
+                                    <constraint firstItem="ReG-HK-ehw" firstAttribute="top" secondItem="S70-iE-vYZ" secondAttribute="top" constant="22" id="Gnc-HM-xQO"/>
+                                    <constraint firstItem="ReG-HK-ehw" firstAttribute="trailing" secondItem="S70-iE-vYZ" secondAttribute="trailingMargin" id="Ugm-Iy-mKz"/>
+                                </constraints>
                             </view>
-                            <view contentMode="bottom" fixedFrame="YES" restorationIdentifier="MainMenuMiddle" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-V0-qoa">
+                            <view contentMode="bottom" restorationIdentifier="MainMenuMiddle" translatesAutoresizingMaskIntoConstraints="NO" id="J6P-V0-qoa">
                                 <rect key="frame" x="16" y="135" width="361" height="276"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="app_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jfi-Mp-ofc">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="268"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="65" y="35" width="231" height="206"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="center" fixedFrame="YES" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="WmN-RY-1IE">
+                            <view contentMode="center" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="WmN-RY-1IE">
                                 <rect key="frame" x="16" y="419" width="361" height="399"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="db0-5C-ax2">
-                                        <rect key="frame" x="8" y="0.0" width="345" height="391"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" id="db0-5C-ax2">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="399"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BQR-Y4-hm8">
-                                            <size key="itemSize" width="325" height="122"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5TN-Y6-itF">
+                                            <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionViewCell" id="yTm-75-ptM" propertyAccessControl="none">
-                                                <rect key="frame" x="10" y="0.0" width="325" height="122"/>
+                                                <rect key="frame" x="18" y="0.0" width="325" height="122"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="325" height="122"/>
@@ -80,10 +83,31 @@
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="399" id="xza-Bf-IYw"/>
+                                    <constraint firstAttribute="width" constant="361" id="yiV-qi-z7d"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="J6P-V0-qoa" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="135" id="5c4-Sf-oqm"/>
+                            <constraint firstItem="S70-iE-vYZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="CCf-3d-5M0"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="trailing" secondItem="J6P-V0-qoa" secondAttribute="trailing" id="FNP-mo-Hpc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S70-iE-vYZ" secondAttribute="trailing" constant="16" id="Iek-wt-WdH"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="leading" secondItem="S70-iE-vYZ" secondAttribute="leading" id="Kv3-ji-zO2"/>
+                            <constraint firstAttribute="bottom" secondItem="WmN-RY-1IE" secondAttribute="bottom" constant="34" id="RH5-9Q-pKe"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="leading" secondItem="J6P-V0-qoa" secondAttribute="leading" id="VtR-67-GIQ"/>
+                            <constraint firstItem="S70-iE-vYZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="59" id="Y1x-Iu-v6h"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="top" secondItem="J6P-V0-qoa" secondAttribute="bottom" constant="8" symbolic="YES" id="arl-XO-jEl"/>
+                            <constraint firstItem="J6P-V0-qoa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="c2Q-X4-1Yq"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ir6-ki-eep"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="top" secondItem="J6P-V0-qoa" secondAttribute="bottom" constant="8" id="t3C-iW-kIe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J6P-V0-qoa" secondAttribute="trailing" constant="16" id="wUq-de-IP3"/>
+                            <constraint firstItem="WmN-RY-1IE" firstAttribute="trailing" secondItem="S70-iE-vYZ" secondAttribute="trailing" id="wtO-EH-Lkk"/>
+                            <constraint firstItem="J6P-V0-qoa" firstAttribute="top" secondItem="S70-iE-vYZ" secondAttribute="bottom" constant="8" symbolic="YES" id="x6l-cv-sSd"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="MenuRightButton" destination="ReG-HK-ehw" id="2jw-ni-Ycv"/>
