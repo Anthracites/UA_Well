@@ -6,6 +6,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        //MenuButton.titleLabel?.adjustsFontSizeToFitWidth = true
         // Инициализация
     }
     

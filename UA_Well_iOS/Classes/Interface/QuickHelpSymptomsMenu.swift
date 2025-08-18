@@ -38,25 +38,23 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         let newButoon: UIButton = cell.MenuButton
         let _number = TranslationDownloader.shared.CurrentTranslation.Symptoms[indexPath.item].symptom_ID
         // Настройка ячейки
-        // cell.backgroundColor = .red
+         //cell.backgroundColor = .red
         //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         let _label = TranslationDownloader.shared.CurrentTranslation.Symptoms[_number].symptom_name
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+        newButoon.setTitle(_label, for: .normal)
         newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.titleLabel?.minimumScaleFactor = 0.1
-        newButoon.setTitle(_label, for: .normal)
         newButoon.tag = _number
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
-        newButoon.widthAnchor.constraint(equalToConstant: 360.0).isActive = true
-        newButoon.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-      //  _burgerButton.addTarget(self, action: #selector(BurgerButoonOnClick), for: .touchUpInside)
-        //print ("Sympton ID: ", newButoon.tag, ", symptom name: ", _label)
+//        newButoon.widthAnchor.constraint(equalToConstant: 360.0).isActive = true
+//        newButoon.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
         
         
         //view.addSubview(cell.MenuButton)
-        print("Button width: ", newButoon.frame.width)
+        //print("Button width: ", newButoon.frame.width)
 
         
         //print("Cell added!")
@@ -86,11 +84,12 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
                 newButoon.widthAnchor.constraint(equalToConstant: buttonWidth),
                 newButoon.heightAnchor.constraint(equalToConstant: buttonHeight)
             ])
+            //print("Buttom size: ", buttonWidth, "x", buttonHeight)
+
         }
 
 
 
-        //print("Index: ", indexPath.item)
         return cell
     }
     
