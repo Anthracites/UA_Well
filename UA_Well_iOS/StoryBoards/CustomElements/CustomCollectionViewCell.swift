@@ -13,6 +13,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
     func copyButtonProperties(targetButton: UIButton, isFilledButton: Bool) {
         targetButton.translatesAutoresizingMaskIntoConstraints = false
         targetButton.titleLabel?.font = MenuButton.titleLabel?.font
+        targetButton.titleLabel?.numberOfLines = 2
+        targetButton.titleLabel?.adjustsFontSizeToFitWidth = true
         targetButton.translatesAutoresizingMaskIntoConstraints = MenuButton.translatesAutoresizingMaskIntoConstraints
         targetButton.layer.position = MenuButton.layer.position
         targetButton.contentMode = .center
@@ -21,7 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
             targetButton.setBackgroundImage(commoButtonBG, for: .normal)
             targetButton.setTitleColor(.white, for: .normal)
             targetButton.contentHorizontalAlignment = .center
-            targetButton.titleEdgeInsets = .zero
+            //targetButton.titleEdgeInsets = .zero
         }
         else
         {
@@ -32,5 +34,13 @@ class CustomCollectionViewCell: UICollectionViewCell {
             targetButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             targetButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+    }
+    
+    
+    func calculateButtonHeight(for buttonWidth: CGFloat, backgroundImage: UIImage, cellSpacing: CGFloat) -> CGFloat {
+        let imageHeight = backgroundImage.size.height
+        let imageWidth = backgroundImage.size.width
+        let scaleFactor = imageWidth / buttonWidth
+        return imageHeight / scaleFactor - cellSpacing
     }
 }

@@ -22,6 +22,8 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         _collectionView.contentMode = .center
         _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
+        _backButton.titleLabel?.adjustsFontSizeToFitWidth = true
+
         
     }
     
@@ -58,10 +60,36 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
 
         
         //print("Cell added!")
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
+           let backgroundImage = newButoon.backgroundImage(for: .normal) {
+
+            flowLayout.scrollDirection = .vertical
+
+            // Получаем реальные горизонтальные отступы
+            let leftInset = collectionView.contentInset.left + flowLayout.sectionInset.left
+            let rightInset = collectionView.contentInset.right + flowLayout.sectionInset.right
+            let totalHorizontalInset = leftInset + rightInset
+
+            let buttonWidth = collectionView.frame.width - totalHorizontalInset
+
+            // Вычисляем высоту кнопки с ограничением максимальной высоты
+            let rawHeight = cell.calculateButtonHeight(for: buttonWidth, backgroundImage: backgroundImage, cellSpacing: flowLayout.minimumLineSpacing)
+            let maxHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
+            let buttonHeight = min(rawHeight, maxHeight)
+
+            // Настраиваем размер ячейки
+            flowLayout.itemSize = CGSize(width: buttonWidth, height: buttonHeight + flowLayout.minimumLineSpacing)
+
+            // Применяем размеры к кнопке
+            newButoon.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                newButoon.widthAnchor.constraint(equalToConstant: buttonWidth),
+                newButoon.heightAnchor.constraint(equalToConstant: buttonHeight)
+            ])
         }
+
+
+
         //print("Index: ", indexPath.item)
         return cell
     }

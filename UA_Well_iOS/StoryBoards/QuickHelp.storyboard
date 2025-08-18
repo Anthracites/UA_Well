@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,12 +16,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
+                                <rect key="frame" x="16" y="59" width="361" height="67"/>
+                                <subviews>
+                                    <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" restorationIdentifier="BurgerButton" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-vQ-ZEi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="312" y="22" width="41" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="burger_button.png"/>
+                                    </button>
+                                    <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="clip" id="faR-xZ-zj4" customClass="ReturnButton" customModule="UA_Well_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="13" width="299" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <accessibility key="accessibilityConfiguration" label="Return to language selection"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Return to help type" image="left_right.png">
+                                            <color key="titleColor" systemColor="systemIndigoColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="lEN-eP-Qhq"/>
+                                </constraints>
+                            </view>
                             <view contentMode="center" fixedFrame="YES" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
-                                <rect key="frame" x="16" y="135" width="358" height="683"/>
+                                <rect key="frame" x="13" y="134" width="364" height="684"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aw5-xT-aqI">
-                                        <rect key="frame" x="7" y="8" width="352" height="646"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="684"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="g8o-2c-KpO">
@@ -32,7 +58,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionViewCell" id="qCL-sK-NPW" propertyAccessControl="none">
-                                                <rect key="frame" x="6" y="0.0" width="339" height="122"/>
+                                                <rect key="frame" x="13" y="0.0" width="339" height="122"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="339" height="122"/>
@@ -57,33 +83,14 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <view contentMode="right" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
-                                <rect key="frame" x="16" y="59" width="361" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" restorationIdentifier="BurgerButton" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-vQ-ZEi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="312" y="22" width="41" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" backgroundImage="burger_button.png"/>
-                                    </button>
-                                    <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="faR-xZ-zj4" customClass="ReturnButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="8" width="299" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration" label="Return to language selection"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Return to help type" image="left_right.png">
-                                            <color key="titleColor" systemColor="systemIndigoColor"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="38u-DF-y5t"/>
+                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="59" id="Wfc-lP-dTO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yuV-Sb-E3A" secondAttribute="trailing" constant="16" id="ucX-RN-TQa"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="_backButton" destination="faR-xZ-zj4" id="t3x-Oo-xYa"/>
