@@ -9,12 +9,14 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     var _previousScreenName = "HelpTypesMenu"
     var quickHelpExercises: [HelpExercises] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
+    var sortedIndices: [Int] = []
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         quickHelpExercises = ExerciseManager.shared.QuickHelpExercises
+        sortedIndices = sortButtonsAlphabetically()
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
@@ -33,31 +35,23 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
 
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // _collectionView.backgroundColor = .cyan
+        
+        let index = sortedIndices[indexPath.item]
+        let symptoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+        let symptom = symptoms[index]
+          
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
-        let _number = TranslationDownloader.shared.CurrentTranslation.Symptoms[indexPath.item].symptom_ID
-        // Настройка ячейки
-         //cell.backgroundColor = .red
-        //cell.MenuButton.backgroundColor = .gray
+
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        let _label = TranslationDownloader.shared.CurrentTranslation.Symptoms[_number].symptom_name
-        newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
+        let _label = TranslationDownloader.shared.CurrentTranslation.Symptoms[index].symptom_name
         newButoon.setTitle(_label, for: .normal)
-        newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
-        newButoon.titleLabel?.minimumScaleFactor = 0.1
-        newButoon.tag = _number
+        cell.adjustFontSize(for: newButoon)
+        newButoon.tag = index
         cell.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
-//        newButoon.widthAnchor.constraint(equalToConstant: 360.0).isActive = true
-//        newButoon.heightAnchor.constraint(equalToConstant: 100.0).isActive = true
-        
-        
-        //view.addSubview(cell.MenuButton)
-        //print("Button width: ", newButoon.frame.width)
 
-        
-        //print("Cell added!")
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout,
            let backgroundImage = newButoon.backgroundImage(for: .normal) {
 
@@ -84,11 +78,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
                 newButoon.widthAnchor.constraint(equalToConstant: buttonWidth),
                 newButoon.heightAnchor.constraint(equalToConstant: buttonHeight)
             ])
-            //print("Buttom size: ", buttonWidth, "x", buttonHeight)
-
         }
-
-
 
         return cell
     }
@@ -119,4 +109,14 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
+    
+    func sortButtonsAlphabetically() -> [Int] {
+        var sortedIndices: [Int] = []
+        var symptoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+        sortedIndices = symptoms.indices.sorted {
+            symptoms[$0].symptom_name.localizedCompare(symptoms[$1].symptom_name) == .orderedAscending
+        }
+        return sortedIndices
+    }
+
 }

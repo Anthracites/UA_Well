@@ -35,8 +35,8 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         // Настройка ячейки
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         var _label: String = TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name
-        newButoon.titleLabel?.adjustsFontSizeToFitWidth = true
         newButoon.setTitle(_label, for: .normal)
+        cell.adjustFontSize(for: newButoon)
         newButoon.tag = indexPath.item
 
         newButoon.titleLabel?.minimumScaleFactor = 0.1

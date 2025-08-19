@@ -99,6 +99,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(translations[indexPath.item].currentLanguage, for: .normal)
         cell.contentMode = .center
+        cell.adjustFontSize(for: newButoon)
+
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
 
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
