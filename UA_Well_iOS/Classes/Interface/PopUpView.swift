@@ -44,13 +44,15 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
             _buttonLabel = "button"
         }
         
-        currentButton.setTitle(_buttonLabel, for: .normal)
+        let _buttonTitle = _buttonLabel.uppercased()
+        currentButton.setTitle(_buttonTitle, for: .normal)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let newButoon: UIButton = cell.MenuButton
         let label = popUpButtonLabels[indexPath.item]
+
         newButoon.setTitle(label, for: .normal)
         cell.contentView.contentMode = .center
         cell.copyButtonProperties(targetButton: newButoon)
