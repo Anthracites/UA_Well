@@ -16,17 +16,18 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.reloadData()
-        tableView.contentMode = .center
+       tableView.contentMode = .center
+       tableView.contentSize = CGSize(width: tableView.frame.width, height: 200)
 
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.rowHeight = 50
         return popUpButtonLabels.count
-        
     }
     
-    func Translate(currentButton: UIButton, title: String)
+    func TranslatedLabel(title: String) -> String
     {
         var _buttonLabel: String!
         
@@ -45,25 +46,27 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         
         let _buttonTitle = _buttonLabel.uppercased()
-        currentButton.setTitle(_buttonTitle, for: .normal)
+        return _buttonTitle
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let newButoon: UIButton = cell.MenuButton
         let label = popUpButtonLabels[indexPath.item]
-
-        newButoon.setTitle(label, for: .normal)
-        cell.contentView.contentMode = .center
-        cell.copyButtonProperties(targetButton: newButoon)
-        newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+//
         newButoon.accessibilityHint = label
-        Translate(currentButton: newButoon, title: label)
-        print("Cell added!")
+        newButoon.setTitle(label, for: .normal)
+
+        cell.contentMode = .center
+//
+        cell.contentView.contentMode = .center
+        newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
+         let title = TranslatedLabel(title: label)
+        cell.copyButtonProperties(to: newButoon, label: title)
         return cell
     }
-    
-    
+
     @objc func BackToPreviousScreen()
     {
         dismiss(animated: true, completion: nil)
