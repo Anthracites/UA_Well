@@ -9,7 +9,7 @@ class TranslationFileManager {
     
     func prepareTranslations() {
         guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            print("❌ Не удалось получить путь к Documents")
+            //print("❌ Не удалось получить путь к Documents")
             return
         }
         
@@ -27,13 +27,13 @@ class TranslationFileManager {
                     needsCopy = true
                 }
             } catch {
-                print("⚠️ Ошибка при проверке содержимого папки: \(error)")
+                //print("⚠️ Ошибка при проверке содержимого папки: \(error)")
                 needsCopy = true
             }
         }
         
         guard needsCopy else {
-            print("✅ JSON-файлы уже существуют, копирование не требуется")
+            //print("✅ JSON-файлы уже существуют, копирование не требуется")
             return
         }
         
@@ -42,13 +42,13 @@ class TranslationFileManager {
             try fileManager.createDirectory(at: translationsDirURL, withIntermediateDirectories: true)
             print("📁 Папка создана: \(translationsDirURL.path)")
         } catch {
-            print("❌ Не удалось создать папку: \(error)")
+            //print("❌ Не удалось создать папку: \(error)")
             return
         }
         
         // Получение пути к папке в Bundle
         guard let bundleFolderURL = Bundle.main.resourceURL?.appendingPathComponent(bundleFolderName) else {
-            print("❌ Не удалось найти папку \(bundleFolderName) в Bundle")
+            //print("❌ Не удалось найти папку \(bundleFolderName) в Bundle")
             return
         }
         
@@ -62,20 +62,20 @@ class TranslationFileManager {
                 
                 if !fileManager.fileExists(atPath: destinationURL.path) {
                     try fileManager.copyItem(at: sourceURL, to: destinationURL)
-                    print("📄 Скопирован файл: \(sourceURL.lastPathComponent)")
+                    //print("📄 Скопирован файл: \(sourceURL.lastPathComponent)")
                 } else {
-                    print("🔁 Файл уже существует: \(sourceURL.lastPathComponent)")
+                    //print("🔁 Файл уже существует: \(sourceURL.lastPathComponent)")
                 }
             }
             
             if let firstFile = jsonFiles.first {
                 let firstFilePath = translationsDirURL.appendingPathComponent(firstFile.lastPathComponent).path
-                print("✅ Переводы загружены. Первый файл: \(firstFilePath)")
+                //print("✅ Переводы загружены. Первый файл: \(firstFilePath)")
             }
             
         } catch {
-            print("JSONs folder: ", bundleFolderURL)
-            print("❌ Ошибка при копировании файлов из Bundle: \(error)")
+            //print("JSONs folder: ", bundleFolderURL)
+            //print("❌ Ошибка при копировании файлов из Bundle: \(error)")
         }
     }
 }

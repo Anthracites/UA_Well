@@ -139,7 +139,7 @@ class NotificationManager {
     {
         let _isTharepyActive: Bool
         let _currentTherapyDay = UserDefaults.standard.integer(forKey: CurrentTherapyDay)
-        let _therapyDuration = TherapyDurations[UserDefaults.standard.integer(forKey: TherapyDuration)]*7
+        let _therapyDuration = (TherapyDurations[UserDefaults.standard.integer(forKey: TherapyDuration)]*7) - 1
         
         _isTharepyActive = _currentTherapyDay <= _therapyDuration
         

@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         NotificationManager.shared.requestAuthorization()
         NotificationManager.shared.scheduleNotifications()
-        //QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+        QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
         
-        print("Is from notifications: ", ExerciseManager.shared.IsAppOpenFromNotification)
+       // print("Is from notifications: ", ExerciseManager.shared.IsAppOpenFromNotification)
         
         return true
     }
