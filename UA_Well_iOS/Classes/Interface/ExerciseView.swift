@@ -7,7 +7,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @IBOutlet weak var _collectionView: UICollectionView!
     var buttonLabels: [String] = ["Next", "It helped", "Contact a specialist"]
-    @IBOutlet weak var exerciseText: UITextView!
+    @IBOutlet weak var exerciseText: AutoResizingTextView!
     @IBOutlet weak var scrollView: UIView!
     @IBOutlet weak var imageHint: UIImageView!
     @IBOutlet weak var breathingHintWidgetButton: UIButton!
@@ -32,6 +32,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _collectionView.delegate = self
         SetupWidget()
         GetImages()
+        exerciseText.adjustHeight()
     }
     
     
@@ -71,6 +72,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _type = ExerciseManager.shared.CurrentHelpType
         let i: Int = QuickHelpManager.shared.CurrentExercise // индекс упражнения в текущем массиве
         let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // индекс текущего упражения в массиве
+
             let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
             HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
             exerciseText.text = _text
@@ -319,6 +321,4 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
 
-
-    
     }

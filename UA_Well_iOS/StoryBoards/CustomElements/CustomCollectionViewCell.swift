@@ -22,6 +22,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
             targetButton.setBackgroundImage(commoButtonBG, for: .normal)
             targetButton.setTitleColor(.white, for: .normal)
             targetButton.contentHorizontalAlignment = .center
+            targetButton.contentVerticalAlignment = .center
+
             //targetButton.titleEdgeInsets = .zero
         }
         else
