@@ -5,7 +5,9 @@ import AVFoundation
 
 class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
-    @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var _collectionView: IntrinsicCollectionView!
+    @IBOutlet weak var header: UIView!
+    @IBOutlet weak var contentView: UIView!
     var buttonLabels: [String] = ["Next", "It helped", "Contact a specialist"]
     @IBOutlet weak var exerciseText: AutoResizingTextView!
     @IBOutlet weak var scrollView: UIView!
@@ -19,33 +21,48 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     var buttons = [UIButton?]()
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     var audioPlayer: AVAudioPlayer?
+    private var exerciseTextHeightConstraint: NSLayoutConstraint?
+    var collectionViewItemsCount: Int!
 
-    
     private var stepTimer: Timer?
     private var exerciseTimer: Timer?
     
+//    func dynamicHeightBasedOnButtons() -> CGFloat {
+//        let itemsPerRow = 2
+//        let itemHeight: CGFloat = 60
+//        let spacing: CGFloat = 16
+//
+//        let rows = ceil(Double(_collectionView.numberOfItems(inSection: 0)) / Double(itemsPerRow))
+//        return CGFloat(rows) * itemHeight + CGFloat(rows - 1) * spacing
+//    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         GetExerices()
+        ConfigCollectionView()
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
+        
         SetupWidget()
         GetImages()
         exerciseText.adjustHeight()
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let _currentHelpType = ExerciseManager.shared.CurrentHelpType
-        if _currentHelpType == "QuickHelp"
-        {
-            return buttonLabels.count
-        }
-        else
-        {
-            return 1
-        }
+        
+        let layoutConfig = LayoutConfigurator.Config(
+            parentView: view,
+            header: header,
+            scrollView: scrollView as! UIScrollView,
+            contentView: contentView,
+            exerciseText: exerciseText,
+            isHintActive: isHintActive,
+            hintWidget: hintWidget,
+            collectionView: _collectionView,
+            collectionViewItemsCount: collectionViewItemsCount
+        )
+        exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
+
     }
     
     func GetImages()
@@ -61,10 +78,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         if (isHintActive == true)
         {
             let _button = breathingHintWidgetButton
-            print("Button name: ", _button?.titleLabel?.text as Any)
             _button!.addTarget(self, action: #selector(OnHintButtonClick), for: .touchUpInside)
         }
-        print ("Hint active: ", String(isHintActive))
+        setupHintWidgetLayout()
     }
     
     func GetExerices()
@@ -84,9 +100,29 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             ExerciseManager.shared.CurrentStep = 0
         }
     }
+    func ConfigCollectionView()
+    {
+        let _currentHelpType = ExerciseManager.shared.CurrentHelpType
+        if _currentHelpType == "QuickHelp"
+        {
+            collectionViewItemsCount = buttonLabels.count
+            
+        }
+        else
+        {
+            collectionViewItemsCount = 1
+        }
+        let _collectionViewItemsCount = collectionViewItemsCount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return collectionViewItemsCount
+
+    }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // _collectionView.backgroundColor = .cyan
+         _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         let HelpType = buttonLabels[indexPath.item]
@@ -95,11 +131,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         buttons.append(newButoon)
         newButoon.setTitle(HelpType, for: .normal)
         cell.contentMode = .center
+        cell.backgroundColor = .systemBlue
+
         
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
-        }
         //print("Buttons count: " + String(buttons.count))
         if ExerciseManager.shared.CurrentHelpType != "QuickHelp"
         {
@@ -111,6 +145,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             SetUpButtons()
         }
         return cell
+        
     }
     
     @objc func SetUpButtons()
@@ -280,8 +315,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @objc func OnHintButtonClick()
     {
         StartExercise(exercise: ExerciseManager.shared.CurrentExercise)
-        //updateHintState()
-        //ExerciseManager.shared.CurrentStep += 1
+        print("Start button pressed!!!!")
     }
     
     @objc func SwichCurrentDay()
@@ -319,6 +353,47 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         } catch {
             print("Ошибка воспроизведения звука: \(error.localizedDescription)")
         }
+    }
+    func setupHintWidgetLayout() {
+        hintWidget.translatesAutoresizingMaskIntoConstraints = true
+
+        NSLayoutConstraint.activate([
+            hintWidget.widthAnchor.constraint(equalToConstant: 300/3), // или привязка к родителю
+            hintWidget.heightAnchor.constraint(equalTo: hintWidget.widthAnchor)
+        ])
+
+        
+        let stackView = UIStackView(arrangedSubviews: [imageHint])
+            stackView.axis = .vertical
+            stackView.spacing = 12
+            stackView.alignment = .center
+            stackView.distribution = .fill
+
+            hintWidget.addSubview(stackView)
+
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                stackView.topAnchor.constraint(equalTo: hintWidget.topAnchor, constant: 12),
+                stackView.bottomAnchor.constraint(equalTo: hintWidget.bottomAnchor, constant: -12),
+                stackView.leadingAnchor.constraint(equalTo: hintWidget.leadingAnchor, constant: 16),
+                stackView.trailingAnchor.constraint(equalTo: hintWidget.trailingAnchor, constant: -16)
+            ])
+        
+        imageHint.addSubview(breathingHintWidgetButton)
+
+        breathingHintWidgetButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            breathingHintWidgetButton.centerXAnchor.constraint(equalTo: imageHint.centerXAnchor),
+            breathingHintWidgetButton.centerYAnchor.constraint(equalTo: imageHint.centerYAnchor),
+            breathingHintWidgetButton.widthAnchor.constraint(equalToConstant: 120),
+            breathingHintWidgetButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+       // imageHint.bringSubviewToFront(breathingHintWidgetButton)
+        breathingHintWidgetButton.isUserInteractionEnabled = true
+        imageHint.isUserInteractionEnabled = true
+
+
     }
 
     }
