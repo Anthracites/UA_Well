@@ -63,9 +63,9 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             let totalHorizontalInset = leftInset + rightInset
 
             let buttonWidth = collectionView.frame.width - totalHorizontalInset
-
+            
             // Вычисляем высоту кнопки с ограничением максимальной высоты
-            let rawHeight = cell.calculateButtonHeight(for: buttonWidth, backgroundImage: backgroundImage, cellSpacing: flowLayout.minimumLineSpacing)
+            let rawHeight = cell.calculateButtonSize(basedOn: .width(buttonWidth), backgroundImage: backgroundImage, cellSpacing: flowLayout.minimumLineSpacing)
             let maxHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
             let buttonHeight = min(rawHeight, maxHeight)
 

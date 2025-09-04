@@ -2,10 +2,10 @@ import UIKit
 import Foundation
 import AVFoundation
 
-
+// Доработать вью, внести bool IsLastExercise отдельно!!!
 class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
-    @IBOutlet weak var _collectionView: IntrinsicCollectionView!
+    @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var contentView: UIView!
     var buttonLabels: [String] = ["Next", "It helped", "Contact a specialist"]
@@ -26,15 +26,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
 
     private var stepTimer: Timer?
     private var exerciseTimer: Timer?
-    
-//    func dynamicHeightBasedOnButtons() -> CGFloat {
-//        let itemsPerRow = 2
-//        let itemHeight: CGFloat = 60
-//        let spacing: CGFloat = 16
-//
-//        let rows = ceil(Double(_collectionView.numberOfItems(inSection: 0)) / Double(itemsPerRow))
-//        return CGFloat(rows) * itemHeight + CGFloat(rows - 1) * spacing
-//    }
 
     
     override func viewDidLoad() {
@@ -49,7 +40,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         SetupWidget()
         GetImages()
         exerciseText.adjustHeight()
-        
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
             header: header,
@@ -95,6 +85,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         isHintActive = ExerciseManager.shared.Exercises[o].Visual_hint
         ExerciseManager.shared.CurrentExercise = ExerciseManager.shared.Exercises[o]
+        
         if (isHintActive == true)
         {
             ExerciseManager.shared.CurrentStep = 0
@@ -105,14 +96,21 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _currentHelpType = ExerciseManager.shared.CurrentHelpType
         if _currentHelpType == "QuickHelp"
         {
-            collectionViewItemsCount = buttonLabels.count
+            let c: Int = QuickHelpManager.shared.CurrentExercise
+            let a: Int = QuickHelpManager.shared.CurrentExersicesArray.count - 1
+            
+                if (a != c)
+            {
+                    collectionViewItemsCount = buttonLabels.count - 1}
+            else {
+                collectionViewItemsCount = buttonLabels.count
+            }
             
         }
         else
         {
             collectionViewItemsCount = 1
         }
-        let _collectionViewItemsCount = collectionViewItemsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -122,28 +120,51 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         _collectionView.backgroundColor = .cyan
+         //_collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         let HelpType = buttonLabels[indexPath.item]
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
-        newButoon.setBackgroundImage(commoButtonBG, for: .normal)
+        //newButoon.setBackgroundImage(commoButtonBG, for: .normal)
         buttons.append(newButoon)
         newButoon.setTitle(HelpType, for: .normal)
         cell.contentMode = .center
-        cell.backgroundColor = .systemBlue
+        //cell.backgroundColor = .systemBlue
+        cell.adjustFontSize(for: newButoon)
 
-        
-        //print("Buttons count: " + String(buttons.count))
         if ExerciseManager.shared.CurrentHelpType != "QuickHelp"
         {
             newButoon.addTarget(self, action: #selector (ItHelpedButtonHandler), for: .touchUpInside)
             let _title = TranslationDownloader.shared.CurrentTranslation.commonButtons?.Ok
             newButoon.setTitle(_title, for: .normal)
         }
-        if indexPath.item == buttonLabels.count - 1 {
+        if indexPath.item == collectionViewItemsCount - 1 {
             SetUpButtons()
         }
+        //print("Button created, index path: ", indexPath.item, "Buttons label count: ", buttonLabels.count - 2)
+
+        if let backgroundImage = newButoon.backgroundImage(for: .normal) {
+            
+            // Задаём фиксированную высоту кнопки
+            let targetHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
+            let buttonHeight = targetHeight
+
+            // Вычисляем ширину кнопки по высоте
+            let rawWidth = cell.calculateButtonSize(basedOn: .height(buttonHeight), backgroundImage: backgroundImage, cellSpacing: 16)
+
+            // Ограничиваем максимальную ширину
+            let horizontalInset: CGFloat = 32 // например, 16 слева и 16 справа
+            let maxWidth = collectionView.frame.width - horizontalInset
+            let buttonWidth = min(rawWidth, maxWidth)
+
+            // Применяем размеры к кнопке
+            newButoon.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                newButoon.widthAnchor.constraint(equalToConstant: buttonWidth * 0.75),
+                newButoon.heightAnchor.constraint(equalToConstant: buttonHeight/3)
+            ])
+        }
+
         return cell
         
     }
@@ -154,8 +175,14 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             let a: Int = QuickHelpManager.shared.CurrentExersicesArray.count - 1
             let _nextStartOverButton: UIButton = buttons[0]!
             let _itHelpedButtton: UIButton = buttons[1]!
+        
+        if buttons.count == 3
+        {
             let _contactUsButton: UIButton = buttons[2]!
-            
+            _contactUsButton.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
+            _contactUsButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
+        }
+        
             if (a != c)
             {
                 _nextStartOverButton.addTarget(self, action: #selector(NextButtonHandler), for: .touchUpInside)
@@ -170,10 +197,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             _itHelpedButtton.addTarget(self, action: #selector(ItHelpedButtonHandler), for: .touchUpInside)
             _itHelpedButtton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.It_helped, for: .normal)
             
-            _contactUsButton.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
-            _contactUsButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
+
             
-            //print("current symptom:", ExerciseManager.shared.QuickHelpExercises[0].symptom_ID, "current exercise number: ", c)
+          //  print("current symptom:", ExerciseManager.shared.QuickHelpExercises[0].symptom_ID, "current exercise number: ", c)
     }
     
     @objc func NextButtonHandler()

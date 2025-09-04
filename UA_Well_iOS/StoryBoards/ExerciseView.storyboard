@@ -81,7 +81,6 @@
                                                     </button>
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="C9Y-aN-vFT"/>
-                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                             </view>
                                             <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LoR-Ux-N2S">
                                                 <rect key="frame" x="16" y="758" width="353" height="337"/>
@@ -117,7 +116,6 @@
                                                 </cells>
                                             </collectionView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemMintColor"/>
                                     </view>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Pan-4P-SfP"/>
@@ -1508,12 +1506,6 @@ AAAAAAAAAAAAAAAAATpXA
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
