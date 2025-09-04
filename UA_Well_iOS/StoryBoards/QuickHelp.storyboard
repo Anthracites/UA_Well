@@ -12,11 +12,11 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController restorationIdentifier="QuickHelp" storyboardIdentifier="QuickHelp" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="QuickHelpSymptomsMenu" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
+                            <view contentMode="right" ambiguous="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
                                 <rect key="frame" x="16" y="59" width="361" height="67"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" restorationIdentifier="BurgerButton" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-vQ-ZEi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
@@ -37,15 +37,14 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="lEN-eP-Qhq"/>
                                 </constraints>
                             </view>
-                            <view contentMode="center" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
+                            <view contentMode="center" ambiguous="YES" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
                                 <rect key="frame" x="16" y="134" width="361" height="684"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aw5-xT-aqI">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Aw5-xT-aqI">
                                         <rect key="frame" x="8" y="0.0" width="345" height="668"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RnX-QE-bnO">
                                             <size key="itemSize" width="128" height="128"/>

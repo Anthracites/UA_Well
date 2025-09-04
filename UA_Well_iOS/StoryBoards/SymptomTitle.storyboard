@@ -16,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
-                                <rect key="frame" x="16" y="59" width="361" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
+                                <rect key="frame" x="16" y="59" width="361" height="67"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-vQ-ZEi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
                                         <rect key="frame" x="312" y="22" width="41" height="24"/>
@@ -28,7 +27,7 @@
                                         <state key="normal" backgroundImage="burger_button.png"/>
                                     </button>
                                     <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="faR-xZ-zj4" customClass="ReturnButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="8" width="299" height="44"/>
+                                        <rect key="frame" x="5" y="13" width="299" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" label="Return to language selection"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -38,11 +37,12 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="xGi-8w-IdV"/>
+                                </constraints>
                             </view>
-                            <view contentMode="center" fixedFrame="YES" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
+                            <view contentMode="center" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
                                 <rect key="frame" x="16" y="135" width="358" height="683"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65w-tX-BBy">
                                         <rect key="frame" x="8" y="0.0" width="345" height="64"/>
@@ -74,6 +74,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="888-tI-UM1" firstAttribute="top" secondItem="yuV-Sb-E3A" secondAttribute="bottom" constant="9" id="3YB-mn-c3X"/>
+                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ibs-UP-me4"/>
+                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="59" id="ioy-am-vmL"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="888-tI-UM1" secondAttribute="bottom" constant="-34" id="mpR-s2-s3w"/>
+                            <constraint firstItem="888-tI-UM1" firstAttribute="leading" secondItem="yuV-Sb-E3A" secondAttribute="leading" id="uFF-Xt-1TO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="888-tI-UM1" secondAttribute="trailing" constant="19" id="upm-mT-rq3"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yuV-Sb-E3A" secondAttribute="trailing" constant="16" id="zNA-6o-9AE"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="StartButton" destination="nMw-Z5-WCj" id="sd1-u7-Qs7"/>
