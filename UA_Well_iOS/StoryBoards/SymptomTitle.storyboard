@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
+                            <view contentMode="right" ambiguous="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yuV-Sb-E3A">
                                 <rect key="frame" x="16" y="59" width="361" height="67"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdm-vQ-ZEi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
@@ -38,50 +38,63 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="xGi-8w-IdV"/>
+                                    <constraint firstAttribute="height" constant="67" id="cvL-vN-Ibf"/>
                                 </constraints>
                             </view>
-                            <view contentMode="center" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
-                                <rect key="frame" x="16" y="135" width="358" height="683"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hog-3o-n4V">
+                                <rect key="frame" x="16" y="126" width="361" height="1102"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65w-tX-BBy">
-                                        <rect key="frame" x="8" y="0.0" width="345" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemIndigoColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrE-Cw-qPF">
-                                        <rect key="frame" x="8" y="72" width="345" height="460"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="center" fixedFrame="YES" restorationIdentifier="MainMenuFooter" translatesAutoresizingMaskIntoConstraints="NO" id="888-tI-UM1">
+                                        <rect key="frame" x="1" y="0.0" width="359" height="1102"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="12" sizingRule="oversize" translatesAutoresizingMaskIntoConstraints="NO" id="65w-tX-BBy">
+                                                <rect key="frame" x="27" y="0.0" width="302" height="76"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Label">
+                                                        <attributes>
+                                                            <color key="NSColor" systemColor="systemIndigoColor"/>
+                                                            <font key="NSFont" metaFont="system" size="31"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="justified" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrE-Cw-qPF" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="84" width="343" height="381"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="center" ambiguous="YES" restorationIdentifier="Start" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" translatesAutoresizingMaskIntoConstraints="NO" id="nMw-Z5-WCj">
+                                                <rect key="frame" x="85" y="547" width="189" height="40"/>
+                                                <accessibility key="accessibilityConfiguration" label="Start"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="Xhs-Ho-rwr"/>
+                                                    <constraint firstAttribute="width" constant="189" id="wNv-vb-YMq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="18"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Start" backgroundImage="CommonButtonBG.png"/>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Start" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" preferredBehavioralStyle="pad" id="nMw-Z5-WCj">
-                                        <rect key="frame" x="29" y="540" width="299" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration" label="Start"/>
-                                        <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Start" backgroundImage="CommonButtonBG.png"/>
-                                    </button>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                                <viewLayoutGuide key="contentLayoutGuide" id="zPz-sS-pcc"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="2UH-dA-0YK"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="888-tI-UM1" firstAttribute="top" secondItem="yuV-Sb-E3A" secondAttribute="bottom" constant="9" id="3YB-mn-c3X"/>
-                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ibs-UP-me4"/>
-                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="59" id="ioy-am-vmL"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="888-tI-UM1" secondAttribute="bottom" constant="-34" id="mpR-s2-s3w"/>
-                            <constraint firstItem="888-tI-UM1" firstAttribute="leading" secondItem="yuV-Sb-E3A" secondAttribute="leading" id="uFF-Xt-1TO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="888-tI-UM1" secondAttribute="trailing" constant="19" id="upm-mT-rq3"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="yuV-Sb-E3A" secondAttribute="trailing" constant="16" id="zNA-6o-9AE"/>
+                            <constraint firstItem="yuV-Sb-E3A" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="59" id="AQz-n3-ZsN"/>
+                            <constraint firstItem="nMw-Z5-WCj" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="o0A-Sp-1dg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -89,6 +102,10 @@
                         <outlet property="SymptomDescrioption" destination="HrE-Cw-qPF" id="WE0-da-NPl"/>
                         <outlet property="SymptomLabel" destination="65w-tX-BBy" id="rss-BA-zEz"/>
                         <outlet property="_backButton" destination="faR-xZ-zj4" id="Na9-Vj-41c"/>
+                        <outlet property="contentView" destination="888-tI-UM1" id="gAW-S8-NaX"/>
+                        <outlet property="header" destination="yuV-Sb-E3A" id="dPA-Gg-eSL"/>
+                        <outlet property="scrollView" destination="hog-3o-n4V" id="LKf-zb-CPK"/>
+                        <outlet property="symptomDescrioption" destination="HrE-Cw-qPF" id="ynx-cO-Vk7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -107,7 +124,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -6,21 +6,41 @@ class SymptomTitle:  UIViewController{
     
     @IBOutlet var StartButton: UIButton!
     @IBOutlet weak var _backButton: UIButton!
-    var _previousScreenName = "QuickHelp"
+    @IBOutlet weak var header: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet var SymptomLabel: UILabel!
-    @IBOutlet var SymptomDescrioption: UITextView!
+    @IBOutlet var symptomDescrioption: AutoResizingTextView!
+    
+    private var exerciseTextHeightConstraint: NSLayoutConstraint?
+    var _previousScreenName = "QuickHelp"
+
+
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SetUpButton()
         GetTextes()
+        symptomDescrioption.adjustHeight()
+        
+        let layoutConfig = LayoutConfigurator.Config(
+            parentView: view,
+            header: header,
+            scrollView: scrollView,
+            contentView: contentView,
+            title:SymptomLabel,
+            exerciseText: symptomDescrioption,
+            okButton: StartButton
+        )
+        exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
+        SymptomLabel.adjustsFontSizeToFitWidth = true
     }
     
     @objc func GetTextes()
     {
         SymptomLabel.text = QuickHelpManager.shared.CurrentSyptom.symptom_name
-        SymptomDescrioption.text = QuickHelpManager.shared.CurrentSyptom.symptom_description
+        symptomDescrioption.text = QuickHelpManager.shared.CurrentSyptom.symptom_description
         _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_symptoms_title, for: .normal)
     }
     

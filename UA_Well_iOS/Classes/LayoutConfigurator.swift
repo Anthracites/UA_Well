@@ -7,12 +7,41 @@ class LayoutConfigurator {
         let header: UIView?
         let scrollView: UIScrollView
         let contentView: UIView
+        let title: UIView?
+        let isHintActive: Bool?
         let exerciseText: UITextView
-        let isHintActive: Bool
-        let hintWidget: UIView
-        let collectionView: UICollectionView
-        let collectionViewItemsCount: Int
+        let hintWidget: UIView?
+        let collectionView: UICollectionView?
+        let collectionViewItemsCount: Int?
+        let okButton: UIView?
+
+        init(
+            parentView: UIView,
+            header: UIView? = nil,
+            scrollView: UIScrollView,
+            contentView: UIView,
+            title: UIView? = nil,
+            isHintActive: Bool? = nil,
+            exerciseText: UITextView,
+            hintWidget: UIView? = nil,
+            collectionView: UICollectionView? = nil,
+            collectionViewItemsCount: Int? = nil,
+            okButton: UIButton? = nil
+        ) {
+            self.parentView = parentView
+            self.header = header
+            self.scrollView = scrollView
+            self.contentView = contentView
+            self.title = title
+            self.isHintActive = isHintActive
+            self.exerciseText = exerciseText
+            self.hintWidget = hintWidget
+            self.collectionView = collectionView
+            self.collectionViewItemsCount = collectionViewItemsCount
+            self.okButton = okButton
+        }
     }
+
     
     static func configure(using config: Config) -> NSLayoutConstraint {
         let parent = config.parentView
@@ -20,10 +49,12 @@ class LayoutConfigurator {
         let scrollView = config.scrollView
         let contentView = config.contentView
         let exerciseText = config.exerciseText
+        let title = config.title
         let isHintActive = config.isHintActive
         let hintWidget = config.hintWidget
         let collectionView = config.collectionView
-        let collectionViewItemsCount = config.collectionViewItemsCount
+        let collectionViewItemsCount = config.collectionViewItemsCount ?? 1
+        let okButton = config.okButton
         
         // MARK: - Header
         if let header = header {
@@ -34,7 +65,7 @@ class LayoutConfigurator {
                 header.topAnchor.constraint(equalTo: parent.safeAreaLayoutGuide.topAnchor, constant: 16),
                 header.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 16),
                 header.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -16),
-                header.heightAnchor.constraint(equalToConstant: 60)
+                header.heightAnchor.constraint(equalToConstant: 67)
             ])
         }
         
@@ -45,13 +76,29 @@ class LayoutConfigurator {
         let scrollTopAnchor = header?.bottomAnchor ?? parent.safeAreaLayoutGuide.topAnchor
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: scrollTopAnchor, constant: 16),
+            scrollView.topAnchor.constraint(equalTo: scrollTopAnchor, constant: 0),
             scrollView.leadingAnchor.constraint(equalTo: parent.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: parent.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: parent.bottomAnchor)
         ])
         
+        var lastBottomAnchor: NSLayoutYAxisAnchor = contentView.topAnchor
         
+        // MARK: - Title
+        
+        if let title = config.title {
+            contentView.addSubview(title)
+            title.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                title.topAnchor.constraint(equalTo: lastBottomAnchor, constant:0),
+                title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            ])
+            lastBottomAnchor = title.bottomAnchor
+        }
+        
+
         // MARK: - ExerciseText
         contentView.addSubview(exerciseText)
         exerciseText.translatesAutoresizingMaskIntoConstraints = false
@@ -62,53 +109,68 @@ class LayoutConfigurator {
         exerciseTextHeight.isActive = true
         
         NSLayoutConstraint.activate([
-            exerciseText.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            exerciseText.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 20),
             exerciseText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             exerciseText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
         ])
+        lastBottomAnchor = exerciseText.bottomAnchor
         
-        var lastBottomAnchor = exerciseText.bottomAnchor
         
         // MARK: - HintWidget (optional)
-        if isHintActive {
+        if config.isHintActive != nil, let hintWidget = config.hintWidget {
             hintWidget.isHidden = false
             contentView.addSubview(hintWidget)
             hintWidget.translatesAutoresizingMaskIntoConstraints = false
-            
-            hintWidget.setContentHuggingPriority(.required, for: .vertical)
-            hintWidget.setContentCompressionResistancePriority(.required, for: .vertical)
-            
+
             NSLayoutConstraint.activate([
                 hintWidget.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 40),
                 hintWidget.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
                 hintWidget.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
-                // ❗️ Не задаём heightAnchor — пусть Auto Layout сам решает
             ])
-            
+
             lastBottomAnchor = hintWidget.bottomAnchor
-        } else {
-            hintWidget.isHidden = true
+        }
+
+        if let collectionView = config.collectionView,
+           let itemCount = config.collectionViewItemsCount {
+            contentView.addSubview(collectionView)
+                    collectionView.translatesAutoresizingMaskIntoConstraints = false
+                    
+                    let (layout, height) = LayoutConfigurator.createVerticalLayout(itemCount: collectionViewItemsCount)
+                    collectionView.collectionViewLayout = layout
+            collectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            contentView.addSubview(config.collectionView!)
+            config.collectionView?.translatesAutoresizingMaskIntoConstraints = false
+                            
+                    NSLayoutConstraint.activate([
+                        collectionView.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 40),
+                        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+                        collectionView.heightAnchor.constraint(equalToConstant: height),
+                        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+                    ])
+            
+
+            lastBottomAnchor = collectionView.bottomAnchor
         }
         
+        //MARK: - OkButton
         
-        // MARK: - CollectionView (dynamic height)
-        //contentView.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let (layout, height) = LayoutConfigurator.createVerticalLayout(itemCount: collectionViewItemsCount)
-        collectionView.collectionViewLayout = layout
-collectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
-        contentView.addSubview(config.collectionView)
-         config.collectionView.translatesAutoresizingMaskIntoConstraints = false
-                
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 40),
-            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            collectionView.heightAnchor.constraint(equalToConstant: height),
-            collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
-        ])
+        if config.okButton != nil, let okButton = config.okButton {
+            contentView.addSubview(okButton)
+            config.okButton?.translatesAutoresizingMaskIntoConstraints = false
 
+            NSLayoutConstraint.activate([
+                okButton.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 40),
+//                okButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
+//                okButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+                okButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -60)
+
+            ])
+
+            lastBottomAnchor = okButton.bottomAnchor
+        }
+        
         // MARK: - ContentView
         scrollView.addSubview(contentView)
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -117,9 +179,11 @@ collectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         ])
+        
+         lastBottomAnchor = contentView.topAnchor
         
 
         return exerciseTextHeight

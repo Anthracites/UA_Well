@@ -45,8 +45,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             header: header,
             scrollView: scrollView as! UIScrollView,
             contentView: contentView,
-            exerciseText: exerciseText,
             isHintActive: isHintActive,
+            exerciseText: exerciseText,
             hintWidget: hintWidget,
             collectionView: _collectionView,
             collectionViewItemsCount: collectionViewItemsCount
@@ -163,8 +163,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
                 newButoon.widthAnchor.constraint(equalToConstant: buttonWidth * 0.75),
                 newButoon.heightAnchor.constraint(equalToConstant: buttonHeight/3)
             ])
-        }
+            print("Button size:", buttonWidth * 0.75, buttonHeight/3)
 
+        }
         return cell
         
     }
