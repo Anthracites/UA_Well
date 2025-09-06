@@ -18,7 +18,9 @@
         "Return_to_day_selection_title": "Return to day selection",
         "Return_to_parameters_title": "Return to options",
         "Return_to_symptoms_title": "Return to symptoms",
-        "Return_to_help_type_page_title": "Return to help type"
+        "Return_to_help_type_page_title": "Return to help type",
+        
+        "TherapyDayCount": "Day of therapy: "
     },
     
     "alarmNotifications": {

@@ -13,6 +13,7 @@ class LayoutConfigurator {
         let hintWidget: UIView?
         let collectionView: UICollectionView?
         let collectionViewItemsCount: Int?
+        let collectionViewVerticalSpacing: Int?
         let okButton: UIView?
 
         init(
@@ -26,6 +27,7 @@ class LayoutConfigurator {
             hintWidget: UIView? = nil,
             collectionView: UICollectionView? = nil,
             collectionViewItemsCount: Int? = nil,
+            collectionViewVerticalSpacing: Int? = 10,
             okButton: UIButton? = nil
         ) {
             self.parentView = parentView
@@ -38,6 +40,7 @@ class LayoutConfigurator {
             self.hintWidget = hintWidget
             self.collectionView = collectionView
             self.collectionViewItemsCount = collectionViewItemsCount
+            self.collectionViewVerticalSpacing = collectionViewVerticalSpacing
             self.okButton = okButton
         }
     }
@@ -54,6 +57,7 @@ class LayoutConfigurator {
         let hintWidget = config.hintWidget
         let collectionView = config.collectionView
         let collectionViewItemsCount = config.collectionViewItemsCount ?? 1
+        let collectionViewVerticalSpacing = config.collectionViewVerticalSpacing ?? 10
         let okButton = config.okButton
         
         // MARK: - Header
@@ -110,8 +114,8 @@ class LayoutConfigurator {
         
         NSLayoutConstraint.activate([
             exerciseText.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 20),
-            exerciseText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            exerciseText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            exerciseText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            exerciseText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
         lastBottomAnchor = exerciseText.bottomAnchor
         
@@ -136,7 +140,7 @@ class LayoutConfigurator {
             contentView.addSubview(collectionView)
                     collectionView.translatesAutoresizingMaskIntoConstraints = false
                     
-                    let (layout, height) = LayoutConfigurator.createVerticalLayout(itemCount: collectionViewItemsCount)
+            let (layout, height) = LayoutConfigurator.createVerticalLayout(itemCount: collectionViewItemsCount, spacing: CGFloat(collectionViewVerticalSpacing))
                     collectionView.collectionViewLayout = layout
             collectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
             contentView.addSubview(config.collectionView!)
@@ -147,7 +151,7 @@ class LayoutConfigurator {
                         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
                         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                         collectionView.heightAnchor.constraint(equalToConstant: height),
-                        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+                        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
                     ])
             
 
@@ -195,7 +199,7 @@ class LayoutConfigurator {
         heightConstraint.constant = size.height
     }
     
-    public static func createVerticalLayout(itemCount: Int, itemHeight: CGFloat = 60, spacing: CGFloat = 10) -> (UICollectionViewLayout, CGFloat) {
+    public static func createVerticalLayout(itemCount: Int, itemHeight: CGFloat = 60, spacing: CGFloat) -> (UICollectionViewLayout, CGFloat) {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(itemHeight)

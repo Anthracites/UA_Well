@@ -18,7 +18,9 @@
         "Return_to_day_selection_title": "Повернутись до вибору дня",
         "Return_to_parameters_title": "Повернутись до параметрів",
         "Return_to_symptoms_title": "Повернутись до симптомів",
-        "Return_to_help_type_page_title": "Повернутись до типу допомоги"
+        "Return_to_help_type_page_title": "Повернутись до типу допомоги",
+        
+        "TherapyDayCount": "День терапії: "
     },
     
     "alarmNotifications": {

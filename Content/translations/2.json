@@ -19,6 +19,8 @@
         "Return_to_parameters_title": "Вернуться к параметрам",
         "Return_to_symptoms_title": "Вернуться к симптомам",
         "Return_to_help_type_page_title": "Вернуться к типу помощи"
+        
+        "TherapyDayCount": "День терапии: "
     },
     
     "alarmNotifications": {

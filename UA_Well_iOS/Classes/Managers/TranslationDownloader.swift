@@ -147,7 +147,7 @@ class TranslationDownloader {
         }
                 
                 catch {
-                    print("Ошибка при загрузке данных из файла ",translationsDirURL.path)
+                    //print("Ошибка при загрузке данных из файла ",translationsDirURL.path)
                 }
             }
         }

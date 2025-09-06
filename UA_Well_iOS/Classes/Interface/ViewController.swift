@@ -93,9 +93,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
-        //cell.backgroundColor = .red
-        //let jsonFile = jsonFiles[indexPath.item]
-        //cell.MenuButton.backgroundColor = .gray
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         newButoon.setTitle(translations[indexPath.item].currentLanguage, for: .normal)
         cell.contentMode = .center
@@ -132,22 +129,22 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
             self.present(secondVC, animated: true, completion: nil)    }
     
-    func centerCollectionViewContent() {
-        guard let layout = _collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-
-        let itemHeight = layout.itemSize.height
-        let spacing = layout.minimumLineSpacing
-        let itemCount = translations.count
-
-        let totalContentHeight = CGFloat(itemCount) * itemHeight + CGFloat(itemCount - 1) * spacing
-        let topInset = max((_collectionView.frame.height - totalContentHeight) / 2, 0)
-
-        _collectionView.contentInset.top = topInset
-
-        print("Collection view height: \(_collectionView.frame.height)")
-        print("Total content height: \(totalContentHeight)")
-        print("Calculated top inset: \(topInset)")
-    }
+//    func centerCollectionViewContent() {
+//        guard let layout = _collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+//
+//        let itemHeight = layout.itemSize.height
+//        let spacing = layout.minimumLineSpacing
+//        let itemCount = translations.count
+//
+//        let totalContentHeight = CGFloat(itemCount) * itemHeight + CGFloat(itemCount - 1) * spacing
+//        let topInset = max((_collectionView.frame.height - totalContentHeight) / 2, 0)
+//
+//        _collectionView.contentInset.top = topInset
+//
+//        print("Collection view height: \(_collectionView.frame.height)")
+//        print("Total content height: \(totalContentHeight)")
+//        print("Calculated top inset: \(topInset)")
+//    }
 
 
     

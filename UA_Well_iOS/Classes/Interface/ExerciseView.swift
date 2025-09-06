@@ -49,7 +49,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             exerciseText: exerciseText,
             hintWidget: hintWidget,
             collectionView: _collectionView,
-            collectionViewItemsCount: collectionViewItemsCount
+            collectionViewItemsCount: collectionViewItemsCount + 1
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
 
