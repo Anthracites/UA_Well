@@ -16,19 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="361" height="1368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="EiZ-0W-nQw" userLabel="Header">
+                            <view contentMode="right" ambiguous="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="EiZ-0W-nQw" userLabel="Header">
                                 <rect key="frame" x="16" y="59" width="361" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="owu-rV-8CX" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="306" y="24" width="40" height="22"/>
+                                        <rect key="frame" x="312" y="22" width="41" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="burger_button.png"/>
                                     </button>
                                     <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="clip" id="yJ2-14-ws1">
-                                        <rect key="frame" x="5" y="13" width="299" height="43"/>
+                                        <rect key="frame" x="15" y="13" width="299" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" label="Return to language selection"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -39,6 +38,9 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="HgK-K1-zDl"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="GQy-yW-ycH"/>
+                                </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaW-es-0GR">
                                 <rect key="frame" x="0.0" y="193" width="361" height="1175"/>
@@ -135,6 +137,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UBn-xA-aYI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UBn-xA-aYI" firstAttribute="trailing" secondItem="EiZ-0W-nQw" secondAttribute="trailing" constant="16" id="46v-3S-v87"/>
+                            <constraint firstItem="EiZ-0W-nQw" firstAttribute="top" secondItem="1Pm-cE-iMU" secondAttribute="top" constant="59" id="JEL-X8-rnF"/>
+                            <constraint firstItem="EiZ-0W-nQw" firstAttribute="trailing" secondItem="UBn-xA-aYI" secondAttribute="trailing" constant="16" id="Wyi-oD-Kch"/>
+                        </constraints>
                     </view>
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>

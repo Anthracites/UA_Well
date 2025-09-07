@@ -9,6 +9,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.otf">
+            <string>Inter-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Prevention Screen-->
         <scene sceneID="s0d-6b-0kx">
@@ -47,13 +52,25 @@
                                     <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="ofl-uN-Ek7">
                                         <rect key="frame" x="8" y="0.0" width="384" height="1233"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IG-ax-rJ3">
-                                                <rect key="frame" x="166" y="20.333333333333339" width="52" height="33.666666666666657"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ENX-ul-jPT">
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" fixedFrame="YES" axis="vertical" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="tzE-kN-ypF">
+                                                <rect key="frame" x="137" y="18" width="52" height="93"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IG-ax-rJ3">
+                                                        <rect key="frame" x="0.0" y="0.0" width="52" height="0.33333333333333331"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333dhmjdryq5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VIb-eI-fu9">
+                                                        <rect key="frame" x="0.0" y="59.333333333333343" width="52" height="33.666666666666657"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                        <color key="textColor" systemColor="systemIndigoColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ENX-ul-jPT">
                                                 <rect key="frame" x="10" y="119.33333333333337" width="353" height="572"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -135,23 +152,13 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Start" backgroundImage="CommonButtonBG.png"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333dhmjdryq5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VIb-eI-fu9">
-                                                <rect key="frame" x="37" y="61" width="299" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                                <color key="textColor" systemColor="systemIndigoColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="ENX-ul-jPT" firstAttribute="leading" secondItem="7bN-eK-RzM" secondAttribute="leading" id="AgB-fp-ZIb"/>
-                                            <constraint firstItem="0IG-ax-rJ3" firstAttribute="top" secondItem="ofl-uN-Ek7" secondAttribute="top" constant="20.329999999999998" id="KgJ-0E-20t"/>
                                             <constraint firstItem="ENX-ul-jPT" firstAttribute="leading" secondItem="ofl-uN-Ek7" secondAttribute="leading" constant="10" id="OKz-pf-Z4P"/>
                                             <constraint firstAttribute="height" constant="1233" id="SqQ-Az-gUa"/>
                                             <constraint firstItem="BRK-jJ-o3B" firstAttribute="top" secondItem="7bN-eK-RzM" secondAttribute="bottom" constant="8" symbolic="YES" id="XhX-Nv-7VB"/>
-                                            <constraint firstItem="0IG-ax-rJ3" firstAttribute="centerX" secondItem="ofl-uN-Ek7" secondAttribute="centerX" id="aFf-Gg-qez"/>
                                             <constraint firstAttribute="width" constant="384" id="jmg-oI-Rgk"/>
-                                            <constraint firstItem="ENX-ul-jPT" firstAttribute="top" secondItem="VIb-eI-fu9" secondAttribute="bottom" constant="24.333333333333343" id="mlK-NT-7bY"/>
                                             <constraint firstItem="7bN-eK-RzM" firstAttribute="centerX" secondItem="BRK-jJ-o3B" secondAttribute="centerX" id="we3-0V-gDJ"/>
                                         </constraints>
                                     </view>
@@ -207,7 +214,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

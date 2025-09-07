@@ -16,12 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="1284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="lrj-Ub-Kjl" userLabel="Header">
-                                <rect key="frame" x="16" y="59" width="361" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="lrj-Ub-Kjl" userLabel="Header">
+                                <rect key="frame" x="16" y="59" width="361" height="67"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRj-Nb-TLW" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="312" y="23" width="41" height="24"/>
+                                        <rect key="frame" x="312" y="23" width="41" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -39,6 +38,9 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="0Ls-Le-rDB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="8JL-MK-Met"/>
+                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="QLc-xs-ZVt"/>
@@ -124,6 +126,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XNa-Tq-aDX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lrj-Ub-Kjl" firstAttribute="leading" secondItem="XNa-Tq-aDX" secondAttribute="leading" constant="16" id="JKc-sk-Tjj"/>
+                            <constraint firstItem="XNa-Tq-aDX" firstAttribute="trailing" secondItem="lrj-Ub-Kjl" secondAttribute="trailing" constant="16" id="PeW-Ut-6fg"/>
+                            <constraint firstItem="lrj-Ub-Kjl" firstAttribute="top" secondItem="TfZ-ye-mhs" secondAttribute="top" constant="59" id="of8-uM-cCF"/>
+                        </constraints>
                     </view>
                     <size key="freeformSize" width="393" height="1284"/>
                     <connections>
