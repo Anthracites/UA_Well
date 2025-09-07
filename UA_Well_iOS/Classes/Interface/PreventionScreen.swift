@@ -9,12 +9,18 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var startButton:UIButton!
     @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var header: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var preventionTitle: UIView!
     @IBOutlet weak var dayCount: UILabel!
-    @IBOutlet weak var descriptionText: UITextView!
+    @IBOutlet weak var descriptionText: AutoResizingTextView!
     var PPLabels: [String] = ["Sensity", "Duration"]
     var PPValues: [[String]] = [["Min", "Mid", "Max"],["Two", "Three", "Four"]]
     var intensityCurrentOptions, durationCurrentOptions: CustomDropDown!
     var currentIntensity,currentDuration: Int!
+    
+    private var exerciseTextHeightConstraint: NSLayoutConstraint?
     
     
     override func viewDidLoad() {
@@ -31,6 +37,24 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         TranslateView()
         GetOptions()
         dayCount.text = String(PreventionManager.shared.CurrentDay)
+        
+        descriptionText.adjustHeight()
+
+
+        let layoutConfig = LayoutConfigurator.Config(
+            parentView: view,
+            header: header,
+            scrollView: scrollView,
+            contentView: contentView,
+            title: preventionTitle,
+            exerciseText: descriptionText,
+            collectionView: _collectionView,
+            collectionViewItemsCount: 3,
+            collectionViewVerticalSpacing: 30
+        )
+        
+        exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
