@@ -36,7 +36,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         ExerciseManager.shared.CurrentHelpType = "Prevention"
         TranslateView()
         GetOptions()
-        dayCount.text = String(PreventionManager.shared.CurrentDay)
+        dayCount.text = DayCountLabel()
         
         descriptionText.adjustHeight()
 
@@ -59,6 +59,16 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
+    }
+    
+    func DayCountLabel()-> String
+    {
+        let _dayLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons?.DayOfTherapy
+        let _dayCount = String(PreventionManager.shared.CurrentDay)
+        let _label = (_dayLabel ?? "День терапии") + " " + _dayCount
+
+        
+        return _label
     }
     
     @objc func TranslateView()
