@@ -11,21 +11,43 @@ class CustomDropDown: UICollectionViewCell {
             super.awakeFromNib()
             CurrentOption = 0
         }
-        
+    
+
         func copyDDProperties(targetButton: UIButton) {
             targetButton.translatesAutoresizingMaskIntoConstraints = false
             targetButton.titleLabel?.font = dropDown.titleLabel?.font
             
             targetButton.translatesAutoresizingMaskIntoConstraints = dropDown.translatesAutoresizingMaskIntoConstraints
             targetButton.layer.position = dropDown.layer.position
-            targetButton.contentMode = .center
-
-
+            targetButton.contentMode = .bottom
             
+                        ddLabel.font = UIFont.systemFont(ofSize: 14)
+            ddLabel.textAlignment = .left
+                        ddLabel.translatesAutoresizingMaskIntoConstraints = false
+            //ddLabel.backgroundColor = .darkGray
+            
+            targetButton.translatesAutoresizingMaskIntoConstraints = false
+            targetButton.layer.cornerRadius = 8
+            targetButton.clipsToBounds = true
+            
+            ddLabel.translatesAutoresizingMaskIntoConstraints = false
+            targetButton.translatesAutoresizingMaskIntoConstraints = false
+
+            ddLabel.translatesAutoresizingMaskIntoConstraints = false
+            dropDown.translatesAutoresizingMaskIntoConstraints = false
+
             NSLayoutConstraint.activate([
-                targetButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-                targetButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+                ddLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+                ddLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+                ddLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+
+                dropDown.topAnchor.constraint(equalTo: ddLabel.bottomAnchor, constant: 8),
+                dropDown.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+                dropDown.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+                dropDown.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
             ])
+
+
         }
     
     func SetupPullDownMenu(DropDown: UIButton, DropDownItems: [String]) {

@@ -13,6 +13,7 @@ class LayoutConfigurator {
         let hintWidget: UIView?
         let collectionView: UICollectionView?
         let collectionViewItemsCount: Int?
+        let collectionViewItemsHeight: Int?
         let collectionViewVerticalSpacing: Int?
         let okButton: UIView?
 
@@ -27,6 +28,7 @@ class LayoutConfigurator {
             hintWidget: UIView? = nil,
             collectionView: UICollectionView? = nil,
             collectionViewItemsCount: Int? = nil,
+            collectionViewItemsHeight: Int? = 60,
             collectionViewVerticalSpacing: Int? = 10,
             okButton: UIButton? = nil
         ) {
@@ -40,6 +42,7 @@ class LayoutConfigurator {
             self.hintWidget = hintWidget
             self.collectionView = collectionView
             self.collectionViewItemsCount = collectionViewItemsCount
+            self.collectionViewItemsHeight = collectionViewItemsHeight
             self.collectionViewVerticalSpacing = collectionViewVerticalSpacing
             self.okButton = okButton
         }
@@ -57,8 +60,11 @@ class LayoutConfigurator {
         let hintWidget = config.hintWidget
         let collectionView = config.collectionView
         let collectionViewItemsCount = config.collectionViewItemsCount ?? 1
+        let collectionViewItemsHeight = config.collectionViewItemsHeight ?? 60
         let collectionViewVerticalSpacing = config.collectionViewVerticalSpacing ?? 10
         let okButton = config.okButton
+        
+        var okButtonUpInstent: CGFloat
         
         // MARK: - Header
         if let header = header {
@@ -135,12 +141,13 @@ class LayoutConfigurator {
             lastBottomAnchor = hintWidget.bottomAnchor
         }
 
+//        MARK: - CollectionView (optional)
         if let collectionView = config.collectionView,
            let itemCount = config.collectionViewItemsCount {
             contentView.addSubview(collectionView)
                     collectionView.translatesAutoresizingMaskIntoConstraints = false
                     
-            let (layout, height) = LayoutConfigurator.createVerticalLayout(itemCount: collectionViewItemsCount, spacing: CGFloat(collectionViewVerticalSpacing))
+            let (layout, height) = LayoutConfigurator.createVerticalLayout(itemCount: collectionViewItemsCount, itemHeight: CGFloat(collectionViewItemsHeight), spacing: CGFloat(collectionViewVerticalSpacing))
                     collectionView.collectionViewLayout = layout
             collectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
             contentView.addSubview(config.collectionView!)
@@ -151,27 +158,32 @@ class LayoutConfigurator {
                         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
                         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
                         collectionView.heightAnchor.constraint(equalToConstant: height),
-                        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
+                        //collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
                     ])
-            
-
+            print("Collection view in LayoutConfigurator: ", height)
+            okButtonUpInstent = 60
             lastBottomAnchor = collectionView.bottomAnchor
+        }
+        else
+        {
+            okButtonUpInstent = 40
         }
         
         //MARK: - OkButton
         
         if config.okButton != nil, let okButton = config.okButton {
+
             contentView.addSubview(okButton)
-            config.okButton?.translatesAutoresizingMaskIntoConstraints = false
+            okButton.translatesAutoresizingMaskIntoConstraints = false
 
             NSLayoutConstraint.activate([
-                okButton.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 40),
-//                okButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-//                okButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
-                okButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -60)
+                okButton.topAnchor.constraint(equalTo: lastBottomAnchor, constant: okButtonUpInstent),
+                okButton.heightAnchor.constraint(equalToConstant: 40),
+                okButton.widthAnchor.constraint(equalToConstant: 189),
+                okButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0)
 
             ])
-
+            
             lastBottomAnchor = okButton.bottomAnchor
         }
         
@@ -180,11 +192,14 @@ class LayoutConfigurator {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 40),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            scrollView.bottomAnchor.constraint(equalTo: lastBottomAnchor, constant: 40),
+            
+                contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+                contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: lastBottomAnchor, constant: 40), // ← ключевая строка
+                contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+
         ])
         
          lastBottomAnchor = contentView.topAnchor
@@ -199,7 +214,8 @@ class LayoutConfigurator {
         heightConstraint.constant = size.height
     }
     
-    public static func createVerticalLayout(itemCount: Int, itemHeight: CGFloat = 60, spacing: CGFloat) -> (UICollectionViewLayout, CGFloat) {
+    public static func createVerticalLayout(itemCount: Int, itemHeight: CGFloat, spacing: CGFloat) -> (UICollectionViewLayout, CGFloat) {
+        
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(itemHeight)

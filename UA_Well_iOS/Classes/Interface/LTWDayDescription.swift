@@ -49,7 +49,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
             title:dayTitle,
             exerciseText: descriptionText,
             collectionView: _collectionView,
-            collectionViewItemsCount: buttonLabels.count + 1
+            collectionViewItemsCount: buttonLabels.count
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }

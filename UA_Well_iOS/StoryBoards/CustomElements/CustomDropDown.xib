@@ -8,25 +8,32 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.otf">
+            <string>Inter-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="He8-qA-Dva" customClass="CustomDropDown" customModule="UA_Well_iOS" customModuleProvider="target" propertyAccessControl="none">
             <rect key="frame" x="0.0" y="0.0" width="395" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-Q8-gQE">
+            <collectionViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um2-Q8-gQE">
                 <rect key="frame" x="0.0" y="0.0" width="395" height="187"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
+                    <label autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" fixedFrame="YES" text="Label" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-oq-9UH">
                         <rect key="frame" x="35" y="0.0" width="312" height="74"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" systemColor="systemIndigoColor"/>
                         <nil key="highlightedColor"/>
                         <size key="shadowOffset" width="0.0" height="3"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="5yu-8I-GH7">
+                    <button opaque="NO" contentMode="center" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="wordWrap" id="5yu-8I-GH7">
                         <rect key="frame" x="47" y="82" width="300" height="60"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="30"/>
                         <inset key="titleEdgeInsets" minX="25" minY="25" maxX="50" maxY="25"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -42,12 +49,6 @@
                         </state>
                     </button>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="centerX" secondItem="5yu-8I-GH7" secondAttribute="centerX" constant="-6" id="5RC-iZ-bXd"/>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="leading" secondItem="Um2-Q8-gQE" secondAttribute="leading" constant="35" id="j2E-a1-nuI"/>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="centerX" secondItem="Um2-Q8-gQE" secondAttribute="centerX" constant="-6.5" id="l09-es-Mbz"/>
-                    <constraint firstItem="nZT-oq-9UH" firstAttribute="top" secondItem="Um2-Q8-gQE" secondAttribute="top" id="tFm-Xg-aEF"/>
-                </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="395" height="187"/>
             <connections>

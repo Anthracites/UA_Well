@@ -49,12 +49,12 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
             title: preventionTitle,
             exerciseText: descriptionText,
             collectionView: _collectionView,
-            collectionViewItemsCount: 3,
-            collectionViewVerticalSpacing: 30
+            collectionViewItemsCount: 2,
+            collectionViewItemsHeight: 100,
+            okButton: startButton
         )
         
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,23 +136,17 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         let newButoon: UIButton = cell.dropDown
         //newButoon.tag = indexPath.item
         // Настройка ячейки
-        //cell.backgroundColor = .red
+       // cell.backgroundColor = .red
         let _label = PPLabels[indexPath.item]
         //cell.dropDown.backgroundColor = .gray
-        cell.copyDDProperties(targetButton: newButoon)
         cell.contentMode = .center
         let _stringArray = PPValues[indexPath.item]
         cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: _stringArray)
         cell.ddLabel.text = _label
+        cell.copyDDProperties(targetButton: newButoon)
         TranslateDropDown(DDLabel: cell.ddLabel.text!, DropDown: cell)
 
-        //view.addSubview(cell.dropDown)
-        
-        //print("Prevention scereen: Cell added!")
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .vertical
-            layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
-        }
+
         return cell
     }
     

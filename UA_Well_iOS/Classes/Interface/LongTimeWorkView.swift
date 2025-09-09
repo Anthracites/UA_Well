@@ -41,7 +41,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
             title: LTWTitle,
             exerciseText: descriptionText,
             collectionView: _collectionView,
-            collectionViewItemsCount: 5,
+            collectionViewItemsCount: 4,
             collectionViewVerticalSpacing: 30
         )
         
