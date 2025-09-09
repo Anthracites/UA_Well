@@ -19,23 +19,22 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="PreventionScreen" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PreventionScreen" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MqC-US-R18">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="MqC-US-R18">
                         <rect key="frame" x="0.0" y="0.0" width="361" height="1368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="right" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yyP-Xd-kVU" userLabel="Header" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="59" width="361" height="67"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="yyP-Xd-kVU" userLabel="Header" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
+                                <rect key="frame" x="16" y="59" width="361" height="68"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3l-zR-MVG" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="312" y="22" width="41" height="24"/>
+                                        <rect key="frame" x="312" y="22" width="41" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="burger_button.png"/>
                                     </button>
                                     <button contentMode="scaleAspectFit" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oR5-3I-Xmj">
-                                        <rect key="frame" x="5" y="13" width="299" height="44"/>
+                                        <rect key="frame" x="5" y="14" width="299" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <accessibility key="accessibilityConfiguration" label="Return to language selection"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -46,6 +45,10 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="F0T-1L-zLs"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="361" id="2rl-vh-qAl"/>
+                                    <constraint firstAttribute="height" constant="68" id="kAg-30-tXb"/>
+                                </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XM-cz-Y2Q">
                                 <rect key="frame" x="0.0" y="135" width="361" height="1233"/>
@@ -151,6 +154,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZqE-av-c7g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yyP-Xd-kVU" firstAttribute="leading" secondItem="ZqE-av-c7g" secondAttribute="leading" constant="16" id="ANg-JA-7Mx"/>
+                            <constraint firstItem="yyP-Xd-kVU" firstAttribute="top" secondItem="MqC-US-R18" secondAttribute="top" constant="59" id="dAv-pd-psL"/>
+                            <constraint firstAttribute="trailing" secondItem="yyP-Xd-kVU" secondAttribute="trailing" constant="16" id="jlq-cW-ghJ"/>
+                        </constraints>
                     </view>
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>
@@ -183,7 +191,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
