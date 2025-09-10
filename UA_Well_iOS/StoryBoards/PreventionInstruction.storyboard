@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="right" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="ZmW-bV-9ik" userLabel="Header">
-                                <rect key="frame" x="16" y="118" width="329" height="9"/>
+                                <rect key="frame" x="16" y="177" width="361" height="68"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-n3-p0t" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="274" y="2" width="40" height="3"/>
+                                        <rect key="frame" x="306" y="15" width="40" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -38,9 +38,13 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="HVR-az-u1t"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="361" id="9Zv-M3-p47"/>
+                                    <constraint firstAttribute="height" constant="68" id="R4F-Rb-2Hg"/>
+                                </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jg-ID-bQj">
-                                <rect key="frame" x="0.0" y="135" width="361" height="1233"/>
+                                <rect key="frame" x="0.0" y="253" width="393" height="1115"/>
                                 <subviews>
                                     <view autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="oTN-93-EQd">
                                         <rect key="frame" x="8" y="0.0" width="379" height="1233"/>
@@ -78,7 +82,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" fixedFrame="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="BsI-PF-sJR">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="250" fixedFrame="YES" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="BsI-PF-sJR" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="62" width="361" height="748"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -141,14 +145,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1jg-ID-bQj" firstAttribute="leading" secondItem="N5z-qc-Pur" secondAttribute="leading" id="0FN-7U-bk0"/>
+                            <constraint firstItem="ZmW-bV-9ik" firstAttribute="top" secondItem="rwS-qO-aaG" secondAttribute="top" constant="59" id="5Ng-xl-RQT"/>
                             <constraint firstAttribute="trailing" secondItem="1jg-ID-bQj" secondAttribute="trailing" id="K8g-1h-Eqa"/>
                             <constraint firstItem="1jg-ID-bQj" firstAttribute="top" secondItem="ZmW-bV-9ik" secondAttribute="bottom" constant="8" symbolic="YES" id="Pw5-Ev-76Y"/>
                             <constraint firstItem="ZmW-bV-9ik" firstAttribute="centerX" secondItem="N5z-qc-Pur" secondAttribute="centerX" id="RgF-XD-Vzi"/>
                             <constraint firstItem="ZmW-bV-9ik" firstAttribute="leading" secondItem="N5z-qc-Pur" secondAttribute="leadingMargin" id="Tas-6n-0aG"/>
                             <constraint firstItem="1jg-ID-bQj" firstAttribute="top" secondItem="ZmW-bV-9ik" secondAttribute="bottom" priority="250" constant="8" id="dUt-0f-o66"/>
                             <constraint firstAttribute="bottom" secondItem="1jg-ID-bQj" secondAttribute="bottom" id="edi-uJ-MNs"/>
-                            <constraint firstItem="ZmW-bV-9ik" firstAttribute="top" secondItem="rwS-qO-aaG" secondAttribute="top" id="hqF-u7-nQW"/>
-                            <constraint firstItem="1jg-ID-bQj" firstAttribute="top" secondItem="N5z-qc-Pur" secondAttribute="top" constant="135" id="vEb-0T-u0K"/>
+                            <constraint firstItem="ZmW-bV-9ik" firstAttribute="leading" secondItem="rwS-qO-aaG" secondAttribute="leading" constant="16" id="hxX-1p-Sph"/>
+                            <constraint firstItem="rwS-qO-aaG" firstAttribute="trailing" secondItem="ZmW-bV-9ik" secondAttribute="trailing" constant="16" id="oG6-TC-mjA"/>
                         </constraints>
                     </view>
                     <size key="freeformSize" width="361" height="1368"/>
@@ -156,8 +161,12 @@
                         <outlet property="PreventionAlarm" destination="lmf-nf-8EH" id="lrU-EX-Z5K"/>
                         <outlet property="_collectionView" destination="Vpo-7m-WhJ" id="j58-bS-OUh"/>
                         <outlet property="backButton" destination="z6v-Z3-iNN" id="hTZ-ux-ojF"/>
+                        <outlet property="contentView" destination="oTN-93-EQd" id="bqb-va-CWV"/>
+                        <outlet property="header" destination="ZmW-bV-9ik" id="EUJ-NY-pO9"/>
                         <outlet property="instructionText" destination="BsI-PF-sJR" id="CSM-KC-h0N"/>
-                        <outlet property="instructionTitle" destination="fwv-sM-a67" id="yEa-Co-KZp"/>
+                        <outlet property="instructionTitle" destination="1MA-El-Yj7" id="qLk-2i-Ugo"/>
+                        <outlet property="instructionTitleLabel" destination="fwv-sM-a67" id="l5g-C1-u72"/>
+                        <outlet property="scrollView" destination="1jg-ID-bQj" id="RTZ-2p-ZlP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wkF-rR-Gfz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -134,6 +134,7 @@ public struct Translation: Codable {
         
         let Title: String
         let Description: String
+        let MednaukaText: String
         let LanguagesLabel: String
         let ContactsLabel: String
         let TechDecription: String
@@ -174,6 +175,7 @@ public struct Translation: Codable {
         {
             case Title = "Title"
             case Description = "Description"
+            case MednaukaText = "MednaukaText"
             case LanguagesLabel = "LanguagesLabel"
             case ContactsLabel = "ContactsLabel"
             case TechDecription = "TechDecription"

@@ -4,35 +4,45 @@ import Foundation
 class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet var contentViews: [SpecialistInfo]!
-    @IBOutlet var generalView: UIView!
-    @IBOutlet weak var viewTitle: UILabel!
+    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var viewTitle: UIView!
+    @IBOutlet weak var viewTitleLabel: UILabel!
     @IBOutlet weak var viewDescription: UITextView!
+    @IBOutlet weak var textMednaukaRu: AutoResizingTextView!
+    var lastBottomAnchor: NSLayoutYAxisAnchor!
     
-        // Ваши свойства и методы
         override func viewDidLoad()
         {
             super.viewDidLoad()
             okButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-            // Установка contentSize для UIScrollView
+
             TranslateView()
             AddSpecialistInfo()
+            SetupFooterText()
+            
             ScrollSetup()
         }
+    
+    func loadSpecialistView() -> SpecialistInfo? {
+        let nib = UINib(nibName: "SpecialistInfo", bundle: nil)
+        return nib.instantiate(withOwner: nil, options: nil).first as? SpecialistInfo
+    }
+    
         @objc func TranslateView()
         {
             let _translation = TranslationDownloader.shared.CurrentTranslation
-            viewTitle.text = _translation?.aboutUsAndcontactUs?.Title
+            viewTitleLabel.text = _translation?.aboutUsAndcontactUs?.Title
             viewDescription.text = _translation?.aboutUsAndcontactUs?.Description
+            textMednaukaRu.text = _translation?.aboutUsAndcontactUs?.MednaukaText
         }
         @objc func AddSpecialistInfo() {
             if let infoArray = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.SpecialistContacts {
                 var i: Int = 0
                 let _languagesLabel = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.LanguagesLabel
                 let _contactsLabel = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.ContactsLabel
-
+                lastBottomAnchor = viewTitle.bottomAnchor
                 for contact in infoArray {
-                    let sView: SpecialistInfo = contentViews[i]
+                    let sView: SpecialistInfo = loadSpecialistView()!
                     sView.specialistName.text = "\(contact.SpecialistName) \(contact.SpecialistSurname)"
                     sView.languagesLabel.text = _languagesLabel
                     sView.languageList.text = contact.AvalibleLanguages
@@ -48,6 +58,19 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
 
                     // Сохраняем текущий индекс
                     _contactView.tag = i
+                    
+                    sView.translatesAutoresizingMaskIntoConstraints = false
+                    contentView.addSubview(sView)
+
+                    NSLayoutConstraint.activate([
+                        sView.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 0),
+                        sView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                        sView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+                    ])
+
+                    sView.awakeFromNib()
+                    lastBottomAnchor = sView.bottomAnchor
+
 
                     i += 1
                 }
@@ -64,7 +87,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
             }
             return 0
         }
-
+    
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath) as! ContactCell
             let index = collectionView.tag
@@ -104,7 +127,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
     @objc func ScrollSetup()
     {
     
-        scrollView.contentSize = CGSize(width: generalView.frame.width, height: generalView.frame.height)
+        scrollView.contentSize = CGSize(width: contentView.frame.width, height: contentView.frame.height)
 
         // Отключение горизонтальной прокрутки
         scrollView.alwaysBounceHorizontal = false
@@ -113,7 +136,24 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         // Установка contentInsetAdjustmentBehavior
         scrollView.contentInsetAdjustmentBehavior = .never
     }
+@objc func SetupFooterText()
+    {
+        if let text = textMednaukaRu.text, !text.isEmpty {
+            contentView.addSubview(viewDescription)
+            textMednaukaRu.translatesAutoresizingMaskIntoConstraints = false
+            textMednaukaRu.isScrollEnabled = false
 
+            NSLayoutConstraint.activate([
+                textMednaukaRu.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 20),
+                textMednaukaRu.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                textMednaukaRu.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            ])
+
+            lastBottomAnchor = textMednaukaRu.bottomAnchor
+        }
+
+    }
+    
     @objc func BackToPreviousScreen()
     {
         dismiss(animated: true, completion: nil)

@@ -3,11 +3,15 @@ import UIKit
 
 class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     @IBOutlet weak var backButton: UIButton!
-    var startExerciseButton: UIButton!
-    @IBOutlet weak var instructionTitle: UILabel!
-    @IBOutlet weak var instructionText: UITextView!
+    @IBOutlet weak var instructionTitleLabel: UILabel!
+    @IBOutlet weak var instructionText: AutoResizingTextView!
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var PreventionAlarm:  UISwitch!
+    @IBOutlet weak var header: UIView!
+    @IBOutlet weak var instructionTitle: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    var startExerciseButton: UIButton!
     var PreventionAlarmTime: String!
     var PreventionDuration: Int!
     var PreventionIntensity: Int!
@@ -15,6 +19,8 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     var previousScreenName = "PreventionScreen"
     var currentTranslation: Translation!
     var buttonLabels: [String] = ["ExerciseView", "AboutUsAndContactUs"]
+    
+    private var exerciseTextHeightConstraint: NSLayoutConstraint?
 
     
     override func viewDidLoad()
@@ -29,6 +35,21 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         PreventionAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
         PreventionAlarm.isOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
         TherapyProgressTracker.shared.markTodayAsCompleted(for: .Prevention)
+        
+        instructionText.adjustHeight()
+
+let layoutConfig = LayoutConfigurator.Config(
+            parentView: view,
+            header: header,
+            scrollView: scrollView,
+            contentView: contentView,
+            title: instructionTitle,
+            exerciseText: instructionText,
+            collectionView: _collectionView,
+            collectionViewItemsCount: buttonLabels.count
+        )
+        
+        exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -62,7 +83,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         let s = currentTranslation.prevention?.Intensivities[PreventionManager.shared.CurrentIntensity].Instruction
         instructionText.text = s
         PreventionIntensity = PreventionManager.shared.CurrentIntensity
-        instructionTitle.text = currentTranslation.prevention?.Intensivities[PreventionIntensity].Name
+        instructionTitleLabel.text = currentTranslation.prevention?.Intensivities[PreventionIntensity].Name
     }
     
     func TranslateButton(_currentButton: UIButton)
