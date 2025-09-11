@@ -9,12 +9,13 @@ class LayoutConfigurator {
         let contentView: UIView
         let title: UIView?
         let isHintActive: Bool?
-        let exerciseText: UITextView
+        let exerciseText: UITextView?
         let hintWidget: UIView?
         let collectionView: UICollectionView?
         let collectionViewItemsCount: Int?
         let collectionViewItemsHeight: Int?
         let collectionViewVerticalSpacing: Int?
+        let footer: UIView?
         let okButton: UIView?
 
         init(
@@ -24,12 +25,13 @@ class LayoutConfigurator {
             contentView: UIView,
             title: UIView? = nil,
             isHintActive: Bool? = nil,
-            exerciseText: UITextView,
+            exerciseText: UITextView? = nil,
             hintWidget: UIView? = nil,
             collectionView: UICollectionView? = nil,
             collectionViewItemsCount: Int? = nil,
             collectionViewItemsHeight: Int? = 60,
             collectionViewVerticalSpacing: Int? = 10,
+            footer: UIView? = nil,
             okButton: UIButton? = nil
         ) {
             self.parentView = parentView
@@ -44,6 +46,7 @@ class LayoutConfigurator {
             self.collectionViewItemsCount = collectionViewItemsCount
             self.collectionViewItemsHeight = collectionViewItemsHeight
             self.collectionViewVerticalSpacing = collectionViewVerticalSpacing
+            self.footer = footer
             self.okButton = okButton
         }
     }
@@ -62,9 +65,11 @@ class LayoutConfigurator {
         let collectionViewItemsCount = config.collectionViewItemsCount ?? 1
         let collectionViewItemsHeight = config.collectionViewItemsHeight ?? 60
         let collectionViewVerticalSpacing = config.collectionViewVerticalSpacing ?? 10
+        let footer = config.footer
         let okButton = config.okButton
         
         var okButtonUpInstent: CGFloat
+        var exerciseTextHeight: NSLayoutConstraint
         
         // MARK: - Header
         if let header = header {
@@ -110,20 +115,26 @@ class LayoutConfigurator {
         
 
         // MARK: - ExerciseText
-        contentView.addSubview(exerciseText)
-        exerciseText.translatesAutoresizingMaskIntoConstraints = false
-        exerciseText.isScrollEnabled = false
-        
-        let exerciseTextHeight = exerciseText.heightAnchor.constraint(equalToConstant: 0)
-        exerciseTextHeight.priority = .defaultHigh
-        exerciseTextHeight.isActive = true
-        
-        NSLayoutConstraint.activate([
-            exerciseText.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 20),
-            exerciseText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            exerciseText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
-        ])
-        lastBottomAnchor = exerciseText.bottomAnchor
+        if let exerciseText = config.exerciseText{
+            contentView.addSubview(exerciseText)
+            exerciseText.translatesAutoresizingMaskIntoConstraints = false
+            exerciseText.isScrollEnabled = false
+            
+            exerciseTextHeight = exerciseText.heightAnchor.constraint(equalToConstant: 0)
+            exerciseTextHeight.priority = .defaultHigh
+            exerciseTextHeight.isActive = true
+            
+            NSLayoutConstraint.activate([
+                exerciseText.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 20),
+                exerciseText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+                exerciseText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+            ])
+            lastBottomAnchor = exerciseText.bottomAnchor
+        }
+        else {
+            exerciseTextHeight = NSLayoutConstraint(item: UIView(), attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+
+        }
         
         
         // MARK: - HintWidget (optional)
@@ -167,6 +178,18 @@ class LayoutConfigurator {
         else
         {
             okButtonUpInstent = 40
+        }
+        // MARK: - Footer
+        if let footer = config.footer {
+            contentView.addSubview(footer)
+            footer.translatesAutoresizingMaskIntoConstraints = false
+
+            NSLayoutConstraint.activate([
+                footer.topAnchor.constraint(equalTo: lastBottomAnchor, constant:0),
+                footer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                footer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+            ])
+            lastBottomAnchor = footer.bottomAnchor
         }
         
         //MARK: - OkButton

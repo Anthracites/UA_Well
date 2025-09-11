@@ -12,16 +12,15 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController restorationIdentifier="AboutUsAndContactUs" storyboardIdentifier="AboutUsAndContactUs" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AboutUsAndContactUs" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XKG-GO-VbE">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="XKG-GO-VbE">
                         <rect key="frame" x="0.0" y="0.0" width="361" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="top" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-DQ-D0l" userLabel="Header">
-                                <rect key="frame" x="13" y="59" width="329" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="top" ambiguous="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-DQ-D0l" userLabel="Header">
+                                <rect key="frame" x="0.0" y="59" width="361" height="68"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLf-di-mYi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="274" y="19" width="41" height="24"/>
+                                        <rect key="frame" x="312" y="23" width="41" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -39,6 +38,10 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="MA2-A2-kIZ"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="S9U-Bh-qi3"/>
+                                    <constraint firstAttribute="width" constant="361" id="eYu-B7-gDB"/>
+                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="pFu-Nx-N9O"/>
@@ -54,19 +57,19 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" id="xEz-Va-avj" userLabel="AboutUs">
-                                                <rect key="frame" x="16" y="-20" width="350" height="172"/>
+                                                <rect key="frame" x="16" y="-20" width="350" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About us and contact us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bI-db-yzm">
-                                                        <rect key="frame" x="0.0" y="8" width="342" height="50"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <rect key="frame" x="10" y="8" width="337" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NLv-sg-eNg">
-                                                        <rect key="frame" x="0.0" y="66" width="350" height="106"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <rect key="frame" x="2" y="39" width="345" height="108"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
                                                         <color key="textColor" systemColor="systemIndigoColor"/>
@@ -79,11 +82,11 @@
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="FpN-ql-5bF" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="72" y="419" width="240" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="center" restorationIdentifier="Start" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="TuG-cW-RjX">
@@ -105,10 +108,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dXq-mg-BOx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dXq-mg-BOx" firstAttribute="trailing" secondItem="FxC-DQ-D0l" secondAttribute="trailing" constant="16" id="Hw6-IJ-XO9"/>
+                            <constraint firstItem="FxC-DQ-D0l" firstAttribute="top" secondItem="XKG-GO-VbE" secondAttribute="top" constant="59" id="L6k-rh-cvX"/>
+                            <constraint firstItem="FxC-DQ-D0l" firstAttribute="leading" secondItem="dXq-mg-BOx" secondAttribute="leading" constant="16" id="zMs-f9-55t"/>
+                        </constraints>
                     </view>
                     <size key="freeformSize" width="361" height="1100"/>
                     <connections>
                         <outlet property="contentView" destination="V65-rR-voB" id="uo0-PF-3yF"/>
+                        <outlet property="header" destination="FxC-DQ-D0l" id="2Gu-19-ICY"/>
                         <outlet property="okButton" destination="TuG-cW-RjX" id="0Fo-SS-FEN"/>
                         <outlet property="scrollView" destination="xYO-ue-ZOp" id="mJa-VZ-KRu"/>
                         <outlet property="textMednaukaRu" destination="FpN-ql-5bF" id="u2D-FN-cIm"/>

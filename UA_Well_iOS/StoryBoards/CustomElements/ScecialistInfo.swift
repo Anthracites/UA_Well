@@ -14,11 +14,11 @@ class SpecialistInfo: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        setupLayout()
+        //setupLayout()
     }
 
     
-    private func setupLayout() {
+    @objc func setupLayout() {
         sPhoto.translatesAutoresizingMaskIntoConstraints = false
         specialistName.translatesAutoresizingMaskIntoConstraints = false
         languagesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +61,7 @@ class SpecialistInfo: UIView {
             contactsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contactsView.heightAnchor.constraint(equalToConstant: 44),
 
-            contactsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20)
+            contactsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
     }
 

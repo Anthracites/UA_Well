@@ -3,11 +3,12 @@ import Foundation
 
 class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var okButton: UIButton!
+    @IBOutlet weak var header: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var viewTitleLabel: UILabel!
-    @IBOutlet weak var viewDescription: UITextView!
+    @IBOutlet weak var viewDescription: AutoResizingTextView!
     @IBOutlet weak var textMednaukaRu: AutoResizingTextView!
     var lastBottomAnchor: NSLayoutYAxisAnchor!
     
@@ -19,8 +20,19 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
             TranslateView()
             AddSpecialistInfo()
             SetupFooterText()
+//            viewDescription.adjustHeight()
+            textMednaukaRu.adjustHeight()
             
-            ScrollSetup()
+            let layoutConfig = LayoutConfigurator.Config(
+                parentView: view,
+                header: header,
+                scrollView: scrollView,
+                contentView: contentView,
+                title:viewTitle,
+                footer: textMednaukaRu,
+                okButton: okButton
+            )
+
         }
     
     func loadSpecialistView() -> SpecialistInfo? {
@@ -43,6 +55,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
                 lastBottomAnchor = viewTitle.bottomAnchor
                 for contact in infoArray {
                     let sView: SpecialistInfo = loadSpecialistView()!
+                    sView.backgroundColor = .cyan
                     sView.specialistName.text = "\(contact.SpecialistName) \(contact.SpecialistSurname)"
                     sView.languagesLabel.text = _languagesLabel
                     sView.languageList.text = contact.AvalibleLanguages
@@ -61,14 +74,16 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
                     
                     sView.translatesAutoresizingMaskIntoConstraints = false
                     contentView.addSubview(sView)
+                    
 
                     NSLayoutConstraint.activate([
                         sView.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 0),
                         sView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
                         sView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
                     ])
+                    sView.setupLayout()
 
-                    sView.awakeFromNib()
+                    //sView.awakeFromNib()
                     lastBottomAnchor = sView.bottomAnchor
 
 
@@ -114,19 +129,10 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         }
 
         // MARK: - UICollectionViewDelegate
-
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            // Обработка выбора ячейки
-            let index = collectionView.tag
-            if let infoArray = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.SpecialistContacts {
-                let contact = infoArray[index].Contacts[indexPath.item]
-                print("Вы выбрали контакт: \(contact.UrlContact)")
-            }
-        }
     
     @objc func ScrollSetup()
     {
-    
+        scrollView.addSubview(contentView)
         scrollView.contentSize = CGSize(width: contentView.frame.width, height: contentView.frame.height)
 
         // Отключение горизонтальной прокрутки
@@ -142,16 +148,8 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
             contentView.addSubview(viewDescription)
             textMednaukaRu.translatesAutoresizingMaskIntoConstraints = false
             textMednaukaRu.isScrollEnabled = false
-
-            NSLayoutConstraint.activate([
-                textMednaukaRu.topAnchor.constraint(equalTo: lastBottomAnchor, constant: 20),
-                textMednaukaRu.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-                textMednaukaRu.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
-            ])
-
-            lastBottomAnchor = textMednaukaRu.bottomAnchor
+            //lastBottomAnchor = textMednaukaRu.bottomAnchor
         }
-
     }
     
     @objc func BackToPreviousScreen()
