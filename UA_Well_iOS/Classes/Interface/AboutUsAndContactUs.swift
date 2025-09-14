@@ -24,6 +24,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         specialistsInfo.contentMode = .center
 
         TranslateView()
+        SetupLink()
         viewDescription.adjustHeight()
         
         let layoutConfig = LayoutConfigurator.Config(
@@ -49,7 +50,31 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         let _translation = TranslationDownloader.shared.CurrentTranslation
         viewTitleLabel.text = _translation?.aboutUsAndcontactUs?.Title
         viewDescription.text = _translation?.aboutUsAndcontactUs?.Description
-        textMednaukaRu.text = _translation?.aboutUsAndcontactUs?.MednaukaText
+    }
+    func SetupLink()
+    {
+        if TranslationDownloader.shared.CurrentTranslation.currentLanguage == "Русский" {
+            let attributedText = NSMutableAttributedString(string: "\n\"Техники, используемые в приложении, взяты у авторов канала ")
+            
+            let linkText = NSAttributedString(string: "Mednauka", attributes: [
+                .link: URL(string: "https://www.youtube.com/@mednauka")!,
+                .foregroundColor: UIColor.systemRed,
+                .underlineStyle: NSUnderlineStyle.single.rawValue
+            ])
+            
+            attributedText.append(linkText)
+            attributedText.append(NSAttributedString(string: ". Здесь вы найдёте больше информации о психиатрии, наркологии, психотерапии и психофармакологии."))
+            
+            textMednaukaRu.attributedText = attributedText
+            textMednaukaRu.isEditable = false
+            textMednaukaRu.isSelectable = true
+            textMednaukaRu.dataDetectorTypes = []
+            textMednaukaRu.textAlignment = .left
+        }
+        else {
+            textMednaukaRu.text = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.MednaukaText
+        }
+
     }
     
     // MARK: - UICollectionViewDataSource
