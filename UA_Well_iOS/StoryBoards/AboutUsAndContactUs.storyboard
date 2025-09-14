@@ -14,15 +14,14 @@
             <objects>
                 <viewController restorationIdentifier="AboutUsAndContactUs" storyboardIdentifier="AboutUsAndContactUs" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="AboutUsAndContactUs" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XKG-GO-VbE">
-                        <rect key="frame" x="0.0" y="0.0" width="361" height="1100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="top" fixedFrame="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-DQ-D0l" userLabel="Header">
-                                <rect key="frame" x="0.0" y="59" width="361" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="top" misplaced="YES" restorationIdentifier="MainMenuHeader" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-DQ-D0l" userLabel="Header">
+                                <rect key="frame" x="16" y="59" width="361" height="67"/>
                                 <subviews>
                                     <button contentMode="scaleAspectFit" fixedFrame="YES" placeholderIntrinsicWidth="44" placeholderIntrinsicHeight="15" contentHorizontalAlignment="right" contentVerticalAlignment="top" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLf-di-mYi" customClass="BurgerButton" customModule="UA_Well_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="312" y="23" width="41" height="23"/>
+                                        <rect key="frame" x="312" y="23" width="41" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -40,6 +39,9 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="MA2-A2-kIZ"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="W7Y-18-VuY"/>
+                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="pFu-Nx-N9O"/>
@@ -47,7 +49,7 @@
                                 </variation>
                             </view>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYO-ue-ZOp">
-                                <rect key="frame" x="-2" y="135" width="361" height="965"/>
+                                <rect key="frame" x="-2" y="135" width="393" height="1149"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V65-rR-voB">
@@ -121,8 +123,13 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dXq-mg-BOx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="top" secondItem="FxC-DQ-D0l" secondAttribute="top" constant="-59" id="F4m-df-EkJ"/>
+                            <constraint firstItem="FxC-DQ-D0l" firstAttribute="trailing" secondItem="dXq-mg-BOx" secondAttribute="trailing" constant="16" id="Fxu-oE-uTf"/>
+                            <constraint firstItem="FxC-DQ-D0l" firstAttribute="leading" secondItem="dXq-mg-BOx" secondAttribute="leading" constant="16" id="cRf-UZ-IfF"/>
+                        </constraints>
                     </view>
-                    <size key="freeformSize" width="361" height="1100"/>
+                    <size key="freeformSize" width="393" height="1284"/>
                     <connections>
                         <outlet property="contentView" destination="V65-rR-voB" id="uo0-PF-3yF"/>
                         <outlet property="header" destination="FxC-DQ-D0l" id="2Gu-19-ICY"/>
