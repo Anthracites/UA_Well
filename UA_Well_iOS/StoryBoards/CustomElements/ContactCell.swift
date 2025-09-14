@@ -8,7 +8,6 @@ class ContactCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Инициализация
-        contactButton.addTarget(self, action: #selector(OnClickLinkButtonHandler), for: .touchUpInside)
     }
 
     @objc func OnClickLinkButtonHandler() {

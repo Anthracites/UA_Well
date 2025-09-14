@@ -135,19 +135,19 @@ class TranslationDownloader {
                         }
                     }
 //                    print (" Translations success!", Translations[0].currentLanguage as Any)
-//                    print("Translations directory path: \(fileURLs[0].path)")
+                    print("Translations directory path: \(fileURLs[0].path)")
                 }
                 catch
                 {
                     //print("Ошибка парсинга", error)
-                    //print("Ошибка подробнее", error.localizedDescription)
+                    print("Ошибка подробнее", error.localizedDescription)
                 print("Translations directory path: \(fileURLs[0].path)")
                 }
             }
         }
                 
                 catch {
-                    //print("Ошибка при загрузке данных из файла ",translationsDirURL.path)
+//                    print("Ошибка при загрузке данных из файла ",translationsDirURL.path)
                 }
             }
         }

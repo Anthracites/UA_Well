@@ -145,6 +145,7 @@ public struct Translation: Codable {
         struct SpecialistContact : Codable
         {
             let SpecialistName: String
+            let SpecialistPhoto: String
             let SpecialistSurname: String
             let AvalibleLanguages: String
             let Description: String
@@ -164,6 +165,7 @@ public struct Translation: Codable {
             enum CodingKeys: String, CodingKey
             {
                 case SpecialistName = "SpecialistName"
+                case SpecialistPhoto = "SpecialistPhoto"
                 case SpecialistSurname = "SpecialistSurname"
                 case AvalibleLanguages = "AvalibleLanguages"
                 case Contacts = "Contacts"

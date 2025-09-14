@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,22 +10,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="SWe-el-xFC" userLabel="ContactCell" customClass="ContactCell" customModule="UA_Well_iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="128" height="62"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="itT-x3-sNT">
-                <rect key="frame" x="0.0" y="0.0" width="128" height="62"/>
-                <autoresizingMask key="autoresizingMask"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ContactCell" id="SWe-el-xFC" userLabel="ContactCell" customClass="ContactCell" customModule="UA_Well_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="64" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itT-x3-sNT">
+                <rect key="frame" x="0.0" y="0.0" width="64" height="32"/>
                 <subviews>
-                    <button opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FIA-cR-X2p">
-                        <rect key="frame" x="13" y="6" width="100" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FIA-cR-X2p">
+                        <rect key="frame" x="0.0" y="0.0" width="64" height="32"/>
                         <color key="tintColor" systemColor="systemIndigoColor"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                            <fontDescription key="titleFontDescription" type="system" pointSize="5"/>
+                        </buttonConfiguration>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="FIA-cR-X2p" firstAttribute="width" secondItem="itT-x3-sNT" secondAttribute="width" id="M6p-Js-JIa"/>
+                    <constraint firstItem="FIA-cR-X2p" firstAttribute="height" secondItem="itT-x3-sNT" secondAttribute="height" id="e8w-uT-fPL"/>
+                    <constraint firstItem="FIA-cR-X2p" firstAttribute="centerY" secondItem="itT-x3-sNT" secondAttribute="centerY" id="pbj-Ew-O6E"/>
+                    <constraint firstItem="FIA-cR-X2p" firstAttribute="centerX" secondItem="itT-x3-sNT" secondAttribute="centerX" id="rbj-Rx-Jn8"/>
+                </constraints>
             </collectionViewCellContentView>
+            <constraints>
+                <constraint firstItem="itT-x3-sNT" firstAttribute="top" secondItem="SWe-el-xFC" secondAttribute="top" id="58U-4i-HW5"/>
+                <constraint firstAttribute="trailing" secondItem="itT-x3-sNT" secondAttribute="trailing" id="Tde-iA-Z0y"/>
+                <constraint firstAttribute="bottom" secondItem="itT-x3-sNT" secondAttribute="bottom" id="aYt-XB-JcX"/>
+                <constraint firstItem="itT-x3-sNT" firstAttribute="leading" secondItem="SWe-el-xFC" secondAttribute="leading" id="rsl-YX-nha"/>
+            </constraints>
             <size key="customSize" width="128" height="62"/>
             <connections>
                 <outlet property="contactButton" destination="FIA-cR-X2p" id="jvF-M9-dh4"/>
