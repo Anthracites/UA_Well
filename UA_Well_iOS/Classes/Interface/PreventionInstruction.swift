@@ -4,6 +4,7 @@ import UIKit
 class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var instructionTitleLabel: UILabel!
+    @IBOutlet weak var instructionAlarmLabel: UILabel!
     @IBOutlet weak var instructionText: AutoResizingTextView!
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var PreventionAlarm:  UISwitch!
@@ -47,7 +48,7 @@ let layoutConfig = LayoutConfigurator.Config(
             exerciseText: instructionText,
             collectionView: _collectionView,
             collectionViewItemsCount: buttonLabels.count
-        )
+)
         
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }
@@ -60,9 +61,11 @@ let layoutConfig = LayoutConfigurator.Config(
         // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
-        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
-        newButoon.tag = indexPath.item
         newButoon.setTitle(buttonLabels[indexPath.item], for: .normal)
+        cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
+        cell.adjustFontSize(for: newButoon)
+
+        newButoon.tag = indexPath.item
 
         TranslateButton(_currentButton: newButoon)
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
@@ -72,7 +75,31 @@ let layoutConfig = LayoutConfigurator.Config(
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
-        print ("Cell added. Cell index: ", indexPath.item)
+        
+        
+        if let backgroundImage = newButoon.backgroundImage(for: .normal) {
+            
+            // Задаём фиксированную высоту кнопки
+            let targetHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
+            let buttonHeight = targetHeight
+            
+            // Вычисляем ширину кнопки по высоте
+            let rawWidth = cell.calculateButtonSize(basedOn: .height(buttonHeight), backgroundImage: backgroundImage, cellSpacing: 16)
+            
+            // Ограничиваем максимальную ширину
+            let horizontalInset: CGFloat = 32 // например, 16 слева и 16 справа
+            let maxWidth = collectionView.frame.width - horizontalInset
+            let buttonWidth = min(rawWidth, maxWidth)
+            
+            // Применяем размеры к кнопке
+            newButoon.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                newButoon.widthAnchor.constraint(equalToConstant: buttonWidth * 0.75),
+                newButoon.heightAnchor.constraint(equalToConstant: buttonHeight/3)
+            ])
+        }
+        print ("Cell added. Cell title: ", buttonLabels[indexPath.item])
+        
         return cell
     }
     
@@ -84,6 +111,7 @@ let layoutConfig = LayoutConfigurator.Config(
         instructionText.text = s
         PreventionIntensity = PreventionManager.shared.CurrentIntensity
         instructionTitleLabel.text = currentTranslation.prevention?.Intensivities[PreventionIntensity].Name
+        instructionAlarmLabel.text = currentTranslation.commonButtons?.Alarm
     }
     
     func TranslateButton(_currentButton: UIButton)
