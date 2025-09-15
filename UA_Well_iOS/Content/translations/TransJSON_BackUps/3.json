@@ -18,7 +18,10 @@
         "Return_to_day_selection_title": "Return to day selection",
         "Return_to_parameters_title": "Return to options",
         "Return_to_symptoms_title": "Return to symptoms",
-        "Return_to_help_type_page_title": "Return to help type"
+        "Return_to_help_type_page_title": "Return to help type",
+        
+        "TherapyDayCount": "Day of therapy: ",
+        "ExerciseSteps": ["inhale", "exhale", "pause", "start"]
     },
     
     "alarmNotifications": {
@@ -75,6 +78,7 @@
     "aboutUsAndcontactUs": {
         "Title": "About us and contact with us",
         "Description": "Seeking professional help is the best solution in many situations. Here you will find the contacts of the specialists who created this App.",
+        "MednaukaText": "",
         "LanguagesLabel": "LANGUAGES ",
         "ContactsLabel": "CONTACTS ",
         "TechDecription": "",
@@ -83,6 +87,7 @@
         "SpecialistContacts": [
             {
                 "SpecialistName": "Yana",
+                "SpecialistPhoto": "Photo_Yana.png",
                 "SpecialistSurname": "Shtager",
                 "AvalibleLanguages": "Ukraine, Russian, English",
                 "Contacts": [
@@ -100,6 +105,7 @@
             },
             {
                 "SpecialistName": "Andrew",
+                "SpecialistPhoto": "Photo_Andrey.png",
                 "SpecialistSurname": "Fleshel",
                 "AvalibleLanguages": "Ukraine, Russian, English",
                 "Contacts": [

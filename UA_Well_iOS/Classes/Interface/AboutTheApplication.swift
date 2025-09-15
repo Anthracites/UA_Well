@@ -1,5 +1,4 @@
 import UIKit
-import Foundation
 
 class AboutTheApplication: UIViewController
 {
@@ -14,13 +13,20 @@ class AboutTheApplication: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TranslateView()
+        configureView()
+        configureLayout()
+    }
+    
+    private func configureView() {
+        translateView()
         appDescription.isEditable = false
         appDescription.isSelectable = true
         appDescription.dataDetectorTypes = [.link]
-
-        okButton.addTarget(self, action: #selector(OkButtonHandler), for: .touchUpInside)
-        
+        okButton.addTarget(self, action: #selector(okButtonHandler), for: .touchUpInside)
+        appDescription.adjustHeight()
+    }
+    private func configureLayout()
+    {
         appDescription.adjustHeight()
         
         let layoutConfig = LayoutConfigurator.Config(
@@ -34,13 +40,14 @@ class AboutTheApplication: UIViewController
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }
     
-@objc func TranslateView()
+@objc func translateView()
     {
+        guard ((TranslationDownloader.shared.CurrentTranslation.currentLanguage?.isEmpty) != nil)  else { return }
         appDescription.text = TranslationDownloader.shared.CurrentTranslation.aboutApplication?.AboutAppDescription
         abouAppLabel.text = TranslationDownloader.shared.CurrentTranslation.aboutApplication?.AboutAppTitle
     }
     
-    @objc func OkButtonHandler()
+    @objc func okButtonHandler()
     {
         dismiss(animated: true, completion: nil)
     }

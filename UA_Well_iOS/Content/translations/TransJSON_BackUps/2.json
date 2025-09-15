@@ -18,7 +18,11 @@
         "Return_to_day_selection_title": "Вернуться к выбору дня",
         "Return_to_parameters_title": "Вернуться к параметрам",
         "Return_to_symptoms_title": "Вернуться к симптомам",
-        "Return_to_help_type_page_title": "Вернуться к типу помощи"
+        "Return_to_help_type_page_title": "Вернуться к типу помощи",
+        
+        "TherapyDayCount": "День терапии: ",
+        "ExerciseSteps": ["вдох", "выдох", "пауза", "старт"]
+
     },
     
     "alarmNotifications": {
@@ -75,6 +79,7 @@
     "aboutUsAndcontactUs": {
         "Title": "О нас и связи с нами",
         "Description": "Обратиться за профессиональной помощью — лучшее решение во многих ситуациях. Здесь Вы найдёте контакты специалистов, которые создали это приложение.",
+        "MednaukaText": "Техники, используемые в приложении, взяты у авторов канала [Mednauka](https://www.youtube.com/@mednauka). Здесь Вы найдете больше информации о психиатрии, наркологии, психотерапии и психофармакалогии.",
         "LanguagesLabel": "ЯЗЫКИ ",
         "ContactsLabel": "КОНТАКТЫ ",
         "TechDecription": "",
@@ -83,6 +88,7 @@
         "SpecialistContacts": [
             {
                 "SpecialistName": "Яна",
+                "SpecialistPhoto": "Photo_Yana.png",
                 "SpecialistSurname": "Штагер",
                 "AvalibleLanguages": "Украинский, Русский, Английский",
                 "Contacts": [
@@ -100,6 +106,7 @@
             },
             {
                 "SpecialistName": "Андрей",
+                "SpecialistPhoto": "Photo_Andrey.png",
                 "SpecialistSurname": "Флешель",
                 "AvalibleLanguages": "Украинский, Русский, Английский",
                 "Contacts": [
