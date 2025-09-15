@@ -14,6 +14,7 @@ class ExerciseManager {
     var PreventionParameters: [PreventionParameter] = []
     var IsAppOpenFromNotification: Bool! = false
     var NotificationType:String?
+    var PreviousViewName: String?
 
     private init() {} // Закрытый инициализатор
 

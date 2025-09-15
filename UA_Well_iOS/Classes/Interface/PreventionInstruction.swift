@@ -27,6 +27,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        ExerciseManager.shared.PreviousViewName = "PreventionInstruction"
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
