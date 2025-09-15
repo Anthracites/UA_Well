@@ -118,6 +118,11 @@
                                                 </cells>
                                             </collectionView>
                                         </subviews>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="ana-7e-dFj"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Pan-4P-SfP"/>

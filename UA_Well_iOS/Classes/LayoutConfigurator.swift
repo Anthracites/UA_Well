@@ -138,7 +138,7 @@ class LayoutConfigurator {
         
         
         // MARK: - HintWidget (optional)
-        if config.isHintActive != nil, let hintWidget = config.hintWidget {
+        if config.isHintActive != false, let hintWidget = config.hintWidget {
             hintWidget.isHidden = false
             contentView.addSubview(hintWidget)
             hintWidget.translatesAutoresizingMaskIntoConstraints = false

@@ -9,7 +9,7 @@
     {
         "Exercise_id":1,
         "ExerciseDuration": 0,
-        "Visual_hint":true,
+        "Visual_hint":false,
         "StepsSubsequence": "",
         "StepsDurations":""
     },

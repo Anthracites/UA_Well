@@ -35,12 +35,13 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         LastExercise = IsLastExercise()
         IsQuickHelp = GetCurrentHelpType()
         GetExerices()
+        SetupWidget()
         ConfigCollectionView()
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
-        
-        SetupWidget()
+        print("Hint active: ", isHintActive)
+
         GetImages()
         exerciseText.adjustHeight()
         let layoutConfig = LayoutConfigurator.Config(
@@ -217,13 +218,16 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func NextButtonHandler()
     {
-        QuickHelpManager.shared.CurrentExercise += 1
-        let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
-        
+            let nextIndex = QuickHelpManager.shared.CurrentExercise + 1
+            if nextIndex < QuickHelpManager.shared.CurrentExersicesArray.count {
+                QuickHelpManager.shared.CurrentExercise = nextIndex
+                let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
+                let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
+                self.present(secondVC, animated: true, completion: nil)
+            } else {
+                print("Попытка перейти за пределы массива упражнений")
+                // Можно показать алерт или завершить серию
+            }
     }
     
     @objc func ItHelpedButtonHandler()
@@ -286,7 +290,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
             startStepTimer()
         updateHintState()
-        print("Exercise started!!!!", "Exercise ID", exercise.Exercise_id, " Exercise duration: ", exercise.Steps?.count)
+      //  print("Exercise started!!!!", "Exercise ID", exercise.Exercise_id, " Exercise duration: ", exercise.Steps?.count)
         }
         
         private func startStepTimer() {
@@ -333,33 +337,43 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @objc func updateHintState() {
         print("Exercise started!")
 
-        let _buttonLabel: String
-        let i: Int = ExerciseManager.shared.CurrentStep
-        let _actionIndex = ExerciseManager.shared.CurrentExercise.Steps![i].action
-        let _hintImage: UIImage
-        let soundFileName = "metronome" // Новый параметр для звука
+        let soundFileName = "metronome"
+        let currentStep = ExerciseManager.shared.CurrentStep
 
-        switch _actionIndex {
-        case 0:
-            _hintImage = inhaleGif
-            _buttonLabel = "Вдох"
-        case 1:
-            _hintImage = exhalationGif
-            _buttonLabel = "Выдох"
-        case 2:
-            _hintImage = exhalationGif
-            _buttonLabel = "Пауза"
-        default:
-            _buttonLabel = "Старт"
-            _hintImage = pauseImage
+        guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
+              currentStep >= 0,
+              currentStep < steps.count else {
+            print("Ошибка: шаг \(currentStep) вне диапазона или Steps не инициализирован")
+            imageHint.image = pauseImage
+            breathingHintWidgetButton.setTitle("Старт", for: .normal)
+            return
         }
 
-        imageHint.image = _hintImage
-        breathingHintWidgetButton.setTitle(_buttonLabel, for: .normal)
+        let actionIndex = steps[currentStep].action
+        let hintImage: UIImage
+        let buttonLabel: String
 
-        // Воспроизведение звука
+        switch actionIndex {
+        case 0:
+            hintImage = inhaleGif
+            buttonLabel = "Вдох"
+        case 1:
+            hintImage = exhalationGif
+            buttonLabel = "Выдох"
+        case 2:
+            hintImage = exhalationGif
+            buttonLabel = "Пауза"
+        default:
+            hintImage = pauseImage
+            buttonLabel = "Старт"
+        }
+
+        imageHint.image = hintImage
+        breathingHintWidgetButton.setTitle(buttonLabel, for: .normal)
+
         playSound(named: soundFileName)
     }
+
 
     
     @objc func OnHintButtonClick()
