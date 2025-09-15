@@ -71,6 +71,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         if (isHintActive == true)
         {
             let _button = breathingHintWidgetButton
+            let _label = TranslationDownloader.shared.CurrentTranslation.commonButtons?.ExerciseSteps[3]
+            _button?.setTitle(_label, for: .normal)
             _button!.addTarget(self, action: #selector(OnHintButtonClick), for: .touchUpInside)
         }
         setupHintWidgetLayout()
@@ -351,21 +353,22 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
 
         let actionIndex = steps[currentStep].action
         let hintImage: UIImage
+        let hintLabels = TranslationDownloader.shared.CurrentTranslation.commonButtons?.ExerciseSteps
         let buttonLabel: String
 
         switch actionIndex {
         case 0:
             hintImage = inhaleGif
-            buttonLabel = "Вдох"
+            buttonLabel = hintLabels?[0] ?? "inhale"
         case 1:
             hintImage = exhalationGif
-            buttonLabel = "Выдох"
+            buttonLabel = hintLabels?[1] ?? "exhale"
         case 2:
             hintImage = exhalationGif
-            buttonLabel = "Пауза"
+            buttonLabel = hintLabels?[2] ?? "pause"
         default:
             hintImage = pauseImage
-            buttonLabel = "Старт"
+            buttonLabel = "start"
         }
 
         imageHint.image = hintImage

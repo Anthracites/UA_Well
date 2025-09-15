@@ -29,6 +29,7 @@ public struct Translation: Codable {
         let Return_to_help_type_page_title: String
         
         let DayOfTherapy: String
+        let ExerciseSteps: [String]
         
         
         enum CodingKeys: String, CodingKey {
@@ -51,6 +52,7 @@ public struct Translation: Codable {
             case Return_to_help_type_page_title = "Return_to_help_type_page_title"
             
             case DayOfTherapy = "TherapyDayCount"
+            case ExerciseSteps = "ExerciseSteps"
             
         }
     }

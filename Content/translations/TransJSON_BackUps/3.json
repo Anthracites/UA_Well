@@ -20,7 +20,8 @@
         "Return_to_symptoms_title": "Return to symptoms",
         "Return_to_help_type_page_title": "Return to help type",
         
-        "TherapyDayCount": "Day of therapy: "
+        "TherapyDayCount": "Day of therapy: ",
+        "ExerciseSteps": ["inhale", "exhale", "pause", "start"]
     },
     
     "alarmNotifications": {

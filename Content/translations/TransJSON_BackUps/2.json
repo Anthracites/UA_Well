@@ -20,7 +20,9 @@
         "Return_to_symptoms_title": "Вернуться к симптомам",
         "Return_to_help_type_page_title": "Вернуться к типу помощи",
         
-        "TherapyDayCount": "День терапии: "
+        "TherapyDayCount": "День терапии: ",
+        "ExerciseSteps": ["вдох", "выдох", "пауза", "старт"]
+
     },
     
     "alarmNotifications": {
