@@ -27,8 +27,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureLayout()
+
         configureActions()
         configCollectionView()
         SetUpButton()
@@ -39,8 +38,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         LTWAlarm.isOn = UserDefaults.standard.bool(forKey: "LTWAlarm")
         SaveOptions()
         TherapyProgressTracker.shared.markTodayAsCompleted(for: .LTW)
-        
-
+        configureLayout()
     }
 
     func configureLayout()

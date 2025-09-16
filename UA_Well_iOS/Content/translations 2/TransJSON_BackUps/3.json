@@ -1,0 +1,317 @@
+[{
+    "currentLanguage": "English",
+    
+    "commonButtons": {
+        "Start": "Start",
+        "Next": "Next",
+        "Start_over": "Start over",
+        "It_helped": "It helped",
+        "Contact_specialist": "Contact a specialist",
+        "Alarm": "Alarm",
+        "Ok": "ОК",
+        "Languge_selection": "LANGUAGE SELECTION",
+        "Type_of_help": "TYPE OF HELP",
+        "About_us_and_contact_us": "About us and contact us",
+        "About_the_application": "About the application",
+
+        "Return_to_language_selecttion_title": "Return to language selection",
+        "Return_to_day_selection_title": "Return to day selection",
+        "Return_to_parameters_title": "Return to options",
+        "Return_to_symptoms_title": "Return to symptoms",
+        "Return_to_help_type_page_title": "Return to help type",
+        
+        "TherapyDayCount": "Day of therapy: ",
+        "ExerciseSteps": ["inhale", "exhale", "pause", "start"]
+    },
+    
+    "alarmNotifications": {
+      "Title": "Hello!",
+      "MuteButtonTitle": "Snooze 10 min",
+      "CancelButtonTitle": "Cancel",
+      "Body_long_time_work": "It’s time to do the exercise in the \"Long-term work\" section",
+      "Body_prevention": "It's time to do the exercise in the \"Prevention\" section"
+    },
+    
+
+    "prevention": {
+        "Title": "Prevention",
+        "Description":"Prevention assumes that you feel good, it is designed to prevent unpleasant conditions, in order to feel more cheerful and relaxed. If you notice that you need practice to deal with a discomfort or problem, you can return to the “quick help” section. Here you can choose the intensity of work — from minimum to maximum, depending on your needs at the moment. Choose the intensity and duration of the program — and proceed to the description of the tasks.",
+        "IntesityLabel": "Select intensity",
+        "DurationLabel": "Select duration",
+        "Intensivities": [
+            {
+                "ID": 0,
+                "Name": "Minimum intensity",
+                "Instruction": "Resonant breathing is one of the simplest yet most effective breathing techniques that works well not only for relieving the effects of long-lasting stress, but also for supporting well-being, especially when used regularly. Unlike other breathing techniques, resonant breathing is best done while sitting. During five minutes, inhale for five seconds and exhale for five seconds, without pauses. A visual cue will help you count down the seconds."
+            },
+            {
+                "ID": 1,
+                "Name": "Medium intensity",
+                "Instruction": "Start by doing breathing exercises daily. Resonant breathing is one of the simplest yet most effective breathing techniques that works well not only for relieving the effects of long-term stress, but also for maintaining good health, especially when used regularly. Unlike other breathing techniques, resonant breathing is best done while sitting. During five minutes, inhale for five seconds and exhale for five seconds, without pauses. A visual cue will help you count down the seconds. \n\nAdd the relaxation and imagination exercise daily. It is great if you could do it at the same time, but this is not necessary. It will take you ten to fifteen minutes to complete this exercise. Close your eyes and pay attention to bodily sensations. Notice where you feel the tension and direct your attention to that place. Take five to six deep slow breaths without pauses, this will help to relax the muscles. If it is difficult to relax, you can first tighten the muscles for ten to fifteen seconds, while having free breathing. Then imagine a place where you feel comfortable and safe. It’s good if the images appear by themselves, but if nothing comes up, you can draw a several relaxing pictures in your mind and chose the best one. What can you see in this image, what do you hear, feel? What do you want to do? Imagine yourself doing what you really want."
+            },
+            {
+                "ID": 2,
+                "Name": "Maximum intensity",
+                "Instruction": "Start by doing breathing exercises daily. Resonant breathing is one of the simplest yet most effective breathing techniques that works well not only for relieving the effects of long-term stress, but also for maintaining good health, especially when used regularly. Unlike other breathing techniques, resonant breathing is best done while sitting. During five minutes, inhale for five seconds and exhale for five seconds, without pauses. A visual cue will help you count down the seconds. \n\nAdd the relaxation and imagination exercise daily. It is great if you could do it at the same time, but this is ot necessary. It will take you ten to fifteen minutes to complete this exercise. Close your eyes and pay attention to bodily sensations. Notice where you feel the tension and direct your attention to that place. Take five to six deep slow breaths without pauses, this will help to relax the muscles. If it is difficult to relax, you can first tighten the muscles for ten to fifteen seconds, while having free breathing. Then imagine a place where you feel comfortable and safe. It’s good if the images appear by themselves, but if nothing comes up, you can draw a several relaxing pictures in your mind and chose the best one. What can you see in this image, what do you hear, feel? What do you want to do? Imagine yourself doing what you really want. \n\nSpecific goals change our attention and perception: we begin to focus more on a constructive agenda and things we can influence. Write a list of goals (choose the time period that suits you — it can be a week, a month or more). If the goal is big, write down the specific tasks that need to be completed to achieve it. If necessary, add a description of the barriers you may encounter and strategies for this case. You can also add a list of external and internal resources that you can apply to achieve this goal (so you have a list consists of three parts: goal, barriers, resources)."
+            }
+            
+        ],
+        "Durations": [
+            {
+                "ID": 0,
+                "Name": "Two weeks"
+            },
+            {
+                "ID": 1,
+                "Name": "Three weeks"
+            },
+            {
+                "ID": 2,
+                "Name": "Four weeks"
+            }
+        ]
+    },
+    "aboutApplication": {
+        "AboutAppTitle": "About the application",
+        "AboutAppDescription": "UAWell is free (as in freedom) software licensed under the GNU GPL. Why is this important? https://www.gnu.org/philosophy/free-software-even-more-important.html This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program. If not, see  https://www.gnu.org/licenses/ Contribute: https://gitlab.com/uawell/UAWell"
+    },
+    "aboutUsAndcontactUs": {
+        "Title": "About us and contact with us",
+        "Description": "Seeking professional help is the best solution in many situations. Here you will find the contacts of the specialists who created this App.",
+        "MednaukaText": "",
+        "LanguagesLabel": "LANGUAGES ",
+        "ContactsLabel": "CONTACTS ",
+        "TechDecription": "",
+        "EmailTitle": "Personal message UAWell",
+        "EmailBody": "Hello! I would like to know more about the possibility of individual consultation",
+        "SpecialistContacts": [
+            {
+                "SpecialistName": "Yana",
+                "SpecialistPhoto": "Photo_Yana.png",
+                "SpecialistSurname": "Shtager",
+                "AvalibleLanguages": "Ukraine, Russian, English",
+                "Contacts": [
+                    {
+                        "UrlMask": "email",
+                        "UrlContact": "shtagerpsiholog@gmail.com"
+                    },
+                    {
+                        "UrlMask": "youtube",
+                        "UrlContact": "https://www.youtube.com/@%D0%AF%D0%BD%D0%B0%D0%A8%D1%82%D0%B0%D0%B3%D0%B5%D1%80"
+                    }
+                    
+                ],
+                "Description": "Clinical psychologist, body-oriented psychotherapist",
+            },
+            {
+                "SpecialistName": "Andrew",
+                "SpecialistPhoto": "Photo_Andrey.png",
+                "SpecialistSurname": "Fleshel",
+                "AvalibleLanguages": "Ukraine, Russian, English",
+                "Contacts": [
+                    {
+                        "UrlMask": "email",
+                        "UrlContact": "fleshelll@gmail.com"
+                    },
+                    {
+                        "UrlMask": "facebook",
+                        "UrlContact": "https://www.facebook.com/FLESHEL.group"
+                    },
+                    {
+                        "UrlMask": "youtube",
+                        "UrlContact": "https://youtube.com/@andreifleshel?si=SXeuo7lJMpwqLBmR"
+                    },                   
+                    {
+                        "UrlMask": "site",
+                        "UrlContact": "https://fleshel.info/"
+                    }
+                    
+                ],
+                "Description": "Psychotherapist, coach, hypnotherapist, supervisor"
+            }
+            
+        ]
+    },
+    "longTermWork": {
+        "Description":"A long-term work is suitable for you if you have experienced prolonged stress and need recovery. You will get the maximum result if you do all the tasks, but if you are not able, do as much as you can, and if necessary, you can go through the whole cycle again. To complete tasks, it is best to have a separate notebook (it is better if you write on paper, or type it if you prefer typing). Start from the first day and continue to complete tasks, adding new ones every few days.",
+        "TherapyDays": [
+            {
+                "DayID":0,
+                "TherapyPartName": "First day",
+                "Instruction": "Start with a self-assessment of your condition. Write down everything that worries you in one column. These can be unpleasant body sensations, negative emotions (or, for example, emotional instability, frequent mood swings), unpleasant thoughts, or unwanted behavior. Every evening evaluate the strength of eachindicator. The easiest way to rate this is on a scale of 0 to 2, where 0 means that you didn’t feel it today, 1 — you had moderate feeling, and 2 — if you felt it very strongly. This analysis helps to understand both: which symptoms you need to pay more attention to, and also to see how your condition changes as you work to improve it. \n\nDo breathing exercises daily. Practice resonant breathing three times a day for five minutes (inhale for five seconds — exhale for five seconds without pauses, if this time is too long and breathing is so uncomfortable or impossible — inhale and exhale for four seconds, or three). It is best to do this practice while sitting."
+            },            {
+                "DayID":1,
+                "TherapyPartName": "Fifth day",
+                "Instruction": "Do the relaxation and imagination exercise daily. It is great if you could do it at the same time, but this is not necessary. It will take you ten to fifteen minutes to complete this exercise. Close your eyes and pay attention to bodily sensations. Notice where you feel the tension and direct your attention to that place. Take five to six deep slow breaths without pauses, this will help to relax the muscles. If it is difficult to relax, you can first tighten the muscles for ten to fifteen seconds, while having free breathing. Then imagine a place where you feel comfortable and safe and relax. It’s good if the images appear by themselves, but if nothing comes up, you can draw a several relaxing pictures in your mind and chose the best one. What can you see in this image, what do you hear, feel? What do you want to do? Imagine yourself doing what you reallly want. \n\nThe next exercise is created for the time when you feel that your condition has worsened. Describe what you are experiencing: what emotions, feelings, sensations, thoughts and impulses? Then write down at least three factors (four or five would be better) that led to a deterioration in well-being. It can be events, news, health problems, fatigue, or even a change in the weather. Under each of the factors described, write down what you can do: if the problem can be fixed, then what you will do, if not, then how you can compensate for the troubles or support yourself. Important! If you feel that this is not enough, go back to the “quick help” section."
+            },
+            {
+                "DayID":2,
+                "TherapyPartName": "Tenth day",
+                "Instruction": "Specific goals change our attention and perception: we begin to focus more on a constructive agenda and things we can influence. Write a list of goals (choose the time of goal realization that suits you — it can be a week, a month or more). If the goal is big, write down the specific tasks that need to be completed to achieve it. If necessary, add a description of the barriers/issues you may encounter and strategies for this case. You can also add a list of external and internal resources that you can apply to achieve this goal (so you have a list consists of three parts: goal, barriers, resources).\n\nRoutine is an important component of self-care and mental health. Pick three enjoyable activities you can do every day. Even if it is something insignificant, doesn’t matter, it is important that it gives you pleasure (or at least lead to it). It can be communication, food, sports, music, walks, etc. Try to add something new each day, but if something repeats, still do that."
+            },
+            {
+                "DayID":3,
+                "TherapyPartName": "Fifteenth day",
+                "Instruction": "Analyze how balanced your daily loads are. All loads conditionally can be divided into physical, emotional (communication, art, news, etc.) and intellectual (work, study, etc.). If there is an area that clearly takes less attention and time, plan how you can balance it. You can remove something from the “overloaded” sphere (if possible) or add something to the desolate sphere. \n\nPay attention to what new positive experience you can bring into your life. It is desirable that it would be something pleasant, enjoyable (new food, new places or routes, new music, etc.), but sometimes it can be something neutral. We need new experience for many reasons, but if this task is difficult to complete right away, start by paying attention to where and how to get a new pleasant experience would be possible. From this step it will be easier to move on to practice."
+            }, 
+
+        ]
+    },
+    "HelpTypes": [
+        {
+            "help_type_id": 0,
+             "help_type_name": "Quick help"
+        },
+        {
+            "help_type_id": 1,
+             "help_type_name": "Long-term work"
+        },
+        {
+            "help_type_id": 2,
+             "help_type_name": "Prevention"
+        }
+    ],
+    "Symptoms": [
+        {
+            "symptom_ID": 1,
+            "symptom_name": "Apathy, emptiness, indifference",
+            "symptom_description": "Apathy implies a lack of desire and strength to do anything, a lack of motivation, emotional emptiness and, as a result, a decrease in productivity to the point of complete impossibility to act. You may feel like you don`t want or can`t do anything because there is no strength or meaning. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one"
+        },
+        {
+            "symptom_ID": 2,
+            "symptom_name":  "Anxiety, disturbing fuss",
+            "symptom_description":"Anxiety is a variant of the normal response to a real or perceived threat. Anxiety is often accompanied by mobilization (activation of the mind and body to avoid a threat), which does not always lead to productive actions. Especially in those situations where it is impossible to do something useful (in situations of helplessness). You may feel like you can`t sit still, think clearly, and act effectively because of anxiety. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 3,
+            "symptom_name": "Derealization, depersonalization",
+            "symptom_description":"Derealization is a change in perception, in which the world around us seems not the same as before, unreal, distant, more like a dream or a two-dimensional image. Depersonalization involves the feeling of a change in one`s own personality. You may feel that you have changed, become different from before, that it is not you, that you cannot feel, perceive and react in the same way as before. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 4,
+            "symptom_name": "Obstructed breathing, incomplete breathing",
+            "symptom_description": "Stress, especially strong or prolonged, significantly affects the pattern of breathing. You may feel that your breathing has become shallow, insufficient, you cannot take a full breath or a full exhalation, that you do not have enough air. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 5,
+            "symptom_name": "Tension, inability to relax",
+            "symptom_description": "Stress, especially strong or prolonged, often has a noticeable effect on muscle tone. You may feel that you are overly tense and unable to relax, or that it is possible to relax, but then the tension quickly returns. Sometimes this leads to muscle pain or reduced mobility. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 6,
+            "symptom_name": "Unpleasant bodily reactions",
+            "symptom_description": "Stress can cause various unpleasant bodily reactions, such as nausea, numbness, chills, fever, dizziness, etc. These reactions can be more or less severe and prolonged. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+      {
+            "symptom_ID": 7,
+            "symptom_name": "Panic",
+            "symptom_description": "Panic is an attack of intense anxiety that usually lasts from several minutes to up to an hour and involves intense bodily reactions — dizziness, muscle tension or weakness, a change in the sensation of body temperature, palpitations, etc. Specific thoughts are also possible — that this condition is dangerous, it portends fainting, heart attack, unhealthy behaviour, insanity or death. Panic attacks are safe for mental and physical health condition, although they are very unpleasant. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 8,
+            "symptom_name": "Immersion in painful experience\n(“flashback”, “traumatic funnel”)",
+            "symptom_description": "Immersion in a painful experience is most often a response to a trigger (something that resembles a traumatic circumstance — a sound, an event, a smell, etc.), but can also occur on its own. At this moment, the psyche reacts as if the danger from the past has returned. Such reactions are accompanied by strong emotions and behavioural changes (freezing or actions that correspond to the perceived danger). Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 9,
+            "symptom_name": "Confusion, inability to concentrate",
+            "symptom_description": "Confusion can be a more or less intense reaction that occurs as a response to stress, overload. You may feel like you don’t understand what is happening, you can’t concentrate, you don’t know what to do, what decision to make, how to respond to the interlocutor, etc. Click on the “start” button and you will eceive a series of simple instructions that will help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+      {
+            "symptom_ID": 10,
+            "symptom_name": "Strong, unbearable emotions",
+            "symptom_description": "Strong emotions are generally more difficult to bear than weak or moderate ones, a situation of prolonged or intense stress, even relatively weak emotions can be felt as unbearable. You may feel that you cannot stand the emotional intensity, that emotions cover you, do not allow you to think clearly and act effectively. Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+      {
+            "symptom_ID": 11,
+            "symptom_name": "Weakness, powerlessness",
+            "symptom_description": "Powerlessness is a variant of an emotional reaction that affects behaviour in different ways. Experiencing powerlessness, you can either do nothing or act as before, while feeling that you are exhausted, unable to cope and cannot influence the situation. Click on the “start” button” and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+        {
+            "symptom_ID": 12,
+            "symptom_name": "Shock, stupefaction, torpor",
+            "symptom_description": "Shock and freeze are defensive reactions that occur as a response to overload, overly intense emotions and sensations. They can be more or less pronounced, from feeling emotionally “numb” to an inability to respond normally to external stimulus (sounds, people talking, etc.), a complete inability to feel one’s body, including pain (dissociation) and inability to act (stupor). Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        },
+      {
+            "symptom_ID": 0,
+            "symptom_name": "Emotional thoughts",
+            "symptom_description": "Thinking changes quite easily under stress and the influence of strong emotions, especially in a situation where it is impossible to influence the source of discomfort. Thoughts become more categorical, reflecting only one side of reality or frankly irrational. “It’s all my fault”, “Everything is lost”, etc. Are typical examples of such ideas. A special case is thoughts of suicide caused by strong emotions, when the goal is not to end life, but to alleviate suffering. If you cannot cope with thoughts of death, please seek help from a specialist (click on the “contact a specialist” button that appears after all the instructions). Click on the “start” button and you will receive a series of simple instructions to help you improve your well-being. Proceed to the next instruction only after completing the previous one."
+        }
+    ],
+    
+    "Exercises": [
+        {
+            "Exercise_ID": 1,
+            "description":  "Pay attention to your surroundings. What do you see in front of you? Name five objects and what they are made of (for example, “this is a wooden chair”, “this is a glass” cup, “this is a cardboard box”, etc.). Then find and name three objects made of wood (or metal, plastic, fabric — depending on what is around). Name three things that are red (or blue/green if there is no red). Name three round objects (square, triangular). If you feel like you want to continue, select three more options (color, shape, material) and do the exercise again or several times.",
+            "name":  "Managing attention"
+        },
+        {
+            "Exercise_ID": 2,
+            "description": "Take five to twenty full breaths, similar to a natural sigh of relief: a full breath with the whole body — so that the breath includes the stomach, diaphragm (when you breathe as if with your back), ribs and chest — and a relaxed noisy exhalation. Take such breaths in a row, without pauses, counting them in your mind or bending your fingers. It is best to breathe through your mouth, so it will be easier to relax. Breathe at your own pace, slowly, so that you have time to relax on each exhalation. If you can’t immediately take a free breath, it’s okay, over time, the tension will decrease, a skill will form and you will breathe freely. You may feel dizzy or have other effects of hyperventilation (numbness in the muscles, especially in the face and hands, tingling, etc.). If it’s uncomfortable, slow down; if it’s not uncomfortable, keep going. You can take more than twenty breaths — until you feel that the state has changed, you have become easier and more comfortable.",
+            "name":  "Breathing"
+        },
+        {
+            "Exercise_ID": 3,
+            "description":"Resonant breathing is one of the simplest yet effective breathing techniques that works well for relieving the effects of long-term stress, especially when used regularly. Unlike other breathing techniques, resonant breathing is best done while sitting. For five minutes, inhale for five seconds and exhale for five seconds, without pauses. A visual cue will help you count down the seconds.",
+            "name":  "Breathing"
+        },
+        {
+            "Exercise_ID": 4,
+            "description":  "The alternation of fast and slow breathing helps to quickly change both the emotional and bodily state due to the physiology of breathing, regardless of the thoughts that arise in the process, and also\nregardless of the type of stressor. Do five breathing cycles in this way: each cycle includes four quick breaths (inhale for one second — exhale for one second without pauses), and one slow (inhale for four seconds — exhale for four seconds without pauses). Thus, you will get twenty-five breaths. You will most likely experience dizziness and other effects of hyperventilation (numbness and tingling in the muscles, most commonly in the arms and face). These are normal effects that will go away on their own after the exercise is completed. A visual cue will help you count down the seconds.",
+            "name": "Breathing"
+        },
+        {
+            "Exercise_ID": 5,
+            "description":  "Slow breathing has a calming effect, but slowing down breathing immediately is often difficult due to muscle tension. Therefore, it is easier to gradually slow down breathing, and at the same time slowly relax tense muscles. Inhale for one second — exhale for two, then inhale for three — exhale for four, inhale for five — exhale for six, etc. up to sixteen seconds. If desired and if possible, you can extend the exercise (inhale for seventeen seconds — exhale for eighteen). A visual cue will help you count down the seconds.",
+            "name":  "Breathing"
+        },
+        {
+            "Exercise_ID": 6,
+            "description": "This breathing exercise is quite intense, so if — especially at the beggining — the effects are too strong for you, you can skip this step and come back to it later. Take twenty quick breaths (inhale for one second — exhale for one second without pauses) — then pause for thirty seconds. After a pause, inhale — and hold your breath for another fifteen seconds. After that, take another twenty quick breaths (same as before) — then pause for a minute. After a pause, inhale — and hold your breath for another thirty seconds. To finish, take another twenty quick breaths, then pause for a minute and a half. After a pause, inhale — and hold your breath for another forty-five seconds. If the pauses are too long for you and you want to inhale earlier, this can be done. Be aware the exercise is really intense and can cause an emotional outburst. It’s acceptable, but if it seems too intense, it’s best to skip it or put it off. When you’re ready to start, click on the circle below the instructions.",
+            "name":  "Breathing"
+        },
+        {
+            "Exercise_ID": 7,
+            "description":"The physiology of emotions is such that it does not allow us to arbitrarily choose when an emotional response begins or ends, but we choose behavioural responses to emotions. At the level of behaviour, we can choose to suppress emotions — to take control of ourselves, not to show emotions externally, not to give them free rein internally. This allows us to save face and sometimes security (when emotions frighten us with their force), but has delayed adverse effects. We can also choose expression — a more or less violent expression of emotions, which is more rational in terms of the impact on health, but less — in terms of influencing our image in our own eyes and in the eyes of people around us. The third option — containment (or, in other terms, living, withstanding, confrontation) involves maintaining contact with emotion and living it (the emotion goes through its natural cycle) without losing control and undesirable external manifestations. So, containerization should be done like this:\n\n1. Name the feeling that gripped you. If it is too complicated to name, try to choose the most appropriate option from the list (only negative emotions and feelings will be presented in it, because there are usually no difficulties with positive ones): \n\n\t- sadness (sorrow, grief, despair, mourning, depression, melancholy, despondency)\n\t- anger (irritation, indignation, fury, hatred, wrath, rage)\n\t- fear (anxiety, concern, unrest, disturbance, agitation, panic)\n\t- shame\n\t- guilt\n\t- hurt (offence)\n\t- envy\n\t- jealousy\n\t- powerlessness\n\t- confusion\n\t- disgust\n\t- pain\n\n2. Name the reason that caused this feeling. This point is optional for containment, however often linking the feeling to the cause is soothing and helps to feel relieved. \n\n3. Pay attention to bodily sensations and look for reactions in the body associated with this feeling.\n\n4. Breathe freely several times (as long as it takes to feel better): full breath — relaxed, noisy exhalation. While breathing, keep your attention on bodily sensations, they are the markers that you can focus on when choosing the duration of the exercise.",
+            "name":  "Containing"
+        },
+        {
+            "Exercise_ID": 8,
+            "description":"Experiencing the impact of any stressor, the psyche begins to look for ways to get rid of it or eliminate its source. The most famous reactions are fight or flight, but in addition to the “fight” or “flight” impulses, we can also experience others the simplest and not always meaningful actions. In most cases, it is impossible to actually realize such an impulse (usually due to social restrictions or physical ones), and its suppression increases stress. Pay attention to bodily sensations. What does your body want to do — hit, run, hide, cry, scream, close, grab something or someone, push, throw something, etc.? Release your breath (take a few breaths or breathe deeply, slowly and without pauses). Imagine yourself doing the action that the body wants. Imagine this for as long as it takes for the body to relax and the emotions to calm down.\n\nImportant! Many people fear that if they imagine aggressive and destructive actions (such as fighting or breaking things), they will lose control of their behaviour and actually do something dangerous. Such anxiety is understandable, but unreasonable — we distinguish between imagination and reality and realize that in the imagination something is possible that is impossible in reality.",
+            "name":  "Reaction in imagination"
+        },
+        {
+            "Exercise_ID": 9,
+            "description":  "All unpleasant emotions, sensations and thoughts that arising from stress are a consequence of the psyche attempts to adapt to the world around us. The stimuli that affect us are sometimes too strong to adapt to without discomfort. In this case, we tend to be afraid of our own reactions and are dissatisfied with the feelings, thoughts and other manifestations that we have. These so-called secondary reactions only increase stress. In such cases, normalization of mental reactions helps to feel better. Try to identify and name the function that your “symptom” performs (what you do not like and what you would not like to feel and experience). For example, the inability to relax, irritability, or difficulty falling asleep is the heightened vigilance required for safety. Trembling or a panic attack is a way to reduce the accumulated tension. Nightmares are a tool for processing unpleasant and painful experiences, etc. Think about what “goals and tasks” your psyche wanted to solve, producing an unpleasant reaction for you? Even if the answer does not come immediately, this way you will switch your attention to a more constructive focus.",
+            "name":  "Normalization and determination of the positive meaning of the symptom"
+        },
+        {
+            "Exercise_ID": 10,
+            "description": "Pay attention to bodily sensations. Notice where there is tension in the body, where you feel any sensations, what is pleasant and what is not. Directed attention can be combined with free breathing (full inhalation — relaxed exhalation slowly, but without pauses). Notice how relaxed your neck is, and if you feel tension, relax your neck: the easiest way is to shake your head in different directions, gently and slowly, for a minute or two. If there is tension in the body, direct your attention to the tense place, fix it and breathe freely three to five times. Exhaling naturally helps to relax the muscles. As you relax more, pay attention to the sensations in your legs. If you poorly feel your feet, move your toes, try to catch the floor with them (even if you are wearing shoes). Feel the support under your feet, notice the sensations of contact with the support. This can also be combined with free breathing (five to ten breaths, slowly, without pauses).",
+            "name": "Attention to sensations, grounding, relaxation"
+        },
+        {
+            "Exercise_ID": 11,
+            "description": "Pay attention to bodily sensations. Notice where in the body there is tension, and where, on the contrary, muscle weakness. Stretch several times as you want, as it will be pleasant and comfortable. Combine sipping with free breathing (five to ten breaths slowly, without pauses). Do this for as long as it takes to feel that the state has changed, the body has come to life and relaxed — or until it is pleasant and interesting for you to continue.",
+            "name": "Stretching"
+        },
+        {
+            "Exercise_ID": 12,
+            "description": "Intentional yawning allows you quickly relieve excessive tension. In order to yawn at will, relax your jaw, inhale as completely as possible (not trying too hard and slowly, but so that the inhalation is really full, for the entire volume of the lungs) — and then, without exhaling, inhale a little more, and more a little while it orks. If you don’t manage to do it right away, it’s okay, trying also has a relaxing effect. Most likely, at some point you will be able to yawn arbitrarily. Repeat this five to seven times.",
+            "name": "Yawning"
+        },
+        {
+            "Exercise_ID": 13,
+            "description": "In many cases, planning actions helps to calm down and feel relief — especially if these actions help to cope with the stressor that caused the reaction. The technique for such planning is best done in writing, but if you are in a place where it is impossible to write, just think over the answers in your mind.\n\n1. Fact. Name the fact that caused you an unpleasant reaction. A fact is something that can be seen and heard, not our thoughts on it. For example, “he/she/they said/did” — and then a direct quote or description of the action.\n\n2. Interpretation. What did you think about what happened? What did this mean for you? What meaning do you see in the described event?\n\n3. Emotion. Name the emotion that the event caused (most likely an interpretation, not the fact itself). It can be sadness, anger, fear, resentment, guilt, shame, confusion, powerlessness, disgust, pain — or some combination of feelings.\n\n4. Feeling. Notice the sensations in your body. Where do you notice the reaction to this emotion — and what is it? If you release your breath (take a few breaths or start breathing deeply, slowly and without pauses) — doing this practice will be easier and more comfortable.\n\n5. Impulse. What do you want to do in connection with this emotion and its experience at the level of sensations? Impulse is always the simplest possible action (hitting, running, crying, screaming, hiding, closing, pushing, grabbing, etc.). If the desire is strong, pause for two or three minutes, release your breath and imagine how you are doing this action. \n\n6. Options for action. Write down all the options for action that are possible in this situation. Not all of them can be realistic, possible or constructive — the process of generating ideas is important, not an instant search for a solution.\n\n7. Choice of action. Choose what you are really going to do. It could be an option from a list, a combination of options, something new. You can also choose to do nothing or postpone the decision.",
+            "name": "Corporeal node"
+        },
+        {
+            "Exercise_ID": 0,
+            "description": "Before starting, it is important to say that if you fail to perform this technique the first time, it’s okay. You can try it again after a while. It is advisable to perform it in a place where for ten to fifteen minutes you will not be disturbed and distracted. Doing this practice requires you to close your eyes, so read the entire instruction first and then start.\n\nClose your eyes and pay attention to bodily sensations. If you notice that some muscles are tense, direct your attention to these places and take a few free breaths (slow deep breath — relaxed breath). Imagine a place where it is calm and safe. It can be a room, a landscape, or even a single planet. Consider what’s in there. Try to let this image develop on its own, so that the elements appear independently of you, but if nothing comes, you can model the image yourself. What do you see, hear, feel in this place? What do you want to do? Do you need someone else, or is it best to be there alone? Imagine that you are doing what you want. Maintain this image for as long as necessary for relief and recuperation.",
+             "name": "Visualizations"
+        }
+    ]
+}
+]
+
+
