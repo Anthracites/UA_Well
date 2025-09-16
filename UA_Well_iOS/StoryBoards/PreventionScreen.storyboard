@@ -19,7 +19,7 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="PreventionScreen" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PreventionScreen" customModule="UA_Well_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="MqC-US-R18">
+                    <view key="view" contentMode="scaleToFill" id="MqC-US-R18">
                         <rect key="frame" x="0.0" y="0.0" width="361" height="1368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -162,8 +162,8 @@
                     </view>
                     <size key="freeformSize" width="361" height="1368"/>
                     <connections>
-                        <outlet property="_collectionView" destination="7bN-eK-RzM" id="u8k-Ve-tMP"/>
                         <outlet property="backButton" destination="oR5-3I-Xmj" id="FAN-IV-h6U"/>
+                        <outlet property="collectionView" destination="7bN-eK-RzM" id="u8k-Ve-tMP"/>
                         <outlet property="contentView" destination="ofl-uN-Ek7" id="nb7-kN-i0g"/>
                         <outlet property="dayCount" destination="VIb-eI-fu9" id="grA-VR-WO6"/>
                         <outlet property="descriptionText" destination="ENX-ul-jPT" id="VpW-VR-Vw2"/>

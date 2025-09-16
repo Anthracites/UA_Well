@@ -6,7 +6,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     var previousScreenName = "HelpTypesMenu"
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var startButton:UIButton!
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var header: UIView!
@@ -25,21 +25,25 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _collectionView.register(UINib(nibName: "CustomDropDown", bundle: nil), forCellWithReuseIdentifier: "CustomDropDown")
-        _collectionView.dataSource = self
-        _collectionView.delegate = self
-        _collectionView.reloadData()
-        _collectionView.contentMode = .center
         
+        configureCollectionView()
+        configureText()
+        configureLayout()
+    }
+    
+    func configureText()
+    {
         startButton.addTarget(self, action: #selector(GoToInstruction), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         ExerciseManager.shared.CurrentHelpType = "Prevention"
         TranslateView()
         GetOptions()
         dayCount.text = DayCountLabel()
-        
+    }
+    
+    func configureLayout()
+    {
         descriptionText.adjustHeight()
-
 
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
@@ -48,13 +52,21 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
             contentView: contentView,
             title: preventionTitle,
             exerciseText: descriptionText,
-            collectionView: _collectionView,
+            collectionView: collectionView,
             collectionViewItemsCount: 2,
             collectionViewItemsHeight: 100,
             okButton: startButton
         )
         
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
+    }
+    func configureCollectionView()
+    {
+        collectionView.register(UINib(nibName: "CustomDropDown", bundle: nil), forCellWithReuseIdentifier: "CustomDropDown")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.reloadData()
+        collectionView.contentMode = .center
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -88,7 +100,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func TranslateDropDown(DDLabel: String, DropDown: CustomDropDown)
     {
-        //let DDValues = [String]()
         let _translation = TranslationDownloader.shared.CurrentTranslation
         DropDown.ddLabel.text = _translation?.prevention?.IntesityLabel
         var _labels :[String] = []
@@ -131,14 +142,9 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomDropDown", for: indexPath) as! CustomDropDown
         let newButoon: UIButton = cell.dropDown
-        //newButoon.tag = indexPath.item
-        // Настройка ячейки
-       // cell.backgroundColor = .red
         let _label = PPLabels[indexPath.item]
-        //cell.dropDown.backgroundColor = .gray
         cell.contentMode = .center
         let _stringArray = PPValues[indexPath.item]
         cell.SetupPullDownMenu(DropDown: newButoon, DropDownItems: _stringArray)
@@ -152,7 +158,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func SetOptions()
     {
-        let _optionsCells = _collectionView.visibleCells.compactMap { $0 as? CustomDropDown }
+        let _optionsCells = collectionView.visibleCells.compactMap { $0 as? CustomDropDown }
         PreventionManager.shared.CurrentIntensity = intensityCurrentOptions.CurrentOption
         PreventionManager.shared.CurrentDuration = durationCurrentOptions.CurrentOption
         print("индекс класса pScreen: \(String(describing: _optionsCells[0].CurrentOption))")
@@ -170,7 +176,6 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func BackToPreviousScreen()
     {
-        
         let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
         // Инициализируем ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName)
