@@ -132,14 +132,14 @@
                     <size key="freeformSize" width="393" height="1284"/>
                     <connections>
                         <outlet property="contentView" destination="V65-rR-voB" id="uo0-PF-3yF"/>
+                        <outlet property="descriptionTextView" destination="NLv-sg-eNg" id="A96-Ue-qgV"/>
                         <outlet property="header" destination="FxC-DQ-D0l" id="2Gu-19-ICY"/>
+                        <outlet property="mednaukaTextView" destination="FpN-ql-5bF" id="lx6-6D-4iQ"/>
                         <outlet property="okButton" destination="TuG-cW-RjX" id="0Fo-SS-FEN"/>
                         <outlet property="scrollView" destination="xYO-ue-ZOp" id="mJa-VZ-KRu"/>
                         <outlet property="specialistsInfo" destination="c83-hy-8yA" id="aRe-y7-9pe"/>
-                        <outlet property="textMednaukaRu" destination="FpN-ql-5bF" id="u2D-FN-cIm"/>
-                        <outlet property="viewDescription" destination="NLv-sg-eNg" id="E1h-x7-uEN"/>
-                        <outlet property="viewTitle" destination="WIJ-Kh-1dD" id="GCQ-iG-NiD"/>
-                        <outlet property="viewTitleLabel" destination="8bI-db-yzm" id="FpP-OE-KMN"/>
+                        <outlet property="titleContainerView" destination="WIJ-Kh-1dD" id="69c-Aj-TOZ"/>
+                        <outlet property="titleLabel" destination="8bI-db-yzm" id="hU0-Jh-g0H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
