@@ -87,7 +87,6 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     {
         if let _label = QuickHelpManager.shared.Symtoms[_currentButton.tag].symptom_name as Optional
         {
-            //print(String(_label))
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
             // Инициализируем ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
@@ -97,7 +96,6 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
             QuickHelpManager.shared.CurrentExercise = 0;
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
-            //print ("Current symptomID: ", _currentButton.tag, ", current exercise array: ", QuickHelpManager.shared.CurrentExersicesArray as Any)
         }
     }
     
