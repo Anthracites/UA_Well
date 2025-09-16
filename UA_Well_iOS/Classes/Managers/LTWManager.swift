@@ -31,7 +31,6 @@ class LTWManager {
                     }
         SwitchDayID()
         CurrentDuration = 2
-        //print("Current day count LTW: ", String(DayCount))
         }
     @objc func SwitchDayID()
     {
@@ -60,7 +59,6 @@ class LTWManager {
         UserDefaults.standard.set(nil, forKey: "LTWAlarm")
         UserDefaults.standard.set(nil, forKey: "LTWDuration")
         UserDefaults.standard.set(nil, forKey: "LTWAlarmTime")
-        //print("LTW reseted to defult")
     }
     
     }

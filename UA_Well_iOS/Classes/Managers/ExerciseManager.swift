@@ -48,7 +48,6 @@ class ExerciseManager {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let _preventionParameter = try decoder.decode([PreventionParameter].self, from: data)
-                //print(helpType)
                 PreventionParameters = _preventionParameter
 
             } catch {
@@ -66,7 +65,6 @@ class ExerciseManager {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let helpType = try decoder.decode([HelpType].self, from: data)
-                //print(helpType)
                 HelpTypes = helpType
             } catch {
                 print("Ошибка при загрузке данных: \(error)")
@@ -83,11 +81,9 @@ class ExerciseManager {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 let exerciseData = try decoder.decode([HelpExercises].self, from: data)
-               // print(exerciseData)
                 var exerciseDict: [Int: HelpExercises] = [:]
                 for exercise in exerciseData {
                     exerciseDict[exercise.symptom_ID] = exercise
-                    //print(exerciseDict)
                 }
                 
                 QuickHelpExercises = exerciseData
@@ -96,7 +92,6 @@ class ExerciseManager {
                 print("Ошибка при загрузке данных: \(error)")
             }
         }
-        //print("Exercises count: " + String(quickHelpExercises[0].help_exercise_array[0]))
     }
     
     private func CreateExercisesArray(tempArray: [TemporaryExercise]) -> [Exercise] {

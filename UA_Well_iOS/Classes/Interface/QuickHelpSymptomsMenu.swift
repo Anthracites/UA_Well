@@ -4,8 +4,8 @@ import UIKit
 
 class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var _collectionView: UICollectionView!
-    @IBOutlet weak var _backButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backButton: UIButton!
     var _previousScreenName = "HelpTypesMenu"
     var quickHelpExercises: [HelpExercises] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
@@ -17,14 +17,14 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
         quickHelpExercises = ExerciseManager.shared.QuickHelpExercises
         sortedIndices = sortButtonsAlphabetically()
-        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
-        _collectionView.dataSource = self
-        _collectionView.delegate = self
-        _collectionView.reloadData()
-        _collectionView.contentMode = .center
-        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-        _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
-        _backButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.reloadData()
+        collectionView.contentMode = .center
+        backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
+        backButton.titleLabel?.adjustsFontSizeToFitWidth = true
 
         
     }
@@ -85,7 +85,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     
     @objc func OnClickMenuButton(_currentButton: UIButton)
     {
-        if let _label = QuickHelpManager.shared.Symtoms[_currentButton.tag].symptom_name as Optional
+        if (QuickHelpManager.shared.Symtoms[_currentButton.tag].symptom_name as Optional) != nil
         {
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
             // Инициализируем ViewController
@@ -110,7 +110,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     
     func sortButtonsAlphabetically() -> [Int] {
         var sortedIndices: [Int] = []
-        var symptoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
+        let symptoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
         sortedIndices = symptoms.indices.sorted {
             symptoms[$0].symptom_name.localizedCompare(symptoms[$1].symptom_name) == .orderedAscending
         }

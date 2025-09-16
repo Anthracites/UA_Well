@@ -101,7 +101,7 @@
                         <outlet property="StartButton" destination="nMw-Z5-WCj" id="sd1-u7-Qs7"/>
                         <outlet property="SymptomDescrioption" destination="HrE-Cw-qPF" id="WE0-da-NPl"/>
                         <outlet property="SymptomLabel" destination="65w-tX-BBy" id="rss-BA-zEz"/>
-                        <outlet property="_backButton" destination="faR-xZ-zj4" id="Na9-Vj-41c"/>
+                        <outlet property="backButton" destination="faR-xZ-zj4" id="Na9-Vj-41c"/>
                         <outlet property="contentView" destination="888-tI-UM1" id="gAW-S8-NaX"/>
                         <outlet property="header" destination="yuV-Sb-E3A" id="dPA-Gg-eSL"/>
                         <outlet property="scrollView" destination="hog-3o-n4V" id="LKf-zb-CPK"/>
@@ -124,7 +124,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

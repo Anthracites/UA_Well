@@ -5,7 +5,7 @@ import UIKit
 class SymptomTitle:  UIViewController{
     
     @IBOutlet var StartButton: UIButton!
-    @IBOutlet weak var _backButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
@@ -22,6 +22,10 @@ class SymptomTitle:  UIViewController{
         super.viewDidLoad()
         SetUpButton()
         GetTextes()
+        configureLayout()
+    }
+    func configureLayout()
+    {
         symptomDescrioption.adjustHeight()
         
         let layoutConfig = LayoutConfigurator.Config(
@@ -41,14 +45,14 @@ class SymptomTitle:  UIViewController{
     {
         SymptomLabel.text = QuickHelpManager.shared.CurrentSyptom.symptom_name
         symptomDescrioption.text = QuickHelpManager.shared.CurrentSyptom.symptom_description
-        _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_symptoms_title, for: .normal)
+        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_symptoms_title, for: .normal)
     }
     
     @objc func SetUpButton()
     {
         StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)
         StartButton.addTarget(self, action: #selector(OnClickStartButton), for: .touchUpInside)
-        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
     }
     
     @objc func OnClickStartButton(_currentButton: UIButton)

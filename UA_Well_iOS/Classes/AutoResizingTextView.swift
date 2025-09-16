@@ -26,7 +26,6 @@ class AutoResizingTextView: UITextView {
         DispatchQueue.main.async {
             self.adjustHeight()
         }
-        //print("Text setuped!!!!!")
     }
 
     func adjustHeight() {
