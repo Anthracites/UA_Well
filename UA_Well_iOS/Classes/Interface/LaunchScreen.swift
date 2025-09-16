@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 class LaunchScreen: UIViewController {
@@ -7,8 +6,6 @@ class LaunchScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
         logoImageView.image = UIImage(named: "logo")
         logoImageView.contentMode = .scaleAspectFit
         view.addSubview(logoImageView)
