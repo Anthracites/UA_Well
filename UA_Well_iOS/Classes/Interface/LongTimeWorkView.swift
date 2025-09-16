@@ -24,16 +24,27 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ExerciseManager.shared.PreviousViewName = "LongTimeWork"
+        configureCollectionView()
+        configureText()
+        configureActions()
+        configureLayout()
+
+    }
+    func configureCollectionView()
+    {
         _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
         _collectionView.dataSource = self
         _collectionView.delegate = self
         _collectionView.contentMode = .center
-        SetUpButton()
+    }
+    
+    func configureText()
+    {
         TranslateView()
+    }
+    func configureLayout()
+    {
         descriptionText.adjustHeight()
-
-
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
             header: header,
@@ -48,6 +59,12 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }
+    func configureActions()
+    {
+        ExerciseManager.shared.PreviousViewName = "LongTimeWork"
+        SetUpButton()
+    }
+    
     func DayCountLabel()-> String
     {
         let _dayLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons?.DayOfTherapy
@@ -69,7 +86,6 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         //_collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
@@ -82,7 +98,6 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
-            print("Button size setuped in LTW View")
         }
         
         return cell
