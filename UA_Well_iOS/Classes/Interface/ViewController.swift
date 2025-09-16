@@ -1,9 +1,3 @@
-//
-//  ViewController.swift
-//  UA_Well_iOS
-//
-//  Created by Наталья Гусарова on 17.09.2024.
-//
 import UIKit
 import Foundation
 
@@ -31,7 +25,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                     if (self.isFirstRun == true) && (savedLanguage != nil)
                     {
                         
-                        //print("Is first run: ", String(self.isFirstRun))
                         let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
                         // Инициализируем ViewController
                         let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu

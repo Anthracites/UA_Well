@@ -4,9 +4,9 @@ import UIKit
 
 class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet weak var _collectionView: UICollectionView!
-    @IBOutlet weak var _backButton: UIButton!
-    var _previousScreenName = "Main"
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backButton: UIButton!
+    var previousScreenName = "Main"
     var helpTypes: [HelpType] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
     
@@ -14,14 +14,14 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         helpTypes = ExerciseManager.shared.HelpTypes
-        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
-        _collectionView.dataSource = self
-        _collectionView.delegate = self
-        _collectionView.reloadData()
-        _collectionView.contentMode = .center
-        _backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-        _backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_language_selecttion_title, for: .normal)
-        _backButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.reloadData()
+        collectionView.contentMode = .center
+        backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_language_selecttion_title, for: .normal)
+        backButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -29,12 +29,11 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         // Настройка ячейки
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
-        var _label: String = TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name
+        let _label: String = TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name
         newButoon.setTitle(_label, for: .normal)
         cell.adjustFontSize(for: newButoon)
         newButoon.tag = indexPath.item
@@ -44,9 +43,6 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
         newButoon.setBackgroundImage(commoButtonBG, for: .highlighted)
         
-        //view.addSubview(cell.MenuButton)
-        
-        //print(_label, indexPath.item)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
@@ -71,12 +67,10 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     
     @objc func BackToPreviousScreen()
     {
-        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
+        let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
         // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName) as! ViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName) as! ViewController
         // Переход к новому ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
-
-    
 }

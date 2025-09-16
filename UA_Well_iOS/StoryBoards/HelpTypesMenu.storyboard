@@ -63,7 +63,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCollectionViewCell" id="ass-yC-hZz" propertyAccessControl="none">
-                                                <rect key="frame" x="9.6666666666666661" y="0.0" width="325" height="122"/>
+                                                <rect key="frame" x="10" y="0.0" width="325" height="122"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="325" height="122"/>
@@ -107,8 +107,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="_backButton" destination="VYJ-iW-Jm3" id="bjd-GE-Xi3"/>
-                        <outlet property="_collectionView" destination="kkU-cq-Qbt" id="7UY-km-EYI"/>
+                        <outlet property="backButton" destination="VYJ-iW-Jm3" id="pPW-J8-EPi"/>
+                        <outlet property="collectionView" destination="kkU-cq-Qbt" id="Cme-FO-ZZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
