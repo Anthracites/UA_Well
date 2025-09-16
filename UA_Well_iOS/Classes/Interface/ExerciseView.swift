@@ -2,7 +2,6 @@ import UIKit
 import Foundation
 import AVFoundation
 
-// Доработать вью, внести bool IsLastExercise отдельно!!!
 class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
     @IBOutlet weak var _collectionView: UICollectionView!
@@ -32,17 +31,15 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        LastExercise = IsLastExercise()
-        IsQuickHelp = GetCurrentHelpType()
-        GetExerices()
+        configureExercise()
+        configureCollectionView()
         SetupWidget()
-        ConfigCollectionView()
-        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
-        _collectionView.dataSource = self
-        _collectionView.delegate = self
-        print("Hint active: ", isHintActive)
-
         GetImages()
+        configureLayout()
+    }
+    
+   func configureLayout()
+    {
         exerciseText.adjustHeight()
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
@@ -56,6 +53,22 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             collectionViewItemsCount: collectionViewItemsCount
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
+    }
+    
+    func configureCollectionView()
+    {
+        ConfigCollectionView()
+        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        _collectionView.dataSource = self
+        _collectionView.delegate = self
+
+    }
+    
+    func  configureExercise()
+    {
+        LastExercise = IsLastExercise()
+        IsQuickHelp = GetCurrentHelpType()
+        GetExerices()
     }
     
     func GetImages()
@@ -120,7 +133,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             else {
                 collectionViewItemsCount = buttonLabels.count - 1
             }
-            
         }
         else
         {
@@ -135,19 +147,15 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         //_collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         let _label = buttonLabels[indexPath.item]
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
-        //newButoon.setBackgroundImage(commoButtonBG, for: .normal)
         buttons.append(newButoon)
         newButoon.setTitle(_label, for: .normal)
         cell.contentMode = .center
-        //cell.backgroundColor = .systemBlue
         cell.adjustFontSize(for: newButoon)
         SetUpButton(ButtonIndex: indexPath.item)
-        //print("Button created, index path: ", indexPath.item, "Buttons label count: ", buttonLabels.count - 2)
 
         if let backgroundImage = newButoon.backgroundImage(for: .normal) {
             
@@ -226,9 +234,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
                 let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
                 let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
                 self.present(secondVC, animated: true, completion: nil)
-            } else {
-                print("Попытка перейти за пределы массива упражнений")
-                // Можно показать алерт или завершить серию
             }
     }
     
@@ -279,7 +284,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
 
     }
     
-    // Ебучий виджет, который придется копипастить, так как эта блядина, выведенная в отдельный класс, не завелась!!!!!
     
     
     func StartExercise(exercise: Exercise) {
@@ -292,7 +296,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
             startStepTimer()
         updateHintState()
-      //  print("Exercise started!!!!", "Exercise ID", exercise.Exercise_id, " Exercise duration: ", exercise.Steps?.count)
         }
         
         private func startStepTimer() {
@@ -456,7 +459,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             breathingHintWidgetButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-       // imageHint.bringSubviewToFront(breathingHintWidgetButton)
         breathingHintWidgetButton.isUserInteractionEnabled = true
         imageHint.isUserInteractionEnabled = true
 
