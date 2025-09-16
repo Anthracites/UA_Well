@@ -73,7 +73,7 @@ class NotificationManager {
             }
         }
         else{
-            print("Error shedule notification:")
+//            print("Error shedule notification:")
         }
     }
     
@@ -82,7 +82,7 @@ class NotificationManager {
         let _notificationTitle = _currentTranslation?.alarmNotifications?.Title
         let _notificationBody: String
         var _notificationTime: String = "0:0"
-        var _notificationScreen: String = "Main"
+        var _notificationScreen: String
         var _notificationAlarmOn: String = "False"
         let _type = UserDefaults.standard.string(forKey: "IncomingNotificationType") ?? " "
 
