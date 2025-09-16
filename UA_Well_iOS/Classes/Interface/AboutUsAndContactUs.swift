@@ -3,13 +3,13 @@ import Foundation
 
 class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var header: UIView!
-    @IBOutlet weak var viewTitle: UIView!
-    @IBOutlet weak var viewTitleLabel: UILabel!
-    @IBOutlet weak var viewDescription: AutoResizingTextView!
+    @IBOutlet weak var titleContainerView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: AutoResizingTextView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var specialistsInfo: UICollectionView!
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var textMednaukaRu: AutoResizingTextView!
+    @IBOutlet weak var mednaukaTextView: AutoResizingTextView!
     @IBOutlet weak var okButton: UIButton!
     
     private var exerciseTextHeightConstraint: NSLayoutConstraint?
@@ -18,64 +18,59 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        guard let _currentTranslation = TranslationDownloader.shared.CurrentTranslation else { return }
+
         specialistsInfo.register(UINib(nibName: "SpecialistInfo", bundle: nil), forCellWithReuseIdentifier: "SpecialistInfo")
         specialistsInfo.delegate = self
         specialistsInfo.dataSource = self
         specialistsInfo.contentMode = .center
-
-        TranslateView()
-        SetupLink()
-        viewDescription.adjustHeight()
+        
+        translateView(Translation: _currentTranslation)
+        descriptionTextView.adjustHeight()
         
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
             header: header,
             scrollView: scrollView,
             contentView: contentView,
-            title:viewTitle,
+            title:titleContainerView,
             collectionView: specialistsInfo,
             collectionViewItemsCount: 2,
             collectionViewItemsHeight: 400,
             collectionViewVerticalSpacing:25,
-            footer: textMednaukaRu,
+            footer: mednaukaTextView,
             okButton: okButton
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
         
-        okButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        okButton.addTarget(self, action: #selector(backToPreviousScreen), for: .touchUpInside)
     }
     
-    @objc func TranslateView()
+     func translateView(Translation: Translation)
     {
-        let _translation = TranslationDownloader.shared.CurrentTranslation
-        viewTitleLabel.text = _translation?.aboutUsAndcontactUs?.Title
-        viewDescription.text = _translation?.aboutUsAndcontactUs?.Description
-    }
-    func SetupLink()
-    {
-        if TranslationDownloader.shared.CurrentTranslation.currentLanguage == "Русский" {
-            let attributedText = NSMutableAttributedString(string: "\n\"Техники, используемые в приложении, взяты у авторов канала ")
-            
-            let linkText = NSAttributedString(string: "Mednauka", attributes: [
-                .link: URL(string: "https://www.youtube.com/@mednauka")!,
-                .foregroundColor: UIColor.systemRed,
-                .underlineStyle: NSUnderlineStyle.single.rawValue
-            ])
-            
-            attributedText.append(linkText)
-            attributedText.append(NSAttributedString(string: ". Здесь вы найдёте больше информации о психиатрии, наркологии, психотерапии и психофармакологии."))
-            
-            textMednaukaRu.attributedText = attributedText
-            textMednaukaRu.isEditable = false
-            textMednaukaRu.isSelectable = true
-            textMednaukaRu.dataDetectorTypes = []
-            textMednaukaRu.textAlignment = .left
-        }
-        else {
-            textMednaukaRu.text = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.MednaukaText
+        titleLabel.text = Translation.aboutUsAndcontactUs?.Title
+        descriptionTextView.text = Translation.aboutUsAndcontactUs?.Description
+        
+        if Translation.currentLanguage == "Русский" {
+            mednaukaTextView.attributedText = makeMednaukaAttributedText()
+        } else {
+            mednaukaTextView.text = Translation.aboutUsAndcontactUs?.MednaukaText
         }
 
     }
+    
+    func makeMednaukaAttributedText() -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: "\n\"Техники, используемые в приложении, взяты у авторов канала ")
+        let linkText = NSAttributedString(string: "Mednauka", attributes: [
+            .link: URL(string: "https://www.youtube.com/@mednauka")!,
+            .foregroundColor: UIColor.systemRed,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ])
+        attributedText.append(linkText)
+        attributedText.append(NSAttributedString(string: ". Здесь вы найдёте больше информации о психиатрии, наркологии, психотерапии и психофармакологии."))
+        return attributedText
+    }
+
     
     // MARK: - UICollectionViewDataSource
     
@@ -97,8 +92,6 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         if let infoArray = _translation?.SpecialistContacts {
             let contact = infoArray[index]
             cell.contacts = contact.Contacts
-            let sView: SpecialistInfo = SpecialistInfo()
-            sView.backgroundColor = .cyan
             cell.photoImage = UIImage(named: contact.SpecialistPhoto)
             cell.specialistName.text = "\(contact.SpecialistName)\n\(contact.SpecialistSurname)"
             cell.languageList.text = contact.AvalibleLanguages
@@ -114,7 +107,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
 
 
     
-    @objc func BackToPreviousScreen()
+    @objc func backToPreviousScreen()
     {
         dismiss(animated: true, completion: nil)
     }
