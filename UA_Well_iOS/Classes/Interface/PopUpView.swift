@@ -54,12 +54,11 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         let newButoon: UIButton = cell.MenuButton
         let label = popUpButtonLabels[indexPath.item]
-//
+
         newButoon.accessibilityHint = label
         newButoon.setTitle(label, for: .normal)
 
         cell.contentMode = .center
-//
         cell.contentView.contentMode = .center
         newButoon.addTarget(self, action: #selector(OnClickMenuButton), for: .touchUpInside)
          let title = TranslatedLabel(title: label)

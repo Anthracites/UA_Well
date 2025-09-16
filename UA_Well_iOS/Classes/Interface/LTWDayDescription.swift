@@ -27,11 +27,10 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TherapyDay = LTWManager.shared.CurrentDay
-        ConfigCollectionView()
-        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
-        _collectionView.dataSource = self
-        _collectionView.delegate = self
+        
+        configureLayout()
+        configureActions()
+        configCollectionView()
         SetUpButton()
         ExerciseManager.shared.CurrentHelpType = "LongTimeWork"
         currentTranslation = TranslationDownloader.shared.CurrentTranslation
@@ -41,6 +40,11 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         SaveOptions()
         TherapyProgressTracker.shared.markTodayAsCompleted(for: .LTW)
         
+
+    }
+
+    func configureLayout()
+    {
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
             header: header,
@@ -53,10 +57,14 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }
+    func configureActions()
+    {
+        TherapyDay = LTWManager.shared.CurrentDay
+
+    }
     
     func TranslateButton(_currentButton: UIButton)
     {
-       // StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)
         let _label = _currentButton.titleLabel?.text
         let _translatedLabel: String
         
@@ -100,15 +108,15 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         self.present(secondVC, animated: true, completion: nil)
     }
     
-        func ConfigCollectionView()
+        func configCollectionView()
     {
+        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        _collectionView.dataSource = self
+        _collectionView.delegate = self
         
         if (TherapyDay != 0)
         {
             buttonLabels = ["AboutUsAndContactUs"]
-        }
-        else {
-            
         }
     
     }
@@ -118,7 +126,6 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         newButoon.tag = indexPath.item
@@ -159,7 +166,6 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
             layout.scrollDirection = .vertical
             layout.itemSize = CGSize(width: collectionView.frame.width, height: 100)
         }
-        print ("Current therapy day in LTWDayDescriprion: ", TherapyDay)
         return cell
     }
     

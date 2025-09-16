@@ -6,7 +6,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var instructionTitleLabel: UILabel!
     @IBOutlet weak var instructionAlarmLabel: UILabel!
     @IBOutlet weak var instructionText: AutoResizingTextView!
-    @IBOutlet weak var _collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var PreventionAlarm:  UISwitch!
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var instructionTitle: UIView!
@@ -27,17 +27,19 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        ExerciseManager.shared.PreviousViewName = "PreventionInstruction"
-        backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
-        _collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
-        _collectionView.dataSource = self
-        _collectionView.delegate = self
-        ExerciseManager.shared.CurrentHelpType = "Prevention"
-        TranslateView()
-        PreventionAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
-        PreventionAlarm.isOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
-        TherapyProgressTracker.shared.markTodayAsCompleted(for: .Prevention)
-        
+        configureCollectionView()
+        configureActions()
+        configureLayout()
+    }
+    
+    func configureCollectionView()
+    {
+        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CustomCollectionViewCell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+    func configureLayout()
+    {
         instructionText.adjustHeight()
 
 let layoutConfig = LayoutConfigurator.Config(
@@ -47,19 +49,29 @@ let layoutConfig = LayoutConfigurator.Config(
             contentView: contentView,
             title: instructionTitle,
             exerciseText: instructionText,
-            collectionView: _collectionView,
+            collectionView: collectionView,
             collectionViewItemsCount: buttonLabels.count
 )
         
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
     }
+    func configureActions()
+    {
+        ExerciseManager.shared.PreviousViewName = "PreventionInstruction"
+        backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
+        ExerciseManager.shared.CurrentHelpType = "Prevention"
+        TranslateView()
+        PreventionAlarm.addTarget(self, action: #selector(SaveOptions), for: .valueChanged)
+        PreventionAlarm.isOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
+        TherapyProgressTracker.shared.markTodayAsCompleted(for: .Prevention)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return buttonLabels.count
     }
     
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // _collectionView.backgroundColor = .cyan
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         newButoon.setTitle(buttonLabels[indexPath.item], for: .normal)
@@ -117,7 +129,6 @@ let layoutConfig = LayoutConfigurator.Config(
     
     func TranslateButton(_currentButton: UIButton)
     {
-       // StartButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start, for: .normal)
         let _label = _currentButton.titleLabel?.text
         let _translatedLabel: String
         
@@ -184,6 +195,5 @@ let layoutConfig = LayoutConfigurator.Config(
         UserDefaults.standard.set(PreventionDuration, forKey: "PreventionDuration")
         UserDefaults.standard.set(PreventionIntensity, forKey: "PreventionIntensity")
         UserDefaults.standard.set(PreventionCurrentDay, forKey: "PreventionCurrentDay") // Для уведомлений
-        //print("Options saved for prevention. Time: \(PreventionAlarmTime)")
     }
 }
