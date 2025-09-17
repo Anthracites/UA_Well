@@ -77,7 +77,7 @@ class LayoutConfigurator {
             header.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                header.topAnchor.constraint(equalTo: parent.safeAreaLayoutGuide.topAnchor, constant: 16),
+                header.topAnchor.constraint(equalTo: parent.topAnchor, constant: 59),
                 header.leadingAnchor.constraint(equalTo: parent.leadingAnchor, constant: 16),
                 header.trailingAnchor.constraint(equalTo: parent.trailingAnchor, constant: -16),
                 header.heightAnchor.constraint(equalToConstant: 67)

@@ -55,6 +55,17 @@
                                         <rect key="frame" x="16" y="0.0" width="329" height="1150.3333333333333"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <view contentMode="right" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wq9-7i-FRE" userLabel="Header">
+                                                <rect key="frame" x="-16" y="541" width="361" height="176"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="alarm.png" translatesAutoresizingMaskIntoConstraints="NO" id="fGd-iV-ijM">
+                                                        <rect key="frame" x="60" y="25" width="240" height="127"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <viewLayoutGuide key="safeArea" id="21h-2X-3Br"/>
+                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gs-3t-tRy" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="445"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,14 +147,20 @@
                             <constraint firstItem="XNa-Tq-aDX" firstAttribute="trailing" secondItem="lrj-Ub-Kjl" secondAttribute="trailing" constant="16" id="PeW-Ut-6fg"/>
                             <constraint firstItem="lrj-Ub-Kjl" firstAttribute="top" secondItem="TfZ-ye-mhs" secondAttribute="top" constant="59" id="of8-uM-cCF"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="lrj-Ub-Kjl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <size key="freeformSize" width="393" height="1284"/>
                     <connections>
                         <outlet property="_collectionView" destination="LoR-Ux-N2S" id="wQJ-GZ-0jk"/>
+                        <outlet property="_title" destination="Wq9-7i-FRE" id="BEE-B5-0Dv"/>
                         <outlet property="breathingHintWidgetButton" destination="85L-QR-jSI" id="n8m-e7-JYt"/>
                         <outlet property="contentView" destination="4U0-36-392" id="wlS-Il-6ya"/>
                         <outlet property="exerciseText" destination="8gs-3t-tRy" id="YR5-w0-mn5"/>
-                        <outlet property="header" destination="lrj-Ub-Kjl" id="xKa-mk-3Mn"/>
+                        <outlet property="header" destination="lrj-Ub-Kjl" id="O8y-hA-Jes"/>
                         <outlet property="hintWidget" destination="ana-7e-dFj" id="2XM-Q1-6J4"/>
                         <outlet property="imageHint" destination="eLE-Qy-i4d" id="ELw-Ua-DNe"/>
                         <outlet property="scrollView" destination="KH3-L1-diz" id="Agq-Zc-5wJ"/>
@@ -156,6 +173,7 @@
     </scenes>
     <resources>
         <image name="BreathWidget_r.gif" width="500" height="500"/>
+        <image name="alarm.png" width="120" height="123"/>
         <image name="burger_button.png" width="30" height="17"/>
         <image name="button:sxq-j9-gJ5:backgroundImage" width="300" height="60">
             <mutableData key="keyedArchiveRepresentation">
