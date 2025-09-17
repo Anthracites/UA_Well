@@ -71,6 +71,7 @@ class LayoutConfigurator {
         var okButtonUpInstent: CGFloat
         var exerciseTextHeight: NSLayoutConstraint
         
+        
         // MARK: - Header
         if let header = header {
             parent.addSubview(header)
@@ -88,7 +89,7 @@ class LayoutConfigurator {
         parent.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        let scrollTopAnchor = header?.bottomAnchor ?? parent.safeAreaLayoutGuide.topAnchor
+        let scrollTopAnchor = header?.bottomAnchor ?? parent.topAnchor
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: scrollTopAnchor, constant: 0),
@@ -98,6 +99,7 @@ class LayoutConfigurator {
         ])
         
         var lastBottomAnchor: NSLayoutYAxisAnchor = contentView.topAnchor
+
         
         // MARK: - Title
         

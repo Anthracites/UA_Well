@@ -6,7 +6,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @IBOutlet weak var _collectionView: UICollectionView!
     @IBOutlet weak var header: UIView!
-    @IBOutlet weak var _title: UIView!
+    @IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var contentView: UIView!
     var buttonLabels: [String] = ["Next", "It helped", "Contact a specialist"]
     @IBOutlet weak var exerciseText: AutoResizingTextView!
@@ -47,7 +47,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             header: header,
             scrollView: scrollView as! UIScrollView,
             contentView: contentView,
-            title: _title,
+            title: viewTitle,
             isHintActive: isHintActive,
             exerciseText: exerciseText,
             hintWidget: hintWidget,
@@ -117,13 +117,12 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _currentHelpType = ExerciseManager.shared.CurrentHelpType
         if _currentHelpType == "QuickHelp"
         {
-            _title.isHidden = true
-            header.isHidden = false
+            viewTitle.isHidden = true
+            viewTitle = nil
             return true
         }
         else{
-            _title.isHidden = false
-            header.isHidden = true
+            header = nil
             return false
         }
     }

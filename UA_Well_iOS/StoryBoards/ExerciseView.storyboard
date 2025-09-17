@@ -38,6 +38,7 @@
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="0Ls-Le-rDB"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="8JL-MK-Met"/>
                                 </constraints>
@@ -55,9 +56,8 @@
                                         <rect key="frame" x="16" y="0.0" width="329" height="1150.3333333333333"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <view contentMode="right" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wq9-7i-FRE" userLabel="Header">
-                                                <rect key="frame" x="-16" y="541" width="361" height="176"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view contentMode="right" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wq9-7i-FRE" userLabel="Header">
+                                                <rect key="frame" x="-18.255045871561379" y="541.00000000005707" width="361.0000000001105" height="175.99999999994589"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="alarm.png" translatesAutoresizingMaskIntoConstraints="NO" id="fGd-iV-ijM">
                                                         <rect key="frame" x="60" y="25" width="240" height="127"/>
@@ -65,6 +65,10 @@
                                                     </imageView>
                                                 </subviews>
                                                 <viewLayoutGuide key="safeArea" id="21h-2X-3Br"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="176" id="Q2E-05-Rux"/>
+                                                    <constraint firstAttribute="width" constant="361" id="Q3O-KL-YbP"/>
+                                                </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gs-3t-tRy" customClass="AutoResizingTextView" customModule="UA_Well_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="329" height="445"/>
@@ -156,7 +160,6 @@
                     <size key="freeformSize" width="393" height="1284"/>
                     <connections>
                         <outlet property="_collectionView" destination="LoR-Ux-N2S" id="wQJ-GZ-0jk"/>
-                        <outlet property="_title" destination="Wq9-7i-FRE" id="BEE-B5-0Dv"/>
                         <outlet property="breathingHintWidgetButton" destination="85L-QR-jSI" id="n8m-e7-JYt"/>
                         <outlet property="contentView" destination="4U0-36-392" id="wlS-Il-6ya"/>
                         <outlet property="exerciseText" destination="8gs-3t-tRy" id="YR5-w0-mn5"/>
@@ -164,6 +167,7 @@
                         <outlet property="hintWidget" destination="ana-7e-dFj" id="2XM-Q1-6J4"/>
                         <outlet property="imageHint" destination="eLE-Qy-i4d" id="ELw-Ua-DNe"/>
                         <outlet property="scrollView" destination="KH3-L1-diz" id="Agq-Zc-5wJ"/>
+                        <outlet property="viewTitle" destination="Wq9-7i-FRE" id="K8Q-wQ-x6u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1533,6 +1537,9 @@ AAAAAAAAAAAAAAAAATpXA
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
