@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let splashVC = LaunchScreen()
         window?.rootViewController = splashVC
         window?.makeKeyAndVisible()
+        CacheManager.shared.initializeCacheManager()
         TranslationFileManager.shared.prepareTranslations()
         TranslationDownloader.shared.initializeTranslations()
         ExerciseManager.shared.initializeExercises()

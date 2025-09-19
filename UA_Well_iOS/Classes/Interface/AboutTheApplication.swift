@@ -9,46 +9,66 @@ class AboutTheApplication: UIViewController
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var generalView: UIView!
     
-    private var exerciseTextHeightConstraint: NSLayoutConstraint?
+    lazy var aboutAppTitle: String? = {TranslationDownloader.shared.CurrentTranslation.aboutApplication?.AboutAppTitle}()
+    lazy var aboutAppDescription: String? = {TranslationDownloader.shared.CurrentTranslation.aboutApplication?.AboutAppDescription}()
+    lazy var cachedExerciseTextHeight: CGFloat = {appDescription.adjustHeight(); return appDescription.frame.height }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureView()
-        configureLayout()
-    }
+    private var layoutAlreadyConfigured = false
     
-    private func configureView() {
-        translateView()
-        appDescription.isEditable = false
-        appDescription.isSelectable = true
-        appDescription.dataDetectorTypes = [.link]
-        okButton.addTarget(self, action: #selector(okButtonHandler), for: .touchUpInside)
-        appDescription.adjustHeight()
-    }
-    private func configureLayout()
-    {
-        appDescription.adjustHeight()
-        
+    lazy var cachedLayoutConstraint: NSLayoutConstraint? = {
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
             header: header,
             scrollView: scrollView,
             contentView: generalView,
-            title:abouAppLabel, exerciseText: appDescription,
+            title: abouAppLabel,
+            exerciseText: appDescription,
             okButton: okButton
         )
-        exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
-    }
+        return LayoutConfigurator.configure(using: layoutConfig)
+    }()
     
-@objc func translateView()
-    {
-        guard ((TranslationDownloader.shared.CurrentTranslation.currentLanguage?.isEmpty) != nil)  else { return }
-        appDescription.text = TranslationDownloader.shared.CurrentTranslation.aboutApplication?.AboutAppDescription
-        abouAppLabel.text = TranslationDownloader.shared.CurrentTranslation.aboutApplication?.AboutAppTitle
-    }
-    
+
+    private var exerciseTextHeightConstraint: NSLayoutConstraint?
+
+
+        // MARK: - Lifecycle
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            configureUI()
+            configureLayout()
+        }
+
+        // MARK: - UI Setup
+        private func configureUI() {
+            abouAppLabel.text = aboutAppTitle
+            appDescription.text = aboutAppDescription
+            
+            appDescription.isEditable = false
+            appDescription.isSelectable = true
+            appDescription.dataDetectorTypes = [.link]
+            okButton.addTarget(self, action: #selector(okButtonHandler), for: .touchUpInside)
+        }
+
+        // MARK: - Layout Setup
+        private func configureLayout() {
+            guard !layoutAlreadyConfigured else { return }
+            layoutAlreadyConfigured = true
+
+            // Кэшируем высоту текста, если ещё не сохранена
+            if cachedExerciseTextHeight == nil {
+                appDescription.adjustHeight()
+                cachedExerciseTextHeight = appDescription.frame.height
+            }
+
+            // Применяем высоту
+            appDescription.frame.size.height = cachedExerciseTextHeight ?? appDescription.frame.height
+
+            exerciseTextHeightConstraint = cachedLayoutConstraint
+        }
     @objc func okButtonHandler()
     {
         dismiss(animated: true, completion: nil)
     }
-}
+    
+    }
