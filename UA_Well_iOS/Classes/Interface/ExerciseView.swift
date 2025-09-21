@@ -165,25 +165,10 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         if let backgroundImage = newButoon.backgroundImage(for: .normal) {
             
             // Задаём фиксированную высоту кнопки
-            let targetHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
-            let buttonHeight = targetHeight
-
-            // Вычисляем ширину кнопки по высоте
-            let rawWidth = cell.calculateButtonSize(basedOn: .height(buttonHeight), backgroundImage: backgroundImage, cellSpacing: 16)
-
-            // Ограничиваем максимальную ширину
-            let horizontalInset: CGFloat = 32 // например, 16 слева и 16 справа
-            let maxWidth = collectionView.frame.width - horizontalInset
-            let buttonWidth = min(rawWidth, maxWidth)
-
-            // Применяем размеры к кнопке
-            newButoon.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                newButoon.widthAnchor.constraint(equalToConstant: buttonWidth * 0.75),
-                newButoon.heightAnchor.constraint(equalToConstant: buttonHeight/3)
+                newButoon.heightAnchor.constraint(equalToConstant: 40),
+                newButoon.widthAnchor.constraint(equalToConstant: 189),
             ])
-            print("Button size:", buttonWidth * 0.75, buttonHeight/3)
-
         }
         return cell
         
