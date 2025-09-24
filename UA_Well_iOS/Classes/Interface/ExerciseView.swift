@@ -218,6 +218,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func NextButtonHandler()
     {
+        stopExercise()
+        
             let nextIndex = QuickHelpManager.shared.CurrentExercise + 1
             if nextIndex < QuickHelpManager.shared.CurrentExersicesArray.count {
                 QuickHelpManager.shared.CurrentExercise = nextIndex
@@ -229,6 +231,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func ItHelpedButtonHandler()
     {
+        stopExercise()
+        
         let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
         // Инициализируем ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu")
@@ -238,6 +242,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func OkButtonHandler()
     {
+        stopExercise()
+        
         let _name = ExerciseManager.shared.PreviousViewName
 
         let storyboard = UIStoryboard(name: _name!, bundle: nil)
@@ -249,6 +255,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func ContactSpecialistButtonHandler()
     {
+        stopExercise()
         let storyboard = UIStoryboard(name: "AboutUsAndContactUs", bundle: nil)
         // Инициализируем ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: "AboutUsAndContactUs")
@@ -258,6 +265,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func StartOverButtonHandler()
     {
+        stopExercise() 
         QuickHelpManager.shared.CurrentExercise = 0
         let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
         // Инициализируем ViewController
@@ -281,94 +289,147 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         _ = exercise
         _ = ExerciseManager.shared.CurrentStep
             
-            // Запуск таймера для упражнения
-            exerciseTimer = Timer.scheduledTimer(timeInterval: TimeInterval(exercise.ExerciseDuration ?? 0), target: self, selector: #selector(restartExercise), userInfo: nil, repeats: false)
+        exerciseTimer?.invalidate()
+        exerciseTimer = nil
+        
+        let duration = TimeInterval(exercise.ExerciseDuration ?? 0)
+         exerciseTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
+             self?.restartExercise()
+         }
         
             startStepTimer()
         updateHintState()
         }
         
-        private func startStepTimer() {
-            
-            let _currentStep = ExerciseManager.shared.CurrentStep
-            guard let _steps = ExerciseManager.shared.CurrentExercise.Steps, _steps.count > _currentStep else { return }
-            
-            let _stepDuration = TimeInterval(_steps[_currentStep].duration)
-            if (isHintActive == true)
-            {
-                stepTimer = Timer.scheduledTimer(timeInterval: _stepDuration, target: self, selector: #selector(nextStep), userInfo: nil, repeats: false)
-            }
+    private func startStepTimer() {
+        let currentStep = ExerciseManager.shared.CurrentStep
+        guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
+              steps.indices.contains(currentStep) else {
+            print("⚠️ Шаг \(currentStep) вне диапазона или Steps не инициализирован")
+            return
         }
-        
-        @objc private func nextStep() {
-            ExerciseManager.shared.CurrentStep += 1
-            
-            if ExerciseManager.shared.CurrentStep >= ExerciseManager.shared.CurrentExercise.Steps!.count {
-                ExerciseManager.shared.CurrentStep = 0 // Сброс шага, если достигнут конец
-            }
-            
-            // Запуск таймера для следующего шага
-            startStepTimer()
-            
-            // Обновление состояния визуальной подсказки
-            updateHintState()
+
+        let stepDuration = TimeInterval(steps[currentStep].duration)
+
+        // Очищаем предыдущий таймер
+        stepTimer?.invalidate()
+        stepTimer = nil
+
+        guard isHintActive else {
+            print("⏸ Подсказка неактивна — таймер шага не запущен")
+            return
         }
+
+        // Без retain cycle
+        stepTimer = Timer.scheduledTimer(withTimeInterval: stepDuration, repeats: false) { [weak self] _ in
+            self?.nextStep()
+        }
+
+        print("✅ Таймер шага запущен на \(stepDuration) сек")
+    }
+
         
-        @objc private func restartExercise() {
+    @objc private func nextStep() {
+        guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
+              !steps.isEmpty else {
+            print("⚠️ Нет шагов в упражнении — таймер остановлен")
+            stopExercise()
+            return
+        }
+
+        // Переход к следующему шагу
+        ExerciseManager.shared.CurrentStep += 1
+
+        // Проверка на выход за пределы
+        if ExerciseManager.shared.CurrentStep >= steps.count {
             ExerciseManager.shared.CurrentStep = 0
-            startStepTimer()
-            
-            // Перезапуск таймера для упражнения
-            exerciseTimer?.invalidate()
-            exerciseTimer = Timer.scheduledTimer(timeInterval: TimeInterval(ExerciseManager.shared.CurrentExercise.ExerciseDuration ?? 0), target: self, selector: #selector(restartExercise), userInfo: nil, repeats: false)
+            print("🔁 Упражнение завершено — начинаем заново")
+        } else {
+            print("➡️ Переход к шагу \(ExerciseManager.shared.CurrentStep)")
         }
+
+        // Перезапуск таймера шага
+        startStepTimer()
+
+        // Обновление визуальной подсказки
+        updateHintState()
+    }
+
+    
+    @objc private func restartExercise() {
+        guard let exercise = ExerciseManager.shared.CurrentExercise else {
+            print("⚠️ Упражнение не инициализировано — перезапуск невозможен")
+            return
+        }
+
+        // Сброс шага
+        ExerciseManager.shared.CurrentStep = 0
+        print("🔁 Перезапуск упражнения — шаг сброшен")
+
+        // Перезапуск таймера шага
+        startStepTimer()
+
+        // Перезапуск таймера упражнения
+        exerciseTimer?.invalidate()
+        exerciseTimer = nil
+
+        let duration = TimeInterval(exercise.ExerciseDuration ?? 0)
+        exerciseTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
+            self?.restartExercise()
+        }
+
+        print("✅ Таймер упражнения перезапущен на \(duration) сек")
+    }
+
         
-        func stopExercise() {
-            stepTimer?.invalidate()
-            exerciseTimer?.invalidate()
-        }
+    func stopExercise() {
+        stepTimer?.invalidate()
+        stepTimer = nil
+
+        exerciseTimer?.invalidate()
+        exerciseTimer = nil
+
+        print("🛑 Все таймеры остановлены и обнулены")
+    }
+
         
         // Метод для обновления состояния визуальной подсказки
     @objc func updateHintState() {
-        print("Exercise started!")
+        print("🎬 Упражнение запущено — обновление подсказки")
 
         let soundFileName = "metronome"
         let currentStep = ExerciseManager.shared.CurrentStep
 
         guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
-              currentStep >= 0,
-              currentStep < steps.count else {
-            print("Ошибка: шаг \(currentStep) вне диапазона или Steps не инициализирован")
+              steps.indices.contains(currentStep) else {
+            print("⚠️ Шаг \(currentStep) вне диапазона или Steps не инициализирован")
             imageHint.image = pauseImage
             breathingHintWidgetButton.setTitle("Старт", for: .normal)
             return
         }
 
         let actionIndex = steps[currentStep].action
-        let hintImage: UIImage
-        let hintLabels = TranslationDownloader.shared.CurrentTranslation.commonButtons?.ExerciseSteps
-        let buttonLabel: String
+        let hintLabels = TranslationDownloader.shared.CurrentTranslation.commonButtons?.ExerciseSteps ?? []
 
-        switch actionIndex {
-        case 0:
-            hintImage = inhaleGif
-            buttonLabel = hintLabels?[0] ?? "inhale"
-        case 1:
-            hintImage = exhalationGif
-            buttonLabel = hintLabels?[1] ?? "exhale"
-        case 2:
-            hintImage = exhalationGif
-            buttonLabel = hintLabels?[2] ?? "pause"
-        default:
-            hintImage = pauseImage
-            buttonLabel = "start"
-        }
+        let (hintImage, buttonLabel): (UIImage, String) = {
+            switch actionIndex {
+            case 0:
+                return (inhaleGif, hintLabels[0] ?? "inhale")
+            case 1:
+                return (exhalationGif, hintLabels[1] ?? "exhale")
+            case 2:
+                return (exhalationGif, hintLabels[2] ?? "pause")
+            default:
+                return (pauseImage, "start")
+            }
+        }()
 
         imageHint.image = hintImage
         breathingHintWidgetButton.setTitle(buttonLabel, for: .normal)
 
         playSound(named: soundFileName)
     }
+
 
 
     
