@@ -115,21 +115,29 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     
     @objc func BackToPreviousScreen()
     {
-        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let _name = _previousScreenName
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
     @objc func OnClickMenuButton(_currentButton: UIButton, _buttonIndex: Int)
     {
+        
+        let _name = "LTWDayDescription"
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+        LTWManager.shared.CurrentDay = _currentButton.tag
 
-            let storyboard = UIStoryboard(name: "LTWDayDescription", bundle: nil)
-            // Инициализируем ViewController
-            let secondVC = storyboard.instantiateViewController(withIdentifier: "LTWDayDescription") as! LTWDayDescription
-            LTWManager.shared.CurrentDay = _currentButton.tag
-            self.present(secondVC, animated: true, completion: nil)
-        print("Day index: ", _currentButton.tag)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
 }
