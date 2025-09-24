@@ -167,20 +167,29 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     @objc func GoToInstruction()
     {
         SetOptions()
+        
+        let _name = "PreventionInstruction"
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
 
-        let storyboard = UIStoryboard(name: "PreventionInstruction", bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "PreventionInstruction") as! PreventionInstruction
-        self.present(secondVC, animated: true, completion: nil)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
     @objc func BackToPreviousScreen()
     {
-        let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let _name = previousScreenName
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
 
 }
