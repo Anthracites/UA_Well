@@ -101,11 +101,14 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
     
     @objc func BackToPreviousScreen()
     {
-        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let vc = ScreenCache.shared.viewController(named: _previousScreenName, storyboardName: _previousScreenName)
+        let nextVC = vc
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
     func sortButtonsAlphabetically() -> [Int] {

@@ -155,13 +155,16 @@ let layoutConfig = LayoutConfigurator.Config(
 
         
         
-        let _storyBoardName = buttonLabels[_currentButton.tag]
+        let _label = buttonLabels[_currentButton.tag]
         
-        let storyboard = UIStoryboard(name: _storyBoardName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _storyBoardName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let vc = ScreenCache.shared.viewController(named: _label, storyboardName: _label)
+        let nextVC = vc
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
         SaveOptions()
     }
     

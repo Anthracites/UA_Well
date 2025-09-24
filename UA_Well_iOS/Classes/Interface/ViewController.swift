@@ -52,6 +52,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @objc func OnClickMenuButton(_currentButton: UIButton, _buttonIndex: Int)
     {
+        ScreenCache.shared.clearAll()
         let a = _currentButton.tag
         TranslationDownloader.shared.CurrentTranslation = translations[a]
         QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms

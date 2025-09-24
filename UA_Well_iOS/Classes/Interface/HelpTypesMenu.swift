@@ -57,11 +57,14 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         if let _label = helpTypes[_currentButton.tag].help_type_name as Optional
         {
             //print(String(_label))
-            let storyboard = UIStoryboard(name: _label, bundle: nil)
-            // Инициализируем ViewController
-            let secondVC = storyboard.instantiateViewController(withIdentifier: _label)
-            // Переход к новому ViewController
-            self.present(secondVC, animated: true, completion: nil)
+            let vc = ScreenCache.shared.viewController(named: _label, storyboardName: _label)
+            let nextVC = vc
+
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                window.rootViewController = nextVC
+                window.makeKeyAndVisible()
+            }
         }
     }
     

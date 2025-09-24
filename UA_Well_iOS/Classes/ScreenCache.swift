@@ -5,7 +5,51 @@ final class ScreenCache {
     static let shared = ScreenCache()
 
     private var cache: [AppScreen: UIViewController] = [:]
+    private var cacheByName: [String: UIViewController] = [:]
+    private var storyboardCache: [String: UIStoryboard] = [:]
+    private let excludedFromCache: Set<String> = [
+        "ExerciseView::ExerciseView",
+        "LongTimeWork::LongTimeWork",
+        "PreventionScreen::PreventionScreen",
+        "SymptomTitle::SymptomTitle",
+        "LTWDayDescription::LTWDayDescription"
+    ]
 
+
+    func storyboard(named name: String) -> UIStoryboard {
+        if let cached = storyboardCache[name] {
+            return cached
+        }
+
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        storyboardCache[name] = storyboard
+        return storyboard
+    }
+
+    func viewController(named identifier: String, storyboardName: String) -> UIViewController {
+        let key = "\(storyboardName)::\(identifier)"
+        let shouldCache = !excludedFromCache.contains(key)
+
+        if shouldCache, let cachedVC = cacheByName[key] {
+            print("♻️ Используем VC из кэша: \(key)")
+            return cachedVC
+        }
+
+        let storyboard = storyboard(named: storyboardName)
+        let vc = storyboard.instantiateViewController(withIdentifier: identifier)
+
+        if shouldCache {
+            cacheByName[key] = vc
+            print("🆕 Создан и закэширован VC: \(key)")
+        } else {
+            print("🆕 Создан VC без кэширования: \(key)")
+        }
+
+        return vc
+    }
+
+
+    
     func viewController(for screen: AppScreen) -> UIViewController {
         if screen.isCacheable, let cachedVC = cache[screen] {
             print("♻️ Используем кэшированный VC: \(screen.rawValue)")
@@ -30,10 +74,10 @@ final class ScreenCache {
         print("🧹 Кэш очищен для VC: \(screen.rawValue)")
     }
 
-    func clearAll() {
-        cache.removeAll()
-        print("🧼 Кэш всех VC очищен")
-    }
+        func clearAll() {
+            cacheByName.removeAll()
+        }
+
 }
 
 enum AppScreen: String, CaseIterable {

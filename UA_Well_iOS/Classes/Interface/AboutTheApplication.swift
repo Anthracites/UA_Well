@@ -68,7 +68,37 @@ class AboutTheApplication: UIViewController
         }
     @objc func okButtonHandler()
     {
-        dismiss(animated: true, completion: nil)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            let newVC = ScreenCache.shared.viewController(named: "PopUpView", storyboardName: "PopUpView")
+            window.rootViewController = newVC
+            window.makeKeyAndVisible()
+        }
+
     }
     
+    func close(animated: Bool = true, completion: (() -> Void)? = nil) {
+        if let navigationController = self.navigationController {
+            if navigationController.viewControllers.first != self {
+                // Если VC не корневой — можно сделать pop
+                navigationController.popViewController(animated: animated)
+                completion?()
+                return
+            }
+        }
+
+        if presentingViewController != nil {
+            // Если VC был представлен модально — dismiss
+            dismiss(animated: animated, completion: completion)
+            return
+        }
+
+        print("❌ Невозможно закрыть экран: не модальный и не в навигации")
+        completion?()
     }
+
+    
+    
+    }
+
+
