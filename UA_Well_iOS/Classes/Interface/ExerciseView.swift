@@ -223,9 +223,16 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             let nextIndex = QuickHelpManager.shared.CurrentExercise + 1
             if nextIndex < QuickHelpManager.shared.CurrentExersicesArray.count {
                 QuickHelpManager.shared.CurrentExercise = nextIndex
-                let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
-                let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
-                self.present(secondVC, animated: true, completion: nil)
+                
+                let _name = "ExerciseView"
+                let storyboard = UIStoryboard(name: _name, bundle: nil)
+                let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first {
+                    window.rootViewController = nextVC
+                    window.makeKeyAndVisible()
+                }
             }
     }
     
@@ -233,11 +240,15 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     {
         stopExercise()
         
-        let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu")
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let _name = "HelpTypesMenu"
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
     @objc func OkButtonHandler()
@@ -245,33 +256,46 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         stopExercise()
         
         let _name = ExerciseManager.shared.PreviousViewName
-
         let storyboard = UIStoryboard(name: _name!, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _name!)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name!)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
     @objc func ContactSpecialistButtonHandler()
     {
         stopExercise()
-        let storyboard = UIStoryboard(name: "AboutUsAndContactUs", bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "AboutUsAndContactUs")
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        
+        let _name = "AboutUsAndContactUs"
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
+        
     }
     
     @objc func StartOverButtonHandler()
     {
         stopExercise() 
         QuickHelpManager.shared.CurrentExercise = 0
-        let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        
+        let _name = "ExerciseView"
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
