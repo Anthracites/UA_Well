@@ -60,22 +60,32 @@ class SymptomTitle:  UIViewController{
         if let _label = _currentButton.titleLabel?.text
         {
             print(String(_label))
-            let storyboard = UIStoryboard(name: "ExerciseView", bundle: nil)
-            // Инициализируем ViewController
-            let secondVC = storyboard.instantiateViewController(withIdentifier: "ExerciseView")
-            // Переход к новому ViewController
-            self.present(secondVC, animated: true, completion: nil)
+            
+            let _name = "ExerciseView"
+            let storyboard = UIStoryboard(name: _name, bundle: nil)
+            let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                window.rootViewController = nextVC
+                window.makeKeyAndVisible()
+            }
+            
             ExerciseManager.shared.CurrentHelpType = "QuickHelp"
         }
     }
     
     @objc func BackToPreviousScreen()
     {
-        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let _name = _previousScreenName
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
 }
