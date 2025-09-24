@@ -99,11 +99,15 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func BackToPreviousScreen()
     {
-        let storyboard = UIStoryboard(name: _previousScreenName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _previousScreenName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let _name = _previousScreenName
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
     }
     
         func configCollectionView()
@@ -177,13 +181,15 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         
         
         
-        let _storyBoardName = buttonLabels[_currentButton.tag]
-        
-        let storyboard = UIStoryboard(name: _storyBoardName, bundle: nil)
-        // Инициализируем ViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: _storyBoardName)
-        // Переход к новому ViewController
-        self.present(secondVC, animated: true, completion: nil)
+        let _name = buttonLabels[_currentButton.tag]
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+        }
         
     }
     
