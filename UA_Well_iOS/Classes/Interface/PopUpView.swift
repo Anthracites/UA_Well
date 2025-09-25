@@ -81,6 +81,13 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
             let secondVC = storyboard.instantiateViewController(withIdentifier: _label)
             // Переход к новому ViewController
             self.present(secondVC, animated: true, completion: nil)
+            
+            if _label == "AboutUsAndContactUs", let aboutVC = secondVC as? AboutUsAndContactUs {
+                   aboutVC.isFromPopUp = true
+                   aboutVC.onClose = { [weak self] in
+                   }
+                   self.present(aboutVC, animated: true)
+               }
         }
     }
 

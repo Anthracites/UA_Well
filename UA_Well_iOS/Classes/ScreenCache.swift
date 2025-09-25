@@ -3,7 +3,8 @@ import UIKit
 
 final class ScreenCache {
     static let shared = ScreenCache()
-
+    
+    var previousVC: UIViewController?
     private var cache: [AppScreen: UIViewController] = [:]
     private var cacheByName: [String: UIViewController] = [:]
     private var storyboardCache: [String: UIStoryboard] = [:]

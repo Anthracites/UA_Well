@@ -22,6 +22,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_language_selecttion_title, for: .normal)
         backButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        trackAsCurrentScreen()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

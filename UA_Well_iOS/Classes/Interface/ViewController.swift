@@ -15,6 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         GoToScreen()
         configureCollectionView()
+        trackAsCurrentScreen()
     }
     
     

@@ -29,6 +29,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         configureCollectionView()
         configureText()
         configureLayout()
+        trackAsCurrentScreen()
     }
     
     func configureText()

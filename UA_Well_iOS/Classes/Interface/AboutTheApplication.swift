@@ -30,6 +30,14 @@ class AboutTheApplication: UIViewController
     
 
     private var exerciseTextHeightConstraint: NSLayoutConstraint?
+    
+    var onClose: (() -> Void)?
+
+    @IBAction func closeTapped(_ sender: UIButton) {
+        dismiss(animated: true) {
+            self.onClose?()
+        }
+    }
 
 
         // MARK: - Lifecycle
@@ -47,7 +55,7 @@ class AboutTheApplication: UIViewController
             appDescription.isEditable = false
             appDescription.isSelectable = true
             appDescription.dataDetectorTypes = [.link]
-            okButton.addTarget(self, action: #selector(okButtonHandler), for: .touchUpInside)
+            //okButton.addTarget(self, action: #selector(okButtonHandler), for: .touchUpInside)
         }
 
         // MARK: - Layout Setup
@@ -76,29 +84,6 @@ class AboutTheApplication: UIViewController
         }
 
     }
-    
-    func close(animated: Bool = true, completion: (() -> Void)? = nil) {
-        if let navigationController = self.navigationController {
-            if navigationController.viewControllers.first != self {
-                // Если VC не корневой — можно сделать pop
-                navigationController.popViewController(animated: animated)
-                completion?()
-                return
-            }
-        }
-
-        if presentingViewController != nil {
-            // Если VC был представлен модально — dismiss
-            dismiss(animated: animated, completion: completion)
-            return
-        }
-
-        print("❌ Невозможно закрыть экран: не модальный и не в навигации")
-        completion?()
-    }
-
-    
-    
     }
 
 

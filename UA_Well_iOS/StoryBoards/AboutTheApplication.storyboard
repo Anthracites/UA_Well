@@ -78,6 +78,9 @@
                                                 <fontDescription key="fontDescription" name="Inter-Regular_Medium" family="Inter" pointSize="31"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="OK" backgroundImage="CommonButtonBG.png"/>
+                                                <connections>
+                                                    <action selector="closeTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="E9E-wk-fae"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <viewLayoutGuide key="safeArea" id="diu-e0-AHl"/>
@@ -122,7 +125,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemIndigoColor">
-            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

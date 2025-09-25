@@ -37,6 +37,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         SetupWidget()
         GetImages()
         configureLayout()
+        trackAsCurrentScreen()
     }
     
    func configureLayout()

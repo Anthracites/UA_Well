@@ -23,6 +23,7 @@ class SymptomTitle:  UIViewController{
         SetUpButton()
         GetTextes()
         configureLayout()
+        trackAsCurrentScreen()
     }
     func configureLayout()
     {
@@ -67,6 +68,7 @@ class SymptomTitle:  UIViewController{
 
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let window = windowScene.windows.first {
+                window.rootViewController = nil
                 window.rootViewController = nextVC
                 window.makeKeyAndVisible()
             }
@@ -83,6 +85,7 @@ class SymptomTitle:  UIViewController{
 
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
+            window.rootViewController = nil
             window.rootViewController = nextVC
             window.makeKeyAndVisible()
         }

@@ -30,6 +30,7 @@ class PreventionInstruction:  UIViewController, UICollectionViewDataSource, UICo
         configureCollectionView()
         configureActions()
         configureLayout()
+        trackAsCurrentScreen()
     }
     
     func configureCollectionView()

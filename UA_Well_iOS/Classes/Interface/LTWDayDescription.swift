@@ -39,6 +39,7 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         SaveOptions()
         TherapyProgressTracker.shared.markTodayAsCompleted(for: .LTW)
         configureLayout()
+        trackAsCurrentScreen()
     }
 
     func configureLayout()
@@ -190,7 +191,6 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
             window.rootViewController = nextVC
             window.makeKeyAndVisible()
         }
-        
     }
     
     @objc func GetOptions()

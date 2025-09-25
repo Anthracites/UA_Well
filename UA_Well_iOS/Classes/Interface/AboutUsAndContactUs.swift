@@ -14,6 +14,25 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
     
     private var exerciseTextHeightConstraint: NSLayoutConstraint?
     
+    var onClose: (() -> Void)? = nil
+    var isFromPopUp:Bool = false
+
+    @IBAction func closeTapped(_ sender: UIButton) {
+        if isFromPopUp == true {
+            dismiss(animated: true) { [self] in
+                (onClose!)()
+            }
+        } else {
+            let _name = ScreenCache.shared.previousVC?.nibName
+            //let storyboard = UIStoryboard(name: _name!, bundle: nil)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                window.rootViewController = ScreenCache.shared.previousVC
+                window.makeKeyAndVisible()
+            }
+
+        }
+    }
     
     override func viewDidLoad()
     {
@@ -43,7 +62,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
         
-        okButton.addTarget(self, action: #selector(backToPreviousScreen), for: .touchUpInside)
+        //okButton.addTarget(self, action: #selector(backToPreviousScreen), for: .touchUpInside)
     }
     
      func translateView(Translation: Translation)
@@ -104,12 +123,4 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         return cell
 
     }
-
-
-    
-    @objc func backToPreviousScreen()
-    {
-        dismiss(animated: true, completion: nil)
-    }
-
 }

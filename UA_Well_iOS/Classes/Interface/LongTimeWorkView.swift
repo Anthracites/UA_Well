@@ -28,7 +28,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
         configureText()
         configureActions()
         configureLayout()
-
+        trackAsCurrentScreen()
     }
     func configureCollectionView()
     {

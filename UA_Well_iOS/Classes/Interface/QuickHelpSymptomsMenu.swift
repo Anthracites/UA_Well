@@ -25,7 +25,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         backButton.addTarget(self, action: #selector(BackToPreviousScreen), for: .touchUpInside)
         backButton.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Return_to_help_type_page_title, for: .normal)
         backButton.titleLabel?.adjustsFontSizeToFitWidth = true
-
+        trackAsCurrentScreen()
         
     }
     
@@ -106,6 +106,7 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
 
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
+            window.rootViewController = nil
             window.rootViewController = nextVC
             window.makeKeyAndVisible()
         }
