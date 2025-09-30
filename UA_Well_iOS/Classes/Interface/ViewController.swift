@@ -101,7 +101,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                    default:
                        storyboardName = "PreventionInstruction"
                    }
-                
+                ExerciseManager.shared.PreviousViewName = storyboardName
                 let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
                 // Инициализируем ViewController
                 let secondVC = storyboard.instantiateViewController(withIdentifier: storyboardName)
