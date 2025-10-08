@@ -104,22 +104,23 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialistInfo", for: indexPath) as! SpecialistInfo
+        cell.contacts = (TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.SpecialistContacts[indexPath.item].Contacts)!
+        print("Contacts count:", cell.contacts.count)
         let index = indexPath.item
         let _translation = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs
         cell.languagesLabel.text = _translation?.LanguagesLabel
         cell.contactsLabel.text = _translation?.ContactsLabel
         if let infoArray = _translation?.SpecialistContacts {
             let contact = infoArray[index]
-            cell.contacts = contact.Contacts
+//            cell.contacts = contact.Contacts
             cell.photoImage = UIImage(named: contact.SpecialistPhoto)
             cell.specialistName.text = "\(contact.SpecialistName)\n\(contact.SpecialistSurname)"
             cell.languageList.text = contact.AvalibleLanguages
             cell.sckills.text = contact.Description
             cell.contacts = contact.Contacts
-            cell.FillCollectionView()
+//            cell.FillCollectionView()
         }
-        
-        
+//        cell.contactsView.reloadData()
         return cell
 
     }

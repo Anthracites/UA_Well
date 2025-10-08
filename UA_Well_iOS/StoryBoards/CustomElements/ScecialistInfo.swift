@@ -12,8 +12,15 @@ class SpecialistInfo: UICollectionViewCell, UICollectionViewDataSource, UICollec
     @IBOutlet weak var contactsView: UICollectionView!
     @IBOutlet weak var generalview: UIView!
     var collectionViewCell: UICollectionViewCell!
-    var contacts: [Translation.AboutUsAndContactUs.SpecialistContact.Contact] = []
-    
+    var contacts: [Translation.AboutUsAndContactUs.SpecialistContact.Contact] = [] {
+        didSet {
+            print("✅ contacts updated: \(contacts.count)")
+            DispatchQueue.main.async {
+                self.contactsView.reloadData()
+            }
+        }
+    }
+
     var photoImage: UIImage? {
             didSet {
                 sPhoto.image = photoImage
@@ -23,40 +30,58 @@ class SpecialistInfo: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 75, height: 50) // ширина под длинные надписи
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        contactsView.collectionViewLayout = layout
+
         contactsView.register(UINib(nibName: "ContactCell", bundle: nil), forCellWithReuseIdentifier: "ContactCell")
+        contactsView.delegate = self
+        contactsView.dataSource = self
     }
+
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        // Проверка, что contactsView уже имеет размер
+        if contactsView.frame.height > 0 && contacts.count > 0 {
+            print("Reloaded contactsView with \(contacts.count) items")
+        }
     }
+
 
     
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         contacts.count
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let _cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell", for: indexPath) as! ContactCell
-                   let index = collectionView.tag
+        print("cellForItemAt called at index \(indexPath.item)")
+        let index = collectionView.tag
         if contacts != nil {
             _cell.contactButton.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 10)
-
-                       let contact = contacts[indexPath.item]
-                       _cell.linkURL = contact.UrlContact
-                       _cell.mailTitle = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.EmailTitle
-                       _cell.mailBody = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.EmailBody
-                       //_cell.contactButton.setTitle(contact.UrlMask, for: .normal)
+            
+            let contact = contacts[indexPath.item]
+            _cell.linkURL = contact.UrlContact
+            _cell.mailTitle = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.EmailTitle
+            _cell.mailBody = TranslationDownloader.shared.CurrentTranslation.aboutUsAndcontactUs?.EmailBody
+            //_cell.contactButton.setTitle(contact.UrlMask, for: .normal)
             _cell.contactButton.configuration = MakeContactButtonConfiguration(title: contact.UrlMask, fontSize: 15)
-                       _cell.contactButton.addTarget(ContactCell.OnClickLinkButtonHandler, action: #selector(ContactCell.OnClickLinkButtonHandler), for: .touchUpInside)
-                       _cell.contentMode = .center
-                       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                           layout.scrollDirection = .horizontal
-                           layout.itemSize = CGSize(width: 75, height: 50)
-                       }
-                   }
-                   return _cell
+            _cell.contactButton.addTarget(ContactCell.OnClickLinkButtonHandler, action: #selector(ContactCell.OnClickLinkButtonHandler), for: .touchUpInside)
+//            _cell.backgroundColor = .blue
+            _cell.contentMode = .center
+        }
+        return _cell
+
     }
+    
     func MakeContactButtonConfiguration(title: String, fontSize: CGFloat) -> UIButton.Configuration {
         var config = UIButton.Configuration.plain()
         config.contentInsets = .zero
@@ -72,8 +97,9 @@ class SpecialistInfo: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     @objc func FillCollectionView()
     {
-        contactsView.delegate = self
-        contactsView.dataSource = self
+//        contactsView.delegate = self
+//        contactsView.dataSource = self
+        contactsView.reloadData()
     }
     
     @objc func setupLayout() {
