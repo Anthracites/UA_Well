@@ -40,6 +40,12 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         trackAsCurrentScreen()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureLayout()
+    }
+
+    
    func configureLayout()
     {
         exerciseText.adjustHeight()
