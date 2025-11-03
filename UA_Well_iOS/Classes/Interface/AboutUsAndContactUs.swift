@@ -24,7 +24,6 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
             }
         } else {
             let _name = ScreenCache.shared.previousVC?.nibName
-            //let storyboard = UIStoryboard(name: _name!, bundle: nil)
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                let window = windowScene.windows.first {
                 window.rootViewController = ScreenCache.shared.previousVC
@@ -38,7 +37,7 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
     {
         super.viewDidLoad()
         guard let _currentTranslation = TranslationDownloader.shared.CurrentTranslation else { return }
-
+        
         specialistsInfo.register(UINib(nibName: "SpecialistInfo", bundle: nil), forCellWithReuseIdentifier: "SpecialistInfo")
         specialistsInfo.delegate = self
         specialistsInfo.dataSource = self
@@ -61,8 +60,6 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
             okButton: okButton
         )
         exerciseTextHeightConstraint = LayoutConfigurator.configure(using: layoutConfig)
-        
-        //okButton.addTarget(self, action: #selector(backToPreviousScreen), for: .touchUpInside)
     }
     
      func translateView(Translation: Translation)
@@ -112,15 +109,12 @@ class AboutUsAndContactUs: UIViewController, UICollectionViewDataSource, UIColle
         cell.contactsLabel.text = _translation?.ContactsLabel
         if let infoArray = _translation?.SpecialistContacts {
             let contact = infoArray[index]
-//            cell.contacts = contact.Contacts
             cell.photoImage = UIImage(named: contact.SpecialistPhoto)
             cell.specialistName.text = "\(contact.SpecialistName)\n\(contact.SpecialistSurname)"
             cell.languageList.text = contact.AvalibleLanguages
             cell.sckills.text = contact.Description
             cell.contacts = contact.Contacts
-//            cell.FillCollectionView()
         }
-//        cell.contactsView.reloadData()
         return cell
 
     }

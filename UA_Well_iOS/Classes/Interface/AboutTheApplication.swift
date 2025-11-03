@@ -63,13 +63,10 @@ class AboutTheApplication: UIViewController
             guard !layoutAlreadyConfigured else { return }
             layoutAlreadyConfigured = true
 
-            // Кэшируем высоту текста, если ещё не сохранена
             if cachedExerciseTextHeight == nil {
                 appDescription.adjustHeight()
                 cachedExerciseTextHeight = appDescription.frame.height
             }
-
-            // Применяем высоту
             appDescription.frame.size.height = cachedExerciseTextHeight ?? appDescription.frame.height
 
             exerciseTextHeightConstraint = cachedLayoutConstraint
