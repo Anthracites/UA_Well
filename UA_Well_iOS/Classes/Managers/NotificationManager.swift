@@ -17,30 +17,37 @@ class NotificationManager {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
         }
     }
-    func scheduleNotifications()
-    {
-        PreventionAlarmNotification = GetNotificationParameters(_notificationType: "PreventionAlarm")
-        LTWAlarmNotification = GetNotificationParameters(_notificationType: "LTWAlarm")
-        
-        if (IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration", TherapyDurations: PreventionManager.shared.PreventionDurations) == true)
-        {
-            scheduleNotification(_alarmNotification: PreventionAlarmNotification!)
-        }
-        else
-        {
-            PreventionManager.shared.ResetToDefault()
-        }
-        
-        
-        if (IsTherapyActive(CurrentTherapyDay: "LTWCurrentDay", TherapyDuration: "LTWDuration", TherapyDurations: LTWManager.shared.LTWDurations) == true)
-        {
-            scheduleNotification(_alarmNotification: LTWAlarmNotification!)
-        }
-        else
-        {
+    func scheduleNotifications() {
+        registerNotificationCategories()
+
+        if IsTherapyActive(CurrentTherapyDay: "LTWCurrentDay", TherapyDuration: "LTWDuration", TherapyDurations: LTWManager.shared.LTWDurations) {
+            let times = ["12:00", "15:00", "18:00"]
+            for time in times {
+                let notification = createNotification(time: time, type: "LTWAlarm", screen: "LTWDayDescription", bodyKey: "Body_long_time_work", alarmKey: "LTWAlarm")
+                scheduleNotification(_alarmNotification: notification)
+            }
+        } else {
             LTWManager.shared.ResetToDefault()
         }
+
+        if IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration", TherapyDurations: PreventionManager.shared.PreventionDurations) {
+            let times = ["12:00", "15:00", "18:00"]
+            var allTimes = times
+
+            let intensity = UserDefaults.standard.integer(forKey: "PreventionIntensity") ?? 0
+            if intensity == 1 || intensity == 2 {
+                allTimes.append("21:00")
+            }
+
+            for time in allTimes {
+                let notification = createNotification(time: time, type: "PreventionAlarm", screen: "PreventionInstruction", bodyKey: "Body_prevention", alarmKey: "PreventionAlarm")
+                scheduleNotification(_alarmNotification: notification)
+            }
+        } else {
+            PreventionManager.shared.ResetToDefault()
+        }
     }
+
     
     func registerNotificationCategories() {
         let _muteTitle = (TranslationDownloader.shared.CurrentTranslation.alarmNotifications?.MuteButtonTitle)!
@@ -77,63 +84,45 @@ class NotificationManager {
         }
     }
     
-    func GetNotificationParameters(_notificationType: String) -> AlarmNotification {
-        let _currentTranslation = TranslationDownloader.shared.CurrentTranslation
-        let _notificationTitle = _currentTranslation?.alarmNotifications?.Title
-        let _notificationBody: String
-        var _notificationTime: String = "0:0"
-        var _notificationScreen: String
-        var _notificationAlarmOn: String = "False"
-        let _type = UserDefaults.standard.string(forKey: "IncomingNotificationType") ?? " "
-
+    func createNotification(time: String, type: String, screen: String, bodyKey: String, alarmKey: String) -> AlarmNotification {
+        let translation = TranslationDownloader.shared.CurrentTranslation
+        let title = translation?.alarmNotifications?.Title ?? "Уведомление"
         
-        switch _notificationType {
-        case "PreventionAlarm":
-            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? " " + _type
-            _notificationTime = "PreventionAlarmTime"
-            _notificationScreen = "PreventionInstruction"
-            _notificationAlarmOn = "PreventionAlarm"
-        case "LTWAlarm":
-            _notificationBody = _currentTranslation?.alarmNotifications!.Body_long_time_work ?? " " + _type
-            _notificationTime = "LTWAlarmTime"
-            _notificationScreen = "LTWDayDescription"
-            _notificationAlarmOn = "LTWAlarm"
+        var body = ""
+        switch bodyKey {
+        case "Body_prevention":
+            body = translation?.alarmNotifications?.Body_prevention ?? ""
+        case "Body_long_time_work":
+            body = translation?.alarmNotifications?.Body_long_time_work ?? ""
         default:
-            _notificationBody = _currentTranslation?.alarmNotifications?.Body_prevention ?? " " + _type
+            body = ""
         }
-        
-        let _isAlarmOn = UserDefaults.standard.bool(forKey: _notificationAlarmOn)
-        
-        let content = UNMutableNotificationContent()
-        content.title = _notificationTitle ?? "Уведомление"
-        content.body = _notificationBody
-        content.sound = .default
-        content.userInfo = ["screenID": _notificationType]
-        content.categoryIdentifier = "ALARM_CATEGORY" // <- Добавляем кнопку-категорию
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        
-        let t = UserDefaults.standard.string(forKey: _notificationTime)
-        var _alarmTime = DateComponents()
-        if let t = t {
-            let _timeComponents = t.split(separator: ":")
-            if let hours = Int(_timeComponents[0]), let minutes = Int(_timeComponents[1]) {
-                _alarmTime.hour = hours
-                _alarmTime.minute = minutes
-            }
+        let isAlarmOn = UserDefaults.standard.bool(forKey: alarmKey)
+
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = .default
+        content.userInfo = ["screenID": type]
+        content.categoryIdentifier = "ALARM_CATEGORY"
+
+        let components = time.split(separator: ":")
+        var dateComponents = DateComponents()
+        if let hour = Int(components[0]), let minute = Int(components[1]) {
+            dateComponents.hour = hour
+            dateComponents.minute = minute
         }
-        
-        let _notification = AlarmNotification(
-            IsAlarmOn: _isAlarmOn,
-            AlarmKey: _notificationType,
-            AlarmType: _notificationType,
+
+        return AlarmNotification(
+            IsAlarmOn: isAlarmOn,
+            AlarmKey: type + "_" + time,
+            AlarmType: type + "_" + time,
             NotificationContent: content,
-            NotificationTime: _alarmTime
+            NotificationTime: dateComponents
         )
-        
-        return _notification
     }
+
     
     func IsTherapyActive(CurrentTherapyDay: String, TherapyDuration: String, TherapyDurations: [Int]) ->  Bool
     {
