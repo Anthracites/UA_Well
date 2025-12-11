@@ -199,5 +199,6 @@ let layoutConfig = LayoutConfigurator.Config(
         UserDefaults.standard.set(PreventionDuration, forKey: "PreventionDuration")
         UserDefaults.standard.set(PreventionIntensity, forKey: "PreventionIntensity")
         UserDefaults.standard.set(PreventionCurrentDay, forKey: "PreventionCurrentDay") // Для уведомлений
+        NotificationManager.shared.scheduleNotifications()
     }
 }

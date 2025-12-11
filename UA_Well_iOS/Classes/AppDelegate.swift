@@ -29,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         PreventionManager.shared.initializePreventionManager()
         LTWManager.shared.initializeLTWManager()
         TranslationDownloader.shared.IsFirstRun = true
-        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().delegate = NotificationManager.shared
+        //UNUserNotificationCenter.current().delegate = self
         NotificationManager.shared.requestAuthorization()
-        NotificationManager.shared.scheduleNotifications()
         QuickHelpManager.shared.Symtoms = TranslationDownloader.shared.CurrentTranslation.Symptoms
         
        // print("Is from notifications: ", ExerciseManager.shared.IsAppOpenFromNotification)
@@ -39,52 +39,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        ExerciseManager.shared.IsAppOpenFromNotification = true
-        
-        if let type = response.notification.request.content.userInfo["screenID"] as? String {
-            // Сохраняем, чтобы использовать позже
-            UserDefaults.standard.set(type, forKey: "IncomingNotificationType")
-            ExerciseManager.shared.IsAppOpenFromNotification = true
-            ExerciseManager.shared.NotificationType = type
-            print("Notification type: ", type)
-        }
-        
-        switch response.actionIdentifier {
-        case "MUTE_10_MIN":
-            DelayNotification(NotificationContent: response.notification.request.content as! UNMutableNotificationContent, DelayTime: 600)
-            
-        case "CANCEL_ACTION":
-            DelayNotification(NotificationContent: response.notification.request.content as! UNMutableNotificationContent, DelayTime: 86400)
-            
-        default:
-            break
-        }
-        
-        
-    }
-    
-    @objc func DelayNotification(NotificationContent: UNMutableNotificationContent, DelayTime: TimeInterval)
-    {
-        let originalContent = NotificationContent
-        
-        let newContent = UNMutableNotificationContent()
-        newContent.title = originalContent.title
-        newContent.body = originalContent.body
-        newContent.sound = originalContent.sound
-        newContent.categoryIdentifier = originalContent.categoryIdentifier
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: DelayTime, repeats: false)
-        
-        let newRequest = UNNotificationRequest(identifier: UUID().uuidString, content: newContent, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(newRequest) { error in
-            if let error = error {
-                print("Ошибка при переносе уведомления: \(error)")
-            } else {
-                print("Уведомление перенесено на 10 минут")
-            }
-        }
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        ExerciseManager.shared.IsAppOpenFromNotification = true
+//        
+//        if let type = response.notification.request.content.userInfo["screenID"] as? String {
+//            // Сохраняем, чтобы использовать позже
+//            UserDefaults.standard.set(type, forKey: "IncomingNotificationType")
+//            ExerciseManager.shared.IsAppOpenFromNotification = true
+//            ExerciseManager.shared.NotificationType = type
+//            print("Notification type: ", type)
+//        }
+//        
+//        switch response.actionIdentifier {
+//        case "MUTE_10_MIN":
+//            DelayNotification(NotificationContent: response.notification.request.content as! UNMutableNotificationContent, DelayTime: 600)
+//            
+//        case "CANCEL_ACTION":
+//            DelayNotification(NotificationContent: response.notification.request.content as! UNMutableNotificationContent, DelayTime: 86400)
+//            
+//        default:
+//            break
+//        }
+//        
+//        
+//    }
+//    
+//    @objc func DelayNotification(NotificationContent: UNMutableNotificationContent, DelayTime: TimeInterval)
+//    {
+//        let originalContent = NotificationContent
+//        
+//        let newContent = UNMutableNotificationContent()
+//        newContent.title = originalContent.title
+//        newContent.body = originalContent.body
+//        newContent.sound = originalContent.sound
+//        newContent.categoryIdentifier = originalContent.categoryIdentifier
+//        
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: DelayTime, repeats: false)
+//        
+//        let newRequest = UNNotificationRequest(identifier: UUID().uuidString, content: newContent, trigger: trigger)
+//        
+//        UNUserNotificationCenter.current().add(newRequest) { error in
+//            if let error = error {
+//                print("Ошибка при переносе уведомления: \(error)")
+//            } else {
+//                print("Уведомление перенесено на 10 минут")
+//            }
+//        }
+//    }
 }
 

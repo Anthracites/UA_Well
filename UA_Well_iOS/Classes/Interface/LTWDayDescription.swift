@@ -208,11 +208,12 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
     @objc func SaveOptions()
     {
         GetOptions()
-        
         UserDefaults.standard.set(LTWManager.shared.DayCount, forKey: "LTWCurrentDay")
         UserDefaults.standard.set(LTWAlarm.isOn, forKey: "LTWAlarm")
         UserDefaults.standard.set(LTWDuration, forKey: "LTWDuration")
         UserDefaults.standard.set(LTWAlarmTime, forKey: "LTWAlarmTime")
         print ("LTW options saved!!!")
+        NotificationManager.shared.scheduleNotifications()
+
     }
 }

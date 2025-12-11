@@ -1,52 +1,62 @@
 import UserNotifications
 
-class NotificationManager {
-    static let shared = NotificationManager()
+class NotificationManager: NSObject {
     
+    static let shared = NotificationManager()
     private var PreventionAlarmNotification, LTWAlarmNotification: AlarmNotification?
     
-    private init() {}
-    
+    private override init() {}
+
     // Запрос разрешения на уведомления
     func requestAuthorization() {
-        if (TranslationDownloader.shared.IsFirstRun == false)
-        {
-            registerNotificationCategories()
-        }
-        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("❌ Ошибка авторизации уведомлений: \(error.localizedDescription)")
+                return
+            }
         }
     }
+
     func scheduleNotifications() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         registerNotificationCategories()
 
-        if IsTherapyActive(CurrentTherapyDay: "LTWCurrentDay", TherapyDuration: "LTWDuration", TherapyDurations: LTWManager.shared.LTWDurations) {
+        // LTW
+        let isLTWOn = UserDefaults.standard.bool(forKey: "LTWAlarm")
+        if isLTWOn && IsTherapyActive(CurrentTherapyDay: "LTWCurrentDay", TherapyDuration: "LTWDuration", TherapyDurations: LTWManager.shared.LTWDurations) {
             let times = ["12:00", "15:00", "18:00"]
             for time in times {
-                let notification = createNotification(time: time, type: "LTWAlarm", screen: "LTWDayDescription", bodyKey: "Body_long_time_work", alarmKey: "LTWAlarm")
+                let notification = createNotification(
+                    time: time,
+                    type: "LTWAlarm",
+                    screen: "LTWDayDescription",
+                    bodyKey: "Body_long_time_work",
+                )
                 scheduleNotification(_alarmNotification: notification)
             }
         } else {
             LTWManager.shared.ResetToDefault()
         }
 
-        if IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration", TherapyDurations: PreventionManager.shared.PreventionDurations) {
-            let times = ["12:00", "15:00", "18:00"]
-            var allTimes = times
+        // Prevention
+        let isPreventionOn = UserDefaults.standard.bool(forKey: "PreventionAlarm")
+        if isPreventionOn && IsTherapyActive(CurrentTherapyDay: "PreventionCurrentDay", TherapyDuration: "PreventionDuration", TherapyDurations: PreventionManager.shared.PreventionDurations) {
+            var times = ["12:00", "15:00", "18:00"]
 
-            let intensity = UserDefaults.standard.integer(forKey: "PreventionIntensity") ?? 0
+            let intensity = UserDefaults.standard.integer(forKey: "PreventionIntensity")
             if intensity == 1 || intensity == 2 {
-                allTimes.append("21:00")
+                times.append("21:00")
             }
 
-            for time in allTimes {
-                let notification = createNotification(time: time, type: "PreventionAlarm", screen: "PreventionInstruction", bodyKey: "Body_prevention", alarmKey: "PreventionAlarm")
+            for time in times {
+                let notification = createNotification(time: time, type: "PreventionAlarm", screen: "PreventionInstruction", bodyKey: "Body_prevention")
                 scheduleNotification(_alarmNotification: notification)
             }
         } else {
             PreventionManager.shared.ResetToDefault()
         }
     }
+
 
     
     func registerNotificationCategories() {
@@ -84,10 +94,10 @@ class NotificationManager {
         }
     }
     
-    func createNotification(time: String, type: String, screen: String, bodyKey: String, alarmKey: String) -> AlarmNotification {
+    func createNotification(time: String, type: String, screen: String, bodyKey: String) -> AlarmNotification {
         let translation = TranslationDownloader.shared.CurrentTranslation
         let title = translation?.alarmNotifications?.Title ?? "Уведомление"
-        
+
         var body = ""
         switch bodyKey {
         case "Body_prevention":
@@ -97,8 +107,6 @@ class NotificationManager {
         default:
             body = ""
         }
-
-        let isAlarmOn = UserDefaults.standard.bool(forKey: alarmKey)
 
         let content = UNMutableNotificationContent()
         content.title = title
@@ -115,14 +123,14 @@ class NotificationManager {
         }
 
         return AlarmNotification(
-            IsAlarmOn: isAlarmOn,
+            IsAlarmOn: true, // флаг проверен заранее
             AlarmKey: type + "_" + time,
             AlarmType: type + "_" + time,
             NotificationContent: content,
             NotificationTime: dateComponents
         )
     }
-
+    
     
     func IsTherapyActive(CurrentTherapyDay: String, TherapyDuration: String, TherapyDurations: [Int]) ->  Bool
     {
@@ -137,6 +145,55 @@ class NotificationManager {
     
     
 }
+
+extension NotificationManager: UNUserNotificationCenterDelegate {
+    
+    // Показ уведомлений в форграунде
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
+    }
+    
+    // Обработка действий
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+        case "MUTE_10_MIN":
+            let original = response.notification.request.content
+            
+            let content = UNMutableNotificationContent()
+            content.title = original.title
+            content.body = original.body
+            content.sound = original.sound
+            content.userInfo = original.userInfo
+            content.categoryIdentifier = original.categoryIdentifier
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 600, repeats: false)
+            let newId = response.notification.request.identifier + "_snooze"
+            
+            let request = UNNotificationRequest(identifier: newId, content: content, trigger: trigger)
+            center.add(request) { error in
+                if let error = error {
+                    print("Ошибка при откладывании уведомления: \(error.localizedDescription)")
+                } else {
+                    print("🔔 Уведомление отложено на 10 минут")
+                }
+            }
+            
+        case "CANCEL_ACTION":
+            let id = response.notification.request.identifier
+            center.removePendingNotificationRequests(withIdentifiers: [id])
+            print("❌ Уведомление отменено: \(id)")
+            
+        default:
+            break
+        }
+        completionHandler()
+    }
+}
+
  struct AlarmNotification
 {
      var IsAlarmOn: Bool
