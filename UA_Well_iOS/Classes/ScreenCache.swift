@@ -32,7 +32,7 @@ final class ScreenCache {
         let shouldCache = !excludedFromCache.contains(key)
 
         if shouldCache, let cachedVC = cacheByName[key] {
-            print("♻️ Используем VC из кэша: \(key)")
+            print("♻️ Use VC from cache: \(key)")
             return cachedVC
         }
 
@@ -41,9 +41,9 @@ final class ScreenCache {
 
         if shouldCache {
             cacheByName[key] = vc
-            print("🆕 Создан и закэширован VC: \(key)")
+            print("🆕 Created and cachaed VC: \(key)")
         } else {
-            print("🆕 Создан VC без кэширования: \(key)")
+            print("🆕 Created VC without cache: \(key)")
         }
 
         return vc
@@ -53,7 +53,7 @@ final class ScreenCache {
     
     func viewController(for screen: AppScreen) -> UIViewController {
         if screen.isCacheable, let cachedVC = cache[screen] {
-            print("♻️ Используем кэшированный VC: \(screen.rawValue)")
+            print("♻️ Use VC from cache: \(screen.rawValue)")
             return cachedVC
         }
 
@@ -62,9 +62,9 @@ final class ScreenCache {
 
         if screen.isCacheable {
             cache[screen] = vc
-            print("🆕 Создан и закэширован VC: \(screen.rawValue)")
+            print("🆕 Created and cachaed VC: \(screen.rawValue)")
         } else {
-            print("🆕 Создан VC без кэширования: \(screen.rawValue)")
+            print("🆕 Created VC without cache: \(screen.rawValue)")
         }
 
         return vc
@@ -72,7 +72,7 @@ final class ScreenCache {
 
     func clear(screen: AppScreen) {
         cache.removeValue(forKey: screen)
-        print("🧹 Кэш очищен для VC: \(screen.rawValue)")
+        print("🧹 Cache cleared for VC: \(screen.rawValue)")
     }
 
         func clearAll() {

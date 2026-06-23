@@ -13,8 +13,7 @@ class AutoResizingTextView: UITextView {
         isScrollEnabled = false
         translatesAutoresizingMaskIntoConstraints = false
         delegate = self
-
-        // Создаём constraint высоты, если его нет
+        
         if heightConstraint == nil {
             let constraint = heightAnchor.constraint(equalToConstant: 0)
             constraint.priority = .defaultHigh
@@ -22,7 +21,6 @@ class AutoResizingTextView: UITextView {
             heightConstraint = constraint
         }
 
-        // Обновляем высоту после layout
         DispatchQueue.main.async {
             self.adjustHeight()
         }

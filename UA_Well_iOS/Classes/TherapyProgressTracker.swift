@@ -34,7 +34,7 @@ class TherapyProgressTracker {
     
     func markTodayAsCompleted(for type: TherapyType) {
         guard !isMarkedToday(for: type) else {
-            print("⚠️ Уже отмечено сегодня для \(type.rawValue)")
+            print("⚠️ Canceled for today \(type.rawValue)")
             return
         }
         
@@ -50,7 +50,7 @@ class TherapyProgressTracker {
             PreventionManager.shared.CurrentDay = newCount
         }
         
-        print("✅ Добавлен день терапии \(type.rawValue): \(newCount)")
+        print("✅ Added therapy day \(type.rawValue): \(newCount)")
     }
 }
 
