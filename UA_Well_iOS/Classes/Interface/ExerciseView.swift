@@ -103,8 +103,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     func GetExerices()
     {
         let _type = ExerciseManager.shared.CurrentHelpType
-        let i: Int = QuickHelpManager.shared.CurrentExercise // индекс упражнения в текущем массиве
-        let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // индекс текущего упражения в массиве
+        let i: Int = QuickHelpManager.shared.CurrentExercise // index is used in the current array
+        let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // index of the current exercise in the array
 
             let _text = String(TranslationDownloader.shared.CurrentTranslation.Exercises[o].description)
             HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
@@ -171,7 +171,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
 
         if let backgroundImage = newButoon.backgroundImage(for: .normal) {
             
-            // Задаём фиксированную высоту кнопки
+            // set a fixed height for the button
             NSLayoutConstraint.activate([
                 newButoon.heightAnchor.constraint(equalToConstant: 40),
                 newButoon.widthAnchor.constraint(equalToConstant: 189),
@@ -336,18 +336,18 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let currentStep = ExerciseManager.shared.CurrentStep
         guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
               steps.indices.contains(currentStep) else {
-            print("⚠️ Шаг \(currentStep) вне диапазона или Steps не инициализирован")
+            print("⚠️ Step \(currentStep) is out of range or Steps are not initialised!")
             return
         }
 
         let stepDuration = TimeInterval(steps[currentStep].duration)
 
-        // Очищаем предыдущий таймер
+        // clear prevois timer
         stepTimer?.invalidate()
         stepTimer = nil
 
         guard isHintActive else {
-            print("⏸ Подсказка неактивна — таймер шага не запущен")
+            print("⏸ Hint is unactived — step's timer is not started!")
             return
         }
 
@@ -356,51 +356,51 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             self?.nextStep()
         }
 
-        print("✅ Таймер шага запущен на \(stepDuration) сек")
+        print("✅ The step timer has been started for \(stepDuration) seconds.")
     }
 
         
     @objc private func nextStep() {
         guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
               !steps.isEmpty else {
-            print("⚠️ Нет шагов в упражнении — таймер остановлен")
+            print("⚠️ No steps in the exercise — timer stopped!")
             stopExercise()
             return
         }
 
-        // Переход к следующему шагу
+        // Go to next step
         ExerciseManager.shared.CurrentStep += 1
 
-        // Проверка на выход за пределы
+        // Bounds check
         if ExerciseManager.shared.CurrentStep >= steps.count {
             ExerciseManager.shared.CurrentStep = 0
-            print("🔁 Упражнение завершено — начинаем заново")
+            print("🔁 The exercise is complete — starting over.")
         } else {
-            print("➡️ Переход к шагу \(ExerciseManager.shared.CurrentStep)")
+            print("➡️ Go to step \(ExerciseManager.shared.CurrentStep)")
         }
 
-        // Перезапуск таймера шага
+        // timer's reset
         startStepTimer()
 
-        // Обновление визуальной подсказки
+        // hint's refresh
         updateHintState()
     }
 
     
     @objc private func restartExercise() {
         guard let exercise = ExerciseManager.shared.CurrentExercise else {
-            print("⚠️ Упражнение не инициализировано — перезапуск невозможен")
+            print("⚠️ Exercise not initialized — restart is not possible.")
             return
         }
 
-        // Сброс шага
+        // step's reset
         ExerciseManager.shared.CurrentStep = 0
-        print("🔁 Перезапуск упражнения — шаг сброшен")
+        print("🔁 Exercise's reset  — step reseted")
 
-        // Перезапуск таймера шага
+        // step's timer reset
         startStepTimer()
 
-        // Перезапуск таймера упражнения
+        // exercise's timer reset
         exerciseTimer?.invalidate()
         exerciseTimer = nil
 
@@ -409,7 +409,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             self?.restartExercise()
         }
 
-        print("✅ Таймер упражнения перезапущен на \(duration) сек")
+        print("✅ Exercise timer is  restarted for \(duration) sec")
     }
 
         
@@ -420,20 +420,20 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         exerciseTimer?.invalidate()
         exerciseTimer = nil
 
-        print("🛑 Все таймеры остановлены и обнулены")
+        print("🛑 All timers have been stopped and reseted")
     }
 
         
-        // Метод для обновления состояния визуальной подсказки
+        // Updating the state of the visual hint
     @objc func updateHintState() {
-        print("🎬 Упражнение запущено — обновление подсказки")
+        print("🎬 Exercise started — updating of hints")
 
         let soundFileName = "metronome"
         let currentStep = ExerciseManager.shared.CurrentStep
 
         guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
               steps.indices.contains(currentStep) else {
-            print("⚠️ Шаг \(currentStep) вне диапазона или Steps не инициализирован")
+            print("⚠️ Step \(currentStep) is out of range or Steps are not initialised!")
             imageHint.image = pauseImage
             breathingHintWidgetButton.setTitle("Старт", for: .normal)
             return
@@ -495,7 +495,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func playSound(named soundFileName: String) {
         guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
-            print("Ошибка: файл звука \(soundFileName) не найден")
+            print("Error: sound's volume \(soundFileName) not found")
             return
         }
 
@@ -503,14 +503,14 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.play()
         } catch {
-            print("Ошибка воспроизведения звука: \(error.localizedDescription)")
+            print("Audio playback error: \(error.localizedDescription)")
         }
     }
     func setupHintWidgetLayout() {
         hintWidget.translatesAutoresizingMaskIntoConstraints = true
 
         NSLayoutConstraint.activate([
-            hintWidget.widthAnchor.constraint(equalToConstant: 300/3), // или привязка к родителю
+            hintWidget.widthAnchor.constraint(equalToConstant: 300/3),
             hintWidget.heightAnchor.constraint(equalTo: hintWidget.widthAnchor)
         ])
 

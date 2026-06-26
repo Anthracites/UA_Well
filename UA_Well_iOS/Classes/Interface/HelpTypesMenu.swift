@@ -32,7 +32,7 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     @objc func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
-        // Настройка ячейки
+        // Cell's settings
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: false)
         let _label: String = TranslationDownloader.shared.CurrentTranslation.HelpTypes[indexPath.item].help_type_name
         newButoon.setTitle(_label, for: .normal)
@@ -72,9 +72,9 @@ class HelpTypesMenu:  UIViewController, UICollectionViewDataSource, UICollection
     @objc func BackToPreviousScreen()
     {
         let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
-        // Инициализируем ViewController
+        // Inicialising ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName) as! ViewController
-        // Переход к новому ViewController
+        // Go to ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
 }
