@@ -93,19 +93,19 @@ let layoutConfig = LayoutConfigurator.Config(
         
         if let backgroundImage = newButoon.backgroundImage(for: .normal) {
             
-            // Задаём фиксированную высоту кнопки
+            // Setting a fixed button height
             let targetHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
             let buttonHeight = targetHeight
             
-            // Вычисляем ширину кнопки по высоте
+            // Calculate the button width based on its height
             let rawWidth = cell.calculateButtonSize(basedOn: .height(buttonHeight), backgroundImage: backgroundImage, cellSpacing: 16)
             
-            // Ограничиваем максимальную ширину
+            // Limiting the maximum width
             let horizontalInset: CGFloat = 32 // например, 16 слева и 16 справа
             let maxWidth = collectionView.frame.width - horizontalInset
             let buttonWidth = min(rawWidth, maxWidth)
             
-            // Применяем размеры к кнопке
+            // Applying dimensions to the button
             newButoon.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 newButoon.widthAnchor.constraint(equalToConstant: buttonWidth * 0.75),
@@ -185,9 +185,9 @@ let layoutConfig = LayoutConfigurator.Config(
     @objc func BackToPreviousScreen()
     {
         let storyboard = UIStoryboard(name: previousScreenName, bundle: nil)
-        // Инициализируем ViewController
+        // Initializing ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: previousScreenName)
-        // Переход к новому ViewController
+        // Transition to a new ViewController
         self.present(secondVC, animated: true, completion: nil)
     }
     
@@ -198,7 +198,7 @@ let layoutConfig = LayoutConfigurator.Config(
         UserDefaults.standard.set(PreventionAlarmTime, forKey: "PreventionAlarmTime")
         UserDefaults.standard.set(PreventionDuration, forKey: "PreventionDuration")
         UserDefaults.standard.set(PreventionIntensity, forKey: "PreventionIntensity")
-        UserDefaults.standard.set(PreventionCurrentDay, forKey: "PreventionCurrentDay") // Для уведомлений
+        UserDefaults.standard.set(PreventionCurrentDay, forKey: "PreventionCurrentDay") // For notification
         NotificationManager.shared.scheduleNotifications()
     }
 }

@@ -69,7 +69,7 @@ class LongTimeWorkView:  UIViewController, UICollectionViewDataSource, UICollect
     {
         let _dayLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons?.DayOfTherapy
         let _dayCount = String(LTWManager.shared.DayCount)
-        let _label = (_dayLabel ?? "День терапии") + " " + _dayCount
+        let _label = (_dayLabel ?? "Therapy day ") + " " + _dayCount
 
         
         return _label

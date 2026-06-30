@@ -143,19 +143,19 @@ class LTWDayDescription:  UIViewController, UICollectionViewDataSource, UICollec
         
         if let backgroundImage = newButoon.backgroundImage(for: .normal) {
             
-            // Задаём фиксированную высоту кнопки
+            // Setting a fixed button height
             let targetHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
             let buttonHeight = targetHeight
 
-            // Вычисляем ширину кнопки по высоте
+            // Calculate the button width based on its height
             let rawWidth = cell.calculateButtonSize(basedOn: .height(buttonHeight), backgroundImage: backgroundImage, cellSpacing: 16)
 
-            // Ограничиваем максимальную ширину
+            // Limiting the maximum width
             let horizontalInset: CGFloat = 32 // например, 16 слева и 16 справа
             let maxWidth = collectionView.frame.width - horizontalInset
             let buttonWidth = min(rawWidth, maxWidth)
 
-            // Применяем размеры к кнопке
+            // Applying dimensions to the button
             newButoon.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 newButoon.widthAnchor.constraint(equalToConstant: buttonWidth * 0.75),

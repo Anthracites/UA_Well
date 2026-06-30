@@ -61,7 +61,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         UserDefaults.standard.set(_currentButton.titleLabel?.text, forKey: "Language")
         
         let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
-        // Инициализируем ViewController
+        // Initializing ViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
         self.present(secondVC, animated: true, completion: nil)
     }
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 {
                     
                     let storyboard = UIStoryboard(name: "HelpTypesMenu", bundle: nil)
-                    // Инициализируем ViewController
+                    // Initializing ViewControllerr
                     let secondVC = storyboard.instantiateViewController(withIdentifier: "HelpTypesMenu") as! HelpTypesMenu
                     self.present(secondVC, animated: true, completion: nil)
                 }
@@ -105,7 +105,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                    }
                 ExerciseManager.shared.PreviousViewName = storyboardName
                 let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
-                // Инициализируем ViewController
+                // Initializing ViewController
                 let secondVC = storyboard.instantiateViewController(withIdentifier: storyboardName)
                 self.present(secondVC, animated: true, completion: nil)
                 

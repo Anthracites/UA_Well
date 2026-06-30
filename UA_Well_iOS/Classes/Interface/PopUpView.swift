@@ -77,9 +77,9 @@ class PopUpView:  UIViewController, UITableViewDataSource, UITableViewDelegate {
         {
             print(String(_label))
             let storyboard = UIStoryboard(name: _label, bundle: nil)
-            // Инициализируем ViewController
+            // Initializing ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: _label)
-            // Переход к новому ViewController
+            // Transition to a new ViewController
             self.present(secondVC, animated: true, completion: nil)
             
             if _label == "AboutUsAndContactUs", let aboutVC = secondVC as? AboutUsAndContactUs {

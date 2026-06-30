@@ -57,22 +57,22 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
 
             flowLayout.scrollDirection = .vertical
 
-            // Получаем реальные горизонтальные отступы
+            // Getting real horizontal indents
             let leftInset = collectionView.contentInset.left + flowLayout.sectionInset.left
             let rightInset = collectionView.contentInset.right + flowLayout.sectionInset.right
             let totalHorizontalInset = leftInset + rightInset
 
             let buttonWidth = collectionView.frame.width - totalHorizontalInset
             
-            // Вычисляем высоту кнопки с ограничением максимальной высоты
+            // Calculating the height of a button with a maximum height limit
             let rawHeight = cell.calculateButtonSize(basedOn: .width(buttonWidth), backgroundImage: backgroundImage, cellSpacing: flowLayout.minimumLineSpacing)
             let maxHeight: CGFloat = UIScreen.main.bounds.width < 400 ? 80 : 120
             let buttonHeight = min(rawHeight, maxHeight)
 
-            // Настраиваем размер ячейки
+            // Adjusting the cell size
             flowLayout.itemSize = CGSize(width: buttonWidth, height: buttonHeight + flowLayout.minimumLineSpacing)
 
-            // Применяем размеры к кнопке
+            // Applying dimensions to the button
             newButoon.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 newButoon.widthAnchor.constraint(equalToConstant: buttonWidth),
@@ -88,13 +88,13 @@ class QuickHelpSymptomsMenu:  UIViewController, UICollectionViewDataSource, UICo
         if (QuickHelpManager.shared.Symtoms[_currentButton.tag].symptom_name as Optional) != nil
         {
             let storyboard = UIStoryboard(name: "SymptomTitle", bundle: nil)
-            // Инициализируем ViewController
+            // Initializing ViewController
             let secondVC = storyboard.instantiateViewController(withIdentifier: "SymptomTitle")
             QuickHelpManager.shared.CurrentSyptom = QuickHelpManager.shared.Symtoms[_currentButton.tag]
             quickHelpExercises.sort(by: { $0.symptom_ID < $1.symptom_ID})
             QuickHelpManager.shared.CurrentExersicesArray = quickHelpExercises[_currentButton.tag].help_exercise_array
             QuickHelpManager.shared.CurrentExercise = 0;
-            // Переход к новому ViewController
+            // Transition to a new ViewController
             self.present(secondVC, animated: true, completion: nil)
         }
     }

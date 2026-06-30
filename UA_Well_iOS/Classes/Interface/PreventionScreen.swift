@@ -78,7 +78,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
     {
         let _dayLabel = TranslationDownloader.shared.CurrentTranslation.commonButtons?.DayOfTherapy
         let _dayCount = String(PreventionManager.shared.CurrentDay)
-        let _label = (_dayLabel ?? "День терапии") + " " + _dayCount
+        let _label = (_dayLabel ?? "Therapy day") + " " + _dayCount
 
         
         return _label
@@ -162,7 +162,7 @@ class PreventionScreen:  UIViewController, UICollectionViewDataSource, UICollect
         let _optionsCells = collectionView.visibleCells.compactMap { $0 as? CustomDropDown }
         PreventionManager.shared.CurrentIntensity = intensityCurrentOptions.CurrentOption
         PreventionManager.shared.CurrentDuration = durationCurrentOptions.CurrentOption
-        print("индекс класса pScreen: \(String(describing: _optionsCells[0].CurrentOption))")
+        print("Class index pScreen: \(String(describing: _optionsCells[0].CurrentOption))")
     }
     
     @objc func GoToInstruction()
