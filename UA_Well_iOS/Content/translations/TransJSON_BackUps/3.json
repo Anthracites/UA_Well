@@ -101,7 +101,7 @@
                     }
                     
                 ],
-                "Description": "Clinical psychologist, body-oriented psychotherapist",
+                "Description": "Clinical psychologist, body-oriented psychotherapist"
             },
             {
                 "SpecialistName": "Andrew",
@@ -153,7 +153,7 @@
                 "DayID":3,
                 "TherapyPartName": "Fifteenth day",
                 "Instruction": "Analyze how balanced your daily loads are. All loads conditionally can be divided into physical, emotional (communication, art, news, etc.) and intellectual (work, study, etc.). If there is an area that clearly takes less attention and time, plan how you can balance it. You can remove something from the “overloaded” sphere (if possible) or add something to the desolate sphere. \n\nPay attention to what new positive experience you can bring into your life. It is desirable that it would be something pleasant, enjoyable (new food, new places or routes, new music, etc.), but sometimes it can be something neutral. We need new experience for many reasons, but if this task is difficult to complete right away, start by paying attention to where and how to get a new pleasant experience would be possible. From this step it will be easier to move on to practice."
-            }, 
+            }
 
         ]
     },
