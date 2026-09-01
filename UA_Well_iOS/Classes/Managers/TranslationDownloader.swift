@@ -10,7 +10,7 @@ class TranslationDownloader {
     var DefaultLanguage: Translation!
     var IsFirstRun: Bool!
     
-    private init() {} // Закрытый инициализатор
+    private init() {} // Closed initializer
     
     func getTranslationFileIDs() -> [String] {
         guard Translations.isEmpty else { return [] }
@@ -27,7 +27,7 @@ class TranslationDownloader {
             let fileNames = fileURLs.map { $0.deletingPathExtension().lastPathComponent }
             return fileNames
         } catch {
-            print("⚠️ Ошибка при получении списка переводов: \(error)")
+            log("⚠️ Failed to list translation files: \(error)")
             return []
         }
     }
@@ -35,7 +35,7 @@ class TranslationDownloader {
     
     
     func initializeTranslations() {
-        // Если массив translations уже не пустой, пропускаем загрузку
+        // If the translations array is already non-empty, skip loading
         let fileNames = getTranslationFileIDs()
         let folderURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             .appendingPathComponent("Content/translations")
@@ -103,7 +103,7 @@ class TranslationDownloader {
                         
                         if let currentLanguage = currentLanguage, let commonButtons = commonButtons, let aNotifications = aNotifications, let prevention = prevention, let aboutApp = aboutApp,
                            let aboutUs = aboutUs, let longTermWork = longTermWork{
-                            // Создаем массив Symptoms, отсортированный по symptom_ID
+                            // Build a Symptoms array, sorted by symptom_ID
                             var symptomsArray = Array(symptomsDict.values)
                             symptomsArray.sort { $0.symptom_ID < $1.symptom_ID }
                             var exercisesArray = Array(exercisesDict.values)
@@ -140,24 +140,28 @@ class TranslationDownloader {
                             if translation.currentLanguage == savedLanguage
                             {
                                 CurrentTranslation = translation
-                                //print("Saved language: ", savedLanguage)
+                                log("Saved language: \(savedLanguage ?? "nil")")
                             }
                             
                             
                             Translations.append(translation)
+                            log("✅ Translation loaded: \(translation.currentLanguage) (\(fileName).json)")
                         }
                     }
                 }
-                //                    print (" Translations success!", Translations[0].currentLanguage as Any)
-                //                    print("Translations directory path: \(fileURLs[0].path)")
             }
             catch
             {
-                //print("Ошибка парсинга", error)
-                //                    print("Ошибка подробнее", error.localizedDescription)
-                //                print("Translations directory path: \(fileURLs[0].path)")
+                log("❌ Failed to parse \(fileName).json: \(error)")
+                log("   Translations directory path: \(folderURL.path)")
             }
         }
+    }
+
+    private func log(_ message: String) {
+        #if DEBUG
+        print(message)
+        #endif
     }
 }
     
