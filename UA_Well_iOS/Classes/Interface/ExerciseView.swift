@@ -28,6 +28,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
 
     private var stepTimer: Timer?
     private var exerciseTimer: Timer?
+    private var layoutAlreadyConfigured = false
 
     
     override func viewDidLoad() {
@@ -36,18 +37,24 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         configureCollectionView()
         SetupWidget()
         GetImages()
-        configureLayout()
         trackAsCurrentScreen()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        // Layout is configured here rather than in viewDidLoad: at viewDidLoad
+        // time the subview frames are still storyboard placeholders, so the
+        // height calculations would run against wrong sizes.
+        // The guard inside configureLayout() keeps it to a single run.
         configureLayout()
     }
 
     
    func configureLayout()
     {
+        guard !layoutAlreadyConfigured else { return }
+        layoutAlreadyConfigured = true
+
         exerciseText.adjustHeight()
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
@@ -291,7 +298,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func StartOverButtonHandler()
     {
-        stopExercise() 
+        stopExercise()
         QuickHelpManager.shared.CurrentExercise = 0
         
         let _name = "ExerciseView"
@@ -309,6 +316,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         super.viewDidDisappear(animated)
         stepTimer?.invalidate()
         exerciseTimer?.invalidate()
+        // The breathing GIF keeps animating on the CPU even when the screen is
+        // gone, so it has to be stopped explicitly along with the timers.
+        imageHint.stopAnimating()
         ExerciseManager.shared.CurrentStep = 0
 
     }
@@ -456,6 +466,12 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }()
 
         imageHint.image = hintImage
+        // A static image (the pause frame) has no animation of its own, but the
+        // image view keeps running the previous animated image unless it is
+        // stopped, so only animate when the new image actually is animated.
+        if hintImage.images == nil {
+            imageHint.stopAnimating()
+        }
         breathingHintWidgetButton.setTitle(buttonLabel, for: .normal)
 
         playSound(named: soundFileName)
@@ -486,7 +502,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         case "LongTimeWork":
             var d = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
             d += 1
-            UserDefaults.standard.set(d, forKey: "LTWCurrentDay") 
+            UserDefaults.standard.set(d, forKey: "LTWCurrentDay")
             
         default:
             ""

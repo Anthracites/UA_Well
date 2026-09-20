@@ -19,19 +19,34 @@ class LTWManager {
     
     @objc func GetParameters()
     {
-
-        if (UserDefaults.standard.integer(forKey: "LTWCurrentDay") != nil)
+        // UserDefaults.integer(forKey:) never returns nil (defaults to 0 when the
+        // key is missing), so this needs object(forKey:) to actually detect
+        // "no saved progress yet" vs. "day 0 was saved".
+        if UserDefaults.standard.object(forKey: "LTWCurrentDay") != nil
         {
-                        CurrentDuration = UserDefaults.standard.integer(forKey: "LTWDuration")
             DayCount = UserDefaults.standard.integer(forKey: "LTWCurrentDay")
-                    }
-                        else
-                    {
-                            DayCount = 0
-                    }
-        SwitchDayID()
-        CurrentDuration = 2
         }
+        else
+        {
+            DayCount = 0
+        }
+
+        // Same idea for the saved duration: only fall back to the default (2,
+        // matching LTWDurations) when nothing was ever saved. Previously this
+        // was unconditionally overwritten with 2 right after being read,
+        // silently discarding whatever duration the user picked on
+        // LTWDayDescription.
+        if let savedDuration = UserDefaults.standard.object(forKey: "LTWDuration") as? Int
+        {
+            CurrentDuration = savedDuration
+        }
+        else
+        {
+            CurrentDuration = 2
+        }
+
+        SwitchDayID()
+    }
     @objc func SwitchDayID()
     {
         
