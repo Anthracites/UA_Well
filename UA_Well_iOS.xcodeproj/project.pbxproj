@@ -64,12 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61BA5DBC305FCBE300E15B2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D07A480D2C99BC4400DEE2C7 = {
 			isa = PBXGroup;
 			children = (
 				612DA8C02E43A91000A8BDEE /* Content */,
 				612DA90E2E43AA1300A8BDEE /* Content */,
 				D07A48182C99BC4400DEE2C7 /* UA_Well_iOS */,
+				61BA5DBC305FCBE300E15B2E /* Frameworks */,
 				D07A48172C99BC4400DEE2C7 /* Products */,
 			);
 			sourceTree = "<group>";

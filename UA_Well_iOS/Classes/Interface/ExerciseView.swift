@@ -19,9 +19,9 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     var LastExercise: Bool!
     var HelpExercisesCount: Int!
     var nextButton, itHelpedButton, contactSpecialistButton, startOverbutton: UIButton!
-    var buttons = [UIButton?]()
+    var buttons: [UIButton] = []
     var commoButtonBG = UIImage(named: "CommonButtonBG")
-    var audioPlayer: AVAudioPlayer?
+    private var audioPlayers: [String: AVAudioPlayer] = [:]
     private var exerciseTextHeightConstraint: NSLayoutConstraint?
     var collectionViewItemsCount: Int!
     var IsQuickHelp: Bool!
@@ -55,11 +55,16 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         guard !layoutAlreadyConfigured else { return }
         layoutAlreadyConfigured = true
 
+        guard let castedScrollView = scrollView as? UIScrollView else {
+            print("⚠️ scrollView outlet is not a UIScrollView — layout not configured")
+            return
+        }
+
         exerciseText.adjustHeight()
         let layoutConfig = LayoutConfigurator.Config(
             parentView: view,
             header: header,
-            scrollView: scrollView as! UIScrollView,
+            scrollView: castedScrollView,
             contentView: contentView,
             title: viewTitle,
             isHintActive: isHintActive,
@@ -109,7 +114,6 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func GetExerices()
     {
-        let _type = ExerciseManager.shared.CurrentHelpType
         let i: Int = QuickHelpManager.shared.CurrentExercise // index is used in the current array
         let o: Int = QuickHelpManager.shared.CurrentExersicesArray[i] // index of the current exercise in the array
 
@@ -169,8 +173,18 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
         let newButoon: UIButton = cell.MenuButton
         let _label = buttonLabels[indexPath.item]
+
+        // newButoon may be a button from a reused cell that still carries a
+        // target from an earlier configuration — clear it so a tap can't fire
+        // both the old and the new handler.
+        newButoon.removeTarget(nil, action: nil, for: .allEvents)
+
         cell.copyButtonProperties(targetButton: newButoon, isFilledButton: true)
-        buttons.append(newButoon)
+        if buttons.indices.contains(indexPath.item) {
+            buttons[indexPath.item] = newButoon
+        } else {
+            buttons.append(newButoon)
+        }
         newButoon.setTitle(_label, for: .normal)
         cell.contentMode = .center
         cell.adjustFontSize(for: newButoon)
@@ -190,6 +204,12 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @objc func SetUpButton(ButtonIndex: Int)
     {
+        guard buttons.indices.contains(ButtonIndex) else {
+            print("⚠️ SetUpButton called for an out-of-range index: \(ButtonIndex)")
+            return
+        }
+        let button = buttons[ButtonIndex]
+
         if (IsQuickHelp == true)
         {
             
@@ -198,35 +218,35 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
                 
                 if (LastExercise == false)
                 {
-                    buttons[ButtonIndex]!.addTarget(self, action: #selector(NextButtonHandler), for: .touchUpInside)
-                    buttons[ButtonIndex]!.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Next, for: .normal)
+                    button.addTarget(self, action: #selector(NextButtonHandler), for: .touchUpInside)
+                    button.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Next, for: .normal)
                     
                 }
                 else
                 {
-                    buttons[ButtonIndex]!.addTarget(self, action: #selector(StartOverButtonHandler), for: .touchUpInside)
-                    buttons[ButtonIndex]!.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start_over, for: .normal)
+                    button.addTarget(self, action: #selector(StartOverButtonHandler), for: .touchUpInside)
+                    button.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Start_over, for: .normal)
                 }
                 
             case 1:
-                buttons[ButtonIndex]!.addTarget(self, action: #selector(ItHelpedButtonHandler), for: .touchUpInside)
-                buttons[ButtonIndex]!.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.It_helped, for: .normal)
+                button.addTarget(self, action: #selector(ItHelpedButtonHandler), for: .touchUpInside)
+                button.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.It_helped, for: .normal)
             case 2:
-                buttons[ButtonIndex]!.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
-                buttons[ButtonIndex]!.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
+                button.addTarget(self, action: #selector(ContactSpecialistButtonHandler), for: .touchUpInside)
+                button.setTitle(TranslationDownloader.shared.CurrentTranslation.commonButtons?.Contact_specialist, for: .normal)
                 
             default:
-                let _okButton = buttons[0]
-                _okButton!.addTarget(self, action: #selector(OkButtonHandler), for: .touchUpInside)
-                _okButton!.setTitle("OK", for: .normal)
+                let okButton = buttons[0]
+                okButton.addTarget(self, action: #selector(OkButtonHandler), for: .touchUpInside)
+                okButton.setTitle("OK", for: .normal)
             }
 
         }
         else
         {
-            let _okButton = buttons[0]
-            _okButton!.addTarget(self, action: #selector(OkButtonHandler), for: .touchUpInside)
-            _okButton!.setTitle("OK", for: .normal)
+            let okButton = buttons[0]
+            okButton.addTarget(self, action: #selector(OkButtonHandler), for: .touchUpInside)
+            okButton.setTitle("OK", for: .normal)
         }
     }
     
@@ -241,12 +261,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
                 let _name = "ExerciseView"
                 let storyboard = UIStoryboard(name: _name, bundle: nil)
                 let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
-
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                   let window = windowScene.windows.first {
-                    window.rootViewController = nextVC
-                    window.makeKeyAndVisible()
-                }
+                UIApplication.shared.setRootViewController(nextVC)
             }
     }
     
@@ -257,27 +272,20 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _name = "HelpTypesMenu"
         let storyboard = UIStoryboard(name: _name, bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
-
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = nextVC
-            window.makeKeyAndVisible()
-        }
+        UIApplication.shared.setRootViewController(nextVC)
     }
     
     @objc func OkButtonHandler()
     {
         stopExercise()
         
-        let _name = ExerciseManager.shared.PreviousViewName
-        let storyboard = UIStoryboard(name: _name!, bundle: nil)
-        let nextVC = storyboard.instantiateViewController(withIdentifier: _name!)
-
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = nextVC
-            window.makeKeyAndVisible()
+        guard let _name = ExerciseManager.shared.PreviousViewName else {
+            print("⚠️ PreviousViewName is not set — cannot navigate back")
+            return
         }
+        let storyboard = UIStoryboard(name: _name, bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
+        UIApplication.shared.setRootViewController(nextVC)
     }
     
     @objc func ContactSpecialistButtonHandler()
@@ -287,12 +295,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _name = "AboutUsAndContactUs"
         let storyboard = UIStoryboard(name: _name, bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
-
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = nextVC
-            window.makeKeyAndVisible()
-        }
+        UIApplication.shared.setRootViewController(nextVC)
         
     }
     
@@ -304,12 +307,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let _name = "ExerciseView"
         let storyboard = UIStoryboard(name: _name, bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: _name)
-
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController = nextVC
-            window.makeKeyAndVisible()
-        }
+        UIApplication.shared.setRootViewController(nextVC)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -510,14 +508,25 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     func playSound(named soundFileName: String) {
+        // Reuse an already-loaded player instead of re-reading the file and
+        // re-decoding audio on every single exercise step (some exercises have
+        // 100+ steps, each previously triggering its own file load).
+        if let existingPlayer = audioPlayers[soundFileName] {
+            existingPlayer.currentTime = 0
+            existingPlayer.play()
+            return
+        }
+
         guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
             print("Error: sound's volume \(soundFileName) not found")
             return
         }
 
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            audioPlayer?.play()
+            let player = try AVAudioPlayer(contentsOf: soundURL)
+            player.prepareToPlay()
+            audioPlayers[soundFileName] = player
+            player.play()
         } catch {
             print("Audio playback error: \(error.localizedDescription)")
         }
