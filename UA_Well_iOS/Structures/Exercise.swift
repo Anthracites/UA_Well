@@ -1,44 +1,36 @@
-import Foundation
+struct Exercise: Decodable {
+    let ExerciseId: Int
+    let ExerciseDuration: Int
+    let VisualHint: Bool
+    let Steps: [Step]
 
- struct Exercise: Codable {
-    var Exercise_id: Int?
-    var ExerciseDuration: Int?
-    var Visual_hint: Bool?
-    var Steps: [Step]?
-    
-    var StepsSubsequence: String?
-    var StepsDurations: String?
-    
+    struct Step {
+        let num: Int
+        let action: Int
+        let duration: Int
+    }
+
     enum CodingKeys: String, CodingKey {
-        case Exercise_id
+        case ExerciseId = "Exercise_id"
         case ExerciseDuration
-        case Visual_hint
+        case VisualHint = "Visual_hint"
         case StepsSubsequence
         case StepsDurations
-        case Steps
-    }
-    
-    init(Exercise_id: Int?, ExerciseDuration: Int?, Visual_hint: Bool?, StepsSubsequence: String?, StepsDurations: String?) {
-        self.Exercise_id = Exercise_id
-        self.ExerciseDuration = ExerciseDuration
-        self.Visual_hint = Visual_hint
-        self.StepsSubsequence = StepsSubsequence
-        self.StepsDurations = StepsDurations
-        self.Steps = zip(StepsSubsequence?.split(separator: ",").compactMap { Int($0) } ?? [],
-                         StepsDurations?.split(separator: ",").compactMap { Int($0) } ?? []).enumerated().map { index, pair in
-            return Step(num: index, action: pair.0, duration: pair.1)
-        }
     }
 
-    struct Step: Codable {
-        var num: Int
-        var action: Int
-        var duration: Int
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        ExerciseId = try c.decode(Int.self, forKey: .ExerciseId)
+        ExerciseDuration = try c.decode(Int.self, forKey: .ExerciseDuration)
+        VisualHint = try c.decode(Bool.self, forKey: .VisualHint)
 
-        enum CodingKeys: String, CodingKey {
-            case num
-            case action
-            case duration
+        let actions = try c.decode(String.self, forKey: .StepsSubsequence)
+            .split(separator: ",").compactMap { Int($0) }
+        let times = try c.decode(String.self, forKey: .StepsDurations)
+            .split(separator: ",").compactMap { Int($0) }
+
+        Steps = zip(actions, times).enumerated().map {
+            Step(num: $0.offset, action: $0.element.0, duration: $0.element.1)
         }
     }
 }

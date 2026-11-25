@@ -1,0 +1,44 @@
+# .gitignore для UA_Well (iOS, Swift/UIKit)
+
+# ===== Xcode: пользовательские данные и сборка =====
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+*.moved-aside
+DerivedData/
+build/
+*.hmap
+*.ipa
+*.xcarchive
+*.dSYM
+*.dSYM.zip
+*.swp
+*~.nib
+
+# ===== Менеджеры зависимостей =====
+# Podfile.lock и Package.resolved коммитить НУЖНО.
+Pods/
+Carthage/Build/
+.build/
+
+# ===== Секреты и сертификаты =====
+# GoogleService-Info.plist содержит API-ключи Firebase. Если оставить его
+# в игноре, каждому разработчику нужно будет положить свой файл вручную.
+GoogleService-Info.plist
+*.p12
+*.p8
+*.cer
+*.certSigningRequest
+*.mobileprovision
+.env
+Secrets.xcconfig
+
+# ===== fastlane =====
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# ===== ОС =====
+.DS_Store

@@ -121,7 +121,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
             HelpExercisesCount = Int(QuickHelpManager.shared.CurrentExercise)
             exerciseText.text = _text
         
-        isHintActive = ExerciseManager.shared.Exercises[o].Visual_hint
+        isHintActive = ExerciseManager.shared.Exercises[o].VisualHint
         ExerciseManager.shared.CurrentExercise = ExerciseManager.shared.Exercises[o]
         
         if (isHintActive == true)
@@ -331,7 +331,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         exerciseTimer?.invalidate()
         exerciseTimer = nil
         
-        let duration = TimeInterval(exercise.ExerciseDuration ?? 0)
+        let duration = TimeInterval(exercise.ExerciseDuration)
          exerciseTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
              self?.restartExercise()
          }
@@ -342,8 +342,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
     private func startStepTimer() {
         let currentStep = ExerciseManager.shared.CurrentStep
-        guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
-              steps.indices.contains(currentStep) else {
+        let steps = ExerciseManager.shared.CurrentExercise.Steps
+        guard steps.indices.contains(currentStep) else {
             print("⚠️ Step \(currentStep) is out of range or Steps are not initialised!")
             return
         }
@@ -369,8 +369,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
 
         
     @objc private func nextStep() {
-        guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
-              !steps.isEmpty else {
+        let steps = ExerciseManager.shared.CurrentExercise.Steps
+        guard !steps.isEmpty else {
             print("⚠️ No steps in the exercise — timer stopped!")
             stopExercise()
             return
@@ -412,7 +412,7 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         exerciseTimer?.invalidate()
         exerciseTimer = nil
 
-        let duration = TimeInterval(exercise.ExerciseDuration ?? 0)
+        let duration = TimeInterval(exercise.ExerciseDuration)
         exerciseTimer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
             self?.restartExercise()
         }
@@ -439,8 +439,8 @@ class ExerciseView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let soundFileName = "metronome"
         let currentStep = ExerciseManager.shared.CurrentStep
 
-        guard let steps = ExerciseManager.shared.CurrentExercise.Steps,
-              steps.indices.contains(currentStep) else {
+        let steps = ExerciseManager.shared.CurrentExercise.Steps
+        guard steps.indices.contains(currentStep) else {
             print("⚠️ Step \(currentStep) is out of range or Steps are not initialised!")
             imageHint.image = pauseImage
             breathingHintWidgetButton.setTitle("Старт", for: .normal)

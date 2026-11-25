@@ -46,9 +46,7 @@ class SpecialistInfo: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        // Проверка, что contactsView уже имеет размер
-        if contactsView.frame.height > 0 && contacts.count > 0 {
+                if contactsView.frame.height > 0 && contacts.count > 0 {
             print("Reloaded contactsView with \(contacts.count) items")
         }
     }
@@ -97,14 +95,10 @@ class SpecialistInfo: UICollectionViewCell, UICollectionViewDataSource, UICollec
     
     @objc func FillCollectionView()
     {
-//        contactsView.delegate = self
-//        contactsView.dataSource = self
         contactsView.reloadData()
     }
     
     @objc func setupLayout() {
-        //sPhoto.contentMode = .scaleAspectFill
-        //sPhoto.clipsToBounds = true
         sPhoto.translatesAutoresizingMaskIntoConstraints = false
         specialistName.translatesAutoresizingMaskIntoConstraints = false
         languagesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -123,9 +117,6 @@ class SpecialistInfo: UICollectionViewCell, UICollectionViewDataSource, UICollec
             //specialistName.centerXAnchor.constraint(equalTo: sPhoto.centerXAnchor),
                specialistName.leadingAnchor.constraint(equalTo: sPhoto.trailingAnchor, constant: 12),
             specialistName.heightAnchor.constraint(equalTo: sPhoto.heightAnchor, constant: 0),
-
-            
-//            specialistName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
             languagesLabel.topAnchor.constraint(equalTo: sPhoto.bottomAnchor, constant: 5),
             languagesLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
